@@ -54,6 +54,7 @@ in {
     wget
     curl
     ntfs3g
+    openssh
   ];
 
   services.logind.extraConfig = ''
