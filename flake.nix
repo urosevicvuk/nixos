@@ -37,6 +37,9 @@
     zen-browser.url =
       "git+https://git.sr.ht/~canasta/zen-browser-flake/"; # updated flake
     nvf.url = "github:notashelf/nvf";
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
   };
 
   outputs = inputs@{ nixpkgs, ... }: {
@@ -50,6 +53,11 @@
                 [ inputs.hyprpanel.overlay inputs.nur.overlays.default ];
               _module.args = { inherit inputs; };
             }
+            # {
+            #   environment.systemPackages = [
+            #     inputs.ghostty.packages.x86_64-linux.default
+            #   ];
+            # }
             inputs.home-manager.nixosModules.home-manager
             inputs.stylix.nixosModules.stylix
             ./hosts/desktop/configuration.nix 

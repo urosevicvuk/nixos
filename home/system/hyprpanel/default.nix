@@ -41,7 +41,6 @@ in {
             "systray"
             "volume"
             "bluetooth"
-            "battery"
             "network"
             "clock"
             "notifications"
@@ -54,9 +53,9 @@ in {
       "theme.font.name" = "${font}";
       "theme.font.size" = "${fontSize}px";
       "theme.bar.outer_spacing" =
-        "${if floating && transparent then "0" else "8"}px";
+        "${if floating && transparent then "0" else "4"}px";
       "theme.bar.buttons.y_margins" =
-        "${if floating && transparent then "0" else "8"}px";
+        "${if floating && transparent then "0" else "4"}px";
       "theme.bar.buttons.spacing" = "0.3em";
       "theme.bar.buttons.radius" = "${
           if transparent then toString rounding else toString (rounding - 8)
@@ -83,7 +82,7 @@ in {
       "bar.volume.label" = false;
       "bar.network.truncation_size" = 12;
       "bar.bluetooth.label" = false;
-      "bar.clock.format" = "%a %b %d  %I:%M %p";
+      "bar.clock.format" = "%I:%M %p";
       "bar.notifications.show_total" = true;
       "theme.notification.border_radius" = "${toString rounding}px";
       "theme.osd.enable" = true;

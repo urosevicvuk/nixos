@@ -5,7 +5,7 @@
       "$mod,E, exec, ${pkgs.xfce.thunar}/bin/thunar" # Thunar
       "$mod,B, exec, zen" # Zen Browser
       "$mod,P, exec, ${pkgs.bitwarden}/bin/bitwarden" # Bitwarden
-      "$mod $shiftMod,L, exec, ${pkgs.hyprlock}/bin/hyprlock" # Lock
+      "ALT $shiftMod,L, exec, ${pkgs.hyprlock}/bin/hyprlock" # Lock
       "$mod,X, exec, powermenu" # Powermenu
       "$mod,SPACE, exec, menu" # Launcher
       "$mod,C, exec, quickmenu" # Quickmenu
@@ -28,7 +28,7 @@
       "$shiftMod,left, layoutmsg, addmaster" # Add to master
       "$shiftMod,right, layoutmsg, removemaster" # Remove from master
 
-      "$mod,PRINT, exec, screenshot region" # Screenshot region
+      "$shiftMod,S, exec, screenshot region" # Screenshot region
       ",PRINT, exec, screenshot monitor" # Screenshot monitor
       "$shiftMod,PRINT, exec, screenshot window" # Screenshot window
       "ALT,PRINT, exec, screenshot region swappy" # Screenshot region then edit
