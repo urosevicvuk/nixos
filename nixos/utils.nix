@@ -13,6 +13,7 @@ in {
       xkb.variant = "";
     };
     gnome.gnome-keyring.enable = true;
+    hardware.openrgb.enable = true;
   };
   console.keyMap = keyboardLayout;
 
@@ -55,6 +56,7 @@ in {
     curl
     ntfs3g
     openssh
+    openrgb-with-all-plugins
   ];
 
   services.logind.extraConfig = ''
