@@ -68,9 +68,9 @@ in {
       "theme.bar.buttons.workspaces.available" = "${accent-alt}";
       "theme.bar.buttons.workspaces.occupied" = "${accent-alt}";
       "theme.bar.margin_top" =
-        "${if position == "top" then toString (gaps-in * 2) else "0"}px";
+        "${if position == "top" then toString gaps-out else "0"}px";
       "theme.bar.margin_bottom" =
-        "${if position == "top" then "0" else toString (gaps-in * 2)}px";
+        "${if position == "top" then "0" else toString gaps-out}px";
       "theme.bar.margin_sides" = "${toString gaps-out}px";
       "theme.bar.border_radius" = "${toString rounding}px";
       "bar.launcher.icon" = "";

@@ -23,6 +23,6 @@
     autoGarbageCollector = true;
 
     # Choose your theme variables here
-    theme = import ../../themes/var/yoru.nix;
+    theme = import ../../themes/var/gruvbox.nix;
   };
 }
