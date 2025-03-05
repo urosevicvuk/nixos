@@ -11,6 +11,7 @@ in {
       enable = true;
       xkb.layout = keyboardLayout;
       xkb.variant = "";
+      videoDrivers = [ "amdgpu" ];
     };
     gnome.gnome-keyring.enable = true;
     hardware.openrgb.enable = true;
@@ -25,8 +26,17 @@ in {
   };
 
   services.libinput.enable = true;
-  programs.dconf.enable = true;
-  programs.steam.enable = true;
+
+  programs = {
+    kdeconnect.enable = true;
+    dconf.enable = true;
+    steam.enable = true;
+    gamescope.enable = true;
+    gamemode.enable = true;
+  };
+
+  hardware = { graphics = { enable = true; }; };
+
   services = {
     dbus.enable = true;
     gvfs.enable = true;

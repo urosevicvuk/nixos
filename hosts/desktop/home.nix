@@ -58,6 +58,10 @@
       curtail # Compress images
       google-chrome
 
+      #Steam helpers
+      protonup
+      mangohud
+
       # Dev
       go
       nodejs
