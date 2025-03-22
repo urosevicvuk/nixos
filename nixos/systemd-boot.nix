@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   boot = {
-    supportedFilesystems = ["ntfs"];
+    initrd.kernelModules = [ "amdgpu" ];
+    supportedFilesystems = [ "ntfs" ];
     bootspec.enable = true;
     loader = {
       efi.canTouchEfiVariables = true;
@@ -11,7 +12,7 @@
       };
       grub = {
         enable = true;
-        devices = ["nodev"];
+        devices = [ "nodev" ];
         efiSupport = true;
         useOSProber = true;
       };

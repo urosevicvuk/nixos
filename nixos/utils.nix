@@ -35,7 +35,11 @@ in {
     gamemode.enable = true;
   };
 
-  hardware = { graphics = { enable = true; }; };
+  hardware = { 
+    graphics = { 
+      enable = true; 
+    }; 
+  };
 
   services = {
     dbus.enable = true;

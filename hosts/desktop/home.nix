@@ -57,10 +57,14 @@
       textpieces # Manipulate texts
       curtail # Compress images
       google-chrome
+      bottles
 
       #Steam helpers
       protonup
       mangohud
+
+      #Games
+      prismlauncher
 
       # Dev
       go

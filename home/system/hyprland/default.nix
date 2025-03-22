@@ -54,12 +54,13 @@ in {
       ];
 
       monitor = [
-        "eDP-2,highres,0x0,1"
-        "DP-7, disable"
-        "DP-8, disable"
-        "DP-9, disable"
-        "HDMI-A-1,3440x1440@99.98,auto,1"
-        ",prefered,auto,1"
+        "DP-2,highres,0x0,1"
+        "DP-3,highres,-1920x300,1,transform,1"
+        # "DP-7, disable"
+        # "DP-8, disable"
+        # "DP-9, disable"
+        # "HDMI-A-1,3440x1440@99.98,auto,1"
+        # ",prefered,auto,1"
       ];
 
       env = [
