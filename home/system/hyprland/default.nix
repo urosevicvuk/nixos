@@ -49,18 +49,20 @@ in {
       "$shiftMod" = "SUPER_SHIFT";
 
       exec-once = [
-        "${pkgs.bitwarden}/bin/bitwarden"
-        "dbus-update-activation-environment --systemd --all"
+
+        #"${pkgs.bitwarden}/bin/bitwarden"
+        #"dbus-update-activation-environment --systemd --all"
       ];
 
       monitor = [
-        "DP-2,highres,0x0,1"
-        "DP-3,highres,-1920x300,1,transform,1"
+        "DP-2, 1920x1080@144, 0x0, 1"
+        "DP-3, prefered, auto, 1, transform, 1"
+        "HDMI-A-1, prefered, auto, 1, mirror, DP-2"
         # "DP-7, disable"
         # "DP-8, disable"
         # "DP-9, disable"
         # "HDMI-A-1,3440x1440@99.98,auto,1"
-        # ",prefered,auto,1"
+        ",prefered,auto,1"
       ];
 
       env = [
@@ -93,7 +95,7 @@ in {
 
       cursor = {
         no_hardware_cursors = true;
-        default_monitor = "eDP-2";
+        default_monitor = "DP-2";
       };
 
       general = {
@@ -139,13 +141,24 @@ in {
       windowrulev2 =
         [ "float, tag:modal" "pin, tag:modal" "center, tag:modal" ];
 
+      workspace = [
+        "1, monitor:DP-2"
+        "2, monitor:DP-2"
+        "3, monitor:DP-2"
+        "4, monitor:DP-2"
+        "5, monitor:DP-2"
+        "6, monitor:DP-2"
+        "7, monitor:DP-2"
+        "8, monitor:DP-2"
+        "9, monitor:DP-2"
+        "alternative, monitor:DP-3, default:true"
+      ];
+
       windowrule = [
-        "workspace 8, discord"
-        "workspace 5, spotify"
-        "workspace 9, io.github.alainm23.planify"
-        "fullscreen, io.github.alainm23.planify"
-        "workspace 9, Proton Mail"
-        "fullscreen, Proton Mail"
+        "workspace 4, title:Steam"
+        "workspace 5, title:Spotify"
+        "workspace 8, title:Discord"
+        "workspace 9, title:Obsidian"
       ];
 
       layerrule = [ "noanim, launcher" "noanim, ^ags-.*" ];

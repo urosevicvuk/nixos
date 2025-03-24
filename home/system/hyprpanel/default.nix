@@ -174,7 +174,7 @@ in {
       "bar.media.show_active_only" = true;
       "theme.bar.location" = "${position}";
       "bar.workspaces.numbered_active_indicator" = "color";
-      "bar.workspaces.monitorSpecific" = false;
+      "bar.workspaces.monitorSpecific" = true;
       "bar.workspaces.applicationIconEmptyWorkspace" = "";
       "bar.workspaces.showApplicationIcons" = true;
       "bar.workspaces.showWsIcons" = true;

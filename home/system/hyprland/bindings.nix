@@ -43,7 +43,10 @@
       in [
         "$mod,code:1${toString i}, workspace, ${toString ws}"
         "$mod SHIFT,code:1${toString i}, movetoworkspace, ${toString ws}"
-      ]) 9));
+      ]) 9)) ++ [
+        "$mod, A, workspace, name:alternative"
+        "$mod SHIFT, A, movetoworkspace, name:alternative"
+      ];
 
     bindm = [
       "$mod,mouse:272, movewindow" # Move Window (mouse)
