@@ -45,15 +45,11 @@
     packages = with pkgs; [
       # Apps
       discord # Chat
-      vesktop # Discord but better
       bitwarden # Password manager
       vlc # Video player
-      blanket # White-noise app
       obsidian # Note taking app
       planify # Todolists
       todoist # Todolists
-      gnome-calendar # Calendar
-      protonmail-desktop
       textpieces # Manipulate texts
       curtail # Compress images
       google-chrome
@@ -65,6 +61,8 @@
 
       #Games
       prismlauncher
+      torzu
+      shadps4
 
       # Dev
       go
@@ -78,14 +76,17 @@
       vscode
 
       # Utils
+      nh
+      qbittorrent
       zip
       unzip
+      p7zip
+      unrar
       optipng
       pfetch
       pandoc
       btop
       fastfetch
-      nh
       ripgrep
       yazi
       fzf

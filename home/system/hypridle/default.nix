@@ -11,17 +11,17 @@
         after_sleep_cmd = "hyprctl dispatch dpms on";
       };
 
-      listener = [
-        {
-          timeout = 600;
-          on-timeout = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
-        }
+      # listener = [
+      #   {
+      #     timeout = 600;
+      #     on-timeout = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
+      #   }
 
-        {
-          timeout = 660;
-          on-timeout = "systemctl suspend";
-        }
-      ];
+      #   {
+      #     timeout = 660;
+      #     on-timeout = "systemctl suspend";
+      #   }
+      # ];
     };
   };
 }
