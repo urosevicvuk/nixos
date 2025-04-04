@@ -103,7 +103,7 @@ in {
         gaps_in = gaps-in;
         gaps_out = gaps-out;
         border_size = border-size;
-        layout = "master";
+        layout = "dwindle";
       };
 
       decoration = {
@@ -151,7 +151,7 @@ in {
         "7, monitor:DP-2"
         "8, monitor:DP-2"
         "9, monitor:DP-2"
-        "alternative, monitor:DP-3, default:true"
+        "alternative, monitor:DP-3, default:true, layoutopt:orientation:top"
       ];
 
       windowrule = [

@@ -54,6 +54,7 @@
       curtail # Compress images
       google-chrome
       bottles
+      wineWowPackages.waylandFull
 
       #Steam helpers
       protonup
@@ -63,6 +64,7 @@
       prismlauncher
       torzu
       shadps4
+      lutris
 
       # Dev
       go
@@ -85,7 +87,7 @@
       optipng
       pfetch
       pandoc
-      btop
+      btop-rocm
       fastfetch
       ripgrep
       yazi

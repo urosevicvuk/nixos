@@ -23,6 +23,7 @@ in {
     XDG_DATA_HOME = "$HOME/.local/share";
     PASSWORD_STORE_DIR = "$HOME/.local/share/password-store";
     EDITOR = "nvim";
+    PULSE_LATENCY_MSEC = 60;
   };
 
   services.libinput.enable = true;
@@ -35,11 +36,7 @@ in {
     gamemode.enable = true;
   };
 
-  hardware = { 
-    graphics = { 
-      enable = true; 
-    }; 
-  };
+  hardware = { graphics = { enable = true; }; };
 
   services = {
     dbus.enable = true;
@@ -47,6 +44,7 @@ in {
     upower.enable = true;
     power-profiles-daemon.enable = true;
     udisks2.enable = true;
+    teamviewer.enable = true;
   };
 
   # Faster rebuilding
