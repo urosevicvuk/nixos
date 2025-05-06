@@ -52,20 +52,16 @@
       todoist # Todolists
       textpieces # Manipulate texts
       curtail # Compress images
-      google-chrome
-      bottles
-      (wineWowPackages.stable.override { waylandSupport = true; })
-      winetricks
-
-      #Steam helpers
-      protonup
-      mangohud
 
       #Games
       prismlauncher
       torzu
       shadps4
       lutris
+      (wineWowPackages.stable.override { waylandSupport = true; })
+      winetricks
+      protonup
+      mangohud
 
       # Dev
       go
@@ -82,10 +78,7 @@
       # Utils
       nh
       qbittorrent
-      zip
-      unzip
       p7zip
-      unrar
       optipng
       pfetch
       pandoc
