@@ -54,7 +54,8 @@
       curtail # Compress images
       google-chrome
       bottles
-      wineWowPackages.waylandFull
+      (wineWowPackages.stable.override { waylandSupport = true; })
+      winetricks
 
       #Steam helpers
       protonup
@@ -76,6 +77,7 @@
       pnpm
       lazydocker
       vscode
+      jetbrains-toolbox
 
       # Utils
       nh
@@ -92,6 +94,7 @@
       ripgrep
       yazi
       fzf
+      bluez
 
       # Just cool
       peaclock

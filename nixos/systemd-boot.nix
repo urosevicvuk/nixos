@@ -32,5 +32,6 @@
     ];
     consoleLogLevel = 0;
     initrd.verbose = false;
+    extraModprobeConfig = "options bluetooth disable_ertm=1 ";
   };
 }

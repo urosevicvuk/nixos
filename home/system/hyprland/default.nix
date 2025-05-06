@@ -12,7 +12,7 @@ let
 in {
 
   imports =
-    [ ./animations.nix ./bindings.nix ./polkitagent.nix ./hyprspace.nix ];
+    [ ./animations.nix ./bindings.nix ./polkitagent.nix ]; # ./hyprspace.nix ];
 
   home.packages = with pkgs; [
     qt5.qtwayland

@@ -24,10 +24,10 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprspace = {
-      url = "github:KZDKM/Hyprspace";
-      inputs.hyprland.follows = "hyprland";
-    };
+    #    hyprspace = {
+    #      url = "github:KZDKM/Hyprspace";
+    #      inputs.hyprland.follows = "hyprland";
+    #    };
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hyprpolkitagent.url = "github:hyprwm/hyprpolkitagent";
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
@@ -37,27 +37,24 @@
     zen-browser.url =
       "git+https://git.sr.ht/~canasta/zen-browser-flake/"; # updated flake
     nvf.url = "github:notashelf/nvf";
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-    };
+    ghostty = { url = "github:ghostty-org/ghostty"; };
   };
 
   outputs = inputs@{ nixpkgs, ... }: {
     nixosConfigurations = {
-      desktop =
-        nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            {
-              nixpkgs.overlays =
-                [ inputs.hyprpanel.overlay inputs.nur.overlays.default ];
-              _module.args = { inherit inputs; };
-            }
-            inputs.home-manager.nixosModules.home-manager
-            inputs.stylix.nixosModules.stylix
-            ./hosts/desktop/configuration.nix 
-          ];
-        };
+      desktop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          {
+            nixpkgs.overlays =
+              [ inputs.hyprpanel.overlay inputs.nur.overlays.default ];
+            _module.args = { inherit inputs; };
+          }
+          inputs.home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          ./hosts/desktop/configuration.nix
+        ];
+      };
     };
   };
 }

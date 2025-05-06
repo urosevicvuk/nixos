@@ -19,7 +19,7 @@ in {
   console.keyMap = keyboardLayout;
 
   environment.variables = {
-    FLAKE = "/home/vuk23/.config/nixos";
+    NH_FLAKE = "/home/vuk23/.config/nixos";
     XDG_DATA_HOME = "$HOME/.local/share";
     PASSWORD_STORE_DIR = "$HOME/.local/share/password-store";
     EDITOR = "nvim";
