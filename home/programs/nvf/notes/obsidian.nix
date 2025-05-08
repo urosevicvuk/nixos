@@ -167,7 +167,7 @@ in
     utility.images.image-nvim = {
       enable = true;
       setupOpts = {
-        backend = "kitty";
+        backend = "ghostty";
         integrations.markdown = {
           enabled = true;
           only_render_image_at_cursor = true;

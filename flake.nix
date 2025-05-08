@@ -42,7 +42,7 @@
 
   outputs = inputs@{ nixpkgs, ... }: {
     nixosConfigurations = {
-      desktop = nixpkgs.lib.nixosSystem {
+      anorLondo = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           {
@@ -52,7 +52,7 @@
           }
           inputs.home-manager.nixosModules.home-manager
           inputs.stylix.nixosModules.stylix
-          ./hosts/desktop/configuration.nix
+          ./hosts/anorLondo/configuration.nix
         ];
       };
     };
