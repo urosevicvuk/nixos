@@ -88,6 +88,7 @@
       yazi
       fzf
       bluez
+      solaar
 
       # Just cool
       peaclock
