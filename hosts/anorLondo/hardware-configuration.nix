@@ -4,40 +4,37 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot = {
-    initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+    initrd.availableKernelModules =
+      [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
     initrd.kernelModules = [ ];
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
   };
 
-
   fileSystems = {
-    "/" =
-      { device = "/dev/disk/by-uuid/140fa52f-14c6-4442-aefa-50b6fce42121";
-        fsType = "ext4";
-      };
+    "/" = {
+      device = "/dev/disk/by-uuid/140fa52f-14c6-4442-aefa-50b6fce42121";
+      fsType = "ext4";
+    };
 
-    "/boot" =
-      { device = "/dev/disk/by-uuid/A9A5-38DB";
-        fsType = "vfat";
-        options = [ "fmask=0077" "dmask=0077" ];
-      };
+    "/boot" = {
+      device = "/dev/disk/by-uuid/A9A5-38DB";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
+    };
 
-    "/home/vyke/hdd" =
-      { device = "/dev/disk/by-uuid/44FA0A84FA0A730A";
-        fsType = "ntfs-3g";
-        options = ["rw" "uid=1000"];
-      };
+    "/home/vyke/hdd" = {
+      device = "/dev/disk/by-uuid/44FA0A84FA0A730A";
+      fsType = "ntfs-3g";
+      options = [ "rw" "uid=1000" ];
+    };
   };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/3f8d03bf-1347-4e8e-9844-21306a016a6a"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/3f8d03bf-1347-4e8e-9844-21306a016a6a"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -48,5 +45,6 @@
   # networking.interfaces.enp10s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
