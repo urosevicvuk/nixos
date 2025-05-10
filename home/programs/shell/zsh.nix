@@ -62,6 +62,8 @@ in {
     };
 
     shellAliases = {
+      nvimf = "nvim $(fzf)";
+      vimf = "nvim $(fzf)";
       vim = "nvim";
       vi = "nvim";
       v = "nvim";
