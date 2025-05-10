@@ -15,7 +15,7 @@
     ../../nixos/docker.nix
     ../../nixos/variables-config.nix
 
-    # Choose your theme here
+    # Theme selection
     ../../themes/stylix/gruvbox.nix
 
     ./hardware-configuration.nix
