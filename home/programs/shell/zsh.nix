@@ -62,6 +62,7 @@ in {
     };
 
     shellAliases = {
+      nhs = "nh os switch ~/nixos/";
       nvimf = "nvim $(fzf)";
       vimf = "nvim $(fzf)";
       vim = "nvim";
