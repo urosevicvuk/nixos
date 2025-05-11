@@ -3,8 +3,15 @@ let
   hostname = config.var.hostname;
   keyboardLayout = config.var.keyboardLayout;
 in {
+  networking = {
+    hostName = hostname;
 
-  networking.hostName = hostname;
+    firewall = {
+      allowedTCPPorts = [ 57621 ];
+      allowedUDPPorts = [ 5353 ];
+    };
+
+  };
 
   services = {
     xserver = {

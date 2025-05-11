@@ -45,6 +45,7 @@
     packages = with pkgs; [
       # Apps
       discord # Chat
+      vesktop # Discord client
       bitwarden # Password manager
       vlc # Video player
       obsidian # Note taking app
@@ -53,15 +54,15 @@
       textpieces # Manipulate texts
       curtail # Compress images
 
-      #Games
-      prismlauncher
-      torzu
-      shadps4
-      lutris
+      #Gaming
+      prismlauncher # Minecraft launcher
+      torzu # Switch emulator
+      shadps4 # PS4 emulator
+      lutris # Pirated game launcher
       (wineWowPackages.stable.override { waylandSupport = true; })
       winetricks
-      protonup
-      mangohud
+      protonup # Proton my beloved
+      mangohud # FPS counter
 
       # Dev
       go
@@ -76,7 +77,7 @@
       jetbrains-toolbox
 
       # Utils
-      nh
+      nh # Nix helper
       qbittorrent
       p7zip
       optipng
@@ -84,6 +85,7 @@
       pandoc
       btop-rocm
       fastfetch
+      nitch
       ripgrep
       yazi
       fzf
