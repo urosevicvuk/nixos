@@ -2,7 +2,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    backupFileExtension = "idkbackup";
+    backupFileExtension = "ajdevise";
     extraSpecialArgs = { inherit inputs; };
   };
 }
