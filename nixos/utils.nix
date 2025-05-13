@@ -7,7 +7,7 @@ in {
     hostName = hostname;
 
     firewall = {
-      allowedTCPPorts = [ 57621 ];
+      allowedTCPPorts = [ 57621 8080 3306];
       allowedUDPPorts = [ 5353 ];
     };
 
@@ -22,6 +22,12 @@ in {
     };
     gnome.gnome-keyring.enable = true;
     hardware.openrgb.enable = true;
+
+    mysql = {
+      enable = true;
+      package = pkgs.mariadb;
+    };
+
   };
   console.keyMap = keyboardLayout;
 
