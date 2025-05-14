@@ -51,7 +51,8 @@ in {
       tmuxPlugins.vim-tmux-navigator
       # tmuxPlugins.resurrect
       tmuxPlugins.sensible
-      tmuxPlugins.tokyo-night-tmux
+      tmuxPlugins.gruvbox
+      tmuxPlugins.tmux-which-key
     ];
   };
   home.packages = [ Config ];
