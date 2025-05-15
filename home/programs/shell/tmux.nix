@@ -39,6 +39,11 @@ in {
       bind-key k select-pane -U
       bind-key l select-pane -R
 
+      set-option -g status-position top
+
+      set -g base-index 1
+      setw -g pane-base-index 1
+
       set -gq allow-passthrough on
       bind-key x kill-pane # skip "kill-pane 1? (y/n)" prompt
 
