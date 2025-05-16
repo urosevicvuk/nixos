@@ -75,6 +75,7 @@
       lazydocker
       vscode
       jetbrains-toolbox
+      insomnia
 
       # Utils
       nh # Nix helper
