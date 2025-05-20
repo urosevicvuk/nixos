@@ -54,7 +54,8 @@ in {
 
     plugins = with pkgs; [
       tmuxPlugins.vim-tmux-navigator
-      # tmuxPlugins.resurrect
+      tmuxPlugins.resurrect
+      tmuxPlugins.continuum
       tmuxPlugins.sensible
       tmuxPlugins.gruvbox
       tmuxPlugins.tmux-which-key
