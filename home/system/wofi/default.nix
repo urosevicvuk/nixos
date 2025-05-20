@@ -22,7 +22,7 @@ in {
       prompt = "Apps";
       normal_window = true;
       layer = "top";
-      term = "foot";
+      term = "ghostty";
       height = "305px";
       orientation = "vertical";
       halign = "fill";
