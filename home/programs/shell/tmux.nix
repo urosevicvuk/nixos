@@ -44,6 +44,8 @@ in {
       set -g base-index 1
       setw -g pane-base-index 1
 
+      set -g @continuum-boot 'on'
+
       set -gq allow-passthrough on
       bind-key x kill-pane # skip "kill-pane 1? (y/n)" prompt
 
