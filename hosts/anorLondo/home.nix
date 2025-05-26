@@ -53,6 +53,7 @@
       todoist # Todolists
       textpieces # Manipulate texts
       curtail # Compress images
+      gimp3-with-plugins
 
       #Gaming
       prismlauncher # Minecraft launcher
