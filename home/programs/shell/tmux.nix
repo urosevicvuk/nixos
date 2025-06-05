@@ -30,7 +30,7 @@ in {
     mouse = true;
     shell = "${pkgs.zsh}/bin/zsh";
     prefix = "C-s";
-    terminal = "ghostty";
+    terminal = "kitty";
     keyMode = "vi";
 
     extraConfig = ''

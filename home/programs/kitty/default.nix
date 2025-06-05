@@ -24,7 +24,7 @@
       cursor_underline_thickness = 3;
       cursor_trail = 3;
       cursor_trail_decay = "0.1 0.4";
-      window_padding_width = 10;
+      window_padding_width = 5;
     };
   };
 }

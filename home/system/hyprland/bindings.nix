@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   wayland.windowManager.hyprland.settings = {
     bind = [
-      "$mod,RETURN, exec, ${pkgs.ghostty}/bin/ghostty" # Ghostty
+      "$mod,RETURN, exec, ${pkgs.kitty}/bin/kitty" # Ghostty
       "$mod,E, exec, ${pkgs.xfce.thunar}/bin/thunar" # Thunar
       "$mod,B, exec, zen" # Zen Browser
       "$mod,P, exec, ${pkgs.bitwarden}/bin/bitwarden" # Bitwarden
