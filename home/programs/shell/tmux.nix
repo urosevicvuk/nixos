@@ -52,6 +52,9 @@ in {
       bind-key -n C-Tab next-window
       bind-key -n C-S-Tab previous-window
       bind-key -n M-Tab new-window
+
+      set -g @tmux-gruvbox-statusbar-alpha 'true' 
+      set -g @tmux-gruvbox-right-status-x '%d.%m.%Y' # e.g.: 30.01.2024
     '';
 
     plugins = with pkgs; [
