@@ -2,6 +2,7 @@
 let
   hostname = config.var.hostname;
   keyboardLayout = config.var.keyboardLayout;
+  keyboardVariant = config.var.keyboardVariant;
 in {
   networking = {
     hostName = hostname;
@@ -16,8 +17,11 @@ in {
   services = {
     xserver = {
       enable = true;
-      xkb.layout = keyboardLayout;
-      xkb.variant = "";
+      xkb = {
+        layout = keyboardLayout;
+        variant = keyboardVariant;
+        options = "grp:alt_shift_toggle";
+      };
       videoDrivers = [ "amdgpu" ];
     };
     gnome.gnome-keyring.enable = true;
@@ -29,7 +33,7 @@ in {
     };
 
   };
-  console.keyMap = keyboardLayout;
+  console.keyMap = "us";
 
   environment.variables = {
     NH_FLAKE = "/home/vyke/.config/nixos";

@@ -9,6 +9,7 @@ let
   rounding = config.var.theme.rounding;
   blur = config.var.theme.blur;
   keyboardLayout = config.var.keyboardLayout;
+  keyboardVariant = config.var.keyboardVariant;
 in {
 
   imports =
@@ -165,6 +166,7 @@ in {
 
       input = {
         kb_layout = keyboardLayout;
+        kb_variant = keyboardVariant;
 
         kb_options = "caps:escape,altwin:swap_alt_win";
         follow_mouse = 1;

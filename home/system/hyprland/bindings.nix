@@ -36,8 +36,10 @@
       "$shiftMod,T, exec, hyprpanel-toggle" # Toggle hyprpanel
       "$shiftMod,V, exec, clipboard" # Clipboard picker with wofi
       "$shiftMod,E, exec, ${pkgs.wofi-emoji}/bin/wofi-emoji" # Emoji picker with wofi
-      "$mod,F2, exec, night-shift" # Toggle night shift
-      "$mod,F3, exec, night-shift" # Toggle night shift
+      "$mod,F1, exec, hyprctl switchxkblayout logitech-pro-gaming-keyboard 0 | hyprctl switchxkbvariant logitech-pro-gaming-keyboard 0" # US KB layout
+      "$mod,F2, exec, hyprctl switchxkblayout logitech-pro-gaming-keyboard 1 | hyprctl switchxkbvariant logitech-pro-gaming-keyboard 1" # US KB layout
+      "$mod,F3, exec, hyprctl switchxkblayout logitech-pro-gaming-keyboard 2 | hyprctl switchxkbvariant logitech-pro-gaming-keyboard 2" # US KB layout
+      "$mod, F4, exec, night-shift" # Toggle night shift
     ] ++ (builtins.concatLists (builtins.genList (i:
       let ws = i + 1;
       in [
@@ -47,6 +49,13 @@
         "$mod, A, workspace, name:alternative"
         "$mod SHIFT, A, movetoworkspace, name:alternative"
       ];
+
+    binde = [
+      "$mod CTRL, h, resizeactive, -25 0"    # Resize left (shrink width)
+      "$mod CTRL, l, resizeactive, 25 0"     # Resize right (grow width)
+      "$mod CTRL, k, resizeactive, 0 -25"    # Resize up (shrink height)
+      "$mod CTRL, j, resizeactive, 0 25"     # Resize down (grow height)
+    ];
 
     bindm = [
       "$mod,mouse:272, movewindow" # Move Window (mouse)
