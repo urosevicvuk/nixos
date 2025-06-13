@@ -83,6 +83,7 @@
       code-cursor
       jetbrains-toolbox
       insomnia
+      rustdesk
 
       # Utils
       nh # Nix helper
