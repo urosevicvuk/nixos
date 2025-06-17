@@ -49,11 +49,9 @@
       bitwarden # Password manager
       vlc # Video player
       obsidian # Note taking app
-      planify # Todolists
       todoist # Todolists
       textpieces # Manipulate texts
       curtail # Compress images
-      gimp3-with-plugins
 
       #Gaming
       prismlauncher # Minecraft launcher
@@ -62,13 +60,6 @@
       (wineWowPackages.stable.override { waylandSupport = true; })
       winetricks
       protonup # Proton my beloved
-      mangohud # FPS counter
-      #gst_all_1.gstreamer
-      #gst_all_1.gst-plugins-base
-      #gst_all_1.gst-plugins-good
-      #gst_all_1.gst-plugins-bad
-      #gst_all_1.gst-plugins-ugly
-      #gst_all_1.gst-libav
 
       # Dev
       go
@@ -80,9 +71,7 @@
       pnpm
       lazydocker
       vscode
-      code-cursor
       jetbrains-toolbox
-      insomnia
       rustdesk
 
       # Utils
