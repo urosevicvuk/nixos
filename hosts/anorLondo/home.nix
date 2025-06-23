@@ -1,39 +1,44 @@
-{ pkgs, config, ... }: {
-
+{
+  pkgs,
+  config,
+  ...
+}:
+{
   imports = [
     ./variables.nix
 
     # Programs
-    ../../home/programs/kitty
-    ../../home/programs/nvim
-    # ../../home/programs/nvf
-    # ../../home/programs/qutebrowser
-    ../../home/programs/shell
-    ../../home/programs/fetch
-    ../../home/programs/git
-    ../../home/programs/ghostty
-    ../../home/programs/spicetify
-    ../../home/programs/nextcloud
-    ../../home/programs/thunar
-    ../../home/programs/lazygit
-    ../../home/programs/zen
-    ../../home/programs/duckduckgo-colorscheme
+    ../../modules/home/programs/kitty
+    ../../modules/home/programs/nvf
+    #../../modules/home/programs/nixvim
+    ../../modules/home/programs/shell
+    ../../modules/home/programs/fetch
+    ../../modules/home/programs/git
+    ../../modules/home/programs/git/signing.nix
+    ../../modules/home/programs/spicetify
+    ../../modules/home/programs/thunar
+    ../../modules/home/programs/lazygit
+    ../../modules/home/programs/zen
+    #../../modules/home/programs/duckduckgo-colorscheme
+    ../../modules/home/programs/discord
+    #../../modules/home/programs/tailscale #Server stuff
+    #../../modules/home/programs/nextcloud #NAS stuff
+    #../../modules/home/programs/anyrun
 
     # Scripts
-    ../../home/scripts # All scripts
+    ../../modules/home/scripts # All scripts
 
     # System (Desktop environment like stuff)
-    ../../home/system/hyprland
-    ../../home/system/hypridle
-    ../../home/system/hyprlock
-    ../../home/system/hyprpanel
-    ../../home/system/hyprpaper
-    ../../home/system/wofi
-    ../../home/system/batsignal
-    ../../home/system/zathura
-    ../../home/system/mime
-    ../../home/system/udiskie
-    ../../home/system/clipman
+    ../../modules/home/system/hyprland
+    ../../modules/home/system/hypridle
+    ../../modules/home/system/hyprlock
+    ../../modules/home/system/hyprpanel
+    ../../modules/home/system/hyprpaper
+    ../../modules/home/system/wofi
+    ../../modules/home/system/zathura
+    ../../modules/home/system/mime
+    ../../modules/home/system/udiskie
+    ../../modules/home/system/clipman
 
     #./secrets # You should probably remove this line, this is where I store my secrets
   ];
@@ -44,14 +49,18 @@
 
     packages = with pkgs; [
       # Apps
-      discord # Chat
       vesktop # Discord client
       bitwarden # Password manager
       vlc # Video player
       obsidian # Note taking app
-      todoist # Todolists
+      todoist-electron # Todolists
       textpieces # Manipulate texts
       curtail # Compress images
+      gimp3-with-plugins
+      gnome-clocks
+      gnome-text-editor
+      figma-linux
+      libreoffice-qt6-fresh # Office suite
 
       #Gaming
       prismlauncher # Minecraft launcher
@@ -72,6 +81,8 @@
       lazydocker
       vscode
       jetbrains-toolbox
+
+      #Office
       rustdesk
 
       # Utils
@@ -81,7 +92,6 @@
       optipng
       pfetch
       pandoc
-      btop-rocm
       fastfetch
       nitch
       ripgrep
@@ -89,20 +99,19 @@
       fzf
       bluez
       solaar
+      btop-rocm
 
       # Just cool
       peaclock
       cbonsai
       pipes
       cmatrix
-
-      # Backup
-      firefox
-      vscode
     ];
 
     # Import my profile picture, used by the hyprpanel dashboard
-    file.".face.icon" = { source = ./profile_picture.png; };
+    file.".face.icon" = {
+      source = ./profile_picture.png;
+    };
 
     # Don't touch this
     stateVersion = "24.05";

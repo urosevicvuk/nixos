@@ -1,2 +1,0 @@
-# NixOS
-`nh os switch`
