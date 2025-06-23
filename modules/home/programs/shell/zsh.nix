@@ -4,12 +4,21 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   fetch = config.theme.fetch; # neofetch, nerdfetch, pfetch
-in {
-  home.packages = with pkgs; [bat ripgrep tldr sesh rmtrash trash-cli];
+in
+{
+  home.packages = with pkgs; [
+    bat
+    ripgrep
+    tldr
+    sesh
+    rmtrash
+    trash-cli
+  ];
 
-  home.sessionPath = ["$HOME/go/bin"];
+  home.sessionPath = [ "$HOME/go/bin" ];
 
   programs.zsh = {
     enable = true;
@@ -17,7 +26,14 @@ in {
     autosuggestion.enable = true;
     syntaxHighlighting = {
       enable = true;
-      highlighters = ["main" "brackets" "pattern" "regexp" "root" "line"];
+      highlighters = [
+        "main"
+        "brackets"
+        "pattern"
+        "regexp"
+        "root"
+        "line"
+      ];
     };
     historySubstringSearch.enable = true;
 
@@ -27,14 +43,12 @@ in {
       size = 10000;
     };
 
-    profileExtra = lib.optionalString (config.home.sessionPath != []) ''
-      export PATH="$PATH''${PATH:+:}${
-        lib.concatStringsSep ":" config.home.sessionPath
-      }"
+    profileExtra = lib.optionalString (config.home.sessionPath != [ ]) ''
+      export PATH="$PATH''${PATH:+:}${lib.concatStringsSep ":" config.home.sessionPath}"
     '';
 
     shellAliases = {
-      nhs = "nh os switch ~/nixosy/";
+      nhs = "nh os switch ~/nixos/";
       nvimf = "nvim $(fzf)";
       hpr = "hyprpanel -q | hyprpanel & disown";
       vim = "nvim";
@@ -88,13 +102,14 @@ in {
       ''
         bindkey -e
         ${
-          if fetch == "neofetch"
-          then pkgs.neofetch + "/bin/neofetch"
-          else if fetch == "nerdfetch"
-          then "nerdfetch"
-          else if fetch == "pfetch"
-          then "echo; ${pkgs.pfetch}/bin/pfetch"
-          else ""
+          if fetch == "neofetch" then
+            pkgs.neofetch + "/bin/neofetch"
+          else if fetch == "nerdfetch" then
+            "nerdfetch"
+          else if fetch == "pfetch" then
+            "echo; ${pkgs.pfetch}/bin/pfetch"
+          else
+            ""
         }
 
         function sesh-sessions() {
