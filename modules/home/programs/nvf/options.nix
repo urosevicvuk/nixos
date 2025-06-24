@@ -8,15 +8,15 @@
     options = {
       autoindent = true;
       smartindent = true;
-      shiftwidth = 4;
+      shiftwidth = 2;
       foldlevel = 99;
       foldcolumn = "auto:1";
       mousescroll = "ver:1,hor:1";
       mousemoveevent = true;
       fillchars = "eob:‿,fold: ,foldopen:▼,foldsep:⸽,foldclose:⏵";
       signcolumn = "yes";
-      tabstop = 4;
-      softtabstop = 4;
+      tabstop = 2;
+      softtabstop = 2;
       wrap = false;
     };
     globals = {

@@ -73,6 +73,7 @@
             }
             inputs.home-manager.nixosModules.home-manager
             inputs.stylix.nixosModules.stylix
+            inputs.nvf.nixosModules.nvf
             ./hosts/anorLondo/configuration.nix
           ];
         };
