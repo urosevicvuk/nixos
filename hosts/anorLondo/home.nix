@@ -19,11 +19,10 @@
     ../../modules/home/programs/thunar
     ../../modules/home/programs/lazygit
     ../../modules/home/programs/zen
-    #../../modules/home/programs/duckduckgo-colorscheme
     ../../modules/home/programs/discord
     #../../modules/home/programs/tailscale #Server stuff
     #../../modules/home/programs/nextcloud #NAS stuff
-    #../../modules/home/programs/anyrun
+    #../../modules/home/programs/anyrun # Sandbox stuff
 
     # Scripts
     ../../modules/home/scripts # All scripts

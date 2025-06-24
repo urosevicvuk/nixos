@@ -1,7 +1,7 @@
 { config, lib, ... }:
 {
   imports = [
-    # Choose your theme here:
+    # Theme import
     ../../themes/gruvbox.nix
   ];
   config.var = {
