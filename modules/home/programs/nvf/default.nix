@@ -6,13 +6,16 @@
 {
   imports = [
     inputs.nvf.homeManagerModules.default
-    ./options.nix
-    ./languages.nix
-    ./picker.nix
-    ./snacks.nix
-    ./keymaps.nix
-    ./utils.nix
-    ./mini.nix
+
+    ./core/options.nix
+    ./core/keymaps.nix
+
+    ./lsp/languages.nix
+
+    ./plugins/mini.nix
+    ./plugins/picker.nix
+    ./plugins/snacks.nix
+    ./plugins/utils.nix
   ];
 
   programs.nvf = {

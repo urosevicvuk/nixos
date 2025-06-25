@@ -7,8 +7,8 @@
       outline.aerial-nvim.enable = true;
     };
 
-    #tabline.nvimBufferline.enable = true;
-    tabline.nvimBufferline.enable = false;
+    tabline.nvimBufferline.enable = true;
+    #tabline.nvimBufferline.enable = false;
 
     notes.todo-comments.enable = true;
 

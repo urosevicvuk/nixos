@@ -17,34 +17,6 @@
         action = ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>";
         desc = "Refactor word under cursor";
       }
-      #{
-      #  key = "<leader>j";
-      #  mode = "n";
-      #  silent = true;
-      #  action = "<cmd>lprev<CR>zz";
-      #  desc = "Previous Quickfix";
-      #}
-      #{
-      #  key = "<leader>k";
-      #  mode = "n";
-      #  silent = true;
-      #  action = "<cmd>lnext<CR>zz";
-      #  desc = "Next Quickfix";
-      #}
-      #{
-      #  key = "<C-j>";
-      #  mode = "n";
-      #  silent = true;
-      #  action = "<cmd>cprev<CR>zz";
-      #  desc = "Previous Quickfix";
-      #}
-      #{
-      #  key = "<C-k>";
-      #  mode = "n";
-      #  silent = true;
-      #  action = "<cmd>cnext<CR>zz";
-      #  desc = "Next Quickfix";
-      #}
       {
         key = "Q";
         mode = "n";
@@ -57,7 +29,7 @@
         mode = "x";
         silent = true;
         action = "\"_dP";
-        desc = "Join lines";
+        desc = "Paste and keep selection";
       }
       {
         key = "N";
@@ -124,6 +96,20 @@
       }
       {
         key = "L";
+        mode = "v";
+        silent = true;
+        action = "$";
+        desc = "Go all the way right";
+      }
+      {
+        key = "H";
+        mode = "v";
+        silent = true;
+        action = "^";
+        desc = "Go all the way left";
+      }
+      {
+        key = "L";
         mode = "n";
         silent = true;
         action = "$";
@@ -142,6 +128,13 @@
         silent = true;
         action = "<cmd>bnext<cr>";
         desc = "Next Buffer";
+      }
+      {
+        key = "<C-S-tab>";
+        mode = "n";
+        silent = true;
+        action = "<cmd>bprev<cr>";
+        desc = "Previous Buffer";
       }
 
       # Kitty navigator
