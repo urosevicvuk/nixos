@@ -66,8 +66,7 @@
         key = "<leader>fc";
         mode = "n";
         silent = true;
-        action = ''
-          <cmd>lua Snacks.picker.files({ cwd = vim.fn.stdpath("config") })<cr>'';
+        action = ''<cmd>lua Snacks.picker.files({ cwd = vim.fn.stdpath("config") })<cr>'';
         desc = "Find Config File";
       }
       {
@@ -157,7 +156,7 @@
         desc = "Git Log File";
       }
 
-      # Grep
+      # Search
       {
         key = "<leader>sb";
         mode = "n";
@@ -199,6 +198,13 @@
         silent = true;
         action = "<cmd>nohlsearch<cr>";
         desc = "Reset search";
+      }
+      {
+        key = "<leader>su";
+        mode = "n";
+        silent = true;
+        action = "<cmd>lua Snacks.picker.undo()<cr>";
+        desc = "Search undo history";
       }
 
       # LSP

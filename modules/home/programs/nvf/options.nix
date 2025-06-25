@@ -20,6 +20,16 @@
       wrap = false;
       scrolloff = 8;
     };
+    navigation.harpoon = {
+      enable = true;
+      mappings = {
+        listMarks = "<leader>\`";
+        file1 = "<leader>1";
+        file2 = "<leader>2";
+        file3 = "<leader>3";
+        file4 = "<leader>4";
+      };
+    };
     globals = {
       navic_silence = true; # navic tries to attach multiple LSPs and fails
       suda_smart_edit = 1; # use super user write automatically
