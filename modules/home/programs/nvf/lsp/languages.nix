@@ -1,6 +1,7 @@
 { lib, ... }:
 {
   programs.nvf.settings.vim = {
+
     diagnostics = {
       enable = true;
       config = {
@@ -30,13 +31,16 @@
         enable = true;
       };
     };
+
     syntaxHighlighting = true;
+
     treesitter = {
       enable = true;
       autotagHtml = true;
       context.enable = true;
       highlight.enable = true;
     };
+
     lsp = {
       enable = true;
       trouble.enable = true;
@@ -72,6 +76,7 @@
         };
       };
     };
+
     languages = {
       enableDAP = true;
       astro.enable = true;
@@ -108,10 +113,10 @@
       nix.enable = true;
       tailwind.enable = true;
     };
+
     formatter = {
       conform-nvim = {
         enable = true;
-
       };
     };
   };
