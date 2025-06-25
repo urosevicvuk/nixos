@@ -35,6 +35,7 @@
         mappings = {
           next = "<C-n>";
           previous = "<C-p>";
+          confirm = "<C-y>";
         };
         sourcePlugins = [ pkgs.vimPlugins.cmp-cmdline ];
       };
