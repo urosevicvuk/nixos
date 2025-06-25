@@ -11,6 +11,104 @@
     keymaps = [
       # General Mappings
       {
+        key = "<leader>r";
+        mode = "n";
+        silent = true;
+        action = ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>";
+        desc = "Refactor word under cursor";
+      }
+      {
+        key = "<leader>j";
+        mode = "n";
+        silent = true;
+        action = "<cmd>lprev<CR>zz";
+        desc = "Previous Quickfix";
+      }
+      {
+        key = "<leader>k";
+        mode = "n";
+        silent = true;
+        action = "<cmd>lnext<CR>zz";
+        desc = "Next Quickfix";
+      }
+      {
+        key = "<C-j>";
+        mode = "n";
+        silent = true;
+        action = "<cmd>cprev<CR>zz";
+        desc = "Previous Quickfix";
+      }
+      {
+        key = "<C-k>";
+        mode = "n";
+        silent = true;
+        action = "<cmd>cnext<CR>zz";
+        desc = "Next Quickfix";
+      }
+      {
+        key = "Q";
+        mode = "n";
+        silent = true;
+        action = "<nop>";
+        desc = "Disable Q";
+      }
+      {
+        key = "p";
+        mode = "x";
+        silent = true;
+        action = "\"_dP";
+        desc = "Join lines";
+      }
+      {
+        key = "N";
+        mode = "n";
+        silent = true;
+        action = "Nzzzv";
+        desc = "Previous search result";
+      }
+      {
+        key = "n";
+        mode = "n";
+        silent = true;
+        action = "nzzzv";
+        desc = "Next search result";
+      }
+      {
+        key = "<C-u>";
+        mode = "n";
+        silent = true;
+        action = "<C-u>zz";
+        desc = "Scroll up";
+      }
+      {
+        key = "<C-d>";
+        mode = "n";
+        silent = true;
+        action = "<C-d>zz";
+        desc = "Scroll down";
+      }
+      {
+        key = "J";
+        mode = "n";
+        silent = true;
+        action = "mzJ`z";
+        desc = "Join lines";
+      }
+      {
+        key = "J";
+        mode = "v";
+        silent = true;
+        action = ":m '>+1<cr>gv=gv";
+        desc = "Move selected lines down";
+      }
+      {
+        key = "K";
+        mode = "v";
+        silent = true;
+        action = ":m '<-2<cr>gv=gv";
+        desc = "Move selected lines up";
+      }
+      {
         key = "s";
         mode = "n";
         silent = true;
@@ -54,12 +152,12 @@
         #action = "<cmd>KittyNavigateLeft<cr>";
         action = ''
           <cmd>lua
-            if vim.env.TMUX and vim.env.TMUX ~= "" then
+          if vim.env.TMUX and vim.env.TMUX ~= "" then
               vim.cmd("wincmd h")
-            else
+          else
               vim.cmd("KittyNavigateLeft")
-            end
-          <CR>
+                  end
+                  <CR>
         '';
       }
       {
@@ -69,12 +167,12 @@
         #action = "<cmd>KittyNavigateDown<cr>";
         action = ''
           <cmd>lua
-            if vim.env.TMUX and vim.env.TMUX ~= "" then
+          if vim.env.TMUX and vim.env.TMUX ~= "" then
               vim.cmd("wincmd j")
-            else
+          else
               vim.cmd("KittyNavigateDown")
-            end
-          <CR>
+                  end
+                  <CR>
         '';
       }
       {
@@ -84,12 +182,12 @@
         #action = "<cmd>KittyNavigateUp<cr>";
         action = ''
           <cmd>lua
-            if vim.env.TMUX and vim.env.TMUX ~= "" then
+          if vim.env.TMUX and vim.env.TMUX ~= "" then
               vim.cmd("wincmd k")
-            else
+          else
               vim.cmd("KittyNavigateUp")
-            end
-          <CR>
+                  end
+                  <CR>
         '';
       }
       {
@@ -99,12 +197,12 @@
         #action = "<cmd>KittyNavigateRight<cr>";
         action = ''
           <cmd>lua
-            if vim.env.TMUX and vim.env.TMUX ~= "" then
+          if vim.env.TMUX and vim.env.TMUX ~= "" then
               vim.cmd("wincmd l")
-            else
+          else
               vim.cmd("KittyNavigateRight")
-            end
-          <CR>
+                  end
+                  <CR>
         '';
       }
 

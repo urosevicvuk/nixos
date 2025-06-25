@@ -10,7 +10,6 @@
     # Programs
     ../../modules/home/programs/kitty
     ../../modules/home/programs/nvf
-    #../../modules/home/programs/nixvim
     ../../modules/home/programs/shell
     ../../modules/home/programs/fetch
     ../../modules/home/programs/git
@@ -20,6 +19,7 @@
     ../../modules/home/programs/lazygit
     ../../modules/home/programs/zen
     ../../modules/home/programs/discord
+    #../../modules/home/programs/nixvim #Currently using nvf so no need for this
     #../../modules/home/programs/tailscale #Server stuff
     #../../modules/home/programs/nextcloud #NAS stuff
     #../../modules/home/programs/anyrun # Sandbox stuff
@@ -38,8 +38,6 @@
     ../../modules/home/system/mime
     ../../modules/home/system/udiskie
     ../../modules/home/system/clipman
-
-    #./secrets # You should probably remove this line, this is where I store my secrets
   ];
 
   home = {

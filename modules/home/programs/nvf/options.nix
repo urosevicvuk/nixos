@@ -18,6 +18,7 @@
       tabstop = 2;
       softtabstop = 2;
       wrap = false;
+      scrolloff = 8;
     };
     globals = {
       navic_silence = true; # navic tries to attach multiple LSPs and fails

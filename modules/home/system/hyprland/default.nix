@@ -1,5 +1,11 @@
 # So best window tiling manager
-{ pkgs, config, inputs, lib, ... }:
+{
+  pkgs,
+  config,
+  inputs,
+  lib,
+  ...
+}:
 let
   border-size = config.theme.border-size;
   gaps-in = config.theme.gaps-in;
@@ -11,12 +17,12 @@ let
   keyboardLayout = config.var.keyboardLayout;
   keyboardVariant = config.var.keyboardVariant;
   background = "rgb(" + config.lib.stylix.colors.base00 + ")";
-in {
+in
+{
   imports = [
     ./animations.nix
     ./bindings.nix
     ./polkitagent.nix
-    ./keyboard-backlight.nix # CHANGEME: This is for my laptop only
     ./hyprspace.nix
   ];
 
@@ -132,7 +138,9 @@ in {
         mfact = 0.5;
       };
 
-      gestures = { workspace_swipe = true; };
+      gestures = {
+        workspace_swipe = true;
+      };
 
       misc = {
         vfr = true;
@@ -177,7 +185,10 @@ in {
         "size 640 400, class:^(.*jetbrains.*)$, title:^(splash)$"
       ];
 
-      layerrule = [ "noanim, launcher" "noanim, ^ags-.*" ];
+      layerrule = [
+        "noanim, launcher"
+        "noanim, ^ags-.*"
+      ];
 
       workspace = [
         "1, monitor:DP-2"
