@@ -52,7 +52,6 @@
 
     search-nixos-api.url = "github:anotherhadi/search-nixos-api";
 
-    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs =
@@ -60,28 +59,9 @@
       self,
       nixpkgs,
       nvf,
-      flake-utils,
       ...
     }:
-
-    let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
-
-      myNvim = nvf.lib.makeNvim {
-        inherit pkgs; # paketi za taj system
-        modules = [ ./modules/home/programs/nvf/default.nix ];
-      };
-    in
     {
-      #NVF application packaged
-      packages.${system}.nvim = myNvim;
-
-      apps.${system}.default = {
-        type = "app";
-        program = "${myNvim}/bin/nvim";
-      };
-
       # NixOS configurations:w
       nixosConfigurations = {
 
