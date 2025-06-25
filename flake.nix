@@ -54,48 +54,85 @@
   };
 
   outputs =
-    inputs@{ nixpkgs, nvf, ... }:
-    {
-      nixosConfigurations = {
+    inputs@{
+      self,
+      nixpkgs,
+      nvf,
+      ...
+    }:
 
-        # anorLondo is the main desktop system
-        anorLondo = nixpkgs.lib.nixosSystem {
-          modules = [
-            {
-              nixpkgs.overlays = [ inputs.hyprpanel.overlay ];
-              _module.args = { inherit inputs; };
-            }
-            inputs.home-manager.nixosModules.home-manager
-            inputs.stylix.nixosModules.stylix
-            ./hosts/anorLondo/configuration.nix
-          ];
+    let
+      # helper – we only build for one CPU family; add more if you have aarch64 boxes
+      mkPerSystem =
+        system:
+        let
+          pkgs = import nixpkgs { inherit system; };
+
+          # Build Neovim using your *existing* NVF modules
+          myNvim = nvf.lib.${system}.makeNvim {
+            inherit pkgs;
+            # <--  put the same list you pass to `programs.nvf.extraModules`
+            modules = [ ./modules/home/programs/nvf/default.nix ];
+          };
+        in
+        {
+          # nix build .#nvim
+          packages.${system}.nvim = myNvim;
+
+          # nix run .         (⇡ defaults to the “default” app)
+          apps.${system}.default = pkgs.lib.mkApp {
+            drv = myNvim;
+            exe = "nvim";
+          };
         };
 
-        # ariandel is the laptop
-        ariandel = nixpkgs.lib.nixosSystem {
-          modules = [
-            {
-              nixpkgs.overlays = [ inputs.hyprpanel.overlay ];
-              _module.args = { inherit inputs; };
-            }
-            inputs.home-manager.nixosModules.home-manager
-            inputs.stylix.nixosModules.stylix
-            ./hosts/ariandel/configuration.nix
-          ];
-        };
+      # Generate outputs for each architecture you care about
+      perSystem = mkPerSystem "x86_64-linux";
+    in
+    perSystem
+    //
 
-        # fireLink is the server
-        fireLink = nixpkgs.lib.nixosSystem {
-          modules = [
-            { _module.args = { inherit inputs; }; }
-            inputs.home-manager.nixosModules.home-manager
-            inputs.stylix.nixosModules.stylix
-            inputs.sops-nix.nixosModules.sops
-            inputs.nixarr.nixosModules.default
-            inputs.search-nixos-api.nixosModules.search-nixos-api
-            ./hosts/fireLink/configuration.nix
-          ];
+      {
+        nixosConfigurations = {
+
+          # anorLondo is the main desktop system
+          anorLondo = nixpkgs.lib.nixosSystem {
+            modules = [
+              {
+                nixpkgs.overlays = [ inputs.hyprpanel.overlay ];
+                _module.args = { inherit inputs; };
+              }
+              inputs.home-manager.nixosModules.home-manager
+              inputs.stylix.nixosModules.stylix
+              ./hosts/anorLondo/configuration.nix
+            ];
+          };
+
+          # ariandel is the laptop
+          ariandel = nixpkgs.lib.nixosSystem {
+            modules = [
+              {
+                nixpkgs.overlays = [ inputs.hyprpanel.overlay ];
+                _module.args = { inherit inputs; };
+              }
+              inputs.home-manager.nixosModules.home-manager
+              inputs.stylix.nixosModules.stylix
+              ./hosts/ariandel/configuration.nix
+            ];
+          };
+
+          # fireLink is the server
+          fireLink = nixpkgs.lib.nixosSystem {
+            modules = [
+              { _module.args = { inherit inputs; }; }
+              inputs.home-manager.nixosModules.home-manager
+              inputs.stylix.nixosModules.stylix
+              inputs.sops-nix.nixosModules.sops
+              inputs.nixarr.nixosModules.default
+              inputs.search-nixos-api.nixosModules.search-nixos-api
+              ./hosts/fireLink/configuration.nix
+            ];
+          };
         };
       };
-    };
 }
