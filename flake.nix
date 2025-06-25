@@ -56,12 +56,6 @@
   outputs =
     inputs@{ nixpkgs, nvf, ... }:
     {
-      packages."x86_64-linux".default =
-        (nvf.lib.neovimConfiguration {
-          pkgs = nixpkgs.legacyPackages."x86_64-linux";
-          modules = [ ./modules/home/programs/nvf/default.nix ];
-        }).neovim;
-
       nixosConfigurations = {
 
         # anorLondo is the main desktop system
@@ -73,7 +67,6 @@
             }
             inputs.home-manager.nixosModules.home-manager
             inputs.stylix.nixosModules.stylix
-            inputs.nvf.nixosModules.nvf
             ./hosts/anorLondo/configuration.nix
           ];
         };

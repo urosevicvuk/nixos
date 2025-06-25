@@ -1,4 +1,4 @@
-{ pkgs, config, inputs, ... }:
+{ pkgs, config, ... }:
 let
   hostname = config.var.hostname;
   keyboardLayout = config.var.keyboardLayout;
@@ -8,13 +8,18 @@ let
   extraLocale = config.var.extraLocale;
   autoUpgrade = config.var.autoUpgrade;
   keyboardVariant = config.var.keyboardVariant;
-in {
+in
+{
   networking = {
     hostName = hostname;
     networkmanager.enable = true;
 
     firewall = {
-      allowedTCPPorts = [ 57621 8080 3306];
+      allowedTCPPorts = [
+        57621
+        8080
+        3306
+      ];
       allowedUDPPorts = [ 5353 ];
     };
 
@@ -26,11 +31,17 @@ in {
     enable = autoUpgrade;
     dates = "04:00";
     flake = "${configDir}";
-    flags = [ "--update-input" "nixpkgs" "--commit-lock-file" ];
+    flags = [
+      "--update-input"
+      "nixpkgs"
+      "--commit-lock-file"
+    ];
     allowReboot = false;
   };
 
-  time = { timeZone = timeZone; };
+  time = {
+    timeZone = timeZone;
+  };
   i18n.defaultLocale = defaultLocale;
   i18n.extraLocaleSettings = {
     LC_ADDRESS = extraLocale;
@@ -48,9 +59,9 @@ in {
     xserver = {
       enable = true;
       xkb = {
-          layout = keyboardLayout;
-          variant = keyboardVariant;
-          options = "grp:alt_shift_toggle";
+        layout = keyboardLayout;
+        variant = keyboardVariant;
+        options = "grp:alt_shift_toggle";
       };
     };
     gnome.gnome-keyring.enable = true;
@@ -77,7 +88,10 @@ in {
     dbus = {
       enable = true;
       implementation = "broker";
-      packages = with pkgs; [ gcr gnome-settings-daemon ];
+      packages = with pkgs; [
+        gcr
+        gnome-settings-daemon
+      ];
     };
     gvfs.enable = true;
     upower.enable = true;
@@ -127,7 +141,10 @@ in {
     xdgOpenUsePortal = true;
     config = {
       common.default = [ "gtk" ];
-      hyprland.default = [ "gtk" "hyprland" ];
+      hyprland.default = [
+        "gtk"
+        "hyprland"
+      ];
     };
 
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
