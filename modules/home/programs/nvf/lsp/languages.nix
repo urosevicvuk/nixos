@@ -37,7 +37,12 @@
     treesitter = {
       enable = true;
       autotagHtml = true;
-      context.enable = true;
+      context = {
+        enable = true;
+        setupOpts = {
+          line_number = true;
+        };
+      };
       highlight.enable = true;
     };
 
