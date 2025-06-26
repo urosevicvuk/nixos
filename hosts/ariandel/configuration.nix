@@ -1,17 +1,17 @@
-{ config, ... }: {
+{ config, ... }:
+{
   imports = [
-    # Mostly system related configuration
-    ../../nixos/audio.nix
-    ../../nixos/bluetooth.nix
-    ../../nixos/fonts.nix
-    ../../nixos/home-manager.nix
-    ../../nixos/nix.nix
-    ../../nixos/systemd-boot.nix
-    ../../nixos/sddm.nix
-    ../../nixos/users.nix
-    ../../nixos/utils.nix
-    ../../nixos/tailscale.nix
-    ../../nixos/hyprland.nix
+    ../../modules/nixos/audio.nix
+    ../../modules/nixos/bluetooth.nix
+    ../../modules/nixos/fonts.nix
+    ../../modules/nixos/home-manager.nix
+    ../../modules/nixos/nix.nix
+    ../../modules/nixos/systemd-boot.nix
+    ../../modules/nixos/sddm.nix
+    ../../modules/nixos/users.nix
+    ../../modules/nixos/utils.nix
+    ../../modules/nixos/tailscale.nix
+    ../../modules/nixos/hyprland.nix
 
     # You should let those lines as is
     ./hardware-configuration.nix

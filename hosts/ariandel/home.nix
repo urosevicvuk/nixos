@@ -2,44 +2,42 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   imports = [
-    # Mostly user-specific configuration
     ./variables.nix
 
     # Programs
-    ../../home/programs/kitty
-    ../../home/programs/nvf
-    ../../home/programs/shell
-    ../../home/programs/fetch
-    ../../home/programs/git
-    ../../home/programs/git/signing.nix
-    ../../home/programs/spicetify
-    ../../home/programs/nextcloud
-    ../../home/programs/thunar
-    ../../home/programs/lazygit
-    ../../home/programs/zen
-    ../../home/programs/duckduckgo-colorscheme
-    ../../home/programs/discord
-    ../../home/programs/tailscale
-    ../../home/programs/anyrun
+    ../../modules/home/programs/kitty
+    ../../modules/home/programs/nvf
+    ../../modules/home/programs/shell
+    ../../modules/home/programs/fetch
+    ../../modules/home/programs/git
+    ../../modules/home/programs/git/signing.nix
+    ../../modules/home/programs/spicetify
+    ../../modules/home/programs/thunar
+    ../../modules/home/programs/lazygit
+    ../../modules/home/programs/zen
+    ../../modules/home/programs/discord
+    #../../modules/home/programs/nixvim #Currently using nvf so no need for this
+    #../../modules/home/programs/tailscale #Server stuff
+    #../../modules/home/programs/nextcloud #NAS stuff
+    #../../modules/home/programs/anyrun # Sandbox stuff
 
     # Scripts
-    ../../home/scripts # All scripts
+    ../../modules/home/scripts # All scripts
 
     # System (Desktop environment like stuff)
-    ../../home/system/hyprland
-    ../../home/system/hypridle
-    ../../home/system/hyprlock
-    ../../home/system/hyprpanel
-    ../../home/system/hyprpaper
-    ../../home/system/wofi
-    ../../home/system/zathura
-    ../../home/system/mime
-    ../../home/system/udiskie
-    ../../home/system/clipman
-
-    ./secrets # CHANGEME: You should probably remove this line, this is where I store my secrets
+    ../../modules/home/system/hyprland
+    ../../modules/home/system/hypridle
+    ../../modules/home/system/hyprlock
+    ../../modules/home/system/hyprpanel
+    ../../modules/home/system/hyprpaper
+    ../../modules/home/system/wofi
+    ../../modules/home/system/zathura
+    ../../modules/home/system/mime
+    ../../modules/home/system/udiskie
+    ../../modules/home/system/clipman
   ];
 
   home = {
@@ -48,52 +46,69 @@
 
     packages = with pkgs; [
       # Apps
+      vesktop # Discord client
       bitwarden # Password manager
       vlc # Video player
-      blanket # White-noise app
       obsidian # Note taking app
-      # planify # Todolists
-      gnome-calendar # Calendar
+      todoist-electron # Todolists
       textpieces # Manipulate texts
       curtail # Compress images
-      resources
+      gimp3-with-plugins
       gnome-clocks
       gnome-text-editor
-      mpv # Video player
       figma-linux
+      libreoffice-qt6-fresh # Office suite
+
+      #Gaming
+      prismlauncher # Minecraft launcher
+      shadps4 # PS4 emulator
+      lutris # Pirated game launcher
+      (wineWowPackages.stable.override { waylandSupport = true; })
+      winetricks
+      protonup # Proton my beloved
 
       # Dev
       go
-      bun
       nodejs
       python3
       jq
+      figlet
       just
       pnpm
-      air
+      lazydocker
+      vscode
+      jetbrains-toolbox
+
+      #Office
+      rustdesk
 
       # Utils
-      zip
-      unzip
+      nh # Nix helper
+      qbittorrent
+      p7zip
       optipng
-      jpegoptim
       pfetch
-      btop
+      pandoc
       fastfetch
+      nitch
+      ripgrep
+      yazi
+      fzf
+      bluez
+      solaar
+      btop-rocm
 
       # Just cool
       peaclock
       cbonsai
       pipes
       cmatrix
-
-      # Backup
-      brave
-      vscode
     ];
 
     # Import my profile picture, used by the hyprpanel dashboard
-    file.".face.icon" = {source = ./profile_picture.png;};
+    file.".face.icon" = {
+      source = ./profile_picture.png;
+    };
 
     # Don't touch this
     stateVersion = "24.05";
