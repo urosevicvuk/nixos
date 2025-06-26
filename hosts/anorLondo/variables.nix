@@ -9,8 +9,8 @@
     username = "vyke";
     configDirectory = "/home/" + config.var.username + "/nixos"; # The path of the nixos configuration directory
 
-    keyboardLayout = "us";
-    keyboardVariant = "";
+    keyboardLayout = "us,rs,rs";
+    keyboardVariant = ",latin,";
 
     location = "Belgrade";
     timeZone = "Europe/Belgrade";

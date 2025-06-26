@@ -1,48 +1,61 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   wayland.windowManager.hyprland.settings = {
-    bind = [
-      "$mod,RETURN, exec, ${pkgs.kitty}/bin/kitty" # Kitty
-      "$mod,E, exec, ${pkgs.xfce.thunar}/bin/thunar" # Thunar
-      "$mod,B, exec, zen" # Zen Browser
-      "$mod,P, exec, ${pkgs.bitwarden}/bin/bitwarden" # Bitwarden
-      "ALT $shiftMod,L, exec, ${pkgs.hyprlock}/bin/hyprlock" # Lock
-      "$mod,X, exec, powermenu" # Powermenu
-      "$mod,SPACE, exec, menu" # Launcher
-      "$mod,C, exec, quickmenu" # Quickmenu
-      "$shiftMod,SPACE, exec, hyprfocus-toggle" # Toggle HyprFocus
-      #mod,P, exec, ${pkgs.planify}/bin/io.github.alainm23.planify" # Planify
+    bind =
+      [
+        "$mod,RETURN, exec, ${pkgs.kitty}/bin/kitty" # Kitty
+        "$mod,E, exec, ${pkgs.xfce.thunar}/bin/thunar" # Thunar
+        "$mod,B, exec, zen" # Zen Browser
+        "$mod,P, exec, ${pkgs.bitwarden}/bin/bitwarden" # Bitwarden
+        "ALT $shiftMod,L, exec, ${pkgs.hyprlock}/bin/hyprlock" # Lock
+        "$mod,X, exec, powermenu" # Powermenu
+        "$mod,SPACE, exec, menu" # Launcher
+        "$mod,C, exec, quickmenu" # Quickmenu
+        "$shiftMod,SPACE, exec, hyprfocus-toggle" # Toggle HyprFocus
+        #mod,P, exec, ${pkgs.planify}/bin/io.github.alainm23.planify" # Planify
 
-      "$mod,Q, killactive," # Close window
-      "$mod,T, togglefloating," # Toggle Floating
-      "$mod,F, fullscreen" # Toggle Fullscreen
-      "$mod,H, movefocus, l" # Move focus left
-      "$mod,L, movefocus, r" # Move focus Right
-      "$mod,K, movefocus, u" # Move focus Up
-      "$mod,J, movefocus, d" # Move focus Down
-      "$shiftMod,H, movewindow, l" # Move focus left
-      "$shiftMod,L, movewindow, r" # Move focus Right
-      "$shiftMod,K, movewindow, u" # Move focus Up
-      "$shiftMod,J, movewindow, d" # Move focus Down
-      "$shiftMod,up, focusmonitor, -1" # Focus previous monitor
-      "$shiftMod,down, focusmonitor, 1" # Focus next monitor
-      "$shiftMod,left, layoutmsg, addmaster" # Add to master
-      "$shiftMod,right, layoutmsg, removemaster" # Remove from master
+        "$mod,Q, killactive," # Close window
+        "$mod,T, togglefloating," # Toggle Floating
+        "$mod,F, fullscreen" # Toggle Fullscreen
+        "$mod,H, movefocus, l" # Move focus left
+        "$mod,L, movefocus, r" # Move focus Right
+        "$mod,K, movefocus, u" # Move focus Up
+        "$mod,J, movefocus, d" # Move focus Down
+        "$shiftMod,H, movewindow, l" # Move focus left
+        "$shiftMod,L, movewindow, r" # Move focus Right
+        "$shiftMod,K, movewindow, u" # Move focus Up
+        "$shiftMod,J, movewindow, d" # Move focus Down
+        "$shiftMod,up, focusmonitor, -1" # Focus previous monitor
+        "$shiftMod,down, focusmonitor, 1" # Focus next monitor
+        "$shiftMod,left, layoutmsg, addmaster" # Add to master
+        "$shiftMod,right, layoutmsg, removemaster" # Remove from master
 
-      "$shiftMod,S, exec, screenshot region" # Screenshot region
-      ",PRINT, exec, screenshot monitor" # Screenshot monitor
-      "$shiftMod,PRINT, exec, screenshot window" # Screenshot window
-      "ALT,PRINT, exec, screenshot region swappy" # Screenshot region then edit
+        "$shiftMod,S, exec, screenshot region" # Screenshot region
+        ",PRINT, exec, screenshot monitor" # Screenshot monitor
+        "$shiftMod,PRINT, exec, screenshot window" # Screenshot window
+        "ALT,PRINT, exec, screenshot region swappy" # Screenshot region then edit
 
-      "$shiftMod,T, exec, hyprpanel-toggle" # Toggle hyprpanel
-      "$shiftMod,V, exec, clipboard" # Clipboard picker with wofi
-      "$shiftMod,E, exec, ${pkgs.wofi-emoji}/bin/wofi-emoji" # Emoji picker with wofi
-      "$mod, F4, exec, night-shift" # Toggle night shift
-    ] ++ (builtins.concatLists (builtins.genList (i:
-      let ws = i + 1;
-      in [
-        "$mod,code:1${toString i}, workspace, ${toString ws}"
-        "$mod SHIFT,code:1${toString i}, movetoworkspace, ${toString ws}"
-      ]) 9)) ++ [
+        "$shiftMod,T, exec, hyprpanel-toggle" # Toggle hyprpanel
+        "$shiftMod,V, exec, clipboard" # Clipboard picker with wofi
+        "bind = $mod, F1, exec, hyprctl switchxkblayout logitech-pro-gaming-keyboard 0" # US
+        "bind = $mod, F2, exec, hyprctl switchxkblayout logitech-pro-gaming-keyboard 1" # RS ćirilica
+        "bind = $mod, F3, exec, hyprctl switchxkblayout logitech-pro-gaming-keyboard 2" # RS latinica"$shiftMod,E, exec, ${pkgs.wofi-emoji}/bin/wofi-emoji" # Emoji picker with wofi
+
+        "$mod, F4, exec, night-shift" # Toggle night shift
+      ]
+      ++ (builtins.concatLists (
+        builtins.genList (
+          i:
+          let
+            ws = i + 1;
+          in
+          [
+            "$mod,code:1${toString i}, workspace, ${toString ws}"
+            "$mod SHIFT,code:1${toString i}, movetoworkspace, ${toString ws}"
+          ]
+        ) 9
+      ))
+      ++ [
         "$mod, A, workspace, name:alternative"
         "$mod SHIFT, A, movetoworkspace, name:alternative"
       ];
