@@ -100,7 +100,7 @@ in
     initContent =
       # bash
       ''
-        export AVANTE_OPENAI_API_KEY="$(cat ${config.sops.secrets.openaiGpt.path})"
+        export OPENAI_API_KEY="$(cat ${config.sops.secrets.openaiGpt.path})"
 
 
         bindkey -e
