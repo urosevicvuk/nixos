@@ -38,6 +38,8 @@
     ../../modules/home/system/mime
     ../../modules/home/system/udiskie
     ../../modules/home/system/clipman
+
+    ./secrets
   ];
 
   home = {

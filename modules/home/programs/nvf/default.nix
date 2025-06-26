@@ -16,6 +16,7 @@
     ./plugins/picker.nix
     ./plugins/snacks.nix
     ./plugins/utils.nix
+    ./plugins/avante.nix
   ];
 
   programs.nvf = {

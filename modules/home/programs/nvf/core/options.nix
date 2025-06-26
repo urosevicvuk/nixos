@@ -25,7 +25,8 @@
     navigation.harpoon = {
       enable = true;
       mappings = {
-        listMarks = "<leader>\`";
+        markFile = "<leader>\`";
+        listMarks = "<leader>~";
         file1 = "<leader>1";
         file2 = "<leader>2";
         file3 = "<leader>3";
