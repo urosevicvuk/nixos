@@ -13,6 +13,7 @@
     defaultSopsFormat = "yaml";
 
     secrets = {
+      claude = { };
       openaiGpt = { };
     };
 

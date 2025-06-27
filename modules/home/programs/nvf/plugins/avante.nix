@@ -4,8 +4,8 @@
       enable = true;
 
       setupOpts = {
-        auto_suggestions_provider = "openai";
-        cursor_applying_provider = "openai";
+        auto_suggestions_provider = "claude";
+        cursor_applying_provider = "claude";
 
         behaviour = {
           enable_claude_text_editor_tool_mode = true;

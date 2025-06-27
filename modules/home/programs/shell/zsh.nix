@@ -102,6 +102,8 @@ in
       ''
         export OPENAI_API_KEY="$(cat ${config.sops.secrets.openaiGpt.path})"
 
+        export ANTHROPIC_API_KEY="$(cat ${config.sops.secrets.claude.path})"
+
 
         bindkey -e
         ${

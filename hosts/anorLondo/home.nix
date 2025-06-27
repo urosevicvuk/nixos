@@ -63,13 +63,14 @@
 
       #Gaming
       prismlauncher # Minecraft launcher
-      shadps4 # PS4 emulator
+      #shadps4 # PS4 emulator
       lutris # Pirated game launcher
       (wineWowPackages.stable.override { waylandSupport = true; })
       winetricks
       protonup # Proton my beloved
 
       # Dev
+      claude-code
       go
       nodejs
       python3
