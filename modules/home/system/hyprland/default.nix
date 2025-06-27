@@ -95,10 +95,10 @@ in
         "__GL_VRR_ALLOWED,0"
         "DISABLE_QT5_COMPAT,0"
         "DIRENV_LOG_FORMAT,"
-        "WLR_DRM_NO_ATOMIC,1"
-        "WLR_BACKEND,vulkan"
-        "WLR_RENDERER,vulkan"
-        "WLR_NO_HARDWARE_CURSORS,1"
+        "WLR_DRM_NO_ATOMIC,0"
+        #"WLR_BACKEND,vulkan"
+        #"WLR_RENDERER,vulkan"
+        #"WLR_NO_HARDWARE_CURSORS,1"
         "SDL_VIDEODRIVER,wayland,x11,windows"
         "CLUTTER_BACKEND,wayland"
       ];
@@ -191,6 +191,7 @@ in
       ];
 
       workspace = [
+        "special:term, monitor:DP-2"
         "1, monitor:DP-2"
         "2, monitor:DP-2"
         "3, monitor:DP-2"
@@ -206,8 +207,8 @@ in
       windowrule = [
         "workspace 4, title:Steam"
         "workspace 5, title:Spotify"
-        "workspace 8, title:Discord"
-        "workspace 9, title:Obsidian"
+        "workspace 6, title:Discord"
+        "workspace 7, title:Obsidian"
       ];
 
       input = {

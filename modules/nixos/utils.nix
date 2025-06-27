@@ -13,16 +13,6 @@ in
   networking = {
     hostName = hostname;
     networkmanager.enable = true;
-
-    firewall = {
-      allowedTCPPorts = [
-        57621
-        8080
-        3306
-      ];
-      allowedUDPPorts = [ 5353 ];
-    };
-
   };
 
   systemd.services.NetworkManager-wait-online.enable = false;

@@ -72,6 +72,7 @@
       # Dev
       claude-code
       go
+      gh
       nodejs
       python3
       jq

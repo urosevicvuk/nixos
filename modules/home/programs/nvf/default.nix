@@ -9,8 +9,7 @@
 
     ./core/options.nix
     ./core/keymaps.nix
-
-    ./lsp/languages.nix
+    ./core/languages.nix
 
     ./plugins/mini.nix
     ./plugins/picker.nix
