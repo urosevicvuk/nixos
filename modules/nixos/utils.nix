@@ -1,5 +1,6 @@
 { pkgs, config, ... }:
 let
+  username = config.var.username;
   hostname = config.var.hostname;
   keyboardLayout = config.var.keyboardLayout;
   configDir = config.var.configDirectory;
@@ -45,7 +46,18 @@ in
     LC_TIME = extraLocale;
   };
 
+  users.users.${username}.extraGroups = [ "inputs" ];
+
   services = {
+    ratbagd.enable = true;
+    udev = {
+      packages = [ pkgs.solaar ];
+      extraRules = ''
+        # Allow access to the Solaar device
+        SUBSYSTEM=="hidraw", ATTRS{idVendor}=="046d", MODE="0664", GROUP="input"
+        SUBSYSTEM=="hidraw", KERNELS=="*046D*", MODE="0664", GROUP="input"
+      '';
+    };
     xserver = {
       enable = true;
       xkb = {

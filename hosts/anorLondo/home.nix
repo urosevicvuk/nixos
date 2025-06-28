@@ -100,6 +100,7 @@
       fzf
       bluez
       solaar
+      piper
       btop-rocm
 
       # Just cool
