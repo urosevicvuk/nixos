@@ -206,8 +206,8 @@ in
 
       windowrule = [
         "workspace 4, title:Steam"
-        "workspace 5, title:Spotify"
-        "workspace 6, title:Discord"
+        "workspace 5, title:Discord"
+        "workspace 6, title:Spotify"
         "workspace 7, title:Obsidian"
       ];
 

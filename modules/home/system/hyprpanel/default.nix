@@ -93,7 +93,7 @@ in
 
       bar.launcher.icon = "";
       bar.workspaces.show_numbered = false;
-      bar.workspaces.workspaces = 10;
+      bar.workspaces.workspaces = 11;
       bar.workspaces.numbered_active_indicator = "color";
       bar.workspaces.monitorSpecific = true;
       bar.workspaces.applicationIconEmptyWorkspace = "";
