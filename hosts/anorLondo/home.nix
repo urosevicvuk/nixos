@@ -14,7 +14,7 @@
     ../../modules/home/programs/shell
     ../../modules/home/programs/fetch
     ../../modules/home/programs/git
-    #../../modules/home/programs/git/signing.nix
+    ../../modules/home/programs/git/signing.nix
     ../../modules/home/programs/spicetify
     ../../modules/home/programs/thunar
     ../../modules/home/programs/lazygit

@@ -15,6 +15,7 @@
     secrets = {
       claude = { };
       openaiGpt = { };
+      github-pub = { };
     };
 
   };
