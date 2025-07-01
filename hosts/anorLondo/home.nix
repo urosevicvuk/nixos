@@ -8,37 +8,34 @@
     ./variables.nix
 
     # Programs
-    ../../modules/home/programs/kitty
-    ../../modules/home/programs/nvf
-    ../../modules/home/programs/direnv
-    ../../modules/home/programs/shell
-    ../../modules/home/programs/fetch
-    ../../modules/home/programs/git
-    ../../modules/home/programs/git/signing.nix
-    ../../modules/home/programs/spicetify
-    ../../modules/home/programs/thunar
-    ../../modules/home/programs/lazygit
-    ../../modules/home/programs/zen
-    ../../modules/home/programs/discord
-    #../../modules/home/programs/nixvim #Currently using nvf so no need for this
+    ../../modules/home-manager/programs/kitty
+    ../../modules/home-manager/programs/nvf
+    ../../modules/home-manager/programs/shell
+    ../../modules/home-manager/programs/direnv
+    ../../modules/home-manager/programs/fetch
+    ../../modules/home-manager/programs/git
+    ../../modules/home-manager/programs/spicetify
+    ../../modules/home-manager/programs/thunar
+    ../../modules/home-manager/programs/lazygit
+    ../../modules/home-manager/programs/zen
+    ../../modules/home-manager/programs/wofi
+    ../../modules/home-manager/programs/zathura
     #../../modules/home/programs/tailscale #Server stuff
     #../../modules/home/programs/nextcloud #NAS stuff
     #../../modules/home/programs/anyrun # Sandbox stuff
 
     # Scripts
-    ../../modules/home/scripts # All scripts
+    ../../modules/home-manager/scripts # All scripts
 
     # System (Desktop environment like stuff)
-    ../../modules/home/system/hyprland
-    ../../modules/home/system/hypridle
-    ../../modules/home/system/hyprlock
-    ../../modules/home/system/hyprpanel
-    ../../modules/home/system/hyprpaper
-    ../../modules/home/system/wofi
-    ../../modules/home/system/zathura
-    ../../modules/home/system/mime
-    ../../modules/home/system/udiskie
-    ../../modules/home/system/clipman
+    ../../modules/home-manager/system/hyprland
+    ../../modules/home-manager/system/hypridle
+    ../../modules/home-manager/system/hyprlock
+    ../../modules/home-manager/system/hyprpanel
+    ../../modules/home-manager/system/hyprpaper
+    ../../modules/home-manager/system/mime
+    ../../modules/home-manager/system/udiskie
+    ../../modules/home-manager/system/clipman
 
     ./secrets
   ];

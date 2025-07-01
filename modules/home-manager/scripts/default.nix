@@ -1,6 +1,5 @@
 {
   imports = [
-    ./nixy
     ./sounds
     ./brightness
     ./caffeine

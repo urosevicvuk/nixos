@@ -5,6 +5,7 @@ let
   email = config.var.git.email;
 in
 {
+  home.file.".ssh/allowed_signers".text = "* ${config.sops.secrets.github-pub.path}";
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -27,6 +28,10 @@ in
       pull.rebase = "false";
       push.autoSetupRemote = true;
       color.ui = "1";
+      commit.gpgsign = true;
+      gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+      gpg.format = "ssh";
+      user.signingkey = "~/.ssh/id_ed25519.pub";
     };
     aliases = {
       essa = "push --force";
