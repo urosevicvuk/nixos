@@ -48,6 +48,7 @@ in
     '';
 
     shellAliases = {
+      ts = "tmux-sessionizer";
       nhs = "nh os switch ~/nixos/";
       nvimf = "nvim $(fzf)";
       hpr = "hyprpanel -q | hyprpanel & disown";
@@ -117,37 +118,13 @@ in
             ""
         }
 
-        function sesh-sessions() {
-          session=$(sesh list -t -c | fzf --height 70% --reverse)
-          [[ -z "$session" ]] && return
-          sesh connect $session
+        function tmux-sessionizer-widget() {
+          tmux-sessionizer
         }
-
-        function chatgptfolder(){
-          echo "################################"
-          echo "###         TREE             ###"
-          echo "################################"
-          ${pkgs.eza}/bin/eza --tree -aF --icons never
-          echo -e "\n\n"
-          echo "##############################"
-          echo "###        CONTENT         ###"
-          echo "##############################"
-          find . -type f -not -path '*/.git/*' -print0 | while IFS= read -r -d "" file; do
-              echo -e "\n--- DEBUT: $file ---\n"
-              cat "$file"
-              echo -e "\n--- FIN: $file ---\n"
-          done
-        }
-
-
-        function n4c() {
-          nix develop --no-write-lock-file --refresh "github:nix4cyber/n4c#''${1:-all}" -c zsh
-        }
-
-        zle     -N             sesh-sessions
-        bindkey -M emacs '\es' sesh-sessions
-        bindkey -M vicmd '\es' sesh-sessions
-        bindkey -M viins '\es' sesh-sessions
+        zle     -N             tmux-sessionizer-widget
+        bindkey -M emacs '\e`' tmux-sessionizer-widget
+        bindkey -M vicmd '\e`' tmux-sessionizer-widget
+        bindkey -M viins '\e`' tmux-sessionizer-widget
 
         # search history based on what's typed in the prompt
         autoload -U history-search-end

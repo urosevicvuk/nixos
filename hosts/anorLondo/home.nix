@@ -10,10 +10,11 @@
     # Programs
     ../../modules/home/programs/kitty
     ../../modules/home/programs/nvf
+    ../../modules/home/programs/direnv
     ../../modules/home/programs/shell
     ../../modules/home/programs/fetch
     ../../modules/home/programs/git
-    ../../modules/home/programs/git/signing.nix
+    #../../modules/home/programs/git/signing.nix
     ../../modules/home/programs/spicetify
     ../../modules/home/programs/thunar
     ../../modules/home/programs/lazygit
@@ -41,6 +42,14 @@
 
     ./secrets
   ];
+
+  #All the programs that are not importes as modules
+  programs = {
+
+  };
+  services = {
+
+  };
 
   home = {
     inherit (config.var) username;

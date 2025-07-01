@@ -12,5 +12,6 @@
     ./notification
     ./system
     ./openvpn
+    ./tmux-sessionizer
   ];
 }
