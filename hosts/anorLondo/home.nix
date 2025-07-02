@@ -96,6 +96,7 @@
       nh # Nix helper
       qbittorrent
       p7zip
+      ffmpeg
       optipng
       pfetch
       pandoc

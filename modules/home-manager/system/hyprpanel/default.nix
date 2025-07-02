@@ -41,25 +41,23 @@ in
     #overlay.enable = true;
 
     settings = {
-      layout = {
-        bar.layouts = {
-          "*" = {
-            "left" = [
-              "dashboard"
-              "workspaces"
-              "windowtitle"
-            ];
-            "middle" = [ "media" ];
-            "right" = [
-              "systray"
-              "volume"
-              "bluetooth"
-              "network"
-              "kbinput"
-              "clock"
-              "notifications"
-            ];
-          };
+      bar.layouts = {
+        "*" = {
+          "left" = [
+            "dashboard"
+            "workspaces"
+            "windowtitle"
+          ];
+          "middle" = [ "media" ];
+          "right" = [
+            "systray"
+            "volume"
+            "bluetooth"
+            "network"
+            "kbinput"
+            "clock"
+            "notifications"
+          ];
         };
       };
 
