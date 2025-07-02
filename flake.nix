@@ -69,7 +69,6 @@
         anorLondo = nixpkgs.lib.nixosSystem {
           modules = [
             {
-              nixpkgs.overlays = [ inputs.hyprpanel.overlay ];
               _module.args = { inherit inputs; };
             }
             inputs.home-manager.nixosModules.home-manager
@@ -82,7 +81,6 @@
         ariandel = nixpkgs.lib.nixosSystem {
           modules = [
             {
-              nixpkgs.overlays = [ inputs.hyprpanel.overlay ];
               _module.args = { inherit inputs; };
             }
             inputs.home-manager.nixosModules.home-manager
