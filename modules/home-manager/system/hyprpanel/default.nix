@@ -1,7 +1,6 @@
 # Hyprpanel is the bar on top of the screen
 # Display informations like workspaces, battery, wifi, ...
 {
-  inputs,
   config,
   ...
 }:
@@ -33,6 +32,7 @@ let
 in
 {
   #imports = [ inputs.hyprpanel.homeManagerModules.hyprpanel ];
+  wayland.windowManager.hyprland.settings.exec-once = [ "hyprpanel" ];
 
   programs.hyprpanel = {
     enable = true;
@@ -42,7 +42,7 @@ in
 
     settings = {
       layout = {
-        "bar.layouts" = {
+        bar.layouts = {
           "*" = {
             "left" = [
               "dashboard"

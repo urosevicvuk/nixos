@@ -104,10 +104,13 @@
       ripgrep
       yazi
       fzf
+      btop-rocm
+      dust
+      parallel-full
+      jq
       bluez
       solaar
       piper
-      btop-rocm
 
       # Just cool
       peaclock
