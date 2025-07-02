@@ -126,6 +126,11 @@ in
         bindkey -M vicmd '\e`' tmux-sessionizer-widget
         bindkey -M viins '\e`' tmux-sessionizer-widget
 
+        # nix flake template shortcut
+        function dev-flake() {
+          nix flake init --template "https://flakehub.com/f/the-nix-way/dev-templates/*#$1" | direnv allow
+        }
+
         # search history based on what's typed in the prompt
         autoload -U history-search-end
         zle -N history-beginning-search-backward-end history-search-end
