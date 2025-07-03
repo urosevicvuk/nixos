@@ -54,6 +54,7 @@
 
     packages = with pkgs; [
       # Apps
+      google-chrome # Web browser
       vesktop # Discord client
       bitwarden # Password manager
       vlc # Video player
@@ -65,7 +66,6 @@
       gnome-clocks
       gnome-text-editor
       figma-linux
-      libreoffice-qt6-fresh # Office suite
 
       #Gaming
       prismlauncher # Minecraft launcher
@@ -91,6 +91,7 @@
 
       #Office
       rustdesk
+      libreoffice-qt6-fresh # Office suite
 
       # Utils
       nh # Nix helper
