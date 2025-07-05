@@ -3,6 +3,13 @@
   programs.nvf.settings.vim = {
 
     utility = {
+      yazi-nvim = {
+        enable = true;
+        mappings = {
+          openYazi = "<leader>-";
+          openYaziDir = "<leader>=";
+        };
+      };
       motion.flash-nvim.enable = true;
       outline.aerial-nvim.enable = true;
     };
