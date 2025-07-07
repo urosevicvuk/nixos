@@ -108,11 +108,11 @@
       fzf
       btop-rocm
       dust
-      parallel-full
       jq
       bluez
       solaar
       piper
+      moreutils
 
       # Just cool
       peaclock

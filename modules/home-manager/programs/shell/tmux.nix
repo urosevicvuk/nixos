@@ -1,30 +1,30 @@
 # Tmux is a terminal multiplexer that allows you to run multiple terminal sessions in a single window.
 { pkgs, ... }:
-let
-  Config = pkgs.writeShellScriptBin "Config" ''
-    SESSION="Nixy Config"
-
-    tmux has-session -t "$SESSION" 2>/dev/null
-
-    if [ $? == 0 ]; then
-      tmux attach -t "$SESSION"
-      exit 0
-    fi
-
-    tmux new-session -d -s "$SESSION"
-    tmux send-keys -t "$SESSION" "sleep 0.2 && clear && cd ~/.config/nixos/ && vim" C-m
-
-    tmux new-window -t "$SESSION" -n "nixy"
-    tmux send-keys -t "$SESSION":1 "sleep 0.2 && clear && cd ~/.config/nixos/ && nixy loop" C-m
-
-    tmux new-window -t "$SESSION" -n "lazygit"
-    tmux send-keys -t "$SESSION":2 "sleep 0.2 && clear && cd ~/.config/nixos/ && lazygit" C-m
-
-    tmux select-window -t "$SESSION":0
-    tmux select-pane -t 0
-    tmux attach -t "$SESSION"
-  '';
-in
+#let
+#  Config = pkgs.writeShellScriptBin "Config" ''
+#    SESSION="Nixy Config"
+#
+#    tmux has-session -t "$SESSION" 2>/dev/null
+#
+#    if [ $? == 0 ]; then
+#      tmux attach -t "$SESSION"
+#      exit 0
+#    fi
+#
+#    tmux new-session -d -s "$SESSION"
+#    tmux send-keys -t "$SESSION" "sleep 0.2 && clear && cd ~/.config/nixos/ && vim" C-m
+#
+#    tmux new-window -t "$SESSION" -n "nixy"
+#    tmux send-keys -t "$SESSION":1 "sleep 0.2 && clear && cd ~/.config/nixos/ && nixy loop" C-m
+#
+#    tmux new-window -t "$SESSION" -n "lazygit"
+#    tmux send-keys -t "$SESSION":2 "sleep 0.2 && clear && cd ~/.config/nixos/ && lazygit" C-m
+#
+#    tmux select-window -t "$SESSION":0
+#    tmux select-pane -t 0
+#    tmux attach -t "$SESSION"
+#  '';
+#in
 {
   programs.tmux = {
     enable = true;
@@ -50,29 +50,43 @@ in
       set -g base-index 1
       setw -g pane-base-index 1
 
-      set -g @continuum-boot 'on'
-
       set -gq allow-passthrough on
       bind-key x kill-pane # skip "kill-pane 1? (y/n)" prompt
 
-      bind-key -n C-Tab next-window
-      bind-key -n C-S-Tab previous-window
-      bind-key -n M-Tab new-window
-
       bind-key ` run-shell "tmux neww tmux-sessionizer"
-
-      set -g @tmux-gruvbox-statusbar-alpha 'true'
-      set -g @tmux-gruvbox-right-status-x '%d.%m.%Y' # e.g.: 30.01.2024
     '';
 
-    plugins = with pkgs; [
-      tmuxPlugins.vim-tmux-navigator
-      tmuxPlugins.resurrect
-      tmuxPlugins.continuum
-      tmuxPlugins.sensible
-      tmuxPlugins.gruvbox
-      tmuxPlugins.tmux-which-key
+    plugins = with pkgs.tmuxPlugins; [
+      vim-tmux-navigator
+      sensible
+      gruvbox
+      tmux-which-key
+      {
+        plugin = gruvbox;
+        extraConfig = ''
+          set -g @tmux-gruvbox-statusbar-alpha 'true'
+          set -g @tmux-gruvbox-right-status-x '%d.%m.%Y' # e.g.: 30.01.2024
+        '';
+      }
+      {
+        plugin = resurrect;
+        extraConfig = ''
+          set -g @resurrect-processes 'ssh psql mysql sqlite3'
+          set -g @resurrect-strategy-nvim 'session'
+
+          resurrect_dir="$HOME/.tmux/resurrect"
+          set -g @resurrect-dir $resurrect_dir
+          set -g @resurrect-hook-post-save-all 'target=$(readlink -f $resurrect_dir/last); sed "s| --cmd .*-vim-pack-dir||g; s|/etc/profiles/per-user/$USER/bin/||g; s|/home/$USER/.nix-profile/bin/||g" $target | sponge $target'
+        '';
+      }
+      {
+        plugin = continuum;
+        extraConfig = ''
+          set -g @continuum-boot 'on'
+        '';
+      }
     ];
   };
-  home.packages = [ Config ];
+  #home.packages = [Config];
+  home.packages = [ ];
 }
