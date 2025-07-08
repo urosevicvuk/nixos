@@ -23,6 +23,11 @@
       copilot = {
         enable = true;
         cmp.enable = true;
+        mappings = {
+          panel = {
+            open = "<leader>ac";
+          };
+        };
       };
     };
 
@@ -69,13 +74,16 @@
     };
 
     visuals = {
-      rainbow-delimiters.enable = true;
+      #rainbow-delimiters.enable = true;
       nvim-scrollbar = {
         enable = false;
       };
       nvim-web-devicons.enable = true;
       nvim-cursorline.enable = true;
       highlight-undo.enable = true;
+
+      cinnamon-nvim.enable = true;
+      fidget-nvim.enable = true;
     };
 
     formatter.conform-nvim.enable = true;

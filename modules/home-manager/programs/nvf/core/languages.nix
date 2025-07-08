@@ -38,9 +38,10 @@
       enable = true;
       autotagHtml = true;
       context = {
-        enable = true;
+        enable = false;
         setupOpts = {
           line_number = true;
+          max_lines = 3;
         };
       };
       highlight.enable = true;
@@ -83,10 +84,12 @@
     };
 
     languages = {
+      enableLSP = true;
+      enableTreesitter = true;
+
       enableDAP = true;
       astro.enable = true;
       go.enable = true;
-
       markdown = {
         enable = true;
         extensions = {

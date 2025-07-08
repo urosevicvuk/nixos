@@ -12,6 +12,7 @@
     ../../modules/nixos/utils.nix
     ../../modules/nixos/tailscale.nix
     ../../modules/nixos/hyprland.nix
+    ../../modules/nixos/virtualization.nix
 
     # You should let those lines as is
     ./hardware-configuration.nix

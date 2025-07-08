@@ -24,7 +24,7 @@ in
       "result-*"
     ];
     extraConfig = {
-      init.defaultBranch = "main";
+      init.defaultBranch = "master";
       pull.rebase = "false";
       push.autoSetupRemote = true;
       color.ui = "1";

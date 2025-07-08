@@ -85,9 +85,15 @@
       figlet
       just
       pnpm
+      bruno
+      bruno-cli
       lazydocker
       vscode
       jetbrains-toolbox
+
+      # Virtualization
+      virt-manager
+      virt-viewer
 
       #Office
       rustdesk
