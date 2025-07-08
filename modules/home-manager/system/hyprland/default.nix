@@ -201,6 +201,8 @@ in
         "7, monitor:DP-2"
         "8, monitor:DP-2"
         "9, monitor:DP-2"
+        "10, monitor:DP-2"
+        "special:vm, monitor:DP-2"
         "alternative, monitor:DP-3, default:true, layoutopt:orientation:top"
       ];
 

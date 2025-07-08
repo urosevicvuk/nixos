@@ -67,8 +67,9 @@
       "$mod, 0, workspace, 10"
       "$mod SHIFT, 0, movetoworkspace, 10"
 
-      "$mod, A, workspace, name:alternative"
-      "$mod SHIFT, A, movetoworkspace, name:alternative"
+      "$mod, minus, togglespecialworkspace, vm"
+      "$mod SHIFT, minus, movetoworkspace, special:vm"
+
       "$mod, A, workspace, name:alternative"
       "$mod SHIFT, A, movetoworkspace, name:alternative"
     ];
