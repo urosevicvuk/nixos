@@ -7,7 +7,8 @@
     ../../modules/nixos/home-manager.nix
     ../../modules/nixos/nix.nix
     ../../modules/nixos/systemd-boot.nix
-    ../../modules/nixos/sddm.nix
+    #../../modules/nixos/sddm.nix
+    ../../modules/nixos/tuigreet.nix
     ../../modules/nixos/users.nix
     ../../modules/nixos/utils.nix
     ../../modules/nixos/tailscale.nix
