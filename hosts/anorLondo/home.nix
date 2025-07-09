@@ -119,6 +119,8 @@
       solaar
       piper
       moreutils
+      vulkan-tools
+      amdvlk
 
       # Just cool
       peaclock

@@ -110,6 +110,10 @@
         enable = true;
         lsp.enable = true;
       };
+      rust = {
+        enable = true;
+        crates.enable = true;
+      };
       sql.enable = true;
       python.enable = true;
       clang.enable = true;

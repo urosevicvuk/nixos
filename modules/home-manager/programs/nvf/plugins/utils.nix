@@ -31,6 +31,12 @@
       };
     };
 
+    comments = {
+      comment-nvim = {
+        enable = true;
+      };
+    };
+
     statusline.lualine = {
       enable = true;
       #theme = lib.mkForce "gruvbox_dark";

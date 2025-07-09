@@ -3,6 +3,7 @@
   imports = [
     ../../modules/nixos/audio.nix
     ../../modules/nixos/bluetooth.nix
+    ../../modules/nixos/docker.nix
     ../../modules/nixos/fonts.nix
     ../../modules/nixos/home-manager.nix
     ../../modules/nixos/nix.nix
