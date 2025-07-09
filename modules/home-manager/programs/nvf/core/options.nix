@@ -56,6 +56,10 @@
       alpha.enable = true;
     };
 
+    session = {
+      nvim-session-manager.enable = true;
+    };
+
     theme = {
       enable = true;
       #name = lib.mkForce "gruvbox";

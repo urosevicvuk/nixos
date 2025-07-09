@@ -1,7 +1,5 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.nvf.settings.vim = {
-
     utility = {
       yazi-nvim = {
         enable = true;
@@ -10,7 +8,9 @@
           openYaziDir = "<leader>=";
         };
       };
-      motion.flash-nvim.enable = true;
+      motion = {
+        flash-nvim.enable = true;
+      };
       outline.aerial-nvim.enable = true;
     };
 
@@ -55,15 +55,18 @@
           previous = "<C-p>";
           confirm = "<C-y>";
         };
-        sourcePlugins = [ pkgs.vimPlugins.cmp-cmdline ];
+        sourcePlugins = [pkgs.vimPlugins.cmp-cmdline];
       };
     };
 
     snippets.luasnip.enable = true;
 
     ui = {
+      borders.enable = true;
       noice.enable = true;
       colorizer.enable = true;
+
+      fastaction.enable = true;
     };
 
     git = {

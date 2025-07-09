@@ -1,7 +1,5 @@
-{ lib, ... }:
-{
+{lib, ...}: {
   programs.nvf.settings.vim = {
-
     diagnostics = {
       enable = true;
       config = {
@@ -18,13 +16,13 @@
         virtual_text = {
           format =
             lib.generators.mkLuaInline
-              # lua
-              ''
-                function(diagnostic)
-                  return string.format("%s", diagnostic.message)
-                  --return string.format("%s (%s)", diagnostic.message, diagnostic.source)
-                end
-              '';
+            # lua
+            ''
+              function(diagnostic)
+                return string.format("%s", diagnostic.message)
+                --return string.format("%s (%s)", diagnostic.message, diagnostic.source)
+              end
+            '';
         };
       };
       nvim-lint = {
@@ -84,7 +82,9 @@
     };
 
     languages = {
+      enableFormat = true;
       enableTreesitter = true;
+      enableExtraDiagnostics = true;
 
       enableDAP = true;
       astro.enable = true;
