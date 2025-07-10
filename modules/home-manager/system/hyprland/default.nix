@@ -5,8 +5,7 @@
   inputs,
   lib,
   ...
-}:
-let
+}: let
   border-size = config.theme.border-size;
   gaps-in = config.theme.gaps-in;
   gaps-out = config.theme.gaps-out;
@@ -17,13 +16,12 @@ let
   keyboardLayout = config.var.keyboardLayout;
   keyboardVariant = config.var.keyboardVariant;
   background = "rgb(" + config.lib.stylix.colors.base00 + ")";
-in
-{
+in {
   imports = [
     ./animations.nix
     ./bindings.nix
     ./polkitagent.nix
-    ./hyprspace.nix
+    #./hyprspace.nix
   ];
 
   home.packages = with pkgs; [
@@ -127,7 +125,10 @@ in
           render_power = 3;
         };
         blur = {
-          enabled = if blur then "true" else "false";
+          enabled =
+            if blur
+            then "true"
+            else "false";
           size = 18;
         };
       };

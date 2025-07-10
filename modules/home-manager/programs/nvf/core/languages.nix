@@ -86,9 +86,44 @@
       enableTreesitter = true;
       enableExtraDiagnostics = true;
 
-      enableDAP = true;
-      astro.enable = true;
       go.enable = true;
+
+      java.enable = true;
+
+      kotlin.enable = true;
+
+      rust = {
+        enable = true;
+        crates.enable = true;
+      };
+
+      enableDAP = true;
+
+      astro.enable = true;
+
+      ts = {
+        enable = true;
+        extensions.ts-error-translator.enable = true;
+      };
+
+      sql.enable = true;
+
+      python.enable = true;
+
+      clang.enable = true;
+
+      css.enable = true;
+
+      svelte.enable = true;
+
+      html.enable = true;
+
+      bash.enable = true;
+
+      nix.enable = true;
+
+      tailwind.enable = true;
+
       markdown = {
         enable = true;
         extensions = {
@@ -98,31 +133,6 @@
         };
         extraDiagnostics.enable = true;
       };
-      ts = {
-        enable = true;
-        extensions.ts-error-translator.enable = true;
-      };
-      java = {
-        enable = true;
-        lsp.enable = true;
-      };
-      kotlin = {
-        enable = true;
-        lsp.enable = true;
-      };
-      rust = {
-        enable = true;
-        crates.enable = true;
-      };
-      sql.enable = true;
-      python.enable = true;
-      clang.enable = true;
-      css.enable = true;
-      svelte.enable = true;
-      html.enable = true;
-      bash.enable = true;
-      nix.enable = true;
-      tailwind.enable = true;
     };
 
     formatter = {
