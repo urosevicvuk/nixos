@@ -2,13 +2,13 @@
   pkgs,
   config,
   ...
-}:
-{
+}: {
   imports = [
     ./variables.nix
 
     # Programs
     ../../modules/home-manager/programs/kitty
+    ../../modules/home-manager/programs/ghostty
     ../../modules/home-manager/programs/nvf
     ../../modules/home-manager/programs/shell
     ../../modules/home-manager/programs/direnv
@@ -42,10 +42,8 @@
 
   #All the programs that are not importes as modules
   programs = {
-
   };
   services = {
-
   };
 
   home = {
@@ -71,7 +69,7 @@
       prismlauncher # Minecraft launcher
       #shadps4 # PS4 emulator
       lutris # Pirated game launcher
-      (wineWowPackages.stable.override { waylandSupport = true; })
+      (wineWowPackages.stable.override {waylandSupport = true;})
       winetricks
       protonup # Proton my beloved
 
@@ -84,12 +82,16 @@
       jq
       figlet
       just
+      gnumake
       pnpm
       bruno
       bruno-cli
       lazydocker
       vscode
-      jetbrains-toolbox
+      jetbrains.goland
+      jetbrains.idea-ultimate
+      jetbrains.rust-rover
+      android-studio
 
       # Virtualization
       virt-manager
