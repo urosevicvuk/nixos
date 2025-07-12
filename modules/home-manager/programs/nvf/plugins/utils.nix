@@ -43,19 +43,35 @@
     };
 
     autocomplete = {
-      nvim-cmp = {
+      blink-cmp = {
         enable = true;
-        sources = {
-          buffer = "[Buffer]";
-          nvim-cmp = null;
-          path = "[Path]";
-        };
+        friendly-snippets.enable = true;
         mappings = {
           next = "<C-n>";
           previous = "<C-p>";
           confirm = "<C-y>";
         };
-        sourcePlugins = [pkgs.vimPlugins.cmp-cmdline];
+        setupOpts = {
+          completion = {
+            menu = {
+              border = "rounded";
+              draw = {
+                columns = [ [ "kind_icon" ] [ "label" "label_description" ] [ "source_name" ] ];
+              };
+            };
+            documentation = {
+              window = {
+                border = "rounded";
+              };
+            };
+          };
+        };
+        #sources = {
+        #  buffer = "[Buffer]";
+        #  nvim-cmp = null;
+        #  path = "[Path]";
+        #};
+        #sourcePlugins = [pkgs.vimPlugins.cmp-cmdline];
       };
     };
 
