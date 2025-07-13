@@ -118,7 +118,7 @@ in {
       bar.workspaces.applicationIconEmptyWorkspace = "";
       bar.workspaces.showApplicationIcons = true;
       bar.workspaces.showWsIcons = true;
-      bar.workspaces.ignored = "^-9.*$";
+      bar.workspaces.ignored = "^-(98|97)$";
       bar.windowtitle.label = true;
       bar.volume.label = false;
       bar.network.truncation_size = 12;

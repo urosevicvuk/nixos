@@ -192,7 +192,7 @@ in {
       ];
 
       workspace = [
-        "special:term, monitor:DP-2"
+        "term, monitor:DP-2"
         "1, monitor:DP-2"
         "2, monitor:DP-2"
         "3, monitor:DP-2"
