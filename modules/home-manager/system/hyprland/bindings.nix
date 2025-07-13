@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   wayland.windowManager.hyprland.settings = {
     bind = [
       "$mod,RETURN, exec, ${pkgs.kitty}/bin/kitty" # Kitty
@@ -37,9 +36,9 @@
       "$shiftMod,T, exec, hyprpanel-toggle" # Toggle hyprpanel
       "$shiftMod,B, exec, hypepanel -q | hyprpanel" # Toggle hyprpanel
       "$shiftMod,V, exec, clipboard" # Clipboard picker with wofi
-      "bind = $mod, F1, exec, hyprctl switchxkblayout logitech-pro-gaming-keyboard 0" # US
-      "bind = $mod, F2, exec, hyprctl switchxkblayout logitech-pro-gaming-keyboard 1" # RS ćirilica
-      "bind = $mod, F3, exec, hyprctl switchxkblayout logitech-pro-gaming-keyboard 2" # RS latinica"$shiftMod,E, exec, ${pkgs.wofi-emoji}/bin/wofi-emoji" # Emoji picker with wofi
+      "$mod, F1, exec, hyprctl switchxkblayout logitech-pro-gaming-keyboard 0" # US
+      "$mod, F2, exec, hyprctl switchxkblayout logitech-pro-gaming-keyboard 1" # RS ćirilica
+      "$mod, F3, exec, hyprctl switchxkblayout logitech-pro-gaming-keyboard 2" # RS latinica"$shiftMod,E, exec, ${pkgs.wofi-emoji}/bin/wofi-emoji" # Emoji picker with wofi
 
       "$mod, F4, exec, night-shift" # Toggle night shift
 
@@ -100,6 +99,5 @@
       ",XF86MonBrightnessUp, exec, brightness-up" # Brightness Up
       ",XF86MonBrightnessDown, exec, brightness-down" # Brightness Down
     ];
-
   };
 }

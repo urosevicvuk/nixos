@@ -5,11 +5,18 @@
       whichKey = {
         enable = true;
         # TODO: registers
-        register = { };
+        register = {};
       };
     };
     keymaps = [
       # General Mappings
+      {
+        key = "er";
+        mode = "n";
+        silent = true;
+        action = "oif err != nil {<CR>}<Esc>Oreturn err<Esc>";
+        desc = "error handling in go";
+      }
       {
         key = "<leader>r";
         mode = "n";
