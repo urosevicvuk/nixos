@@ -130,6 +130,7 @@
       cbonsai
       pipes
       cmatrix
+      neo-cowsay
     ];
 
     # Import my profile picture, used by the hyprpanel dashboard

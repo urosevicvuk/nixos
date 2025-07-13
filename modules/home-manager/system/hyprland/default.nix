@@ -94,9 +94,9 @@ in {
         "DISABLE_QT5_COMPAT,0"
         "DIRENV_LOG_FORMAT,"
         "WLR_DRM_NO_ATOMIC,0"
-        #"WLR_BACKEND,vulkan"
-        #"WLR_RENDERER,vulkan"
-        #"WLR_NO_HARDWARE_CURSORS,1"
+        "WLR_BACKEND,vulkan"
+        "WLR_RENDERER,vulkan"
+        "WLR_NO_HARDWARE_CURSORS,1"
         "SDL_VIDEODRIVER,wayland,x11,windows"
         "CLUTTER_BACKEND,wayland"
       ];
@@ -112,7 +112,7 @@ in {
         gaps_out = gaps-out;
         border_size = border-size;
         layout = "dwindle";
-        "col.inactive_border" = lib.mkForce background;
+        #"col.inactive_border" = lib.mkForce background;
       };
 
       decoration = {
@@ -181,7 +181,7 @@ in {
         "dimaround, class:^(zen)$, title:^(File Upload)$"
 
         # fix xwayland apps
-        "rounding 0, xwayland:1"
+        #"rounding 0, xwayland:1"
         "center, class:^(.*jetbrains.*)$, title:^(Confirm Exit|Open Project|win424|win201|splash)$"
         "size 640 400, class:^(.*jetbrains.*)$, title:^(splash)$"
       ];
@@ -203,15 +203,16 @@ in {
         "8, monitor:DP-2"
         "9, monitor:DP-2"
         "10, monitor:DP-2"
-        "special:vm, monitor:DP-2"
+        "special:windows, monitor:DP-2"
+        "special:macos, monitor:DP-2"
         "alternative, monitor:DP-3, default:true, layoutopt:orientation:top"
       ];
 
       windowrule = [
         "workspace 4, title:Steam"
         "workspace 5, title:Discord"
-        "workspace 6, title:Spotify"
-        "workspace 7, title:Obsidian"
+        "workspace 10, title:Spotify"
+        "workspace 9, title:Obsidian"
       ];
 
       input = {

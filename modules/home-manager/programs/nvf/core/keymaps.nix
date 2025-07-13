@@ -11,7 +11,7 @@
     keymaps = [
       # General Mappings
       {
-        key = "er";
+        key = "<leader><C-e>";
         mode = "n";
         silent = true;
         action = "oif err != nil {<CR>}<Esc>Oreturn err<Esc>";
