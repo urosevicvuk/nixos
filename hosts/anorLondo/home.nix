@@ -74,6 +74,7 @@
       protonup # Proton my beloved
 
       # Dev
+      opencode
       claude-code
       go
       gh

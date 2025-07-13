@@ -2,8 +2,13 @@
 {
   programs.kitty = {
     enable = true;
+
+    enableGitIntegration = true;
+    shellIntegration.enableZshIntegration = true;
+
     keybindings = {
     };
+
     settings = {
       scrollback_lines = 10000;
       initial_window_width = 1200;
