@@ -38,17 +38,17 @@
       url = "github:0xc000022070/zen-browser-flake";
     };
 
-    nixcord = {
-      url = "github:kaylorben/nixcord"; # Discord client for NixOS
-    };
+    #    nixcord = {
+    #      url = "github:kaylorben/nixcord"; # Discord client for NixOS
+    #    };
 
     sops-nix = {
       url = "github:Mic92/sops-nix"; # SOPS integration for NixOS
     };
 
-    nixarr = {
-      url = "github:rasmus-kirk/nixarr";
-    };
+    #    nixarr = {
+    #      url = "github:rasmus-kirk/nixarr";
+    #    };
 
     anyrun = {
       url = "github:fufexan/anyrun/launch-prefix";
@@ -63,23 +63,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprspace = {
-      url = "github:KZDKM/Hyprspace";
-      inputs.hyprland.follows = "hyprland";
-    };
+    #search-nixos-api = {
+    #  url = "github:anotherhadi/search-nixos-api";
+    #};
 
-    search-nixos-api = {
-      url = "github:anotherhadi/search-nixos-api";
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
