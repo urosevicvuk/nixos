@@ -44,8 +44,8 @@
       "$mod, F4, exec, night-shift" # Toggle night shift
 
       #Workspaces
-      "$mod, grave, workspace, name:term"
-      "$mod SHIFT, grave, movetoworkspace, name:term"
+      "$mod, grave, togglespecialworkspace, special"
+      "$mod SHIFT, grave, movetoworkspace, special:special"
 
       "$mod, 1, workspace, 1"
       "$mod SHIFT, 1, movetoworkspace, 1"
