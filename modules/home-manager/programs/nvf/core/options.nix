@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{lib, ...}: {
   programs.nvf.settings.vim = {
     viAlias = false;
     vimAlias = true;
@@ -19,7 +18,7 @@
       tabstop = 2;
       softtabstop = 2;
       wrap = false;
-      scrolloff = 8;
+      scrolloff = 9;
     };
 
     navigation.harpoon = {
@@ -66,6 +65,5 @@
       #style = lib.mkForce "dark";
       transparent = lib.mkForce true;
     };
-
   };
 }

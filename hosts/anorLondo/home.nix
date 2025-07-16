@@ -52,17 +52,12 @@
 
     packages = with pkgs; [
       # Apps
-      google-chrome # Web browser
       vesktop # Discord client
       bitwarden # Password manager
       vlc # Video player
       obsidian # Note taking app
       todoist-electron # Todolists
-      textpieces # Manipulate texts
-      curtail # Compress images
       gimp3-with-plugins
-      gnome-clocks
-      gnome-text-editor
       figma-linux
 
       #Gaming
@@ -74,10 +69,10 @@
       protonup # Proton my beloved
 
       # Dev
+      gh
       opencode
       claude-code
       go
-      gh
       nodejs
       python3
       jq
@@ -85,7 +80,7 @@
       just
       gnumake
       pnpm
-      bruno
+      bruno #postman alternative
       bruno-cli
       lazydocker
       vscode
@@ -122,6 +117,7 @@
       solaar
       piper
       moreutils
+      curtail # Compress images
       vulkan-tools
       amdvlk
 
