@@ -136,6 +136,7 @@ in
     wget
     curl
     vim
+    nixfmt-rfc-style
   ];
 
   xdg.portal = {
