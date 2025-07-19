@@ -71,11 +71,6 @@
     #search-nixos-api = {
     #  url = "github:anotherhadi/search-nixos-api";
     #};
-
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs @ {nixpkgs, ...}: {
