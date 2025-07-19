@@ -56,7 +56,7 @@
             menu = {
               border = "rounded";
               draw = {
-                columns = [ [ "kind_icon" ] [ "label" "label_description" ] [ "source_name" ] ];
+                columns = [["kind_icon"] ["label" "label_description"] ["source_name"]];
               };
             };
             documentation = {
@@ -111,7 +111,5 @@
       fidget-nvim.enable = true;
       #indent-blankline.enable = true;
     };
-
-    formatter.conform-nvim.enable = true;
   };
 }
