@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   imports = [
     ./variables.nix
 
@@ -64,7 +65,7 @@
       prismlauncher # Minecraft launcher
       #shadps4 # PS4 emulator
       lutris # Pirated game launcher
-      (wineWowPackages.stable.override {waylandSupport = true;})
+      (wineWowPackages.stable.override { waylandSupport = true; })
       winetricks
       protonup # Proton my beloved
 
@@ -80,7 +81,7 @@
       just
       gnumake
       pnpm
-      bruno #postman alternative
+      bruno # postman alternative
       bruno-cli
       lazydocker
       vscode
@@ -92,6 +93,7 @@
       # Virtualization
       virt-manager
       virt-viewer
+      quickemu
 
       #Office
       rustdesk
@@ -99,6 +101,7 @@
 
       # Utils
       nh # Nix helper
+      ntfs3g
       qbittorrent
       p7zip
       ffmpeg
