@@ -13,9 +13,7 @@
     defaultSopsFormat = "yaml";
 
     secrets = {
-      claude = { };
-      openaiGpt = { };
-      github-pub = { };
+      anthropicKey = { };
     };
 
   };

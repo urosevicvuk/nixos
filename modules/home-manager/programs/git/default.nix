@@ -5,7 +5,8 @@ let
   email = config.var.git.email;
 in
 {
-  home.file.".ssh/allowed_signers".text = "* ${config.sops.secrets.github-pub.path}";
+  home.file.".ssh/allowed_signers".text =
+    "* ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQpgKiftVTzqkfu6zbRpvZFtWZH/HBQSj6DhuVvVRul vuk23urosevic@gmail.com";
   programs.git = {
     enable = true;
     lfs.enable = true;

@@ -4,47 +4,37 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports =
+    [ (modulesPath + "/installer/scan/not-detected.nix")
+    ];
 
-  boot = {
-    initrd.availableKernelModules =
-      [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
-    initrd.kernelModules = [ ];
-    kernelModules = [ "kvm-amd" ];
-    extraModulePackages = [ ];
-  };
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.extraModulePackages = [ ];
 
-  fileSystems = {
-    "/" = {
-      device = "/dev/disk/by-uuid/140fa52f-14c6-4442-aefa-50b6fce42121";
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/d6708ad5-bcf6-4f94-b202-2f6373c58432";
       fsType = "ext4";
     };
 
-    "/boot" = {
-      device = "/dev/disk/by-uuid/A9A5-38DB";
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/09A8-D2A9";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-    "/home/vyke/hdd" = {
-      device = "/dev/disk/by-uuid/44FA0A84FA0A730A";
-      fsType = "ntfs-3g";
-      options = [ "rw" "uid=1000" ];
-    };
-  };
-
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/3f8d03bf-1347-4e8e-9844-21306a016a6a"; }];
+    [ { device = "/dev/disk/by-uuid/ae1e5fce-c8df-4e67-adca-dfd1a9fa577c"; }
+    ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp10s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode =
-    lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
