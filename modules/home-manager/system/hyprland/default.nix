@@ -5,7 +5,8 @@
   inputs,
   lib,
   ...
-}: let
+}:
+let
   border-size = config.theme.border-size;
   gaps-in = config.theme.gaps-in;
   gaps-out = config.theme.gaps-out;
@@ -16,7 +17,8 @@
   keyboardLayout = config.var.keyboardLayout;
   keyboardVariant = config.var.keyboardVariant;
   background = "rgb(" + config.lib.stylix.colors.base00 + ")";
-in {
+in
+{
   imports = [
     ./animations.nix
     ./bindings.nix
@@ -64,6 +66,16 @@ in {
       "$shiftMod" = "SUPER_SHIFT";
 
       exec-once = [
+        "zen &"
+        "steam &"
+        "vesktop &"
+        "todoist-electron &"
+        "obsidian &"
+        "spotify &"
+
+        "kdeconnect-indicator &"
+        "bitwarden &"
+
         "dbus-update-activation-environment --systemd --all &"
         "systemctl --user enable --now hyprpaper.service &"
         "systemctl --user enable --now hypridle.service &"
@@ -125,10 +137,7 @@ in {
           render_power = 3;
         };
         blur = {
-          enabled =
-            if blur
-            then "true"
-            else "false";
+          enabled = if blur then "true" else "false";
           size = 18;
         };
       };
