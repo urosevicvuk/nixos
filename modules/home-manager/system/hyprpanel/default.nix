@@ -27,7 +27,7 @@
   location = config.var.location;
 in {
   #imports = [ inputs.hyprpanel.homeManagerModules.hyprpanel ];
-  wayland.windowManager.hyprland.settings.exec-once = ["hyprpanel"];
+  # exec-once moved to main hyprland config to avoid conflicts
 
   programs.hyprpanel = {
     enable = true;

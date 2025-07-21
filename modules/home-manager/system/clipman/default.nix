@@ -10,8 +10,7 @@ let
   '';
 
 in {
-  wayland.windowManager.hyprland.settings.exec-once =
-    [ "${clipboard-clear}" "wl-paste -t text --watch clipman store" ];
+  # exec-once moved to main hyprland config to avoid conflicts
   home.packages = with pkgs; [ clipman clipboard clipboard-clear ];
   services.clipman.enable = true;
 }

@@ -66,20 +66,30 @@ in
       "$shiftMod" = "SUPER_SHIFT";
 
       exec-once = [
-        "zen &"
-        "steam &"
-        "vesktop &"
-        "todoist-electron &"
-        "obsidian &"
-        "spotify &"
+        # System services first
+        "dbus-update-activation-environment --systemd --all"
+        "systemctl --user start hyprpolkitagent"
 
-        "kdeconnect-indicator &"
-        "bitwarden &"
+        # System tools
+        "systemctl --user enable --now hyprpaper.service"
+        "systemctl --user enable --now hypridle.service"
+        "systemctl --user enable --now nextcloud-client.service"
+        "${pkgs.tailscale-systray}/bin/tailscale-systray"
 
-        "dbus-update-activation-environment --systemd --all &"
-        "systemctl --user enable --now hyprpaper.service &"
-        "systemctl --user enable --now hypridle.service &"
-        "systemctl --user enable --now nextcloud-client.service  &"
+        # Panel and utilities
+        "hyprpanel"
+        "${pkgs.writeShellScript "clipboard-clear" "clipman clear --all"}"
+        "wl-paste -t text --watch clipman store"
+
+        # Applications with workspace assignments
+        "[workspace 1 silent] zen"
+        "[workspace 5 silent] steam"
+        "[workspace 6 silent] vesktop"
+        "[workspace 8 silent] todoist-electron"
+        "[workspace 9 silent] obsidian"
+        "[workspace 10 silent] spotify"
+        "kdeconnect-indicator"
+        "bitwarden"
       ];
 
       monitor = [
@@ -218,10 +228,12 @@ in
       ];
 
       windowrule = [
-        "workspace 4, title:Steam"
-        "workspace 5, title:Discord"
+        "workspace 1, title:zen"
+        "workspace 5, title:Steam"
+        "workspace 6, title:Discord"
+        "workspace 8, title:todoist-electron"
+        "workspace 9, title:obsidian"
         "workspace 10, title:Spotify"
-        "workspace 9, title:Obsidian"
       ];
 
       input = {
