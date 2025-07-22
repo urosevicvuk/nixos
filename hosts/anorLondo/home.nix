@@ -58,8 +58,8 @@
       vlc # Video player
       obsidian # Note taking app
       todoist-electron # Todolists
-      gimp3-with-plugins
       figma-linux
+      gimp3-with-plugins
 
       #Gaming
       prismlauncher # Minecraft launcher
@@ -73,9 +73,6 @@
       gh
       opencode
       claude-code
-      go
-      nodejs
-      python3
       jq
       figlet
       just
@@ -90,15 +87,6 @@
       jetbrains.rust-rover
       android-studio
 
-      # Virtualization
-      virt-manager
-      virt-viewer
-      quickemu
-
-      #Office
-      rustdesk
-      libreoffice-qt6-fresh # Office suite
-
       # Utils
       nh # Nix helper
       ntfs3g
@@ -111,18 +99,18 @@
       fastfetch
       nitch
       ripgrep
-      yazi
       fzf
+      yazi
       btop-rocm
       dust
       jq
       bluez
       solaar
       piper
-      moreutils
       curtail # Compress images
       vulkan-tools
       amdvlk
+      moreutils
 
       # Just cool
       peaclock
