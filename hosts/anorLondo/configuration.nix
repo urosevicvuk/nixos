@@ -1,20 +1,20 @@
 { config, ... }:
 {
   imports = [
-    ../../modules/nixos/audio.nix
-    ../../modules/nixos/bluetooth.nix
-    ../../modules/nixos/docker.nix
-    ../../modules/nixos/fonts.nix
-    ../../modules/nixos/home-manager.nix
-    ../../modules/nixos/nix.nix
-    ../../modules/nixos/systemd-boot.nix
-    #../../modules/nixos/sddm.nix
-    ../../modules/nixos/tuigreet.nix
-    ../../modules/nixos/users.nix
-    ../../modules/nixos/utils.nix
-    ../../modules/nixos/tailscale.nix
-    ../../modules/nixos/hyprland.nix
-    ../../modules/nixos/virtualization.nix
+    ../../modules/nixos/personal/audio.nix
+    ../../modules/nixos/personal/bluetooth.nix
+    ../../modules/nixos/personal/docker.nix
+    ../../modules/nixos/personal/fonts.nix
+    ../../modules/nixos/personal/home-manager.nix
+    ../../modules/nixos/personal/nix.nix
+    ../../modules/nixos/personal/systemd-boot.nix
+    #../../modules/nixos/personal/sddm.nix
+    ../../modules/nixos/personal/tuigreet.nix
+    ../../modules/nixos/personal/users.nix
+    ../../modules/nixos/personal/utils.nix
+    ../../modules/nixos/personal/tailscale.nix
+    ../../modules/nixos/personal/hyprland.nix
+    ../../modules/nixos/personal/virtualization.nix
 
     # You should let those lines as is
     ./hardware-configuration.nix
