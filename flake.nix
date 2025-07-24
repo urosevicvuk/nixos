@@ -10,6 +10,10 @@
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
 
+    nixpkgs-stable = {
+      url = "github:nixos/nixpkgs/25.05";
+    };
+
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
     };
@@ -73,45 +77,56 @@
     #};
   };
 
-  outputs = inputs @ {nixpkgs, ...}: {
-    # NixOS configurations:w
-    nixosConfigurations = {
-      # anorLondo is the main desktop system
-      anorLondo = nixpkgs.lib.nixosSystem {
-        modules = [
-          {
-            _module.args = {inherit inputs;};
-          }
-          inputs.home-manager.nixosModules.home-manager
-          inputs.stylix.nixosModules.stylix
-          ./hosts/anorLondo/configuration.nix
-        ];
-      };
+  outputs =
+    inputs@{ nixpkgs, nixpkgs-stable, ... }:
+    {
+      # NixOS configurations:w
+      nixosConfigurations = {
+        # anorLondo is the main desktop system
+        anorLondo = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            {
+              _module.args = { inherit inputs; };
+              nixpkgs.overlays = [
+                (final: prev: {
+                  stable = import nixpkgs-stable {
+                    system = final.system;
+                    config.allowUnfree = true;
+                  };
+                })
+              ];
+            }
+            inputs.home-manager.nixosModules.home-manager
+            inputs.stylix.nixosModules.stylix
+            ./hosts/anorLondo/configuration.nix
+          ];
+        };
 
-      # ariandel is the laptop
-      ariandel = nixpkgs.lib.nixosSystem {
-        modules = [
-          {
-            _module.args = {inherit inputs;};
-          }
-          inputs.home-manager.nixosModules.home-manager
-          inputs.stylix.nixosModules.stylix
-          ./hosts/ariandel/configuration.nix
-        ];
-      };
+        # ariandel is the laptop
+        ariandel = nixpkgs.lib.nixosSystem {
+          modules = [
+            {
+              _module.args = { inherit inputs; };
+            }
+            inputs.home-manager.nixosModules.home-manager
+            inputs.stylix.nixosModules.stylix
+            ./hosts/ariandel/configuration.nix
+          ];
+        };
 
-      # fireLink is the server
-      fireLink = nixpkgs.lib.nixosSystem {
-        modules = [
-          {_module.args = {inherit inputs;};}
-          inputs.home-manager.nixosModules.home-manager
-          inputs.stylix.nixosModules.stylix
-          inputs.sops-nix.nixosModules.sops
-          inputs.nixarr.nixosModules.default
-          inputs.search-nixos-api.nixosModules.search-nixos-api
-          ./hosts/fireLink/configuration.nix
-        ];
+        # fireLink is the server
+        fireLink = nixpkgs.lib.nixosSystem {
+          modules = [
+            { _module.args = { inherit inputs; }; }
+            inputs.home-manager.nixosModules.home-manager
+            inputs.stylix.nixosModules.stylix
+            inputs.sops-nix.nixosModules.sops
+            inputs.nixarr.nixosModules.default
+            inputs.search-nixos-api.nixosModules.search-nixos-api
+            ./hosts/fireLink/configuration.nix
+          ];
+        };
       };
     };
-  };
 }

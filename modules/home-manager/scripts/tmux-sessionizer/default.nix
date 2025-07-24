@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = [
     (pkgs.writeShellScriptBin "tmux-sessionizer" ''
       #!/usr/bin/env bash
@@ -213,7 +214,7 @@
       sanity_check
 
       # if TS_SEARCH_PATHS is not set use default (customized for your setup)
-      [[ -n "$TS_SEARCH_PATHS" ]] || TS_SEARCH_PATHS=(~/Projects)
+      [[ -n "$TS_SEARCH_PATHS" ]] || TS_SEARCH_PATHS=(~/code)
 
       # Add any extra search paths to the TS_SEARCH_PATHS array
       # e.g : EXTRA_SEARCH_PATHS=("$HOME/extra1:4" "$HOME/extra2")
@@ -348,3 +349,4 @@
     '')
   ];
 }
+

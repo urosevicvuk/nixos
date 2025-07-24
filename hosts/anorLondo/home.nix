@@ -51,74 +51,79 @@
     inherit (config.var) username;
     homeDirectory = "/home/" + config.var.username;
 
-    packages = with pkgs; [
-      # Apps
-      vesktop # Discord client
-      bitwarden # Password manager
-      vlc # Video player
-      obsidian # Note taking app
-      todoist-electron # Todolists
-      figma-linux
-      gimp3-with-plugins
+    packages =
+      (with pkgs; [
+        # Apps
+        vesktop # Discord client
+        bitwarden # Password manager
+        vlc # Video player
+        obsidian # Note taking app
+        todoist-electron # Todolists
+        figma-linux
+        gimp3-with-plugins
 
-      #Gaming
-      prismlauncher # Minecraft launcher
-      #shadps4 # PS4 emulator
-      lutris # Pirated game launcher
-      (wineWowPackages.stable.override { waylandSupport = true; })
-      winetricks
-      protonup # Proton my beloved
+        #Gaming
+        prismlauncher # Minecraft launcher
+        lutris # Pirated game launcher
+        (wineWowPackages.stable.override { waylandSupport = true; })
+        winetricks
+        protonup # Proton my beloved
 
-      # Dev
-      gh
-      opencode
-      claude-code
-      jq
-      figlet
-      just
-      gnumake
-      pnpm
-      bruno # postman alternative
-      bruno-cli
-      lazydocker
-      vscode
-      jetbrains.goland
-      jetbrains.idea-ultimate
-      jetbrains.rust-rover
-      android-studio
+        # Dev
+        gh
+        opencode
+        claude-code
+        jq
+        figlet
+        just
+        gnumake
+        pnpm
+        bruno # postman alternative
+        bruno-cli
+        lazydocker
+        vscode
 
-      # Utils
-      nh # Nix helper
-      ntfs3g
-      qbittorrent
-      p7zip
-      ffmpeg
-      optipng
-      pfetch
-      pandoc
-      fastfetch
-      nitch
-      ripgrep
-      fzf
-      yazi
-      btop-rocm
-      dust
-      jq
-      bluez
-      solaar
-      piper
-      curtail # Compress images
-      vulkan-tools
-      amdvlk
-      moreutils
+        # Utils
+        nh # Nix helper
+        ntfs3g
+        qbittorrent
+        p7zip
+        ffmpeg
+        optipng
+        pfetch
+        pandoc
+        fastfetch
+        nitch
+        ripgrep
+        fzf
+        yazi
+        btop-rocm
+        dust
+        jq
+        bluez
+        solaar
+        piper
+        curtail # Compress images
+        vulkan-tools
+        amdvlk
+        moreutils
 
-      # Just cool
-      peaclock
-      cbonsai
-      pipes
-      cmatrix
-      neo-cowsay
-    ];
+        # Just cool
+        peaclock
+        cbonsai
+        pipes
+        cmatrix
+        neo-cowsay
+      ])
+      ++ (with pkgs.stable; [
+        # Stable packages (for reliability/build issues)
+        jetbrains.goland
+        jetbrains.idea-ultimate
+        jetbrains.rust-rover
+        android-studio
+
+        shadps4 # PS4 emulator
+      ]);
 
     # Import my profile picture, used by the hyprpanel dashboard
     file.".face.icon" = {
