@@ -40,7 +40,17 @@
     ];
   };
 
-  fileSystems."/home/vyke/hdd" = {
+  fileSystems."/media/hdd4tb" = {
+    device = "/dev/disk/by-uuid/D24C8ECC4C8EAB35";
+    fsType = "ntfs-3g";
+    options = [
+      "rw"
+      "uid=1000"
+      "nofail"
+    ];
+  };
+
+  fileSystems."/media/hdd750gb" = {
     device = "/dev/disk/by-uuid/44FA0A84FA0A730A";
     fsType = "ntfs-3g";
     options = [
