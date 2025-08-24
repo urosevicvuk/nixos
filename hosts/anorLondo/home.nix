@@ -71,6 +71,7 @@
 
         # Dev
         gh
+        nodejs
         opencode
         claude-code
         jq
@@ -81,6 +82,7 @@
         bruno # postman alternative
         bruno-cli
         lazydocker
+        docker-client
         vscode
 
         # Utils
@@ -114,15 +116,16 @@
         pipes
         cmatrix
         neo-cowsay
-      ])
-      ++ (with pkgs.stable; [
-        # Stable packages (for reliability/build issues)
+
         jetbrains.goland
         jetbrains.idea-ultimate
         jetbrains.rust-rover
         android-studio
 
         shadps4 # PS4 emulator
+      ])
+      ++ (with pkgs.stable; [
+        # Stable packages (for reliability/build issues)
       ]);
 
     # Import my profile picture, used by the hyprpanel dashboard
