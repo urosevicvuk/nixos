@@ -100,10 +100,6 @@ in
     power-profiles-daemon.enable = true;
     udisks2.enable = true;
     libinput.enable = true;
-    mysql = {
-      enable = true;
-      package = pkgs.mariadb;
-    };
   };
   programs = {
     kdeconnect.enable = true;

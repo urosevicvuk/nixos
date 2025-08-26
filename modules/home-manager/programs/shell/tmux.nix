@@ -1,5 +1,5 @@
 # Tmux is a terminal multiplexer that allows you to run multiple terminal sessions in a single window.
-{pkgs, ...}:
+{ pkgs, ... }:
 #let
 #  Config = pkgs.writeShellScriptBin "Config" ''
 #    SESSION="Nixy Config"
@@ -71,7 +71,6 @@
       {
         plugin = resurrect;
         extraConfig = ''
-          set -g @resurrect-processes 'ssh psql mysql sqlite3'
           set -g @resurrect-strategy-nvim 'session'
 
           resurrect_dir="$HOME/.tmux/resurrect"
@@ -88,5 +87,5 @@
     ];
   };
   #home.packages = [Config];
-  home.packages = [];
+  home.packages = [ ];
 }
