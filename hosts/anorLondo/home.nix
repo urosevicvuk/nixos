@@ -68,6 +68,7 @@
         (wineWowPackages.stable.override { waylandSupport = true; })
         winetricks
         protonup # Proton my beloved
+        protontricks
 
         # Dev
         gh
