@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   wayland.windowManager.hyprland.settings = {
     bind = [
       "$mod, RETURN, exec, ${pkgs.kitty}/bin/kitty" # Kitty
@@ -10,6 +11,8 @@
       "$shiftMod, SPACE, exec, hyprfocus-toggle" # Toggle HyprFocus
       #"$mod,X, exec, powermenu" # Powermenu
       #"$mod,C, exec, quickmenu" # Quickmenu
+      "$mod, d, exec, ${pkgs.kitty}/bin/kitty lazydocker" # Lazydocker
+      "$mod, g, exec, ${pkgs.kitty}/bin/kitty lazygit" # Lazygit
 
       "$mod, Q, killactive," # Close window
       "$mod, T, togglefloating," # Toggle Floating

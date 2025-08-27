@@ -101,8 +101,10 @@ in
     udisks2.enable = true;
     libinput.enable = true;
   };
+
   programs = {
     kdeconnect.enable = true;
+    localsend.enable = true;
     dconf.enable = true;
     steam.enable = true;
     gamescope.enable = true;

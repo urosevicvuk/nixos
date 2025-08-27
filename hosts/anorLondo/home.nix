@@ -61,6 +61,7 @@
         todoist-electron # Todolists
         figma-linux
         gimp3-with-plugins
+        pinta
 
         #Gaming
         prismlauncher # Minecraft launcher
