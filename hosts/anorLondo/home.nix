@@ -16,14 +16,15 @@
     ../../modules/home-manager/programs/fetch
     ../../modules/home-manager/programs/git
     ../../modules/home-manager/programs/spicetify
+    ../../modules/home-manager/programs/btop
     ../../modules/home-manager/programs/thunar
     ../../modules/home-manager/programs/lazygit
     ../../modules/home-manager/programs/zen
     ../../modules/home-manager/programs/wofi
     ../../modules/home-manager/programs/zathura
-    #../../modules/home/programs/tailscale #Server stuff
-    #../../modules/home/programs/nextcloud #NAS stuff
-    #../../modules/home/programs/anyrun # Sandbox stuff
+    ../../modules/home-manager/programs/tailscale # Server stuff
+    ../../modules/home-manager/programs/nextcloud # NAS stuff
+    #../../modules/home-manager/programs/anyrun # Sandbox stuff
 
     # Scripts
     ../../modules/home-manager/scripts # All scripts
@@ -55,37 +56,38 @@
       (with pkgs; [
         # Apps
         vesktop # Discord client
-        bitwarden # Password manager
         vlc # Video player
         obsidian # Note taking app
-        todoist-electron # Todolists
+
+        #Drawing
+        pinta
         figma-linux
         gimp3-with-plugins
-        pinta
 
         #Gaming
-        prismlauncher # Minecraft launcher
         lutris # Pirated game launcher
+        prismlauncher # Minecraft launcher
         (wineWowPackages.stable.override { waylandSupport = true; })
         winetricks
         protonup # Proton my beloved
         protontricks
+        shadps4 # PS4 emulator
 
         # Dev
-        gh
-        nodejs
         opencode
         claude-code
-        jq
-        figlet
+        lazydocker
+        gh # github app
+        nodejs
         just
         gnumake
-        pnpm
-        bruno # postman alternative
-        bruno-cli
-        lazydocker
-        docker-client
+        bruno
         vscode
+        jetbrains.goland
+        jetbrains.idea-ultimate
+        jetbrains.rust-rover
+        android-studio
+        jq # json util
 
         # Utils
         nh # Nix helper
@@ -101,16 +103,15 @@
         ripgrep
         fzf
         yazi
-        btop-rocm
-        dust
         jq
         bluez
         solaar
         piper
         curtail # Compress images
+        figlet
+        moreutils
         vulkan-tools
         amdvlk
-        moreutils
 
         # Just cool
         peaclock
@@ -119,12 +120,6 @@
         cmatrix
         neo-cowsay
 
-        jetbrains.goland
-        jetbrains.idea-ultimate
-        jetbrains.rust-rover
-        android-studio
-
-        shadps4 # PS4 emulator
       ])
       ++ (with pkgs.stable; [
         # Stable packages (for reliability/build issues)

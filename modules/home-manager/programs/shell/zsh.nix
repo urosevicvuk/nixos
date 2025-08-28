@@ -60,7 +60,7 @@ in
       celar = "clear";
       e = "exit";
       cd = "z";
-      ls = "eza --icons=always --no-quotes";
+      ls = "eza --icons=always --no-quotes -l";
       tree = "eza --icons=always --tree --no-quotes";
       sl = "ls";
       open = "${pkgs.xdg-utils}/bin/xdg-open";

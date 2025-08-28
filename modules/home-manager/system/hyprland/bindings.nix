@@ -11,8 +11,9 @@
       "$shiftMod, SPACE, exec, hyprfocus-toggle" # Toggle HyprFocus
       #"$mod,X, exec, powermenu" # Powermenu
       #"$mod,C, exec, quickmenu" # Quickmenu
-      "$mod, d, exec, ${pkgs.kitty}/bin/kitty lazydocker" # Lazydocker
-      "$mod, g, exec, ${pkgs.kitty}/bin/kitty lazygit" # Lazygit
+      "$mod, D, exec, ${pkgs.kitty}/bin/kitty lazydocker"
+      "$mod, G, exec, ${pkgs.kitty}/bin/kitty lazygit"
+      "$mod, I, exec, ${pkgs.kitty}/bin/kitty btop"
 
       "$mod, Q, killactive," # Close window
       "$mod, T, togglefloating," # Toggle Floating
