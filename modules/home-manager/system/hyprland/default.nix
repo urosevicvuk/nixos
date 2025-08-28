@@ -83,13 +83,11 @@ in
 
         # Applications with workspace assignments
         "[workspace 1 silent] zen"
+        "[workspace 4 silent] kitty"
         "[workspace 5 silent] steam"
         "[workspace 6 silent] vesktop"
-        "[workspace 8 silent] todoist-electron"
         "[workspace 9 silent] obsidian"
-        "[workspace 10 silent] spotify"
         "kdeconnect-indicator"
-        "bitwarden"
       ];
 
       monitor = [
