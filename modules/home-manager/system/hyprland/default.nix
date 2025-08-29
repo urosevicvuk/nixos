@@ -156,9 +156,9 @@ in
         mfact = 0.5;
       };
 
-      gestures = {
-        workspace_swipe = true;
-      };
+      #gestures = {
+      #  workspace_swipe = true;
+      #};
 
       misc = {
         vfr = true;
