@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ lib, ... }:
+{
   programs.nvf.settings.vim = {
     utility = {
       yazi-nvim = {
@@ -39,7 +40,7 @@
 
     statusline.lualine = {
       enable = true;
-      #theme = lib.mkForce "gruvbox_dark";
+      theme = lib.mkForce "gruvbox_dark";
     };
 
     autocomplete = {
@@ -56,7 +57,14 @@
             menu = {
               border = "rounded";
               draw = {
-                columns = [["kind_icon"] ["label" "label_description"] ["source_name"]];
+                columns = [
+                  [ "kind_icon" ]
+                  [
+                    "label"
+                    "label_description"
+                  ]
+                  [ "source_name" ]
+                ];
               };
             };
             documentation = {

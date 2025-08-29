@@ -1,4 +1,5 @@
-{lib, ...}: {
+{ lib, ... }:
+{
   programs.nvf.settings.vim = {
     viAlias = false;
     vimAlias = true;
@@ -61,8 +62,8 @@
 
     theme = {
       enable = true;
-      #name = lib.mkForce "gruvbox";
-      #style = lib.mkForce "dark";
+      name = lib.mkForce "gruvbox";
+      style = lib.mkForce "dark";
       transparent = lib.mkForce true;
     };
   };

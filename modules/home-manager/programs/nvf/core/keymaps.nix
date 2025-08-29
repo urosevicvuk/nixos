@@ -5,11 +5,25 @@
       whichKey = {
         enable = true;
         # TODO: registers
-        register = {};
+        register = { };
       };
     };
     keymaps = [
       # General Mappings
+      {
+        key = "<leader>w";
+        mode = "n";
+        silent = true;
+        action = ":w<CR>";
+        desc = "saving";
+      }
+      {
+        key = "<leader>q";
+        mode = "n";
+        silent = true;
+        action = ":q<CR>";
+        desc = "quiting";
+      }
       {
         key = "<leader><C-e>";
         mode = "n";
