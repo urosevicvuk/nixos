@@ -86,6 +86,7 @@
         jetbrains.goland
         jetbrains.idea-ultimate
         jetbrains.rust-rover
+        jetbrains.clion
         android-studio
         jq # json util
 
