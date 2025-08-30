@@ -128,7 +128,7 @@ in
 
         # nix flake template shortcut
         function dev-flake() {
-          nix flake init --template "https://flakehub.com/f/the-nix-way/dev-templates/*#$1" | direnv allow
+          nix flake init --template "https://flakehub.com/f/the-nix-way/dev-templates/*#$1" && direnv allow
         }
 
         # search history based on what's typed in the prompt
