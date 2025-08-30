@@ -52,9 +52,6 @@
       "$mod, F4, exec, night-shift" # Toggle night shift
 
       #Workspaces
-      "$mod, grave, togglespecialworkspace, special"
-      "$mod SHIFT, grave, movetoworkspace, special:special"
-
       "$mod, 1, workspace, 1"
       "$mod SHIFT, 1, movetoworkspace, 1"
       "$mod, 2, workspace, 2"
@@ -81,8 +78,8 @@
       "$mod, equal, togglespecialworkspace, macos"
       "$mod SHIFT, equal, movetoworkspace, special:macos"
 
-      "$mod, A, workspace, name:alternative"
-      "$mod SHIFT, A, movetoworkspace, name:alternative"
+      "$mod, grave, workspace, name:alternative"
+      "$mod SHIFT, grave, movetoworkspace, name:alternative"
     ];
 
     binde = [
