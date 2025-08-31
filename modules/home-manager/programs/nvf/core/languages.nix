@@ -1,4 +1,5 @@
-{lib, ...}: {
+{ lib, ... }:
+{
   programs.nvf.settings.vim = {
     diagnostics = {
       enable = true;
@@ -16,13 +17,13 @@
         virtual_text = {
           format =
             lib.generators.mkLuaInline
-            # lua
-            ''
-              function(diagnostic)
-                return string.format("%s", diagnostic.message)
-                --return string.format("%s (%s)", diagnostic.message, diagnostic.source)
-              end
-            '';
+              # lua
+              ''
+                function(diagnostic)
+                  return string.format("%s", diagnostic.message)
+                  --return string.format("%s (%s)", diagnostic.message, diagnostic.source)
+                end
+              '';
         };
       };
       nvim-lint = {
@@ -113,16 +114,15 @@
       clang.enable = true;
 
       css.enable = true;
-
-      svelte.enable = true;
+      tailwind.enable = true;
 
       html.enable = true;
+
+      svelte.enable = true;
 
       bash.enable = true;
 
       nix.enable = true;
-
-      tailwind.enable = true;
 
       markdown = {
         enable = true;
@@ -140,7 +140,8 @@
         enable = true;
         setupOpts = {
           formatters_by_ft = {
-            nix = ["nixfmt"];
+            nix = [ "nixfmt" ];
+            c = [ "clang-format" ];
           };
         };
       };
