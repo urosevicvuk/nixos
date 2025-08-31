@@ -92,6 +92,7 @@
 
         # Utils
         nh # Nix helper
+        nix-init
         ntfs3g
         qbittorrent
         p7zip
