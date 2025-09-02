@@ -20,6 +20,8 @@
       };
     };
 
+    docker.enable = true; # Docker option
+
     spiceUSBRedirection.enable = true; # USB device redirection
   };
 
@@ -36,12 +38,6 @@
     win-virtio # Windows VirtIO drivers
     win-spice # Windows SPICE guest tools
     swtpm # Software TPM for Windows 11
-  ];
-
-  # User permissions
-  users.users.vyke.extraGroups = [
-    "libvirtd"
-    "kvm"
   ];
 
   # Networking for VMs
