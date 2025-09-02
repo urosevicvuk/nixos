@@ -8,7 +8,6 @@
     ./variables.nix
 
     # Programs
-    #../../modules/home-manager/programs/anyrun # Sandbox stuff
     ../../modules/home-manager/programs/btop
     ../../modules/home-manager/programs/direnv
     ../../modules/home-manager/programs/fetch
@@ -16,7 +15,7 @@
     ../../modules/home-manager/programs/git
     ../../modules/home-manager/programs/kitty
     ../../modules/home-manager/programs/lazygit
-    ../../modules/home-manager/programs/nextcloud # NAS stuff
+    ../../modules/home-manager/programs/nextcloud
     ../../modules/home-manager/programs/nvf
     ../../modules/home-manager/programs/shell
     ../../modules/home-manager/programs/spicetify
@@ -28,7 +27,7 @@
     # Scripts
     ../../modules/home-manager/scripts # All scripts
 
-    # System (Desktop environment like stuff)
+    # System
     ../../modules/home-manager/system/clipman
     ../../modules/home-manager/system/hypridle
     ../../modules/home-manager/system/hyprland
@@ -37,7 +36,6 @@
     ../../modules/home-manager/system/hyprpaper
     ../../modules/home-manager/system/mime
     ../../modules/home-manager/system/udiskie
-    #../../modules/home-manager/system/waybar
 
     ./secrets
   ];
