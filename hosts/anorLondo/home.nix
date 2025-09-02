@@ -8,36 +8,36 @@
     ./variables.nix
 
     # Programs
-    ../../modules/home-manager/programs/kitty
-    ../../modules/home-manager/programs/ghostty
-    ../../modules/home-manager/programs/nvf
-    ../../modules/home-manager/programs/shell
+    #../../modules/home-manager/programs/anyrun # Sandbox stuff
+    ../../modules/home-manager/programs/btop
     ../../modules/home-manager/programs/direnv
     ../../modules/home-manager/programs/fetch
+    ../../modules/home-manager/programs/ghostty
     ../../modules/home-manager/programs/git
-    ../../modules/home-manager/programs/spicetify
-    ../../modules/home-manager/programs/btop
-    ../../modules/home-manager/programs/thunar
+    ../../modules/home-manager/programs/kitty
     ../../modules/home-manager/programs/lazygit
-    ../../modules/home-manager/programs/zen
+    ../../modules/home-manager/programs/nextcloud # NAS stuff
+    ../../modules/home-manager/programs/nvf
+    ../../modules/home-manager/programs/shell
+    ../../modules/home-manager/programs/spicetify
+    ../../modules/home-manager/programs/thunar
     ../../modules/home-manager/programs/wofi
     ../../modules/home-manager/programs/zathura
-    ../../modules/home-manager/programs/tailscale # Server stuff
-    ../../modules/home-manager/programs/nextcloud # NAS stuff
-    #../../modules/home-manager/programs/anyrun # Sandbox stuff
+    ../../modules/home-manager/programs/zen
 
     # Scripts
     ../../modules/home-manager/scripts # All scripts
 
     # System (Desktop environment like stuff)
-    ../../modules/home-manager/system/hyprland
+    ../../modules/home-manager/system/clipman
     ../../modules/home-manager/system/hypridle
+    ../../modules/home-manager/system/hyprland
     ../../modules/home-manager/system/hyprlock
     ../../modules/home-manager/system/hyprpanel
     ../../modules/home-manager/system/hyprpaper
     ../../modules/home-manager/system/mime
     ../../modules/home-manager/system/udiskie
-    ../../modules/home-manager/system/clipman
+    #../../modules/home-manager/system/waybar
 
     ./secrets
   ];
@@ -47,6 +47,13 @@
   };
   services = {
   };
+
+  # Overlays
+  #nixpkgs.overlays = [
+  #  (final: prev: {
+
+  #  })
+  #];
 
   home = {
     inherit (config.var) username;
@@ -124,7 +131,7 @@
 
       ])
       ++ (with pkgs.stable; [
-        # Stable packages (for reliability/build issues)
+        # Stable packages (25.05)
       ]);
 
     # Import my profile picture, used by the hyprpanel dashboard
