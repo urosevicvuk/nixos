@@ -238,7 +238,7 @@ in
         kb_layout = keyboardLayout;
         kb_variant = keyboardVariant;
 
-        kb_options = "caps:escape,altwin:swap_alt_win,grp:alt_space_toggle";
+        kb_options = "caps:escape,altwin:swap_lalt_lwin,grp:alt_space_toggle";
         follow_mouse = 1;
         sensitivity = -0.5;
         accel_profile = "flat";
