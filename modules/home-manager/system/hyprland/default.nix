@@ -12,8 +12,8 @@ let
   inherit (config.theme) inactive-opacity;
   inherit (config.theme) rounding;
   inherit (config.theme) blur;
-  inherit (config.theme) keyboardLayout;
-  inherit (config.theme) keyboardVariant;
+  inherit (config.var) keyboardLayout;
+  inherit (config.var) keyboardVariant;
 in
 {
   imports = [
