@@ -3,25 +3,28 @@
   wayland.windowManager.hyprland.settings = {
     bind = [
       #Basic things
-      "$mod, RETURN, exec, ${pkgs.kitty}/bin/kitty" # Kitty
-      "$mod, E, exec, ${pkgs.xfce.thunar}/bin/thunar" # Thunar
-      "$mod, B, exec, zen" # Zen Browser
-      "$mod, P, exec, ${pkgs.bitwarden}/bin/bitwarden" # Bitwarden
-      "ALT CTRL $shiftMod, L, exec, ${pkgs.hyprlock}/bin/hyprlock" # Lock
       "$mod, SPACE, exec, menu" # Launcher
       "$shiftMod, SPACE, exec, hyprfocus-toggle" # Toggle HyprFocus
-      #"$mod,X, exec, powermenu" # Powermenu
-      #"$mod,C, exec, quickmenu" # Quickmenu
-
-      # CLI Apps
-      "$mod, D, exec, ${pkgs.kitty}/bin/kitty lazydocker"
-      "$mod, G, exec, ${pkgs.kitty}/bin/kitty lazygit"
-      "$mod, I, exec, ${pkgs.kitty}/bin/kitty btop"
-      "$mod, Y, exec, ${pkgs.kitty}/bin/kitty yazi"
+      "CTRL $shiftMod, L, exec, ${pkgs.hyprlock}/bin/hyprlock" # Lock
 
       "$mod, Q, killactive," # Close window
       "$mod, T, togglefloating," # Toggle Floating
       "$mod, F, fullscreen" # Toggle Fullscreen
+
+      #"$mod,X, exec, powermenu" # Powermenu
+      #"$mod,C, exec, quickmenu" # Quickmenu
+
+      # GUI Apps
+      "$mod, B, exec, zen" # Zen Browser
+      "$mod, E, exec, ${pkgs.xfce.thunar}/bin/thunar" # Thunar
+      "$mod, P, exec, ${pkgs.bitwarden}/bin/bitwarden" # Bitwarden
+
+      # CLI Apps
+      "$mod, RETURN, exec, ${pkgs.kitty}/bin/kitty" # Kitty
+      "$mod, G, exec, ${pkgs.kitty}/bin/kitty lazygit"
+      "$mod, D, exec, ${pkgs.kitty}/bin/kitty lazydocker"
+      "$mod, I, exec, ${pkgs.kitty}/bin/kitty btop"
+      "$mod, Y, exec, ${pkgs.kitty}/bin/kitty yazi"
 
       "$mod, H, movefocus, l" # Move focus left
       "$mod, L, movefocus, r" # Move focus Right
