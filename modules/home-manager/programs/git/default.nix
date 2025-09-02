@@ -1,8 +1,8 @@
 # Git configuration
 { config, ... }:
 let
-  username = config.var.git.username;
-  email = config.var.git.email;
+  inherit (config.var.git) username;
+  inherit (config.var.git) email;
 in
 {
   home.file.".ssh/allowed_signers".text =

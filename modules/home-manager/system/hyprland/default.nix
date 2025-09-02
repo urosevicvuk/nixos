@@ -2,21 +2,18 @@
 {
   pkgs,
   config,
-  inputs,
-  lib,
   ...
 }:
 let
-  border-size = config.theme.border-size;
-  gaps-in = config.theme.gaps-in;
-  gaps-out = config.theme.gaps-out;
-  active-opacity = config.theme.active-opacity;
-  inactive-opacity = config.theme.inactive-opacity;
-  rounding = config.theme.rounding;
-  blur = config.theme.blur;
-  keyboardLayout = config.var.keyboardLayout;
-  keyboardVariant = config.var.keyboardVariant;
-  background = "rgb(" + config.lib.stylix.colors.base00 + ")";
+  inherit (config.theme) border-size;
+  inherit (config.theme) gaps-in;
+  inherit (config.theme) gaps-out;
+  inherit (config.theme) active-opacity;
+  inherit (config.theme) inactive-opacity;
+  inherit (config.theme) rounding;
+  inherit (config.theme) blur;
+  inherit (config.theme) keyboardLayout;
+  inherit (config.theme) keyboardVariant;
 in
 {
   imports = [
@@ -87,6 +84,7 @@ in
         "[workspace 5 silent] steam"
         "[workspace 6 silent] vesktop"
         "[workspace 9 silent] obsidian"
+        "[workspace 10 silent] spotify"
         "kdeconnect-indicator"
       ];
 

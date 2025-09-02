@@ -1,14 +1,13 @@
 { pkgs, config, ... }:
 let
-  username = config.var.username;
-  hostname = config.var.hostname;
-  keyboardLayout = config.var.keyboardLayout;
-  configDir = config.var.configDirectory;
-  timeZone = config.var.timeZone;
-  defaultLocale = config.var.defaultLocale;
-  extraLocale = config.var.extraLocale;
-  autoUpgrade = config.var.autoUpgrade;
-  keyboardVariant = config.var.keyboardVariant;
+  inherit (config.var) hostname;
+  inherit (config.var) keyboardLayout;
+  inherit (config.var) configDirectory;
+  inherit (config.var) timeZone;
+  inherit (config.var) defaultLocale;
+  inherit (config.var) extraLocale;
+  inherit (config.var) autoUpgrade;
+  inherit (config.var) keyboardVariant;
 in
 {
   networking = {
@@ -21,7 +20,7 @@ in
   system.autoUpgrade = {
     enable = autoUpgrade;
     dates = "04:00";
-    flake = "${configDir}";
+    flake = "${configDirectory}";
     flags = [
       "--update-input"
       "nixpkgs"
@@ -31,8 +30,9 @@ in
   };
 
   time = {
-    timeZone = timeZone;
+    inherit timeZone;
   };
+
   i18n.defaultLocale = defaultLocale;
   i18n.extraLocaleSettings = {
     LC_ADDRESS = extraLocale;
@@ -45,8 +45,6 @@ in
     LC_TELEPHONE = extraLocale;
     LC_TIME = extraLocale;
   };
-
-  users.users.${username}.extraGroups = [ "inputs" ];
 
   services = {
     ratbagd.enable = true;
