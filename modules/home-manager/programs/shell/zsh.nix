@@ -59,7 +59,6 @@ in
       clera = "clear";
       celar = "clear";
       e = "exit";
-      cd = "z";
       ls = "eza --icons=always --no-quotes -l";
       tree = "eza --icons=always --tree --no-quotes";
       sl = "ls";

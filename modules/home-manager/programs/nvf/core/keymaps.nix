@@ -116,6 +116,13 @@
         desc = "LSP Hover";
       }
       {
+        key = "<M-CR>";
+        mode = [ "n" "v" ];
+        silent = true;
+        action = "<cmd>Lspsaga code_action<cr>";
+        desc = "Code Actions";
+      }
+      {
         key = "L";
         mode = "v";
         silent = true;

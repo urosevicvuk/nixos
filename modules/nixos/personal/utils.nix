@@ -73,6 +73,8 @@ in
   };
   console.keyMap = "us";
 
+  hardware.graphics.enable = true;
+
   environment.variables = {
     XDG_DATA_HOME = "$HOME/.local/share";
     NH_FLAKE = "/home/vyke/.config/nixos";
