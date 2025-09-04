@@ -1,8 +1,7 @@
 {
-  # https://github.com/anotherhadi/nixy
+  # https://github.com/urosevicvuk/nixos
   description = ''
-    Nixy simplifies and unifies the Hyprland ecosystem with a modular, easily customizable setup.
-    It provides a structured way to manage your system configuration and dotfiles with minimal effort.
+    Goated nixos setup
   '';
 
   inputs = {
@@ -14,12 +13,13 @@
       url = "github:nixos/nixpkgs/25.05";
     };
 
-    nixos-hardware = {
-      url = "github:NixOS/nixos-hardware/master";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/master";
     };
 
     hyprland = {
@@ -28,6 +28,10 @@
 
     hyprpanel = {
       url = "github:Jas-SinghFSU/HyprPanel";
+    };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix"; # SOPS integration for NixOS
     };
 
     stylix = {
@@ -42,29 +46,8 @@
       url = "github:0xc000022070/zen-browser-flake";
     };
 
-    #    nixcord = {
-    #      url = "github:kaylorben/nixcord"; # Discord client for NixOS
-    #    };
-
-    sops-nix = {
-      url = "github:Mic92/sops-nix"; # SOPS integration for NixOS
-    };
-
-    #    nixarr = {
-    #      url = "github:rasmus-kirk/nixarr";
-    #    };
-
-    anyrun = {
-      url = "github:fufexan/anyrun/launch-prefix";
-    };
-
     nvf = {
       url = "github:notashelf/nvf";
-    };
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     spicetify-nix = {
@@ -72,9 +55,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #search-nixos-api = {
-    #  url = "github:anotherhadi/search-nixos-api";
-    #};
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
   };
 
   outputs =
@@ -88,6 +71,7 @@
           modules = [
             {
               _module.args = { inherit inputs; };
+
               nixpkgs.overlays = [
                 (final: prev: {
                   stable = import nixpkgs-stable {
