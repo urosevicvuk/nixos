@@ -120,6 +120,11 @@
         vulkan-tools
         amdvlk
 
+        # stevencodes recommendation
+        oha
+        hyperfine
+        toxiproxy
+
         # Just cool
         peaclock
         cbonsai
