@@ -60,9 +60,9 @@
     packages =
       (with pkgs; [
         # Apps
-        vesktop # Discord client
-        vlc # Video player
-        obsidian # Note taking app
+        vesktop
+        vlc
+        obsidian
 
         #Drawing
         pinta
@@ -70,19 +70,19 @@
         gimp3-with-plugins
 
         #Gaming
-        lutris # Pirated game launcher
-        prismlauncher # Minecraft launcher
+        lutris
+        prismlauncher
         (wineWowPackages.stable.override { waylandSupport = true; })
         winetricks
-        protonup # Proton my beloved
+        protonup
         protontricks
-        shadps4 # PS4 emulator
+        shadps4
 
         # Dev
         opencode
         claude-code
         lazydocker
-        gh # github app
+        gh
         nodejs
         just
         gnumake
@@ -93,10 +93,10 @@
         jetbrains.rust-rover
         jetbrains.clion
         android-studio
-        jq # json util
+        jq
 
         # Utils
-        nh # Nix helper
+        nh
         nix-init
         ntfs3g
         qbittorrent
@@ -114,7 +114,7 @@
         bluez
         solaar
         piper
-        curtail # Compress images
+        curtail
         figlet
         moreutils
         vulkan-tools

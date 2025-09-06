@@ -2,6 +2,7 @@
 {
   pkgs,
   config,
+  inputs,
   ...
 }:
 let
@@ -55,8 +56,20 @@ in
         "--all"
       ]; # https://wiki.hyprland.org/Nix/Hyprland-on-Home-Manager/#programs-dont-work-in-systemd-services-but-do-on-the-terminal
     };
-    package = null;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     portalPackage = null;
+
+    plugins = [
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprscrolling
+    ];
+
+    extraConfig = ''
+      plugin = ${inputs.hyprland-plugins.packages.${pkgs.system}.hyprscrolling}/lib/libhyprscrolling.so
+      
+      plugin:hyprscrolling {
+          fullscreen_on_one_column = true
+      }
+    '';
 
     settings = {
       "$mod" = "SUPER";
@@ -129,8 +142,11 @@ in
         gaps_in = gaps-in;
         gaps_out = gaps-out;
         border_size = border-size;
-        layout = "dwindle";
-        #"col.inactive_border" = lib.mkForce background;
+        layout = "scrolling";
+      };
+
+      "plugin:hyprscrolling" = {
+        fullscreen_on_one_column = true;
       };
 
       decoration = {
