@@ -76,20 +76,18 @@
       "$mod, 0, workspace, 10"
       "$mod SHIFT, 0, movetoworkspace, 10"
 
-      "$mod, minus, togglespecialworkspace, windows"
-      "$mod SHIFT, minus, movetoworkspace, special:windows"
-      "$mod, equal, togglespecialworkspace, macos"
-      "$mod SHIFT, equal, movetoworkspace, special:macos"
+      #"$mod, minus, togglespecialworkspace, windows"
+      #"$mod SHIFT, minus, movetoworkspace, special:windows"
+      #"$mod, equal, togglespecialworkspace, macos"
+      #"$mod SHIFT, equal, movetoworkspace, special:macos"
 
       "$mod, grave, workspace, name:alternative"
       "$mod SHIFT, grave, movetoworkspace, name:alternative"
     ];
 
     binde = [
-      "$mod CTRL, h, resizeactive, -25 0" # Resize left (shrink width)
-      "$mod CTRL, l, resizeactive, 25 0" # Resize right (grow width)
-      "$mod CTRL, k, resizeactive, 0 -25" # Resize up (shrink height)
-      "$mod CTRL, j, resizeactive, 0 25" # Resize down (grow height)
+      "$mod CTRL, minus, layoutmsg, colresize -0.167" # Resize column smaller (decrease by ~1/6)
+      "$mod CTRL, equal, layoutmsg, colresize +0.167" # Resize column larger (increase by ~1/6)
     ];
 
     bindm = [

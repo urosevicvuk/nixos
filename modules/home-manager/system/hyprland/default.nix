@@ -65,7 +65,7 @@ in
 
     extraConfig = ''
       plugin = ${inputs.hyprland-plugins.packages.${pkgs.system}.hyprscrolling}/lib/libhyprscrolling.so
-      
+
       plugin:hyprscrolling {
           fullscreen_on_one_column = true
       }
@@ -147,6 +147,8 @@ in
 
       "plugin:hyprscrolling" = {
         fullscreen_on_one_column = true;
+        focus_fit_method = 1;
+        explicit_column_widths = "0.333, 0.5, 0.667, 1.0";
       };
 
       decoration = {
