@@ -93,6 +93,7 @@
         jetbrains.rust-rover
         jetbrains.clion
         android-studio
+        codeblocksFull
         jq
 
         # Utils
@@ -119,6 +120,7 @@
         moreutils
         vulkan-tools
         amdvlk
+        freerdp
 
         # stevencodes recommendation
         oha

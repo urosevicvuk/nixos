@@ -69,6 +69,7 @@ in
       rm = "${pkgs.rmtrash}/bin/rmtrash";
       rmdir = "${pkgs.rmtrash}/bin/rmdirtrash";
       quantum = "pw-metadata -n settings 0 clock.force-quantum";
+      win = "/home/vyke/win/win.sh";
 
       obsidian-no-gpu = "env ELECTRON_OZONE_PLATFORM_HINT=auto obsidian --ozone-platform=x11";
       wireguard-import = "nmcli connection import type wireguard file";
