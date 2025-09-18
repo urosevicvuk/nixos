@@ -8,102 +8,136 @@
     ./variables.nix
 
     # Programs
-    ../../modules/home/programs/kitty
-    ../../modules/home/programs/nvf
-    ../../modules/home/programs/shell
-    ../../modules/home/programs/fetch
-    ../../modules/home/programs/git
-    ../../modules/home/programs/git/signing.nix
-    ../../modules/home/programs/spicetify
-    ../../modules/home/programs/thunar
-    ../../modules/home/programs/lazygit
-    ../../modules/home/programs/zen
-    ../../modules/home/programs/discord
-    #../../modules/home/programs/nixvim #Currently using nvf so no need for this
-    #../../modules/home/programs/tailscale #Server stuff
-    #../../modules/home/programs/nextcloud #NAS stuff
-    #../../modules/home/programs/anyrun # Sandbox stuff
+    ../../modules/home-manager/programs/btop
+    ../../modules/home-manager/programs/direnv
+    ../../modules/home-manager/programs/fetch
+    ../../modules/home-manager/programs/ghostty
+    ../../modules/home-manager/programs/git
+    ../../modules/home-manager/programs/kitty
+    ../../modules/home-manager/programs/lazygit
+    ../../modules/home-manager/programs/nextcloud
+    ../../modules/home-manager/programs/nvf
+    ../../modules/home-manager/programs/shell
+    ../../modules/home-manager/programs/spicetify
+    ../../modules/home-manager/programs/thunar
+    ../../modules/home-manager/programs/wofi
+    ../../modules/home-manager/programs/zathura
+    ../../modules/home-manager/programs/zen
 
     # Scripts
-    ../../modules/home/scripts # All scripts
+    ../../modules/home-manager/scripts # All scripts
 
-    # System (Desktop environment like stuff)
-    ../../modules/home/system/hyprland
-    ../../modules/home/system/hypridle
-    ../../modules/home/system/hyprlock
-    ../../modules/home/system/hyprpanel
-    ../../modules/home/system/hyprpaper
-    ../../modules/home/system/wofi
-    ../../modules/home/system/zathura
-    ../../modules/home/system/mime
-    ../../modules/home/system/udiskie
-    ../../modules/home/system/clipman
+    # System
+    ../../modules/home-manager/system/clipman
+    ../../modules/home-manager/system/hypridle
+    ../../modules/home-manager/system/hyprland
+    ../../modules/home-manager/system/hyprlock
+    ../../modules/home-manager/system/hyprpanel
+    ../../modules/home-manager/system/hyprpaper
+    ../../modules/home-manager/system/mime
+    ../../modules/home-manager/system/udiskie
+
+    ./secrets
   ];
+
+  #All the programs that are not importes as modules
+  programs = {
+  };
+  services = {
+  };
+
+  # Overlays
+  #nixpkgs.overlays = [
+  #  (final: prev: {
+
+  #  })
+  #];
 
   home = {
     inherit (config.var) username;
     homeDirectory = "/home/" + config.var.username;
 
-    packages = with pkgs; [
-      # Apps
-      vesktop # Discord client
-      bitwarden # Password manager
-      vlc # Video player
-      obsidian # Note taking app
-      todoist-electron # Todolists
-      textpieces # Manipulate texts
-      curtail # Compress images
-      gimp3-with-plugins
-      gnome-clocks
-      gnome-text-editor
-      figma-linux
-      libreoffice-qt6-fresh # Office suite
+    packages =
+      (with pkgs; [
+        # Apps
+        vesktop
+        vlc
+        obsidian
 
-      #Gaming
-      prismlauncher # Minecraft launcher
-      shadps4 # PS4 emulator
-      lutris # Pirated game launcher
-      (wineWowPackages.stable.override { waylandSupport = true; })
-      winetricks
-      protonup # Proton my beloved
+        #Drawing
+        pinta
+        figma-linux
+        gimp3-with-plugins
 
-      # Dev
-      go
-      nodejs
-      python3
-      jq
-      figlet
-      just
-      pnpm
-      lazydocker
-      vscode
-      jetbrains-toolbox
+        #Gaming
+        lutris
+        prismlauncher
+        (wineWowPackages.stable.override { waylandSupport = true; })
+        winetricks
+        protonup
+        protontricks
+        shadps4
 
-      #Office
-      rustdesk
+        # Dev
+        opencode
+        claude-code
+        lazydocker
+        gh
+        nodejs
+        just
+        gnumake
+        bruno
+        vscode
+        jetbrains.goland
+        jetbrains.idea-ultimate
+        jetbrains.rust-rover
+        jetbrains.clion
+        android-studio
+        codeblocksFull
+        jq
 
-      # Utils
-      nh # Nix helper
-      qbittorrent
-      p7zip
-      optipng
-      pfetch
-      pandoc
-      fastfetch
-      nitch
-      ripgrep
-      yazi
-      fzf
-      bluez
-      solaar
-      btop-rocm
+        # Utils
+        nh
+        nix-init
+        ntfs3g
+        qbittorrent
+        p7zip
+        ffmpeg
+        optipng
+        pfetch
+        pandoc
+        fastfetch
+        nitch
+        ripgrep
+        fzf
+        yazi
+        jq
+        bluez
+        solaar
+        piper
+        curtail
+        figlet
+        moreutils
+        vulkan-tools
+        amdvlk
+        freerdp
 
-      # Just cool
-      peaclock
-      cbonsai
-      pipes
-      cmatrix
-    ];
+        # stevencodes recommendation
+        oha
+        hyperfine
+        toxiproxy
+
+        # Just cool
+        peaclock
+        cbonsai
+        pipes
+        cmatrix
+        neo-cowsay
+
+      ])
+      ++ (with pkgs.stable; [
+        # Stable packages (25.05)
+      ]);
 
     # Import my profile picture, used by the hyprpanel dashboard
     file.".face.icon" = {
