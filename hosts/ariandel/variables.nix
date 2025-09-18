@@ -9,6 +9,8 @@
     username = "vyke";
     configDirectory = "/home/" + config.var.username + "/nixos"; # The path of the nixos configuration directory
 
+    device = "laptop"; # laptop || desktop || server
+
     keyboardLayout = "us,rs,rs";
     keyboardVariant = ",latin,";
 
