@@ -63,6 +63,7 @@
         vesktop
         vlc
         obsidian
+        libreoffice-qt
 
         #Drawing
         pinta

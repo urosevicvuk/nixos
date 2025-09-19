@@ -4,10 +4,12 @@
     ../../themes/gruvbox.nix
   ];
   config.var = {
-    hostname = "anorLondo";
+    hostname = "fireLink";
     username = "vyke";
     configDirectory = "/home/" + config.var.username
       + "/nixos"; # The path of the nixos configuration directory
+
+    device = "server"; # laptop || desktop || server
 
     keyboardLayout = "us";
     keyboardVariant = "";
