@@ -86,8 +86,8 @@
     ];
 
     binde = [
-      "$mod CTRL, minus, layoutmsg, colresize -0.167" # Resize column smaller (decrease by ~1/6)
-      "$mod CTRL, equal, layoutmsg, colresize +0.167" # Resize column larger (increase by ~1/6)
+      "$shiftMod CTRL, minus, layoutmsg, colresize -0.1" # Resize column smaller
+      "$shiftMod CTRL, equal, layoutmsg, colresize +0.1" # Resize column larger
     ];
 
     bindm = [
