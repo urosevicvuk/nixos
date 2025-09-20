@@ -22,11 +22,6 @@
       url = "github:NixOS/nixos-hardware/master";
     };
 
-    caelestia-shell = {
-      url = "github:caelestia-dots/shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     hyprland = {
       url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     };
