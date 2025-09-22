@@ -11,10 +11,8 @@
     ../../modules/home-manager/programs/btop
     ../../modules/home-manager/programs/direnv
     ../../modules/home-manager/programs/fetch
-    ../../modules/home-manager/programs/ghostty
     ../../modules/home-manager/programs/git
     ../../modules/home-manager/programs/kitty
-    ../../modules/home-manager/programs/lazygit
     ../../modules/home-manager/programs/nextcloud
     ../../modules/home-manager/programs/nvf
     ../../modules/home-manager/programs/shell
