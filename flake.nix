@@ -18,6 +18,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # macOS support (uncomment when needed)
+    # darwin = {
+    #   url = "github:LnL7/nix-darwin";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
+    # WSL support (uncomment when needed)
+    # nixos-wsl = {
+    #   url = "github:nix-community/NixOS-WSL";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
     };
@@ -68,7 +80,7 @@
   outputs =
     inputs@{ nixpkgs, nixpkgs-stable, ... }:
     {
-      # NixOS configurations:w
+      # NixOS configurations
       nixosConfigurations = {
         # anorLondo is the main desktop system
         anorLondo = nixpkgs.lib.nixosSystem {
@@ -111,11 +123,34 @@
             inputs.home-manager.nixosModules.home-manager
             inputs.stylix.nixosModules.stylix
             inputs.sops-nix.nixosModules.sops
-            inputs.nixarr.nixosModules.default
-            inputs.search-nixos-api.nixosModules.search-nixos-api
+            # inputs.nixarr.nixosModules.default  # Enable when nixarr input is added and configured
+            # inputs.search-nixos-api.nixosModules.search-nixos-api  # Enable when search-nixos-api input is added
             ./hosts/fireLink/configuration.nix
           ];
         };
+
+        # WSL configuration (uncomment when needed)
+        # wsl-dev = nixpkgs.lib.nixosSystem {
+        #   system = "x86_64-linux";
+        #   modules = [
+        #     { _module.args = { inherit inputs; }; }
+        #     inputs.nixos-wsl.nixosModules.wsl
+        #     inputs.home-manager.nixosModules.home-manager
+        #     ./hosts/wsl-dev/configuration.nix
+        #   ];
+        # };
       };
+
+      # macOS configurations (uncomment when needed)
+      # darwinConfigurations = {
+      #   macbook = inputs.darwin.lib.darwinSystem {
+      #     system = "aarch64-darwin";  # Apple Silicon (use x86_64-darwin for Intel)
+      #     modules = [
+      #       { _module.args = { inherit inputs; }; }
+      #       inputs.home-manager.darwinModules.home-manager
+      #       ./hosts/macbook/configuration.nix
+      #     ];
+      #   };
+      # };
     };
 }

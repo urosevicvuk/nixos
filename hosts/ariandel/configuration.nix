@@ -1,20 +1,10 @@
 { config, ... }:
 {
   imports = [
-    ../../modules/nixos/personal/audio.nix
-    ../../modules/nixos/personal/bluetooth.nix
-    ../../modules/nixos/personal/fonts.nix
-    ../../modules/nixos/personal/home-manager.nix
-    ../../modules/nixos/personal/nix.nix
-    ../../modules/nixos/personal/systemd-boot.nix
-    ../../modules/nixos/personal/tuigreet.nix
-    ../../modules/nixos/personal/users.nix
-    ../../modules/nixos/personal/utils.nix
-    ../../modules/nixos/personal/tailscale.nix
-    ../../modules/nixos/personal/hyprland.nix
-    ../../modules/nixos/personal/virtualization.nix
+    # Device profile - automatically imports all laptop modules
+    ../profiles/laptop.nix
 
-    # You should let those lines as is
+    # Host-specific configuration
     ./hardware-configuration.nix
     ./variables.nix
   ];

@@ -5,7 +5,7 @@
     ../../themes/gruvbox.nix
   ];
   config.var = {
-    hostname = "anorLondo";
+    hostname = "firelink";
     username = "vyke";
     configDirectory = "/home/" + config.var.username + "/nixos"; # The path of the nixos configuration directory
 

@@ -1,41 +1,15 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }: {
   sops = {
-    age.keyFile = "/home/hadi/.config/sops/age/keys.txt";
+    age.keyFile = "/home/${config.var.username}/.config/sops/age/keys.txt";
     defaultSopsFile = ./secrets.yaml;
     secrets = {
-      sshconfig = {
-        owner = "hadi";
-        path = "/home/hadi/.ssh/config";
-        mode = "0600";
+      ssh-public-key = {
+        owner = config.var.username;
+        mode = "0644";
       };
-      github-key = {
-        owner = "hadi";
-        path = "/home/hadi/.ssh/github";
-        mode = "0600";
-      };
-      signing-key = {
-        owner = "hadi";
-        path = "/home/hadi/.ssh/key";
-        mode = "0600";
-      };
-      signing-pub-key = {
-        owner = "hadi";
-        path = "/home/hadi/.ssh/key.pub";
-        mode = "0600";
-      };
-      cloudflare-dns-token = { path = "/etc/cloudflare/dnskey.txt"; };
-      nextcloud-pwd = { path = "/etc/nextcloud/pwd.txt"; };
-      adguard-pwd = { };
-      hoarder = { };
-      recyclarr = {
-        owner = "recyclarr";
-        mode = "0777";
-      };
-      wireguard-pia = {
-        # owner = "media";
-        group = "media";
-        mode = "0600";
-      };
+      # Add additional secrets here as needed for server setup:
+      # cloudflare-dns-token = { path = "/etc/cloudflare/dnskey.txt"; };
+      # wireguard-config = { mode = "0600"; };
     };
   };
 
