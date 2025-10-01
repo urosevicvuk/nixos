@@ -20,8 +20,6 @@
       };
     };
 
-    docker.enable = true; # Docker option
-
     spiceUSBRedirection.enable = true; # USB device redirection
   };
 

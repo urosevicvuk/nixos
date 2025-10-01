@@ -13,7 +13,6 @@ in
         "networkmanager"
         "wheel"
         "inputs"
-        "docker"
         "libvirtd"
         "kvm"
       ];
