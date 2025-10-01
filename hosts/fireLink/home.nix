@@ -1,5 +1,8 @@
-{ pkgs, config, ... }: {
-
+{
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
     # Mostly user-specific configuration
     ./variables.nix
@@ -28,6 +31,7 @@
       just
       pnpm
       wireguard-tools
+      duckdb
 
       # Utils
       zip

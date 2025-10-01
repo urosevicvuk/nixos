@@ -1,26 +1,24 @@
-{ config, ... }: {
+{config, ...}: {
   imports = [
-    ../../nixos/home-manager.nix
-    ../../nixos/nix.nix
-    ../../nixos/systemd-boot.nix
-    ../../nixos/users.nix
-    ../../nixos/utils.nix
-    ../../nixos/docker.nix
-    ../../nixos/tailscale.nix
+    # NixOS module
+    ../../modules/nixos/personal/home-manager.nix
+    ../../modules/nixos/personal/nix.nix
+    ../../modules/nixos/personal/systemd-boot.nix
+    ../../modules/nixos/personal/users.nix
+    ../../modules/nixos/personal/utils.nix
+    ../../modules/nixos/personal/docker.nix
+    ../../modules/nixos/personal/tailscale.nix
 
-    ../../server-modules/ssh.nix
-    ../../server-modules/bitwarden.nix
-    ../../server-modules/firewall.nix
-    ../../server-modules/nginx.nix
-    ../../server-modules/nextcloud.nix
-    ../../server-modules/glance.nix
-    ../../server-modules/adguardhome.nix
-    ../../server-modules/hoarder.nix
-    ../../server-modules/arr.nix
-    ../../server-modules/mealie.nix
-    # ../../server-modules/meilisearch.nix
-    ../../server-modules/search-nixos-api.nix
-    # ../../server-modules/headscale.nix
+    # NixOS server modules
+    ../../modules/nixos/server/ssh.nix 
+    ../../modules/nixos/server/bitwarden.nix
+    ../../modules/nixos/server/firewall.nix
+    ../../modules/nixos/server/nginx.nix
+    ../../modules/nixos/server/glance.nix
+    ../../modules/nixos/server/adguardhome.nix
+    ../../modules/nixos/server/arr.nix
+    ../../modules/nixos/server/mealie.nix
+    ../../modules/nixos/server/eleakxir.nix
 
     # You should let those lines as is
     ./hardware-configuration.nix
