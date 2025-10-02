@@ -3,7 +3,7 @@
     age.keyFile = "/home/${config.var.username}/.config/sops/age/keys.txt";
     defaultSopsFile = ./secrets.yaml;
     secrets = {
-      ssh-public-key = {
+      github-key = {
         owner = config.var.username;
         mode = "0644";
       };

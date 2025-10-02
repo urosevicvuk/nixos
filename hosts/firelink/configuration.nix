@@ -1,12 +1,13 @@
 {config, ...}: {
   imports = [
     # Device profile - automatically imports all server essentials
-    ../profiles/server.nix
+    ../_profiles/server.nix
 
     # Host-specific configuration
     ./hardware-configuration.nix
     ./variables.nix
     ./secrets
+
 
     # Optional server services - enable as needed:
     # ../../modules/nixos/server/web/nginx.nix

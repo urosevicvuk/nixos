@@ -2,7 +2,7 @@
 {
   imports = [
     # Device profile - minimal laptop for older hardware
-    ../profiles/minimal-laptop.nix
+    ../_profiles/minimal-laptop.nix
 
     # Host-specific configuration
     ./hardware-configuration.nix

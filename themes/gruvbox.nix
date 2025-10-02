@@ -65,8 +65,8 @@
         name = "JetBrains Mono Nerd Font";
       };
       sansSerif = {
-        package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
-        name = "Source Sans Pro";
+        package = pkgs.noto-fonts;
+        name = "Noto Sans";
       };
       serif = config.stylix.fonts.sansSerif;
       emoji = {

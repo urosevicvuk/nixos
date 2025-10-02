@@ -103,7 +103,9 @@ in
       # bash
       ''
 
-        export ANTHROPIC_API_KEY="$(cat ${config.sops.secrets.anthropicKey.path})"
+        ${lib.optionalString (config.sops or null != null && config.sops.secrets ? anthropicKey) ''
+          export ANTHROPIC_API_KEY="$(cat ${config.sops.secrets.anthropicKey.path})"
+        ''}
 
 
         bindkey -e

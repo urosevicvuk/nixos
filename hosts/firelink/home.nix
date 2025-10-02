@@ -2,20 +2,21 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   imports = [
     # Mostly user-specific configuration
     ./variables.nix
 
     # Programs
-    ../../home/programs/nvf
-    ../../home/programs/shell
-    ../../home/programs/fetch
-    ../../home/programs/git
-    ../../home/programs/lazygit
+    ../../modules/home-manager/programs/nvf
+    ../../modules/home-manager/programs/shell
+    ../../modules/home-manager/programs/fetch
+    ../../modules/home-manager/programs/git
+    ../../modules/home-manager/programs/kitty
 
     # Scripts
-    ../../home/scripts # All scripts
+    ../../modules/home-manager/scripts # All scripts
   ];
 
   home = {
@@ -41,6 +42,9 @@
       btop
       fastfetch
       tailscale
+
+      claude-code
+
     ];
 
     # Don't touch this

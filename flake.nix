@@ -116,8 +116,8 @@
           ];
         };
 
-        # fireLink is the server
-        fireLink = nixpkgs.lib.nixosSystem {
+        # firelink is the server
+        firelink = nixpkgs.lib.nixosSystem {
           modules = [
             { _module.args = { inherit inputs; }; }
             inputs.home-manager.nixosModules.home-manager
@@ -125,7 +125,7 @@
             inputs.sops-nix.nixosModules.sops
             # inputs.nixarr.nixosModules.default  # Enable when nixarr input is added and configured
             # inputs.search-nixos-api.nixosModules.search-nixos-api  # Enable when search-nixos-api input is added
-            ./hosts/fireLink/configuration.nix
+            ./hosts/firelink/configuration.nix
           ];
         };
 

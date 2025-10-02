@@ -13,7 +13,7 @@
     ../../modules/nixos/desktop/bluetooth.nix
     ../../modules/nixos/desktop/fonts.nix
     ../../modules/nixos/desktop/hyprland.nix
-    ../../modules/nixos/desktop/tuigreet.nix
+    ../../modules/nixos/desktop/sddm.nix
 
     # Development tools
     ../../modules/nixos/development/docker.nix

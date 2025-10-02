@@ -11,8 +11,9 @@
   };
 
   users.users."${config.var.username}" = {
-    openssh.authorizedKeys.keyFiles = [
-      config.sops.secrets.ssh-public-key.path
+    openssh.authorizedKeys.keys = [
+      # TODO: Replace with SOPS secret later
+      "ssh-ed25519 AAAAC3NzaC1IZDI1NTE5AAAAINQpgKiftVTzqkfu6zbRpvZFtWZH/HBQSj6DhuVvVRul vuk23urosevic@gmail.com"
     ];
   };
 }

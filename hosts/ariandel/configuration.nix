@@ -2,7 +2,7 @@
 {
   imports = [
     # Device profile - automatically imports all laptop modules
-    ../profiles/laptop.nix
+    ../_profiles/laptop.nix
 
     # Host-specific configuration
     ./hardware-configuration.nix
