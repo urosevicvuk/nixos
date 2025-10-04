@@ -1,8 +1,16 @@
 # Git configuration
-{ config, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   inherit (config.var.git) username;
   inherit (config.var.git) email;
+
+  accent = "#${config.lib.stylix.colors.base0D}";
+  muted = "#${config.lib.stylix.colors.base03}";
 in
 {
   home.file.".ssh/allowed_signers".text =
@@ -58,5 +66,37 @@ in
       llog = ''log --graph --name-status --pretty=format:"%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset" --date=relative'';
       edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; hx `f`";
     };
+
+    programs.lazygit = {
+      enable = true;
+      settings = lib.mkForce {
+        disableStartupPopups = true;
+        notARepository = "skip";
+        promptToReturnFromSubprocess = false;
+        update.method = "never";
+        git = {
+          commit.signOff = false;
+          parseEmoji = true;
+        };
+        gui = {
+          theme = {
+            activeBorderColor = [
+              accent
+              "bold"
+            ];
+            inactiveBorderColor = [ muted ];
+          };
+          showListFooter = false;
+          showRandomTip = false;
+          showCommandLog = false;
+          showBottomLine = false;
+          nerdFontsVersion = "3";
+        };
+      };
+    };
+
+    home.packages = with pkgs; [
+      gh
+    ];
   };
 }
