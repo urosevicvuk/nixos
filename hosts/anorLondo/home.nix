@@ -78,6 +78,7 @@
 
         # Dev
         claude-code
+        gh
         nodejs
         just
         gnumake

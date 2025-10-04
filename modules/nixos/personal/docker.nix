@@ -7,7 +7,7 @@ in
 
   users.users.${username}.extraGroups = [ "docker" ];
 
-  home.packages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     lazydocker
   ];
 }

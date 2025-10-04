@@ -1,15 +1,15 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, ... }:
+{
 
   imports = [
     # Mostly user-specific configuration
     ./variables.nix
 
     # Programs
-    ../../home/programs/nvf
-    ../../home/programs/shell
-    ../../home/programs/fetch
-    ../../home/programs/git
-    ../../home/programs/lazygit
+    ../../modules/home-manager/programs/nvf
+    ../../modules/home-manager/programs/shell
+    ../../modules/home-manager/programs/fetch
+    ../../modules/home-manager/programs/git
 
     # Scripts
     ../../home/scripts # All scripts

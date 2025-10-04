@@ -1,21 +1,21 @@
-{ config, lib, ... }: {
+{ config, lib, ... }:
+{
   imports = [
-    # Choose your theme here:
+    # Theme import
     ../../themes/gruvbox.nix
   ];
   config.var = {
-    hostname = "anorLondo";
+    hostname = "firelink";
     username = "vyke";
-    configDirectory = "/home/" + config.var.username
-      + "/nixos"; # The path of the nixos configuration directory
+    configDirectory = "/home/" + config.var.username + "/nixos"; # The path of the nixos configuration directory
 
-    keyboardLayout = "us";
-    keyboardVariant = "";
+    keyboardLayout = "us,rs,rs";
+    keyboardVariant = ",latin,";
 
     location = "Belgrade";
     timeZone = "Europe/Belgrade";
     defaultLocale = "en_US.UTF-8";
-    extraLocale = "fr_FR.UTF-8";
+    extraLocale = "en_US.UTF-8";
 
     git = {
       username = "urosevicvuk";
