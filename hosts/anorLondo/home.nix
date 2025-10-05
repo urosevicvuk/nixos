@@ -78,9 +78,7 @@
         shadps4
 
         # Dev
-        opencode
         claude-code
-        lazydocker
         gh
         nodejs
         just
