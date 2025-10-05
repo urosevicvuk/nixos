@@ -31,6 +31,7 @@ in
     qt6ct
     hyprshot
     hyprpicker
+    hyprpanel
     swappy
     imv
     wf-recorder

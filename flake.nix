@@ -43,9 +43,6 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    hyprpanel = {
-      url = "github:Jas-SinghFSU/HyprPanel";
-    };
 
     sops-nix = {
       url = "github:Mic92/sops-nix"; # SOPS integration for NixOS

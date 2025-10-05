@@ -1,6 +1,6 @@
 # Hyprpanel is the bar on top of the screen
 # Display informations like workspaces, battery, wifi, ...
-{ config, ... }:
+{ config, lib, ... }:
 let
 
   accent = "#${config.lib.stylix.colors.base0D}";
@@ -36,7 +36,7 @@ in
     #overwrite.enable = true;
     #overlay.enable = true;
 
-    settings = {
+    settings = lib.mkForce {
       bar = {
         layouts = {
           "*" = {
