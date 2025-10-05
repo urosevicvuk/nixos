@@ -119,7 +119,6 @@
         figlet
         moreutils
         vulkan-tools
-        amdvlk
         freerdp
 
         # stevencodes recommendation
