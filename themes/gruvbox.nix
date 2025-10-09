@@ -4,7 +4,8 @@
   config,
   inputs,
   ...
-}: {
+}:
+{
   options.theme = lib.mkOption {
     type = lib.types.attrs;
     default = {
@@ -17,8 +18,7 @@
       border-size = 2;
       animation-speed = "medium"; # "fast" | "medium" | "slow"
       fetch = "none"; # "nerdfetch" | "neofetch" | "pfetch" | "none"
-      textColorOnWallpaper =
-        config.lib.stylix.colors.base01; # Color of the text displayed on the wallpaper (Lockscreen, display manager, ...) bar = { position = "top"; # "top" | "bottom"
+      textColorOnWallpaper = config.lib.stylix.colors.base01; # Color of the text displayed on the wallpaper (Lockscreen, display manager, ...) bar = { position = "top"; # "top" | "bottom"
 
       bar = {
         position = "top";
@@ -65,8 +65,8 @@
         name = "JetBrains Mono Nerd Font";
       };
       sansSerif = {
-        package = pkgs.noto-fonts;
-        name = "Noto Sans";
+        package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
+        name = "SF Pro nerd font";
       };
       serif = config.stylix.fonts.sansSerif;
       emoji = {
