@@ -43,7 +43,6 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-
     sops-nix = {
       url = "github:Mic92/sops-nix"; # SOPS integration for NixOS
     };
@@ -145,5 +144,39 @@
       #     ];
       #   };
       # };
+
+      # Development environment templates
+      templates = {
+        python = {
+          path = ./devFlakes/python;
+          description = "Python development environment with data science tools";
+        };
+
+        rust = {
+          path = ./devFlakes/rust;
+          description = "Rust development environment with rust-analyzer";
+        };
+
+        go = {
+          path = ./devFlakes/go;
+          description = "Go development environment with gopls";
+        };
+
+        java = {
+          path = ./devFlakes/java;
+          description = "Java development environment with Maven and Gradle";
+        };
+
+        kotlin = {
+          path = ./devFlakes/kotlin;
+          description = "Kotlin development environment";
+        };
+
+        c = {
+          path = ./devFlakes/c;
+          description = "C/C++ development environment with GCC and Clang";
+        };
+
+      };
     };
 }
