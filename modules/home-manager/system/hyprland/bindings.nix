@@ -76,13 +76,10 @@
       "$mod, 0, workspace, 10"
       "$mod SHIFT, 0, movetoworkspace, 10"
 
-      #"$mod, minus, togglespecialworkspace, windows"
-      #"$mod SHIFT, minus, movetoworkspace, special:windows"
-      #"$mod, equal, togglespecialworkspace, macos"
-      #"$mod SHIFT, equal, movetoworkspace, special:macos"
-
-      "$mod, grave, workspace, name:alternative"
-      "$mod SHIFT, grave, movetoworkspace, name:alternative"
+      "$mod, minus, workspace, name:alternative1"
+      "$mod SHIFT, minus, movetoworkspace, name:alternative1"
+      "$mod, equal, togglespecialworkspace, name:alternative2"
+      "$mod SHIFT, equal, movetoworkspace, name:alternative2"
     ];
 
     binde = [

@@ -92,6 +92,10 @@ in
         "${pkgs.writeShellScript "clipboard-clear" "clipman clear --all"}"
         "wl-paste -t text --watch clipman store"
 
+        # Workspace initialization
+        "hyprctl dispatch workspace 1"
+        "hyprctl dispatch focusmonitor DP-3 && hyprctl dispatch workspace name:alternative && hyprctl dispatch focusmonitor DP-2"
+
         # Applications with workspace assignments
         "[workspace 1 silent] zen"
         "[workspace 4 silent] kitty"
@@ -226,19 +230,18 @@ in
 
       workspace = [
         "special:special, monitor:DP-2"
-        "1, monitor:DP-2"
-        "2, monitor:DP-2"
-        "3, monitor:DP-2"
-        "4, monitor:DP-2"
-        "5, monitor:DP-2"
-        "6, monitor:DP-2"
-        "7, monitor:DP-2"
-        "8, monitor:DP-2"
-        "9, monitor:DP-2"
-        "10, monitor:DP-2"
-        "special:windows, monitor:DP-2"
-        "special:macos, monitor:DP-2"
-        "alternative, monitor:DP-3, default:true, layoutopt:orientation:top"
+        "1, monitor:DP-2, default:true"
+        "2, monitor:DP-2, persistent:true"
+        "3, monitor:DP-2, persistent:true"
+        "4, monitor:DP-2, persistent:true"
+        "5, monitor:DP-2, persistent:true"
+        "6, monitor:DP-2, persistent:true"
+        "7, monitor:DP-2, persistent:true"
+        "8, monitor:DP-2, persistent:true"
+        "9, monitor:DP-2, persistent:true"
+        "10, monitor:DP-2, persistent:true"
+        "alternative1, monitor:DP-3, default:true, persistent:true, layoutopt:orientation:top"
+        "alternative2, monitor:DP-3, default:true, persistent:true, layoutopt:orientation:top"
       ];
 
       windowrule = [
