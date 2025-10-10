@@ -85,6 +85,7 @@
         gnumake
         bruno
         vscode
+        rstudioWrapper
         jetbrains.goland
         jetbrains.idea-ultimate
         jetbrains.rust-rover
