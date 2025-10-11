@@ -92,9 +92,13 @@ in
         "${pkgs.writeShellScript "clipboard-clear" "clipman clear --all"}"
         "wl-paste -t text --watch clipman store"
 
-        # Workspace initialization
+        # Workspace initialization - force create workspaces on correct monitors
+        "hyprctl dispatch focusmonitor DP-3"
+        "hyprctl dispatch workspace name:alternative1"
+        "hyprctl dispatch workspace name:alternative2"
+        "hyprctl dispatch workspace name:alternative1"
+        "hyprctl dispatch focusmonitor DP-2"
         "hyprctl dispatch workspace 1"
-        "hyprctl dispatch focusmonitor DP-3 && hyprctl dispatch workspace name:alternative && hyprctl dispatch focusmonitor DP-2"
 
         # Applications with workspace assignments
         "[workspace 1 silent] zen"
@@ -240,8 +244,8 @@ in
         "8, monitor:DP-2, persistent:true"
         "9, monitor:DP-2, persistent:true"
         "10, monitor:DP-2, persistent:true"
-        "alternative1, monitor:DP-3, default:true, persistent:true, layoutopt:orientation:top"
-        "alternative2, monitor:DP-3, default:true, persistent:true, layoutopt:orientation:top"
+        "name:alternative1, monitor:DP-3, default:true, persistent:true, layoutopt:orientation:top"
+        "name:alternative2, monitor:DP-3, persistent:true, layoutopt:orientation:top"
       ];
 
       windowrule = [

@@ -41,6 +41,12 @@
       "$shiftMod, left, layoutmsg, addmaster" # Add to master
       "$shiftMod, right, layoutmsg, removemaster" # Remove from master
 
+      # Move current workspace to different monitor
+      "$mod CTRL, left, movecurrentworkspacetomonitor, l" # Move workspace to left monitor
+      "$mod CTRL, right, movecurrentworkspacetomonitor, r" # Move workspace to right monitor
+      "$mod CTRL, up, movecurrentworkspacetomonitor, u" # Move workspace to upper monitor
+      "$mod CTRL, down, movecurrentworkspacetomonitor, d" # Move workspace to lower monitor
+
       "$shiftMod, S, exec, hyprshot -m region -o ~/Pictures/screenshots/" # Screenshot region
       ",PRINT, exec, hyprshot -m output -o ~/Pictures/screenshots/" # Screenshot monitor
 
@@ -78,7 +84,7 @@
 
       "$mod, minus, workspace, name:alternative1"
       "$mod SHIFT, minus, movetoworkspace, name:alternative1"
-      "$mod, equal, togglespecialworkspace, name:alternative2"
+      "$mod, equal, workspace, name:alternative2"
       "$mod SHIFT, equal, movetoworkspace, name:alternative2"
     ];
 
