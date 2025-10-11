@@ -10,6 +10,7 @@
     # Programs
     ../../modules/home-manager/programs/btop
     ../../modules/home-manager/programs/direnv
+    ../../modules/home-manager/programs/editorconfig
     ../../modules/home-manager/programs/fetch
     ../../modules/home-manager/programs/git
     ../../modules/home-manager/programs/kitty
