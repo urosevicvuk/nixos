@@ -31,21 +31,24 @@
       "$mod, K, movefocus, u" # Move focus Up
       "$mod, J, movefocus, d" # Move focus Down
 
-      "$shiftMod, H, movewindow, l" # Move focus left
-      "$shiftMod, L, movewindow, r" # Move focus Right
-      "$shiftMod, K, movewindow, u" # Move focus Up
-      "$shiftMod, J, movewindow, d" # Move focus Down
+      # Scrolling layout: move windows between/within columns
+      "$shiftMod, H, layoutmsg, movewindowto l" # Move window to left column
+      "$shiftMod, L, layoutmsg, movewindowto r" # Move window to right column
+      "$shiftMod, K, layoutmsg, movewindowto u" # Move window up within column
+      "$shiftMod, J, layoutmsg, movewindowto d" # Move window down within column
 
       "$shiftMod, up, focusmonitor, -1" # Focus previous monitor
       "$shiftMod, down, focusmonitor, 1" # Focus next monitor
-      "$shiftMod, left, layoutmsg, addmaster" # Add to master
-      "$shiftMod, right, layoutmsg, removemaster" # Remove from master
+
+      # Scrolling layout: navigate between columns
+      "$mod, bracketleft, layoutmsg, move -col" # Scroll layout left (previous column)
+      "$mod, bracketright, layoutmsg, move +col" # Scroll layout right (next column)
 
       # Move current workspace to different monitor
-      "$mod CTRL, left, movecurrentworkspacetomonitor, l" # Move workspace to left monitor
-      "$mod CTRL, right, movecurrentworkspacetomonitor, r" # Move workspace to right monitor
-      "$mod CTRL, up, movecurrentworkspacetomonitor, u" # Move workspace to upper monitor
-      "$mod CTRL, down, movecurrentworkspacetomonitor, d" # Move workspace to lower monitor
+      "$shiftMod CTRL, left, movecurrentworkspacetomonitor, l" # Move workspace to left monitor
+      "$shiftMod CTRL, right, movecurrentworkspacetomonitor, r" # Move workspace to right monitor
+      "$shiftMod CTRL, up, movecurrentworkspacetomonitor, u" # Move workspace to upper monitor
+      "$shiftMod CTRL, down, movecurrentworkspacetomonitor, d" # Move workspace to lower monitor
 
       "$shiftMod, S, exec, hyprshot -m region -o ~/Pictures/screenshots/" # Screenshot region
       ",PRINT, exec, hyprshot -m output -o ~/Pictures/screenshots/" # Screenshot monitor
@@ -56,9 +59,10 @@
 
       "$mod, F1, exec, hyprctl switchxkblayout logitech-pro-gaming-keyboard 0" # US
       "$mod, F2, exec, hyprctl switchxkblayout logitech-pro-gaming-keyboard 1" # RS ćirilica
-      "$mod, F3, exec, hyprctl switchxkblayout logitech-pro-gaming-keyboard 2" # RS latinica"$shiftMod,E, exec, ${pkgs.wofi-emoji}/bin/wofi-emoji" # Emoji picker with wofi
-
+      "$mod, F3, exec, hyprctl switchxkblayout logitech-pro-gaming-keyboard 2" # RS latinica
       "$mod, F4, exec, night-shift" # Toggle night shift
+
+      "$shiftMod,E, exec, ${pkgs.wofi-emoji}/bin/wofi-emoji" # Emoji picker with wofi
 
       #Workspaces
       "$mod, 1, workspace, 1"

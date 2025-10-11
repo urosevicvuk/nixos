@@ -157,6 +157,8 @@ in
         fullscreen_on_one_column = true;
         focus_fit_method = 1;
         explicit_column_widths = "0.333, 0.5, 0.667, 1.0";
+        column_width = 0.5;
+        follow_focus = true;
       };
 
       decoration = {
@@ -172,12 +174,6 @@ in
           enabled = if blur then "true" else "false";
           size = 18;
         };
-      };
-
-      master = {
-        new_status = true;
-        allow_small_split = true;
-        mfact = 0.5;
       };
 
       #gestures = {
