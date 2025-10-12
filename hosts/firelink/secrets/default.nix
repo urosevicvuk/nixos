@@ -1,14 +1,11 @@
 {
-  config,
   pkgs,
-  inputs,
   ...
 }:
 {
-  imports = [ inputs.sops-nix.nixosModules.sops ];
 
   sops = {
-    age.keyFile = "/home/${config.var.username}/.config/sops/age/keys.txt";
+    age.keyFile = "/home/vyke/.config/sops/age/keys.txt";
     defaultSopsFile = ./secrets.yaml;
     secrets = {
       # Cloudflare DNS API token for ACME SSL certificates
@@ -29,15 +26,15 @@
 
       # SSH keys
       ssh-private = {
-        owner = config.var.username;
+        owner = "vyke";
         mode = "0600";
-        path = "/home/${config.var.username}/.ssh/id_ed25519";
+        path = "/home/vyke/.ssh/id_ed25519";
       };
 
       ssh-public = {
-        owner = config.var.username;
+        owner = "vyke";
         mode = "0644";
-        path = "/home/${config.var.username}/.ssh/id_ed25519.pub";
+        path = "/home/vyke/.ssh/id_ed25519.pub";
       };
     };
   };
