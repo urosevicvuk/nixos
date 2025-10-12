@@ -1,11 +1,11 @@
 { pkgs, config, ... }:
-let domain = "cloud.hadi.diy";
+let domain = "cloud.urosevicvuk.dev";
 in {
   services = {
     nginx.virtualHosts = {
       "${domain}" = {
         # DNS-01 challenge
-        useACMEHost = "hadi.diy";
+        useACMEHost = "urosevicvuk.dev";
         forceSSL = true;
       };
     };
@@ -20,7 +20,7 @@ in {
       autoUpdateApps.enable = true;
       settings = {
         trusted_domains = [ domain ];
-        default_phone_region = "FR";
+        default_phone_region = "RS";
         overwriteprotocol = "https";
       };
       extraAppsEnable = true;
@@ -39,7 +39,7 @@ in {
       };
       config = {
         dbtype = "pgsql";
-        adminuser = "hadi";
+        adminuser = "vyke";
         adminpassFile = config.sops.secrets.nextcloud-pwd.path;
       };
       # Suggested by Nextcloud's health check.

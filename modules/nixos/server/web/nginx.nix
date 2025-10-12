@@ -6,9 +6,9 @@
     defaults.email = config.var.git.email;
   };
 
-  security.acme.certs."hadi.diy" = {
-    domain = "hadi.diy";
-    extraDomainNames = [ "*.hadi.diy" ];
+  security.acme.certs."urosevicvuk.dev" = {
+    domain = "urosevicvuk.dev";
+    extraDomainNames = [ "*.urosevicvuk.dev" ];
     group = "nginx";
 
     dnsProvider = "cloudflare";
@@ -19,16 +19,6 @@
   services.nginx.virtualHosts = {
     "default" = {
       default = true;
-      locations."/" = { return = 444; };
-    };
-    "*.hadi.diy" = {
-      useACMEHost = "hadi.diy";
-      forceSSL = true;
-      locations."/" = { return = 444; };
-    };
-    "aaaaaa.hadi.diy" = {
-      useACMEHost = "hadi.diy";
-      forceSSL = true;
       locations."/" = { return = 444; };
     };
   };
