@@ -7,6 +7,10 @@
     ../../modules/nixos/core/users.nix
     ../../modules/nixos/core/utils.nix
     ../../modules/nixos/core/home-manager.nix
+    ../../modules/nixos/core/networking.nix
+    ../../modules/nixos/core/locale.nix
+    ../../modules/nixos/core/environment.nix
+    ../../modules/nixos/core/security.nix
 
     # Desktop environment
     ../../modules/nixos/desktop/audio.nix
@@ -17,6 +21,8 @@
     ../../modules/nixos/desktop/gaming.nix
     ../../modules/nixos/desktop/hyprland.nix
     ../../modules/nixos/desktop/keyd.nix
+    ../../modules/nixos/desktop/services.nix
+    ../../modules/nixos/desktop/xdg.nix
     # ../../modules/nixos/desktop/sddm.nix
     ../../modules/nixos/desktop/tuigreet.nix
 
@@ -24,9 +30,7 @@
     ../../modules/nixos/hardware/peripherals.nix
 
     # Development tools
-    ../../modules/nixos/development/docker.nix
     # ../../modules/nixos/development/virtualization.nix
-    ../../modules/nixos/development/tools.nix
 
     # Network
     ../../modules/nixos/network/tailscale.nix

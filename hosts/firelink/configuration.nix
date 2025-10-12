@@ -7,6 +7,10 @@
     ../../modules/nixos/core/users.nix
     ../../modules/nixos/core/utils.nix
     ../../modules/nixos/core/home-manager.nix
+    ../../modules/nixos/core/networking.nix
+    ../../modules/nixos/core/locale.nix
+    ../../modules/nixos/core/environment.nix
+    ../../modules/nixos/core/security.nix
 
     # Desktop environment
     # ../../modules/nixos/desktop/audio.nix
