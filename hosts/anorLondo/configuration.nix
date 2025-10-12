@@ -14,6 +14,7 @@
     ../../modules/nixos/desktop/docker.nix
     ../../modules/nixos/desktop/fonts.nix
     ../../modules/nixos/desktop/hyprland.nix
+    ../../modules/nixos/desktop/keyd.nix
     # ../../modules/nixos/desktop/sddm.nix
     ../../modules/nixos/desktop/tuigreet.nix
 
