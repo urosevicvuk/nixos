@@ -27,13 +27,13 @@
 
     # Network
     ../../modules/nixos/network/tailscale.nix
+    ../../modules/nixos/network/cloudflared.nix
 
     # Server
     ../../modules/nixos/server/ssh.nix
     ../../modules/nixos/server/firewall.nix
-    ../../modules/nixos/server/web/nginx.nix
-    ../../modules/nixos/server/services/nextcloud.nix
     # ../../modules/nixos/server/media/arr.nix
+    ../../modules/nixos/server/services/nextcloud.nix
     # ../../modules/nixos/server/services/adguardhome.nix
     # ../../modules/nixos/server/services/bitwarden.nix
     # ../../modules/nixos/server/services/glance.nix
@@ -42,6 +42,7 @@
     # ../../modules/nixos/server/services/mealie.nix
     # ../../modules/nixos/server/services/meilisearch.nix
     # ../../modules/nixos/server/services/search-nixos-api.nix
+    ../../modules/nixos/server/web/nginx.nix
 
     # Host-specific configuration
     ./hardware-configuration.nix

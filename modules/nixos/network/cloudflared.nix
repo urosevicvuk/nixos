@@ -1,28 +1,25 @@
-{ config, lib, ... }:
+{ config, pkgs, ... }:
 {
   # Cloudflare Tunnel (cloudflared)
   # Creates a secure tunnel from this server to Cloudflare
   # No public IP or port forwarding needed!
 
-  services.cloudflared = {
-    enable = true;
-    tunnels = {
-      # Tunnel name - will be set up via Cloudflare dashboard
-      "urosevicvuk-tunnel" = {
-        credentialsFile = config.sops.secrets.cloudflare-tunnel-credentials.path;
-        default = "http_status:404";
+  # Using token-based setup (simpler than credentials file)
+  systemd.services.cloudflared-tunnel = {
+    description = "Cloudflare Tunnel";
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+    wantedBy = [ "multi-user.target" ];
 
-        ingress = {
-          # Route cloud.urosevicvuk.dev to Nextcloud
-          "cloud.urosevicvuk.dev" = "http://localhost:80";
-
-          # Add more services here as needed:
-          # "example.urosevicvuk.dev" = "http://localhost:8080";
-        };
-      };
+    serviceConfig = {
+      Type = "simple";
+      Restart = "always";
+      RestartSec = "5s";
+      ExecStart = "${pkgs.cloudflared}/bin/cloudflared tunnel --no-autoupdate run --token $(cat ${config.sops.secrets.cloudflare-tunnel-token.path})";
+      DynamicUser = true;
+      LoadCredential = "token:${config.sops.secrets.cloudflare-tunnel-token.path}";
     };
   };
 
-  # Don't need public firewall ports with tunnel
-  # networking.firewall.allowedTCPPorts = lib.mkForce [ ];
+  environment.systemPackages = [ pkgs.cloudflared ];
 }

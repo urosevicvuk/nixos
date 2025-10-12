@@ -35,6 +35,7 @@
       duckdb
 
       # Utils
+      nh
       zip
       unzip
       optipng

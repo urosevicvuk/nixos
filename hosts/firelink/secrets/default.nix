@@ -1,17 +1,23 @@
-{ config, pkgs, inputs, ... }: {
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+{
   imports = [ inputs.sops-nix.nixosModules.sops ];
 
   sops = {
     age.keyFile = "/home/${config.var.username}/.config/sops/age/keys.txt";
     defaultSopsFile = ./secrets.yaml;
     secrets = {
-      github-key = {
-        owner = config.var.username;
-        mode = "0644";
-      };
-
       # Cloudflare DNS API token for ACME SSL certificates
       cloudflare-dns-token = {
+        mode = "0400";
+      };
+
+      # Cloudflare Tunnel token
+      cloudflare-tunnel-token = {
         mode = "0400";
       };
 
@@ -36,5 +42,8 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ sops age ];
+  environment.systemPackages = with pkgs; [
+    sops
+    age
+  ];
 }
