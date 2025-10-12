@@ -47,15 +47,6 @@ in
   };
 
   services = {
-    ratbagd.enable = true;
-    udev = {
-      packages = [ pkgs.solaar ];
-      extraRules = ''
-        # Allow access to the Solaar device
-        SUBSYSTEM=="hidraw", ATTRS{idVendor}=="046d", MODE="0664", GROUP="input"
-        SUBSYSTEM=="hidraw", KERNELS=="*046D*", MODE="0664", GROUP="input"
-      '';
-    };
     xserver = {
       enable = true;
       xkb = {
@@ -65,7 +56,6 @@ in
       };
     };
     gnome.gnome-keyring.enable = true;
-    hardware.openrgb.enable = true;
     psd = {
       enable = true;
       resyncTimer = "10m";
@@ -103,12 +93,7 @@ in
   };
 
   programs = {
-    kdeconnect.enable = true;
-    localsend.enable = true;
     dconf.enable = true;
-    steam.enable = true;
-    gamescope.enable = true;
-    gamemode.enable = true;
   };
 
   # enable zsh autocompletion for system packages (systemd, etc)

@@ -12,19 +12,21 @@
     ../../modules/nixos/desktop/audio.nix
     ../../modules/nixos/desktop/bluetooth.nix
     ../../modules/nixos/desktop/docker.nix
+    ../../modules/nixos/desktop/filesharing.nix
     ../../modules/nixos/desktop/fonts.nix
+    ../../modules/nixos/desktop/gaming.nix
     ../../modules/nixos/desktop/hyprland.nix
     ../../modules/nixos/desktop/keyd.nix
     # ../../modules/nixos/desktop/sddm.nix
     ../../modules/nixos/desktop/tuigreet.nix
 
+    # Hardware
+    ../../modules/nixos/hardware/peripherals.nix
+
     # Development tools
     ../../modules/nixos/development/docker.nix
     ../../modules/nixos/development/virtualization.nix
     ../../modules/nixos/development/tools.nix
-
-    # Gaming
-    ../../modules/nixos/gaming/steam.nix
 
     # Network
     ../../modules/nixos/network/tailscale.nix

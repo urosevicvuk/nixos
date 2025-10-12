@@ -1,9 +1,7 @@
 { ... }:
 {
   # keyd - keyboard remapping daemon
-  # Maps Caps Lock to:
-  #   - Escape when tapped
-  #   - Control when held
+  # Handles all keyboard remapping at system level
   services.keyd = {
     enable = true;
     keyboards = {
@@ -13,6 +11,10 @@
           main = {
             # Caps Lock acts as Escape when tapped, Control when held
             capslock = "overload(control, esc)";
+
+            # Swap left Alt and left Super (Windows key)
+            leftalt = "leftmeta";
+            leftmeta = "leftalt";
           };
         };
       };
