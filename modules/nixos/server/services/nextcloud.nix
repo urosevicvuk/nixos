@@ -4,9 +4,8 @@ in {
   services = {
     nginx.virtualHosts = {
       "${domain}" = {
-        # DNS-01 challenge
-        useACMEHost = "urosevicvuk.dev";
-        forceSSL = true;
+        # Cloudflare Tunnel handles SSL, so nginx just serves HTTP
+        # Don't redirect to HTTPS - cloudflared accesses via HTTP on localhost
       };
     };
     nextcloud = {
