@@ -43,16 +43,14 @@ in
             "left" = [
               "dashboard"
               "workspaces"
-              "windowtitle"
             ];
-            "middle" = [ "media" ];
+            "middle" = [ "clock" ];
             "right" = [
               "systray"
               "volume"
               "bluetooth"
               "network"
               "kbinput"
-              "clock"
               "notifications"
             ];
           };
@@ -69,12 +67,12 @@ in
           showWsIcons = true;
           ignored = "^-(9.*)$";
         };
-        clock.format = "%a %b %d - %I:%M %p";
+        clock.format = "%A - %I:%M %p";
         windowtitle.label = true;
         volume.label = false;
         network.truncation_size = 12;
         bluetooth.label = false;
-        notifications.show_total = true;
+        notifications.show_total = false;
         media.show_active_only = true;
       };
 
