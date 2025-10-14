@@ -67,6 +67,10 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-minecraft = {
+      url = "github:Infinidoge/nix-minecraft";
+    };
   };
 
   outputs =
@@ -112,10 +116,14 @@
         # firelink is the server
         firelink = nixpkgs.lib.nixosSystem {
           modules = [
-            { _module.args = { inherit inputs; }; }
+            {
+              _module.args = { inherit inputs; };
+              nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
+            }
             inputs.home-manager.nixosModules.home-manager
             inputs.stylix.nixosModules.stylix
             inputs.sops-nix.nixosModules.sops
+            inputs.nix-minecraft.nixosModules.minecraft-servers
             # inputs.nixarr.nixosModules.default  # Enable when nixarr input is added and configured
             # inputs.search-nixos-api.nixosModules.search-nixos-api  # Enable when search-nixos-api input is added
             ./hosts/firelink/configuration.nix
