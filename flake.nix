@@ -102,6 +102,7 @@
             {
               _module.args = { inherit inputs; };
             }
+            inputs.nixos-hardware.nixosModules.framework-amd-ai-300-series
             inputs.home-manager.nixosModules.home-manager
             inputs.stylix.nixosModules.stylix
             ./hosts/ariandel/configuration.nix

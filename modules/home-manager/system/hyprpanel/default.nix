@@ -23,7 +23,9 @@ let
   inherit (config.theme.bar) transparentButtons;
 
   inherit (config.var) location;
+  inherit (config.var) device;
 
+  isLaptop = device == "laptop";
   notificationOpacity = 90;
 in
 {
@@ -51,6 +53,11 @@ in
               "bluetooth"
               "network"
               "kbinput"
+            ]
+            ++ lib.optionals isLaptop [
+              "battery"
+            ]
+            ++ [
               "notifications"
             ];
           };
@@ -67,7 +74,7 @@ in
           showWsIcons = true;
           ignored = "^-(9.*)$";
         };
-        clock.format = "%A - %I:%M %p";
+        clock.format = "%A, %d %B - %I:%M %p";
         windowtitle.label = true;
         volume.label = false;
         network.truncation_size = 12;

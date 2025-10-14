@@ -15,6 +15,11 @@ let
   inherit (config.theme) blur;
   inherit (config.var) keyboardLayout;
   inherit (config.var) keyboardVariant;
+  inherit (config.var) device;
+  inherit (config.var) monitorScale;
+  inherit (config.var) inputSensitivity;
+
+  isLaptop = device == "laptop";
 in
 {
   imports = [
@@ -70,6 +75,11 @@ in
       plugin:hyprscrolling {
           fullscreen_on_one_column = true
       }
+
+      # Laptop-specific gestures
+      ${if isLaptop then ''
+        gesture = 3, horizontal, workspace
+      '' else ""}
     '';
 
     settings = {
@@ -109,7 +119,9 @@ in
         "kdeconnect-indicator"
       ];
 
-      monitor = [
+      monitor = if isLaptop then [
+        ",preferred,auto,${monitorScale}"
+      ] else [
         "DP-2, 1920x1080@144, 0x0, 1"
         "DP-3, prefered, auto, 1, transform, 1"
         "HDMI-A-1, prefered, auto, 1, mirror, DP-2"
@@ -176,9 +188,7 @@ in
         };
       };
 
-      #gestures = {
-      #  workspace_swipe = true;
-      #};
+      # Gestures configured via extraConfig below
 
       misc = {
         vfr = true;
@@ -228,7 +238,18 @@ in
         "noanim, ^ags-.*"
       ];
 
-      workspace = [
+      workspace = if isLaptop then [
+        "1, default:true, persistent:true"
+        "2, persistent:true"
+        "3, persistent:true"
+        "4, persistent:true"
+        "5, persistent:true"
+        "6, persistent:true"
+        "7, persistent:true"
+        "8, persistent:true"
+        "9, persistent:true"
+        "10, persistent:true"
+      ] else [
         "special:special, monitor:DP-2"
         "1, monitor:DP-2, default:true"
         "2, monitor:DP-2, persistent:true"
@@ -257,7 +278,7 @@ in
 
         kb_options = "grp:alt_space_toggle";
         follow_mouse = 1;
-        sensitivity = -0.5;
+        sensitivity = inputSensitivity;
         accel_profile = "flat";
         repeat_delay = 300;
         repeat_rate = 50;
@@ -266,6 +287,7 @@ in
         touchpad = {
           natural_scroll = true;
           clickfinger_behavior = true;
+          scroll_factor = 1.0;
         };
       };
     };
