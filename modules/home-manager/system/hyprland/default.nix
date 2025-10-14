@@ -3,6 +3,7 @@
   pkgs,
   config,
   inputs,
+  lib,
   ...
 }:
 let
@@ -77,9 +78,14 @@ in
       }
 
       # Laptop-specific gestures
-      ${if isLaptop then ''
-        gesture = 3, horizontal, workspace
-      '' else ""}
+      ${
+        if isLaptop then
+          ''
+            gesture = 3, horizontal, workspace
+          ''
+        else
+          ""
+      }
     '';
 
     settings = {
@@ -119,14 +125,18 @@ in
         "kdeconnect-indicator"
       ];
 
-      monitor = if isLaptop then [
-        ",preferred,auto,${monitorScale}"
-      ] else [
-        "DP-2, 1920x1080@144, 0x0, 1"
-        "DP-3, prefered, auto, 1, transform, 1"
-        "HDMI-A-1, prefered, auto, 1, mirror, DP-2"
-        ",prefered,auto,1"
-      ];
+      monitor =
+        if isLaptop then
+          [
+            ",preferred,auto,${monitorScale}"
+          ]
+        else
+          [
+            "DP-2, 1920x1080@144, 0x0, 1"
+            "DP-3, prefered, auto, 1, transform, 1"
+            "HDMI-A-1, prefered, auto, 1, mirror, DP-2"
+            ",prefered,auto,1"
+          ];
 
       env = [
         "XDG_CURRENT_DESKTOP,Hyprland"
@@ -238,32 +248,36 @@ in
         "noanim, ^ags-.*"
       ];
 
-      workspace = if isLaptop then [
-        "1, default:true, persistent:true"
-        "2, persistent:true"
-        "3, persistent:true"
-        "4, persistent:true"
-        "5, persistent:true"
-        "6, persistent:true"
-        "7, persistent:true"
-        "8, persistent:true"
-        "9, persistent:true"
-        "10, persistent:true"
-      ] else [
-        "special:special, monitor:DP-2"
-        "1, monitor:DP-2, default:true"
-        "2, monitor:DP-2, persistent:true"
-        "3, monitor:DP-2, persistent:true"
-        "4, monitor:DP-2, persistent:true"
-        "5, monitor:DP-2, persistent:true"
-        "6, monitor:DP-2, persistent:true"
-        "7, monitor:DP-2, persistent:true"
-        "8, monitor:DP-2, persistent:true"
-        "9, monitor:DP-2, persistent:true"
-        "10, monitor:DP-2, persistent:true"
-        "name:alternative1, monitor:DP-3, default:true, persistent:true, layoutopt:orientation:top"
-        "name:alternative2, monitor:DP-3, persistent:true, layoutopt:orientation:top"
-      ];
+      workspace =
+        if isLaptop then
+          [
+            "1, default:true, persistent:true"
+            "2, persistent:true"
+            "3, persistent:true"
+            "4, persistent:true"
+            "5, persistent:true"
+            "6, persistent:true"
+            "7, persistent:true"
+            "8, persistent:true"
+            "9, persistent:true"
+            "10, persistent:true"
+          ]
+        else
+          [
+            "special:special, monitor:DP-2"
+            "1, monitor:DP-2, default:true"
+            "2, monitor:DP-2, persistent:true"
+            "3, monitor:DP-2, persistent:true"
+            "4, monitor:DP-2, persistent:true"
+            "5, monitor:DP-2, persistent:true"
+            "6, monitor:DP-2, persistent:true"
+            "7, monitor:DP-2, persistent:true"
+            "8, monitor:DP-2, persistent:true"
+            "9, monitor:DP-2, persistent:true"
+            "10, monitor:DP-2, persistent:true"
+            "name:alternative1, monitor:DP-3, default:true, persistent:true, layoutopt:orientation:top"
+            "name:alternative2, monitor:DP-3, persistent:true, layoutopt:orientation:top"
+          ];
 
       windowrule = [
         "workspace 1, title:zen"
@@ -287,7 +301,10 @@ in
         touchpad = {
           natural_scroll = true;
           clickfinger_behavior = true;
-          scroll_factor = 1.0;
+          scroll_factor = 0.1;
+          disable_while_typing = true;
+          tap-to-click = true;
+          tap-and-drag = true;
         };
       };
     };

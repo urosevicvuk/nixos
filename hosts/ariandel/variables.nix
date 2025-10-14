@@ -29,7 +29,7 @@
 
     # Display and input settings (laptop-specific)
     monitorScale = "1.5";
-    inputSensitivity = "0.3";
+    inputSensitivity = "0.2";
 
     # Choose your theme variables here
     theme = import ../../themes/var/gruvbox.nix;

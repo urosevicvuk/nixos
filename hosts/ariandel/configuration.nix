@@ -10,12 +10,13 @@
     ../../modules/nixos/system/locale.nix
     ../../modules/nixos/system/environment.nix
     ../../modules/nixos/system/security.nix
+    ../../modules/nixos/system/logind.nix
 
     # Hardware
     ../../modules/nixos/hardware/audio.nix
     ../../modules/nixos/hardware/bluetooth.nix
     ../../modules/nixos/hardware/keyd.nix
-    ../../modules/nixos/hardware/peripherals.nix
+    # ../../modules/nixos/hardware/peripherals.nix
 
     # Desktop environment
     ../../modules/nixos/desktop/fonts.nix
@@ -26,11 +27,11 @@
     ../../modules/nixos/desktop/tuigreet.nix
 
     # Programs
-    ../../modules/nixos/programs/gaming.nix
+    # ../../modules/nixos/programs/gaming.nix
     ../../modules/nixos/programs/filesharing.nix
 
     # Services
-    # ../../modules/nixos/services/docker.nix
+    ../../modules/nixos/services/docker.nix
 
     # Network
     ../../modules/nixos/network/networking.nix

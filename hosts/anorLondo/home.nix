@@ -69,15 +69,6 @@
         figma-linux
         gimp3-with-plugins
 
-        #Gaming
-        lutris
-        prismlauncher
-        (wineWowPackages.stable.override { waylandSupport = true; })
-        winetricks
-        protonup
-        protontricks
-        shadps4
-
         # Dev
         claude-code
         gh
@@ -112,8 +103,6 @@
         yazi
         jq
         bluez
-        solaar
-        piper
         curtail
         figlet
         moreutils

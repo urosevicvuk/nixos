@@ -19,9 +19,9 @@
     wireplumber = {
       enable = true;
       extraConfig = {
-        "10-disable-camera" = {
-          "wireplumber.profiles" = {
-            main."monitor.libcamera" = "disabled";
+        no-ucm = {
+          "monitor.alsa.properties" = {
+            "alsa.use-ucm" = false;
           };
         };
       };
