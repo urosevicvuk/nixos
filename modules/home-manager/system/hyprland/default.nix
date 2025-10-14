@@ -93,12 +93,12 @@ in
         "wl-paste -t text --watch clipman store"
 
         # Workspace initialization - force create workspaces on correct monitors
-        "hyprctl dispatch focusmonitor DP-3"
-        "hyprctl dispatch workspace name:alternative1"
-        "hyprctl dispatch workspace name:alternative2"
-        "hyprctl dispatch workspace name:alternative1"
-        "hyprctl dispatch focusmonitor DP-2"
-        "hyprctl dispatch workspace 1"
+        #"hyprctl dispatch focusmonitor DP-3"
+        #"hyprctl dispatch workspace name:alternative1"
+        #"hyprctl dispatch workspace name:alternative2"
+        #"hyprctl dispatch workspace name:alternative1"
+        #"hyprctl dispatch focusmonitor DP-2"
+        #"hyprctl dispatch workspace 1"
 
         # Applications with workspace assignments
         "[workspace 1 silent] zen"
@@ -111,7 +111,7 @@ in
 
       monitor = [
         "DP-2, 1920x1080@144, 0x0, 1"
-        "DP-3, prefered, auto, 1, transform, 1"
+        #"DP-3, prefered, auto, 1, transform, 1"
         "HDMI-A-1, prefered, auto, 1, mirror, DP-2"
         ",prefered,auto,1"
       ];
@@ -240,8 +240,8 @@ in
         "8, monitor:DP-2, persistent:true"
         "9, monitor:DP-2, persistent:true"
         "10, monitor:DP-2, persistent:true"
-        "name:alternative1, monitor:DP-3, default:true, persistent:true, layoutopt:orientation:top"
-        "name:alternative2, monitor:DP-3, persistent:true, layoutopt:orientation:top"
+        #"name:alternative1, monitor:DP-3, default:true, persistent:true, layoutopt:orientation:top"
+        #"name:alternative2, monitor:DP-3, persistent:true, layoutopt:orientation:top"
       ];
 
       windowrule = [
