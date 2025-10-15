@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
 
-  services.minecraft = {
+  services.minecraft-servers = {
     enable = true;
     eula = true;
     dataDir = "/var/lib/mcServers";
@@ -14,7 +14,8 @@
         };
 
         serverProperties = {
-
+          server-port = 25565;
+          server-ip = "127.0.0.1";
         };
         whitelist = {
 

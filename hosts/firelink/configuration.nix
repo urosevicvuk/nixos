@@ -24,6 +24,8 @@
     ../../modules/nixos/server/services/cloudflared.nix
     ../../modules/nixos/server/services/nextcloud.nix
     ../../modules/nixos/server/services/minecraft.nix
+    ../../modules/nixos/server/services/rlcraft.nix
+    ../../modules/nixos/server/services/playit.nix
     # ../../modules/nixos/server/services/adguardhome.nix
     # ../../modules/nixos/server/services/bitwarden.nix
     # ../../modules/nixos/server/services/glance.nix
