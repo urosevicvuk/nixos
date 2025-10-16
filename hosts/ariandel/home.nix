@@ -36,6 +36,10 @@
     ../../modules/home-manager/system/mime
     ../../modules/home-manager/system/udiskie
 
+    #../../modules/home-manager/system/waybar
+    #../../modules/home-manager/system/mako
+    #../../modules/home-manager/system/swayosd
+
     ./secrets
   ];
 
