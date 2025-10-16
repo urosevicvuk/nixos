@@ -109,12 +109,12 @@ in
         "wl-paste -t text --watch clipman store"
 
         # Workspace initialization - force create workspaces on correct monitors
-        "hyprctl dispatch focusmonitor DP-3"
-        "hyprctl dispatch workspace name:alternative1"
-        "hyprctl dispatch workspace name:alternative2"
-        "hyprctl dispatch workspace name:alternative1"
-        "hyprctl dispatch focusmonitor DP-2"
-        "hyprctl dispatch workspace 1"
+        #"hyprctl dispatch focusmonitor DP-3"
+        #"hyprctl dispatch workspace name:alternative1"
+        #"hyprctl dispatch workspace name:alternative2"
+        #"hyprctl dispatch workspace name:alternative1"
+        #"hyprctl dispatch focusmonitor DP-2"
+        #"hyprctl dispatch workspace 1"
 
         # Applications with workspace assignments
         "[workspace 1 silent] zen"

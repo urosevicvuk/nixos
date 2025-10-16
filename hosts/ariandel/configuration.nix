@@ -42,6 +42,9 @@
     ./variables.nix
   ];
 
+  # Hibernate support
+  boot.resumeDevice = "/dev/disk/by-uuid/1fe041f7-c293-442b-ac57-faf8933c3913";
+
   home-manager.users."${config.var.username}" = import ./home.nix;
 
   # Don't touch this
