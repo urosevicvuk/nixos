@@ -8,7 +8,7 @@
 
     servers = {
       ekittens = {
-        enable = true;
+        enable = false;  # Disabled - now using Better MC 4 Forge server (bettermc4.nix)
         package = pkgs.fabricServers.fabric-1_21_1.override {
           loaderVersion = "0.16.10";
         };
