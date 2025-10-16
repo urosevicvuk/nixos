@@ -27,6 +27,10 @@
     autoUpgrade = false;
     autoGarbageCollector = true;
 
+    # Display and input settings (desktop-specific)
+    monitorScale = "1";
+    inputSensitivity = "-0.5";
+
     # Choose your theme variables here
     theme = import ../../themes/var/gruvbox.nix;
   };

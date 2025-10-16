@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   # Hardware peripherals support
   # Gaming mice, RGB controllers, Logitech devices
@@ -20,4 +20,10 @@
       '';
     };
   };
+
+  # Home-manager peripheral tool packages
+  home-manager.users.${config.var.username}.home.packages = with pkgs; [
+    solaar  # Logitech device manager
+    piper   # Gaming mouse configuration GUI
+  ];
 }

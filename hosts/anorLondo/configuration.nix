@@ -10,6 +10,7 @@
     ../../modules/nixos/system/locale.nix
     ../../modules/nixos/system/environment.nix
     ../../modules/nixos/system/security.nix
+    ../../modules/nixos/system/logind.nix
 
     # Hardware
     ../../modules/nixos/hardware/audio.nix

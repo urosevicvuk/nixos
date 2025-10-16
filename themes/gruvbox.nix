@@ -18,7 +18,7 @@
       border-size = 2;
       animation-speed = "medium"; # "fast" | "medium" | "slow"
       fetch = "none"; # "nerdfetch" | "neofetch" | "pfetch" | "none"
-      textColorOnWallpaper = config.lib.stylix.colors.base01; # Color of the text displayed on the wallpaper (Lockscreen, display manager, ...) bar = { position = "top"; # "top" | "bottom"
+      textColorOnWallpaper = config.lib.stylix.colors.base0D; # Color of the text displayed on the wallpaper (Lockscreen, display manager, ...) bar = { position = "top"; # "top" | "bottom"
 
       bar = {
         position = "top";
