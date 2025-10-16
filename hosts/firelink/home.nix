@@ -13,6 +13,7 @@
     ../../modules/home-manager/programs/shell
     ../../modules/home-manager/programs/fetch
     ../../modules/home-manager/programs/git
+    ../../modules/home-manager/programs/ghostty
     ../../modules/home-manager/programs/kitty
 
     # Scripts

@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
+let
+  terminal = config.var.terminal;
+in
 {
   wayland.windowManager.hyprland.settings = {
     bind = [
@@ -20,11 +23,11 @@
       "$mod, P, exec, ${pkgs.bitwarden}/bin/bitwarden" # Bitwarden
 
       # CLI Apps
-      "$mod, RETURN, exec, ${pkgs.kitty}/bin/kitty" # Kitty
-      "$mod, G, exec, ${pkgs.kitty}/bin/kitty lazygit"
-      "$mod, D, exec, ${pkgs.kitty}/bin/kitty lazydocker"
-      "$mod, I, exec, ${pkgs.kitty}/bin/kitty btop"
-      "$mod, Y, exec, ${pkgs.kitty}/bin/kitty yazi"
+      "$mod, RETURN, exec, ${terminal}" # Terminal
+      "$mod, G, exec, ${terminal} lazygit"
+      "$mod, D, exec, ${terminal} lazydocker"
+      "$mod, I, exec, ${terminal} btop"
+      "$mod, Y, exec, ${terminal} yazi"
 
       "$mod, H, movefocus, l" # Move focus left
       "$mod, L, movefocus, r" # Move focus Right

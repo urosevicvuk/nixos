@@ -10,8 +10,8 @@ in
     NH_FLAKE = configDirectory;
     PASSWORD_STORE_DIR = "$HOME/.local/share/password-store";
     EDITOR = "nvim";
-    TERMINAL = "kitty";
-    TERM = "kitty";
+    TERMINAL = config.var.terminal;
+    TERM = config.var.terminal;
     BROWSER = "zen-beta";
     PULSE_LATENCY_MSEC = 60;
   };

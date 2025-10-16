@@ -19,6 +19,7 @@ let
   inherit (config.var) device;
   inherit (config.var) monitorScale;
   inherit (config.var) inputSensitivity;
+  inherit (config.var) terminal;
 
   isLaptop = device == "laptop";
 in
@@ -118,7 +119,7 @@ in
 
         # Applications with workspace assignments
         "[workspace 1 silent] zen"
-        "[workspace 4 silent] kitty"
+        "[workspace 4 silent] ${terminal}"
         "[workspace 5 silent] steam"
         "[workspace 9 silent] vesktop"
         "[workspace 10 silent] obsidian"

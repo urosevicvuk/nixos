@@ -13,6 +13,7 @@
     ../../modules/home-manager/programs/editorconfig
     ../../modules/home-manager/programs/fetch
     ../../modules/home-manager/programs/git
+    ../../modules/home-manager/programs/ghostty
     ../../modules/home-manager/programs/kitty
     ../../modules/home-manager/programs/nextcloud
     ../../modules/home-manager/programs/nvf

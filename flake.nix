@@ -71,6 +71,11 @@
     nix-minecraft = {
       url = "github:Infinidoge/nix-minecraft";
     };
+
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
+
   };
 
   outputs =
