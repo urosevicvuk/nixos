@@ -10,7 +10,6 @@ let
   foreground = config.theme.textColorOnWallpaper;
   sddm-astronaut = pkgs.sddm-astronaut.override {
     embeddedTheme = "pixel_sakura";
-    # TODO: Cleaner version for static vs .gif, just a string.replace
     themeConfig =
       if lib.hasSuffix "sakura_static.png" config.stylix.image then
         { }

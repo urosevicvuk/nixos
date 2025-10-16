@@ -4,7 +4,6 @@
     binds = {
       whichKey = {
         enable = true;
-        # TODO: registers
         register = { };
       };
     };
@@ -117,7 +116,10 @@
       }
       {
         key = "<M-CR>";
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         silent = true;
         action = "<cmd>Lspsaga code_action<cr>";
         desc = "Code Actions";

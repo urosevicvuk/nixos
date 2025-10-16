@@ -1,4 +1,5 @@
-{ config, ... }: {
+{ config, ... }:
+{
   services.openssh = {
     enable = true;
     ports = [ 22 ];
@@ -12,8 +13,7 @@
 
   users.users."${config.var.username}" = {
     openssh.authorizedKeys.keys = [
-      # TODO: Replace with SOPS secret later
-      "ssh-ed25519 AAAAC3NzaC1IZDI1NTE5AAAAINQpgKiftVTzqkfu6zbRpvZFtWZH/HBQSj6DhuVvVRul vuk23urosevic@gmail.com"
+      config.sops.secrets.ssh-public.path
     ];
   };
 }
