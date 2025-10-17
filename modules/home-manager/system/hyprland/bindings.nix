@@ -24,10 +24,10 @@ in
 
       # CLI Apps
       "$mod, RETURN, exec, ${terminal}" # Terminal
-      "$mod, G, exec, ${terminal} lazygit"
-      "$mod, D, exec, ${terminal} lazydocker"
-      "$mod, I, exec, ${terminal} btop"
-      "$mod, Y, exec, ${terminal} yazi"
+      "$mod, G, exec, ${terminal} -e lazygit"
+      "$mod, D, exec, ${terminal} -e lazydocker"
+      "$mod, I, exec, ${terminal} -e btop"
+      "$mod, Y, exec, ${terminal} -e yazi"
 
       "$mod, H, movefocus, l" # Move focus left
       "$mod, L, movefocus, r" # Move focus Right
