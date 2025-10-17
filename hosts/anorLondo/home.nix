@@ -8,34 +8,34 @@
     ./variables.nix
 
     # Programs
-    ../../modules/home-manager/programs/btop
-    ../../modules/home-manager/programs/direnv
-    ../../modules/home-manager/programs/editorconfig
+    ../../modules/home-manager/programs/btop.nix
+    ../../modules/home-manager/programs/direnv.nix
+    ../../modules/home-manager/programs/editorconfig.nix
     ../../modules/home-manager/programs/fetch
-    ../../modules/home-manager/programs/git
-    ../../modules/home-manager/programs/ghostty
-    ../../modules/home-manager/programs/kitty
-    ../../modules/home-manager/programs/nextcloud
+    ../../modules/home-manager/programs/git.nix
+    ../../modules/home-manager/programs/ghostty.nix
+    ../../modules/home-manager/programs/kitty.nix
+    ../../modules/home-manager/programs/nextcloud.nix
     ../../modules/home-manager/programs/nvf
     ../../modules/home-manager/programs/shell
-    ../../modules/home-manager/programs/spicetify
-    ../../modules/home-manager/programs/thunar
-    ../../modules/home-manager/programs/wofi
-    ../../modules/home-manager/programs/zathura
-    ../../modules/home-manager/programs/zen
+    ../../modules/home-manager/programs/spicetify.nix
+    ../../modules/home-manager/programs/thunar.nix
+    ../../modules/home-manager/programs/wofi.nix
+    ../../modules/home-manager/programs/zathura.nix
+    ../../modules/home-manager/programs/zen.nix
 
     # Scripts
     ../../modules/home-manager/scripts # All scripts
 
     # System
-    ../../modules/home-manager/system/clipman
-    ../../modules/home-manager/system/hypridle
+    ../../modules/home-manager/system/clipman.nix
+    ../../modules/home-manager/system/hypridle.nix
     ../../modules/home-manager/system/hyprland
-    ../../modules/home-manager/system/hyprlock
-    ../../modules/home-manager/system/hyprpanel
-    ../../modules/home-manager/system/hyprpaper
-    ../../modules/home-manager/system/mime
-    ../../modules/home-manager/system/udiskie
+    ../../modules/home-manager/system/hyprlock.nix
+    ../../modules/home-manager/system/hyprpanel.nix
+    ../../modules/home-manager/system/hyprpaper.nix
+    ../../modules/home-manager/system/mime.nix
+    ../../modules/home-manager/system/udiskie.nix
 
     ./secrets
   ];

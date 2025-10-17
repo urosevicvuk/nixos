@@ -12,9 +12,9 @@
     ../../modules/home-manager/programs/nvf
     ../../modules/home-manager/programs/shell
     ../../modules/home-manager/programs/fetch
-    ../../modules/home-manager/programs/git
-    ../../modules/home-manager/programs/ghostty
-    ../../modules/home-manager/programs/kitty
+    ../../modules/home-manager/programs/git.nix
+    ../../modules/home-manager/programs/ghostty.nix
+    ../../modules/home-manager/programs/kitty.nix
 
     # Scripts
     ../../modules/home-manager/scripts # All scripts
