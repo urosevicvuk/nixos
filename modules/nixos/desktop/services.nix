@@ -1,8 +1,4 @@
-{ pkgs, config, lib, ... }:
-let
-  inherit (config.var) device;
-  isLaptop = device == "laptop";
-in
+{ pkgs, ... }:
 {
   # Desktop-related system services
   services = {
@@ -45,11 +41,4 @@ in
 
   # Enable graphics support
   hardware.graphics.enable = true;
-
-  # Laptop-specific power management
-  powerManagement = lib.mkIf isLaptop {
-    enable = true;
-    powertop.enable = true;
-    scsiLinkPolicy = "med_power_with_dipm";
-  };
 }

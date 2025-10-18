@@ -10,7 +10,7 @@
     configDirectory = "/home/" + config.var.username + "/nixos"; # The path of the nixos configuration directory
 
     device = "laptop"; # laptop || desktop || server
-    terminal = "ghostty"; # default terminal emulator
+    terminal = "kitty"; # default terminal emulator - kitty || ghostty
 
     keyboardLayout = "us,rs,rs";
     keyboardVariant = ",latin,";
