@@ -14,8 +14,7 @@ in
       "$mod, T, togglefloating," # Toggle Floating
       "$mod, F, fullscreen" # Toggle Fullscreen
 
-      #"$mod,X, exec, powermenu" # Powermenu
-      #"$mod,C, exec, quickmenu" # Quickmenu
+      "$mod, grave, exec, quickmenu" # Quickmenu
 
       # GUI Apps
       "$mod, B, exec, zen" # Zen Browser
