@@ -74,7 +74,6 @@
         claude-code
         gh
         nodejs
-        just
         gnumake
         bruno
         vscode
@@ -85,7 +84,6 @@
         jetbrains.clion
         android-studio
         codeblocksFull
-        jq
 
         # Utils
         nh
@@ -95,25 +93,12 @@
         p7zip
         ffmpeg
         optipng
-        pfetch
-        pandoc
-        fastfetch
-        nitch
-        ripgrep
-        fzf
-        yazi
-        jq
         bluez
         curtail
         figlet
         moreutils
         vulkan-tools
         freerdp
-
-        # stevencodes recommendation
-        oha
-        hyperfine
-        toxiproxy
 
         # Just cool
         peaclock

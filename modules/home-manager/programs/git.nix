@@ -14,6 +14,15 @@ in
     lfs.enable = true;
     userName = username;
     userEmail = email;
+    delta = {
+      enable = true;
+      options = {
+        navigate = true;
+        side-by-side = true;
+        line-numbers = true;
+        syntax-theme = "base16";
+      };
+    };
     ignores = [
       ".cache/"
       ".DS_Store"
@@ -35,6 +44,8 @@ in
       gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
       gpg.format = "ssh";
       user.signingkey = "~/.ssh/id_ed25519.pub";
+      merge.conflictstyle = "diff3";
+      diff.colorMoved = "default";
     };
     aliases = {
       essa = "push --force";

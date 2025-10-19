@@ -80,6 +80,16 @@ in
 
       nix-shell = "nix-shell --command zsh";
 
+      # Modern CLI tool replacements
+      find = "fd";
+      du = "dust";
+      df = "duf";
+      ps = "procs";
+      top = "btm";
+      dig = "dog";
+      ping = "gping";
+      curl = "xh";
+
       # git
       g = "lazygit";
       ga = "git add";
