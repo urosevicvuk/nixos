@@ -53,7 +53,7 @@ in
       "$shiftMod CTRL, down, movecurrentworkspacetomonitor, d" # Move workspace to lower monitor
 
       "$shiftMod, S, exec, hyprshot -m region -o ~/Pictures/screenshots/" # Screenshot region
-      ",PRINT, exec, hyprshot -m output -o ~/Pictures/screenshots/" # Screenshot monitor
+      ",PRINT, exec, hyprshot -m output -m $(hyprctl monitors -j | jq -r '.[] | select(.focused == true) | .name') -o ~/Pictures/screenshots/" # Screenshot current monitor instantly
 
       "$shiftMod, T, exec, hyprpanel-toggle" # Toggle hyprpanel
       "$shiftMod CTRL, T, exec, hpr" # Toggle hyprpanel

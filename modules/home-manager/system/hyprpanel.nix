@@ -77,7 +77,7 @@ in
         clock.format = "%A, %d %B - %I:%M %p";
         windowtitle.label = true;
         volume.label = false;
-        network.truncation_size = 12;
+        network.truncation_size = 99;
         bluetooth.label = false;
         notifications.show_total = false;
         media.show_active_only = true;
