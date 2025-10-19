@@ -12,6 +12,7 @@
     ./core/languages.nix
 
     ./plugins/mini.nix
+    ./plugins/opencode.nix
     ./plugins/picker.nix
     ./plugins/snacks.nix
     ./plugins/utils.nix

@@ -12,6 +12,8 @@
       bufdelete.enabled = true;
       gitsigns.enabled = true;
       gitsigns.codeActions.enable = false;
+      input = { };
+      picker = { };
     };
   };
 }

@@ -67,14 +67,11 @@
         vesktop
         vlc
         obsidian
-        libreoffice-qt
-
-        #Drawing
-        pinta
         figma-linux
         gimp3-with-plugins
 
         # Dev
+        opencode
         claude-code
         gh
         nodejs
@@ -87,7 +84,6 @@
         jetbrains.rust-rover
         jetbrains.clion
         android-studio
-        codeblocksFull
 
         # Utils
         nh
