@@ -28,7 +28,46 @@ let
       exit 0
     fi
   '';
+  screenshot-annotate = pkgs.writeShellScriptBin "screenshot-annotate" ''
+    filename="/tmp/screenshot-$(date +%Y%m%d-%H%M%S).png"
+    
+    ${pkgs.grimblast}/bin/grimblast --freeze save area "$filename" || exit 1
+    
+    ${pkgs.satty}/bin/satty --filename "$filename" --output-filename "$HOME/Pictures/$(basename $filename)"
+  '';
+
+  record-screen = pkgs.writeShellScriptBin "record-screen" ''
+    OUTPUT_DIR="$HOME/Videos/Recordings"
+    mkdir -p "$OUTPUT_DIR"
+    FILENAME="$OUTPUT_DIR/recording-$(date +%Y%m%d-%H%M%S).mp4"
+    PID_FILE="/tmp/screen-recorder.pid"
+    
+    if [ -f "$PID_FILE" ]; then
+      PID=$(cat "$PID_FILE")
+      if kill -0 "$PID" 2>/dev/null; then
+        kill -INT "$PID"
+        rm "$PID_FILE"
+        ${pkgs.libnotify}/bin/notify-send "Screen Recording" "Recording stopped and saved"
+        exit 0
+      else
+        rm "$PID_FILE"
+      fi
+    fi
+    
+    ${pkgs.wf-recorder}/bin/wf-recorder -f "$FILENAME" &
+    echo $! > "$PID_FILE"
+    ${pkgs.libnotify}/bin/notify-send "Screen Recording" "Recording started\nPress again to stop"
+  '';
 in {
-  home.packages =
-    [ pkgs.hyprshot screenshot pkgs.slurp pkgs.grim pkgs.grimblast ];
+  home.packages = [
+    pkgs.hyprshot
+    screenshot
+    screenshot-annotate
+    record-screen
+    pkgs.slurp
+    pkgs.grim
+    pkgs.grimblast
+    pkgs.satty
+    pkgs.wf-recorder
+  ];
 }
