@@ -110,6 +110,15 @@
           modules = [
             {
               _module.args = { inherit inputs; };
+
+              nixpkgs.overlays = [
+                (final: prev: {
+                  stable = import nixpkgs-stable {
+                    system = final.system;
+                    config.allowUnfree = true;
+                  };
+                })
+              ];
             }
             inputs.nixos-hardware.nixosModules.framework-amd-ai-300-series
             inputs.home-manager.nixosModules.home-manager
