@@ -4,6 +4,12 @@
     startPlugins = with pkgs.vimPlugins; [ opencode-nvim ];
 
     globals.opencode_opts = {
+      window = {
+        mappings = {
+          close = "q";
+          nav_files = "<C-p>";
+        };
+      };
     };
 
     options = {
