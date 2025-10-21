@@ -21,6 +21,7 @@
     ../../modules/home-manager/programs/shell
     ../../modules/home-manager/programs/spicetify.nix
     ../../modules/home-manager/programs/thunar.nix
+    ../../modules/home-manager/programs/walker.nix
     ../../modules/home-manager/programs/wofi.nix
     ../../modules/home-manager/programs/zathura.nix
     ../../modules/home-manager/programs/zen.nix

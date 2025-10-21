@@ -39,6 +39,8 @@ in
     #overlay.enable = true;
 
     settings = lib.mkForce {
+      scalingPriority = "hyprland";
+
       bar = {
         layouts = {
           "*" = {
@@ -170,18 +172,18 @@ in
         };
 
         notification = {
-          opacity = notificationOpacity;
-          enableShadow = true;
+          opacity = 100;
+          enableShadow = false;
           border_radius = toString rounding + "px";
           background = background-alt;
-          actions.background = accent;
+          actions.background = background;
           actions.text = foreground;
-          label = accent;
-          border = background-alt;
+          label = foreground;
+          border = accent;
           text = foreground;
-          labelicon = accent;
-          close_button.background = background-alt;
-          close_button.label = "#f38ba8";
+          labelicon = foreground;
+          close_button.background = background;
+          close_button.label = foreground;
         };
 
         osd = {

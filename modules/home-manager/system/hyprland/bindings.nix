@@ -6,7 +6,7 @@ in
   wayland.windowManager.hyprland.settings = {
     bind = [
       #Basic things
-      "$mod, SPACE, exec, menu" # Launcher
+      "$mod, SPACE, exec, walker" # Walker Launcher
       "$shiftMod, SPACE, exec, hyprfocus-toggle" # Toggle HyprFocus
       "CTRL $shiftMod, L, exec, ${pkgs.hyprlock}/bin/hyprlock" # Lock
 

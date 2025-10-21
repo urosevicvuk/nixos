@@ -76,6 +76,15 @@
       url = "github:ghostty-org/ghostty";
     };
 
+    elephant = {
+      url = "github:abenz1267/elephant/v2.2.5";
+    };
+
+    walker = {
+      url = "github:abenz1267/walker";
+      inputs.elephant.follows = "elephant";
+    };
+
   };
 
   outputs =
@@ -117,6 +126,18 @@
                     system = final.system;
                     config.allowUnfree = true;
                   };
+                })
+                (final: prev: {
+                  elephant-providers = prev.elephant-providers.overrideAttrs (old: {
+                    buildPhase = ''
+                      runHook preBuild
+                      ${old.buildPhase or ""}
+                      runHook postBuild
+                    '' + ''
+                      # Ignore windows provider build failure
+                      true
+                    '';
+                  });
                 })
               ];
             }
