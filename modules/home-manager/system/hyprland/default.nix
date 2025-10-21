@@ -96,6 +96,8 @@ in
       exec-once = [
         # System services first
         "dbus-update-activation-environment --systemd --all"
+        "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        "systemctl --user start graphical-session.target"
         "systemctl --user start hyprpolkitagent"
 
         # System tools
@@ -120,8 +122,8 @@ in
         # Applications with workspace assignments
         "[workspace 1 silent] zen"
         "[workspace 4 silent] ${terminal}"
-        "[workspace 5 silent] steam"
-        "[workspace 9 silent] vesktop"
+        "[workspace 5 silent] spotify"
+        "[workspace 9 silent] discord"
         "[workspace 10 silent] obsidian"
         "kdeconnect-indicator"
       ];

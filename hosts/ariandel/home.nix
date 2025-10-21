@@ -79,6 +79,7 @@
         gh
         nodejs
         gnumake
+        postman
         bruno
         vscode
         rstudioWrapper

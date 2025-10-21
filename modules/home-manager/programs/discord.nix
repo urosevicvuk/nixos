@@ -9,9 +9,7 @@
       frameless = true;
 
       themeLinks = [
-
-        "https://github.com/shvedes/discord-gruvbox/blob/main/gruvbox-dark.theme.css"
-
+        "https://raw.githubusercontent.com/shvedes/discord-gruvbox/refs/heads/main/gruvbox-dark.theme.css"
       ];
     };
   };
