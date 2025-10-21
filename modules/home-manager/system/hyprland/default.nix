@@ -129,7 +129,8 @@ in
       monitor =
         if isLaptop then
           [
-            ",preferred,auto,${monitorScale}"
+            "eDP-1,2880x1920@120,auto,${monitorScale}"
+            ",preferred,auto,1"
           ]
         else
           [

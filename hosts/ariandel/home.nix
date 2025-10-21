@@ -17,6 +17,7 @@
     ../../modules/home-manager/programs/kitty.nix
     ../../modules/home-manager/programs/nextcloud.nix
     ../../modules/home-manager/programs/nvf
+    ../../modules/home-manager/programs/obs-studio.nix
     ../../modules/home-manager/programs/shell
     ../../modules/home-manager/programs/spicetify.nix
     ../../modules/home-manager/programs/thunar.nix
@@ -65,10 +66,11 @@
       (with pkgs; [
         # Apps
         vesktop
-        vlc
         obsidian
+        vlc
         figma-linux
         gimp3-with-plugins
+        pinta
 
         # Dev
         opencode

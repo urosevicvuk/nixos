@@ -54,9 +54,19 @@ let
       fi
     fi
     
-    ${pkgs.wf-recorder}/bin/wf-recorder -f "$FILENAME" &
+    # Record using geometry to capture at native resolution
+    # Get monitor geometry including scale
+    GEOMETRY=$(${pkgs.slurp}/bin/slurp -o -f "%x,%y %wx%h")
+    
+    if [ -z "$GEOMETRY" ]; then
+      ${pkgs.libnotify}/bin/notify-send "Screen Recording" "Cancelled"
+      exit 1
+    fi
+    
+    # wf-recorder with explicit geometry captures at native resolution
+    ${pkgs.wf-recorder}/bin/wf-recorder -g "$GEOMETRY" -f "$FILENAME" &
     echo $! > "$PID_FILE"
-    ${pkgs.libnotify}/bin/notify-send "Screen Recording" "Recording started\nPress again to stop"
+    ${pkgs.libnotify}/bin/notify-send "Screen Recording" "Recording started at native resolution\nPress again to stop"
   '';
 in {
   home.packages = [
