@@ -68,6 +68,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixcord.url = "github:kaylorben/nixcord";
+
     nix-minecraft = {
       url = "github:Infinidoge/nix-minecraft";
     };
@@ -133,7 +135,8 @@
                       runHook preBuild
                       ${old.buildPhase or ""}
                       runHook postBuild
-                    '' + ''
+                    ''
+                    + ''
                       # Ignore windows provider build failure
                       true
                     '';

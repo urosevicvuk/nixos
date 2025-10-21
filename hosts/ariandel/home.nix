@@ -10,6 +10,7 @@
     # Programs
     ../../modules/home-manager/programs/btop.nix
     ../../modules/home-manager/programs/direnv.nix
+    ../../modules/home-manager/programs/discord.nix
     ../../modules/home-manager/programs/editorconfig.nix
     ../../modules/home-manager/programs/ghostty.nix
     ../../modules/home-manager/programs/fetch
@@ -66,7 +67,6 @@
     packages =
       (with pkgs; [
         # Apps
-        vesktop
         obsidian
         vlc
         figma-linux
