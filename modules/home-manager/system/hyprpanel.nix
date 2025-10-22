@@ -173,7 +173,12 @@ in
 
         notification = {
           opacity = 100;
-          enableShadow = false;
+          
+          # Use shadow for positioning offset (shadow hack)
+          enableShadow = true;
+          shadow = "0px 0px 0px 0px";
+          shadowMargins = "20px 20px";
+          
           border_radius = toString rounding + "px";
           
           # Single solid background color
@@ -191,17 +196,17 @@ in
           actions.background = background;
           actions.text = foreground;
           
-          # Hide close button - make it transparent/invisible
+          # Hide close button
           close_button.background = "transparent";
           close_button.label = "transparent";
         };
 
         osd = {
           enable = true;
-          orientation = "vertical";
-          location = "left";
+          orientation = "horizontal";
+          location = "bottom";
           radius = toString rounding + "px";
-          margins = "0px 0px 0px 10px";
+          margins = "0px 0px 20px 0px";
           muted_zero = true;
 
           bar_color = accent;
@@ -222,8 +227,7 @@ in
       menus = {
 
         clock.weather = {
-          location = location;
-          unit = "metric";
+          enabled = false;
         };
 
         dashboard = {
