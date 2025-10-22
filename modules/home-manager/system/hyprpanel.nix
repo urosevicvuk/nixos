@@ -175,15 +175,25 @@ in
           opacity = 100;
           enableShadow = false;
           border_radius = toString rounding + "px";
+          
+          # Single solid background color
           background = background-alt;
+          
+          # Colored border for accent
+          border = accent;
+          
+          # Text colors
+          text = foreground;
+          label = foreground;
+          labelicon = foreground;
+          
+          # Action buttons (shown on hover due to showActionsOnHover)
           actions.background = background;
           actions.text = foreground;
-          label = foreground;
-          border = accent;
-          text = foreground;
-          labelicon = foreground;
-          close_button.background = background;
-          close_button.label = foreground;
+          
+          # Hide close button - make it transparent/invisible
+          close_button.background = "transparent";
+          close_button.label = "transparent";
         };
 
         osd = {

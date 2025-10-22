@@ -37,6 +37,7 @@
     # Network
     ../../modules/nixos/network/networking.nix
     ../../modules/nixos/network/tailscale.nix
+    ../../modules/nixos/network/firewall.nix
 
     # Host-specific configuration
     ./hardware-configuration.nix
