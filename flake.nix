@@ -87,6 +87,10 @@
       inputs.elephant.follows = "elephant";
     };
 
+    winboat = {
+      url = "github:TibixDev/winboat";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
