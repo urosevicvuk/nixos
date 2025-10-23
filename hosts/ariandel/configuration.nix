@@ -30,6 +30,7 @@
     # Programs
     # ../../modules/nixos/programs/gaming.nix
     ../../modules/nixos/programs/filesharing.nix
+    # ../../modules/nixos/programs/virtualization.nix
 
     # Services
     ../../modules/nixos/services/docker.nix
