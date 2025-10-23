@@ -12,7 +12,7 @@ in
         max-size = "10m";
         max-file = "5";
       };
-      dns = [ "172.17.0.1" ];
+      dns = [ "172.17.0.1" "8.8.8.8" "1.1.1.1" ];
       bip = "172.17.0.1/16";
     };
 
@@ -22,9 +22,12 @@ in
     };
   };
 
-  services.resolved.extraConfig = ''
-    DNSStubListenerExtra=172.17.0.1
-  '';
+  services.resolved = {
+    enable = true;
+    extraConfig = ''
+      DNSStubListenerExtra=172.17.0.1
+    '';
+  };
 
   systemd.services.docker = {
     serviceConfig = {
