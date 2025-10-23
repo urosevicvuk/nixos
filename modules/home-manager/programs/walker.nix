@@ -13,12 +13,22 @@
       selection_wrap = true;
       click_to_close = true;
       exact_search_prefix = "'";
+      
+      # Faster animations
+      animation_duration = 100;  # milliseconds (default is 250)
+      animation_type = "fade";   # fade instead of slide
 
       shell = {
         anchor_top = true;
         anchor_bottom = true;
         anchor_left = true;
         anchor_right = true;
+      };
+      
+      dmenu = {
+        anchor_top = true;
+        width = 600;
+        height = 400;
       };
 
       placeholders = {
@@ -81,6 +91,12 @@
           padding: 16px;
           border-radius: ${toString config.theme.rounding}px;
           border: ${toString config.theme.border-size}px solid #${config.lib.stylix.colors.base0D};
+          opacity: 1.0;
+        }
+        
+        window {
+          background: rgba(0, 0, 0, 0);
+          opacity: 1.0;
         }
 
         .input {

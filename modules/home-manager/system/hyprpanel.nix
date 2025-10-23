@@ -76,13 +76,20 @@ in
           showWsIcons = true;
           ignored = "^-(9.*)$";
         };
-        clock.format = "%A, %d %B - %I:%M %p";
+        clock = {
+          format = "%A, %d %B - %I:%M %p ";
+          icon = false; # Disable clock icon
+        };
         windowtitle.label = true;
         volume.label = false;
         network.truncation_size = 99;
         bluetooth.label = false;
         notifications.show_total = false;
         media.show_active_only = true;
+      };
+
+      customModules.kbLayout = {
+        labelType = "layout";
       };
 
       theme = {
@@ -173,29 +180,29 @@ in
 
         notification = {
           opacity = 100;
-          
+
           # Use shadow for positioning offset (shadow hack)
           enableShadow = true;
           shadow = "0px 0px 0px 0px";
           shadowMargins = "20px 20px";
-          
+
           border_radius = toString rounding + "px";
-          
+
           # Single solid background color
           background = background-alt;
-          
+
           # Colored border for accent
           border = accent;
-          
+
           # Text colors
           text = foreground;
           label = foreground;
           labelicon = foreground;
-          
+
           # Action buttons (shown on hover due to showActionsOnHover)
           actions.background = background;
           actions.text = foreground;
-          
+
           # Hide close button
           close_button.background = "transparent";
           close_button.label = "transparent";

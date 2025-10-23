@@ -105,6 +105,7 @@ in
         "systemctl --user enable --now hypridle.service"
         "systemctl --user enable --now nextcloud-client.service"
         "systemctl --user enable --now elephant.service"
+        "systemctl --user enable --now walker.service"
         "${pkgs.tailscale-systray}/bin/tailscale-systray"
 
         # Panel and utilities

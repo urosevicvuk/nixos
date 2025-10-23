@@ -79,7 +79,7 @@ in
         font_color = foreground;
         fade_on_empty = false;
         font_family = font + " Bold";
-        placeholder_text = "<i>🔒 Enter Password</i>";
+        placeholder_text = "<i>🗝 </i>";
         hide_input = false;
         position = "0, -250";
         halign = "center";

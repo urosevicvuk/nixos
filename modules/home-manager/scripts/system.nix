@@ -2,9 +2,9 @@
 #-
 #- Usefull quick scripts
 #-
-#- - `menu` - Open wofi with drun mode. (wofi)
-#- - `powermenu` - Open power dropdown menu. (wofi)
-#- - `quickmenu` - Open a dropdown menu with shortcuts and scripts. (wofi)
+#- - `menu` - Open walker with application launcher.
+#- - `powermenu` - Open power dropdown menu.
+#- - `quickmenu` - Open a dropdown menu with shortcuts and scripts.
 #- - `lock` - Lock the screen. (hyprlock)
 { pkgs, ... }:
 
@@ -13,103 +13,107 @@ let
     pkgs.writeShellScriptBin "menu"
       # bash
       ''
-        if pgrep wofi; then
-        	pkill wofi
-        else
-        	wofi -p " Apps" --show drun &
-        	# # Quit when not focused anymore
-        	# sleep 0.2
-        	# while true; do
-        	# 	window=$(hyprctl activewindow | grep "wofi")
-        	# 	if [[ ! $window ]]; then
-        	# 		pkill wofi
-        	# 		break
-        	# 	fi
-        	# 	sleep 0.2
-        	# done
-        fi
+        ${pkgs.walker}/bin/walker
       '';
 
   powermenu =
     pkgs.writeShellScriptBin "powermenu"
       # bash
       ''
-        if pgrep wofi; then
-        	pkill wofi
-        # if pgrep tofi; then
-        #   pkill tofi
-        else
-          options=(
-            "󰌾 Lock"
-            "󰍃 Logout"
-            " Suspend"
-            "󰑐 Reboot"
-            "󰿅 Shutdown"
-          )
+        options=(
+          "󰌾 Lock"
+          "󰍃 Logout"
+          " Suspend"
+          "󰑐 Reboot"
+          "󰿅 Shutdown"
+        )
 
-          selected=$(printf '%s\n' "''${options[@]}" | wofi -p " Powermenu" --dmenu)
-          # selected=$(printf '%s\n' "''${options[@]}" | tofi --prompt-text "> ")
-          selected=''${selected:2}
+        selected=$(printf '%s\n' "''${options[@]}" | ${pkgs.walker}/bin/walker --dmenu)
+        selected=''${selected:2}
 
-          case $selected in
-            "Lock")
-              ${pkgs.hyprlock}/bin/hyprlock
-              ;;
-            "Logout")
-              hyprctl dispatch exit
-              ;;
-            "Suspend")
-              systemctl suspend
-              ;;
-            "Reboot")
-              systemctl reboot
-              ;;
-            "Shutdown")
-              systemctl poweroff
-              ;;
-          esac
-        fi
+        case $selected in
+          "Lock")
+            ${pkgs.hyprlock}/bin/hyprlock
+            ;;
+          "Logout")
+            hyprctl dispatch exit
+            ;;
+          "Suspend")
+            systemctl suspend
+            ;;
+          "Reboot")
+            systemctl reboot
+            ;;
+          "Shutdown")
+            systemctl poweroff
+            ;;
+        esac
       '';
 
   quickmenu =
     pkgs.writeShellScriptBin "quickmenu"
       # bash
       ''
-        if pgrep wofi; then
-        	pkill wofi
-        # if pgrep tofi; then
-        #   pkill tofi
-        else
-          options=(
-            "󰅶 Caffeine"
-            "󰖔 Night-shift"
-            " Nixy"
-            "󰈊 Hyprpicker"
-            "󰖂 Toggle VPN"
-          )
+        options=(
+          "󰅶 Caffeine"
+          "󰖔 Night-shift"
+          "󰈊 Color Picker"
+          "󰄀 Screenshot"
+          "⏺ Screen Record"
+          "📋 Clipboard"
+          "🔄 Restart Panel"
+          "💤 Toggle Idle"
+          "🌐 WiFi Manager"
+          "🔊 Audio Mixer"
+          "🔋 System Monitor"
+          "󰖂 Toggle VPN"
+          " Nixy"
+        )
 
-          selected=$(printf '%s\n' "''${options[@]}" | wofi -p " Quickmenu" --dmenu)
-          # selected=$(printf '%s\n' "''${options[@]}" | tofi --prompt-text "> ")
-          selected=''${selected:2}
+        selected=$(printf '%s\n' "''${options[@]}" | ${pkgs.walker}/bin/walker --dmenu)
+        selected=''${selected:2}
 
-          case $selected in
-            "Caffeine")
-              caffeine
-              ;;
-            "Night-shift")
-              night-shift
-              ;;
-            "Nixy")
-              kitty zsh -c nixy
-              ;;
-            "Hyprpicker")
-              sleep 0.2 && ${pkgs.hyprpicker}/bin/hyprpicker -a
-              ;;
-            "Toggle VPN")
-              openvpn-toggle
-              ;;
-          esac
-        fi
+        case $selected in
+          "Caffeine")
+            caffeine
+            ;;
+          "Night-shift")
+            night-shift
+            ;;
+          "Color Picker")
+            sleep 0.2 && ${pkgs.hyprpicker}/bin/hyprpicker -a
+            ;;
+          "Screenshot")
+            screenshot region swappy
+            ;;
+          "Screen Record")
+            record-screen
+            ;;
+          "Clipboard")
+            clipboard
+            ;;
+          "Restart Panel")
+            hpr
+            ;;
+          "Toggle Idle")
+            systemctl --user is-active hypridle && systemctl --user stop hypridle || systemctl --user start hypridle
+            ;;
+          "WiFi Manager")
+            kitty --class floating -e impala
+            ;;
+          "Audio Mixer")
+            kitty --class floating -e wiremix
+            ;;
+          "System Monitor")
+            kitty -e btop
+            ;;
+          "Toggle VPN")
+            openvpn-toggle
+            ;;
+          "Nixy")
+            kitty zsh -c nixy
+            ;;
+        esac
       '';
 
   lock =

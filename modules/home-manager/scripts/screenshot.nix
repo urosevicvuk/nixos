@@ -41,16 +41,19 @@ let
     mkdir -p "$OUTPUT_DIR"
     FILENAME="$OUTPUT_DIR/recording-$(date +%Y%m%d-%H%M%S).mp4"
     PID_FILE="/tmp/screen-recorder.pid"
+    ICON_FILE="/tmp/recording-indicator"
     
     if [ -f "$PID_FILE" ]; then
       PID=$(cat "$PID_FILE")
       if kill -0 "$PID" 2>/dev/null; then
         kill -INT "$PID"
         rm "$PID_FILE"
-        ${pkgs.libnotify}/bin/notify-send "Screen Recording" "Recording stopped and saved"
+        rm -f "$ICON_FILE"
+        ${pkgs.libnotify}/bin/notify-send -u critical "⏹ Recording Stopped" "Saved to: $(basename $FILENAME)"
         exit 0
       else
         rm "$PID_FILE"
+        rm -f "$ICON_FILE"
       fi
     fi
     
@@ -63,10 +66,13 @@ let
       exit 1
     fi
     
+    # Create indicator file
+    touch "$ICON_FILE"
+    
     # wf-recorder with explicit geometry captures at native resolution
     ${pkgs.wf-recorder}/bin/wf-recorder -g "$GEOMETRY" -f "$FILENAME" &
     echo $! > "$PID_FILE"
-    ${pkgs.libnotify}/bin/notify-send "Screen Recording" "Recording started at native resolution\nPress again to stop"
+    ${pkgs.libnotify}/bin/notify-send -u critical "⏺ Recording Started" "Press F9 again to stop"
   '';
 in {
   home.packages = [
