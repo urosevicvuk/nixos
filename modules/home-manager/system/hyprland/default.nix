@@ -167,6 +167,7 @@ in
         "WLR_NO_HARDWARE_CURSORS,1"
         "SDL_VIDEODRIVER,wayland,x11,windows"
         "CLUTTER_BACKEND,wayland"
+        "GDK_SCALE,${monitorScale}"
       ];
 
       cursor = {
@@ -214,6 +215,10 @@ in
         disable_autoreload = true;
         focus_on_activate = true;
         new_window_takes_over_fullscreen = 2;
+      };
+
+      xwayland = {
+        force_zero_scaling = true;
       };
 
       windowrulev2 = [
