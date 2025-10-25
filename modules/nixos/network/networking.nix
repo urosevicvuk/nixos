@@ -12,17 +12,19 @@ in
         powersave = false;
         # Reduce background scanning
         scanRandMacAddress = false;
+        # Disable MAC randomization completely
+        macAddress = "preserve";
       };
     };
   };
 
   systemd.services.NetworkManager-wait-online.enable = false;
-  
+
   # Disable WiFi power management at system level
   boot.extraModprobeConfig = ''
-    options mt7921e power_save=0
+    options mt7925e disable_aspm=1
   '';
-  
+
   # Keep WiFi active
   powerManagement.enable = true;
   services.udev.extraRules = ''
