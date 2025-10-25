@@ -125,6 +125,7 @@ in
         "[workspace 1 silent] zen"
         "[workspace 4 silent] ${terminal}"
         "[workspace 5 silent] spotify"
+        "[workspace 8 silent] steam"
         "[workspace 9 silent] discord"
         "[workspace 10 silent] obsidian"
         "kdeconnect-indicator"
