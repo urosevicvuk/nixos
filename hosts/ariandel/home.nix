@@ -16,7 +16,7 @@
     ../../modules/home-manager/programs/fetch
     ../../modules/home-manager/programs/git.nix
     ../../modules/home-manager/programs/kitty.nix
-    ../../modules/home-manager/programs/nextcloud.nix
+    #../../modules/home-manager/programs/nextcloud.nix
     ../../modules/home-manager/programs/nvf
     ../../modules/home-manager/programs/obs-studio.nix
     ../../modules/home-manager/programs/shell
