@@ -166,6 +166,7 @@ in
         "WLR_NO_HARDWARE_CURSORS,1"
         "SDL_VIDEODRIVER,wayland,x11,windows"
         "CLUTTER_BACKEND,wayland"
+        "GDK_SCALE,${monitorScale}"
       ];
 
       cursor = {
@@ -183,9 +184,8 @@ in
 
       "plugin:hyprscrolling" = {
         fullscreen_on_one_column = true;
-        focus_fit_method = 1;
-        explicit_column_widths = "0.333, 0.5, 0.667, 1.0";
-        column_width = 0.5;
+        focus_fit_method = 0; # 0 = center, 1 = fit
+        column_width = 0.8;
         follow_focus = true;
       };
 
@@ -213,6 +213,10 @@ in
         disable_autoreload = true;
         focus_on_activate = true;
         new_window_takes_over_fullscreen = 2;
+      };
+
+      xwayland = {
+        force_zero_scaling = true;
       };
 
       windowrulev2 = [
@@ -287,7 +291,7 @@ in
 
       windowrule = [
         "workspace 1, title:zen"
-        "workspace 5, title:Steam"
+        "workspace 8, title:Steam"
         "workspace 9, title:Discord"
         "workspace 10, title:obsidian"
       ];
