@@ -16,6 +16,7 @@
     ../../modules/nixos/hardware/audio.nix
     ../../modules/nixos/hardware/bluetooth.nix
     ../../modules/nixos/hardware/keyd.nix
+    ../../modules/nixos/hardware/printing.nix
     ../../modules/nixos/hardware/peripherals.nix
 
     # Desktop environment
@@ -36,6 +37,7 @@
     # Network
     ../../modules/nixos/network/networking.nix
     ../../modules/nixos/network/tailscale.nix
+    ../../modules/nixos/network/firewall.nix
 
     # Host-specific configuration
     ./hardware-configuration.nix

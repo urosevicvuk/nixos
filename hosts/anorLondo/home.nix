@@ -10,16 +10,19 @@
     # Programs
     ../../modules/home-manager/programs/btop.nix
     ../../modules/home-manager/programs/direnv.nix
+    ../../modules/home-manager/programs/discord.nix
     ../../modules/home-manager/programs/editorconfig.nix
+    ../../modules/home-manager/programs/ghostty.nix
     ../../modules/home-manager/programs/fetch
     ../../modules/home-manager/programs/git.nix
-    ../../modules/home-manager/programs/ghostty.nix
     ../../modules/home-manager/programs/kitty.nix
     ../../modules/home-manager/programs/nextcloud.nix
     ../../modules/home-manager/programs/nvf
+    ../../modules/home-manager/programs/obs-studio.nix
     ../../modules/home-manager/programs/shell
     ../../modules/home-manager/programs/spicetify.nix
     ../../modules/home-manager/programs/thunar.nix
+    ../../modules/home-manager/programs/walker.nix
     ../../modules/home-manager/programs/wofi.nix
     ../../modules/home-manager/programs/zathura.nix
     ../../modules/home-manager/programs/zen.nix
