@@ -1,6 +1,11 @@
 # Hyprpanel is the bar on top of the screen
 # Display informations like workspaces, battery, wifi, ...
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
 
   accent = "#${config.lib.stylix.colors.base0D}";
@@ -32,6 +37,77 @@ in
   #imports = [ inputs.hyprpanel.homeManagerModules.hyprpanel ];
   # exec-once moved to main hyprland config to avoid conflicts
 
+  # Custom modules configuration file
+  home.file.".config/hyprpanel/modules.json".text = builtins.toJSON {
+    "custom/recording" = {
+      icon = {
+        idle = "";
+        recording = "⏺";
+      };
+      label = "";
+      tooltip = "{tooltip}";
+      execute = ''if [ -f /tmp/recording-indicator ]; then echo '{"alt": "recording", "tooltip": "Recording - Click to stop"}'; else echo '{"alt": "idle", "tooltip": "Not recording"}'; fi'';
+      interval = 2000;
+      hideOnEmpty = true;
+      actions = {
+        onLeftClick = "record-screen";
+      };
+    };
+
+    "custom/caffeine" = {
+      icon = {
+        active = "󰅶";
+        inactive = "";
+      };
+      label = "";
+      tooltip = "{tooltip}";
+      execute = ''if ! pgrep -x hypridle >/dev/null 2>&1; then echo '{"alt": "active", "tooltip": "Caffeine active - Click to disable"}'; else echo '{"alt": "inactive", "tooltip": "Idle lock enabled"}'; fi'';
+      interval = 2000;
+      hideOnEmpty = true;
+      actions = {
+        onLeftClick = "caffeine";
+      };
+    };
+
+    "custom/nightshift" = {
+      icon = {
+        active = "󰖔";
+        inactive = "";
+      };
+      label = "";
+      tooltip = "{tooltip}";
+      execute = ''if pgrep -x hyprsunset >/dev/null 2>&1; then echo '{"alt": "active", "tooltip": "Night shift enabled - Click to disable"}'; else echo '{"alt": "inactive", "tooltip": "Night shift disabled"}'; fi'';
+      interval = 2000;
+      hideOnEmpty = true;
+      actions = {
+        onLeftClick = "night-shift";
+      };
+    };
+
+    # COMMENTED: VPN indicator (for future use)
+    # "custom/vpn" = {
+    #   icon = {
+    #     connected = "󰖂";
+    #     disconnected = "";
+    #   };
+    #   execute = ''if pgrep -f openvpn >/dev/null 2>&1; then echo '{"alt": "connected"}'; else echo '{"alt": "disconnected"}'; fi'';
+    #   interval = 5000;
+    #   hideOnEmpty = true;
+    #   actions = {
+    #     onLeftClick = "openvpn-toggle";
+    #   };
+    # };
+
+    # COMMENTED: Docker indicator (for future use)
+    # "custom/docker" = {
+    #   icon = "🐳";
+    #   label = "Docker";
+    #   execute = ''docker ps -q 2>/dev/null | wc -l'';
+    #   interval = 10000;
+    #   hideOnEmpty = true;
+    # };
+  };
+
   programs.hyprpanel = {
     enable = true;
     #hyprland.enable = true;
@@ -47,6 +123,9 @@ in
             "left" = [
               "dashboard"
               "workspaces"
+              #"custom/recording"    # Recording indicator (hidden when not recording)
+              #"custom/caffeine"     # Caffeine indicator (hidden when idle enabled)
+              #"custom/nightshift"   # Night shift indicator (hidden when off)
             ];
             "middle" = [ "clock" ];
             "right" = [
@@ -77,8 +156,8 @@ in
           ignored = "^-(9.*)$";
         };
         clock = {
-          format = "%A, %d %B - %I:%M %p ";
-          icon = false; # Disable clock icon
+          format = "%A - %I:%M %p ";
+          icon = "";
         };
         windowtitle.label = true;
         volume.label = false;
@@ -86,10 +165,6 @@ in
         bluetooth.label = false;
         notifications.show_total = false;
         media.show_active_only = true;
-      };
-
-      customModules.kbLayout = {
-        labelType = "layout";
       };
 
       theme = {
@@ -100,25 +175,24 @@ in
 
         bar = {
 
-          outer_spacing = if floating && transparent then "0px" else "8px";
+          outer_spacing = "0px";
 
           buttons = {
             style = "default";
             monochrome = true;
-            y_margins = if floating && transparent then "0px" else "8px";
+            y_margins = "0px";
             spacing = "0.3em";
             padding_x = "0.8rem";
             padding_y = "0.4rem";
-            radius = (if transparent then toString rounding else toString (rounding - 8)) + "px";
+            radius = rounding;
             workspaces = {
               hover = accent-alt;
               active = accent;
               available = accent-alt;
               occupied = accent-alt;
             };
-            text = if transparent && transparentButtons then foregroundOnWallpaper else foreground;
-            background =
-              (if transparent then background else background-alt) + (if transparentButtons then "00" else "");
+            text = foreground;
+            background = background + (if transparentButtons then "00" else "");
             icon = accent;
             hover = background;
             notifications = {
@@ -141,7 +215,7 @@ in
 
           menus = {
 
-            shadow = if transparent then "0 0 0 0" else "0px 0px 3px 1px #16161e";
+            shadow = "0 0 0 0";
             monochrome = true;
             card_radius = toString rounding + "px";
             border = {
@@ -184,7 +258,7 @@ in
           # Use shadow for positioning offset (shadow hack)
           enableShadow = true;
           shadow = "0px 0px 0px 0px";
-          shadowMargins = "20px 20px";
+          shadowMargins = "12px 12px";
 
           border_radius = toString rounding + "px";
 
