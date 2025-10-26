@@ -156,7 +156,7 @@ in
           ignored = "^-(9.*)$";
         };
         clock = {
-          format = "%A - %I:%M %p ";
+          format = "%A, %d %B - %k:%M ";
           icon = "";
         };
         windowtitle.label = true;

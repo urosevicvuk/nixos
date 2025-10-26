@@ -3,8 +3,12 @@
 {
   imports = [ inputs.nixcord.homeModules.nixcord ];
 
+  stylix.targets.nixcord.enable = false;
+
   programs.nixcord = {
     enable = true;
+    vesktop.enable = true;
+
     config = {
       frameless = true;
 
