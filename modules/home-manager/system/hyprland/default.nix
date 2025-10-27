@@ -185,7 +185,7 @@ in
       "plugin:hyprscrolling" = {
         fullscreen_on_one_column = true;
         focus_fit_method = 0; # 0 = center, 1 = fit
-        column_width = 0.8;
+        column_width = 0.5;
         follow_focus = true;
       };
 
