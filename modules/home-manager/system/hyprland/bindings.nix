@@ -39,13 +39,6 @@ in
       "$shiftMod, K, layoutmsg, movewindowto u" # Move window up within column
       "$shiftMod, J, layoutmsg, movewindowto d" # Move window down within column
 
-      "$shiftMod, up, focusmonitor, -1" # Focus previous monitor
-      "$shiftMod, down, focusmonitor, 1" # Focus next monitor
-
-      # Scrolling layout: navigate between columns
-      "$mod, bracketleft, layoutmsg, move -col" # Scroll layout left (previous column)
-      "$mod, bracketright, layoutmsg, move +col" # Scroll layout right (next column)
-
       # Move current workspace to different monitor
       "$shiftMod CTRL, left, movecurrentworkspacetomonitor, l" # Move workspace to left monitor
       "$shiftMod CTRL, right, movecurrentworkspacetomonitor, r" # Move workspace to right monitor
@@ -57,12 +50,8 @@ in
       ",PRINT, exec, hyprshot -m output -m $(hyprctl monitors -j | jq -r '.[] | select(.focused == true) | .name') -o ~/Pictures/screenshots/" # Screenshot current monitor instantly
 
       "$shiftMod, T, exec, hyprpanel-toggle" # Toggle hyprpanel
-      "$shiftMod CTRL, T, exec, hpr" # Toggle hyprpanel
-      "$shiftMod, V, exec, clipboard" # Clipboard picker with wofi
+      #"$shiftMod, V, exec, clipboard" # Clipboard picker with wofi
 
-      "$mod, F1, exec, hyprctl switchxkblayout logitech-pro-gaming-keyboard 0" # US
-      "$mod, F2, exec, hyprctl switchxkblayout logitech-pro-gaming-keyboard 1" # RS ćirilica
-      "$mod, F3, exec, hyprctl switchxkblayout logitech-pro-gaming-keyboard 2" # RS latinica
       "$mod, F4, exec, night-shift" # Toggle night shift
 
       # Screen rotation
@@ -73,7 +62,7 @@ in
       "ALT, P, exec, record-screen" # F9: Toggle screen recording
       ",XF86AudioMedia, exec, quickmenu" # F12: Quick scripts menu
 
-      "$shiftMod,E, exec, ${pkgs.wofi-emoji}/bin/wofi-emoji" # Emoji picker with wofi
+      #"$shiftMod,E, exec, ${pkgs.wofi-emoji}/bin/wofi-emoji" # Emoji picker with wofi
 
       #Workspaces
       "$mod, 1, workspace, 1"
@@ -104,8 +93,8 @@ in
     ];
 
     binde = [
-      "$mod, minus, layoutmsg, colresize -0.1" # Resize column smaller
-      "$mod, equal, layoutmsg, colresize +0.1" # Resize column larger
+      "$shiftMod, comma, layoutmsg, colresize -0.1" # Resize column smaller
+      "$shiftMod, period, layoutmsg, colresize +0.1" # Resize column larger
     ];
 
     bindm = [
