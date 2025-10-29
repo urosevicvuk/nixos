@@ -133,7 +133,8 @@ in
       monitor =
         if isLaptop then
           [
-            "eDP-1,2880x1920@120,auto,${monitorScale}"
+            "eDP-1,2880x1920@120,0x0,${monitorScale}"
+            "DP-4,1920x1080@144,0x-1080,1"
             ",preferred,auto,1"
           ]
         else
@@ -185,7 +186,7 @@ in
       "plugin:hyprscrolling" = {
         fullscreen_on_one_column = true;
         focus_fit_method = 0; # 0 = center, 1 = fit
-        column_width = 0.5;
+        column_width = 0.499;
         follow_focus = true;
       };
 

@@ -8,7 +8,7 @@ in
       #Basic things
       "$mod, SPACE, exec, walker" # Walker Launcher
       "$shiftMod, SPACE, exec, hyprfocus-toggle" # Toggle HyprFocus
-      "CTRL $shiftMod, L, exec, ${pkgs.hyprlock}/bin/hyprlock" # Lock
+      "CTRL $shiftMod, SPACE, exec, hyprlock" # Lock
 
       "$mod, Q, killactive," # Close window
       "$mod, T, togglefloating," # Toggle Floating
@@ -40,10 +40,10 @@ in
       "$shiftMod, J, layoutmsg, movewindowto d" # Move window down within column
 
       # Move current workspace to different monitor
-      "$shiftMod CTRL, left, movecurrentworkspacetomonitor, l" # Move workspace to left monitor
-      "$shiftMod CTRL, right, movecurrentworkspacetomonitor, r" # Move workspace to right monitor
-      "$shiftMod CTRL, up, movecurrentworkspacetomonitor, u" # Move workspace to upper monitor
-      "$shiftMod CTRL, down, movecurrentworkspacetomonitor, d" # Move workspace to lower monitor
+      "$shiftMod CTRL, h, movecurrentworkspacetomonitor, l" # Move workspace to left monitor
+      "$shiftMod CTRL, l, movecurrentworkspacetomonitor, r" # Move workspace to right monitor
+      "$shiftMod CTRL, k, movecurrentworkspacetomonitor, u" # Move workspace to upper monitor
+      "$shiftMod CTRL, j, movecurrentworkspacetomonitor, d" # Move workspace to lower monitor
 
       "$shiftMod, s, exec, hyprshot -m region -o ~/Pictures/screenshots/ -z" # Screenshot region
       "$mod, PRINT, exec, hyprshot -m region -o ~/Pictures/screenshots/ -z" # Screenshot region

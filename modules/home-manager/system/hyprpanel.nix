@@ -149,15 +149,15 @@ in
           show_numbered = false;
           workspaces = 11;
           numbered_active_indicator = "color";
-          monitorSpecific = true;
+          monitorSpecific = false;
           applicationIconEmptyWorkspace = "";
           showApplicationIcons = true;
           showWsIcons = true;
           ignored = "^-(9.*)$";
         };
         clock = {
-          format = "%A, %d %B - %k:%M ";
-          icon = "";
+          format = "%A, %d %B - %I:%M %p ";
+          icon.enable = false;
         };
         windowtitle.label = true;
         volume.label = false;
