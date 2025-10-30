@@ -147,13 +147,13 @@ in
         launcher.icon = "";
         workspaces = {
           show_numbered = false;
-          workspaces = 11;
+          workspaces = 10;
           numbered_active_indicator = "color";
           monitorSpecific = false;
           applicationIconEmptyWorkspace = "";
           showApplicationIcons = true;
           showWsIcons = true;
-          ignored = "^-(9.*)$";
+          ignored = "^(-(9.*)|-1337)$";
         };
         clock = {
           format = "%A, %d %B - %I:%M %p ";

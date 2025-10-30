@@ -134,7 +134,7 @@ in
         if isLaptop then
           [
             "eDP-1,2880x1920@120,0x0,${monitorScale}"
-            "DP-4,1920x1080@144,0x-1080,1"
+            # "DP-4,1920x1080@144,0x-1080,1"
             ",preferred,auto,1"
           ]
         else
@@ -205,6 +205,8 @@ in
         };
       };
 
+      binds.hide_special_on_workspace_change = true;
+
       # Gestures configured via extraConfig below
 
       misc = {
@@ -272,6 +274,7 @@ in
             "8, persistent:true"
             "9, persistent:true"
             "10, persistent:true"
+            "name:special, persistent:true"
           ]
         else
           [
