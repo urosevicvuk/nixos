@@ -63,7 +63,6 @@
     packages =
       (with pkgs; [
         # Apps
-        vesktop
         vlc
         obsidian
         libreoffice-qt
