@@ -13,7 +13,7 @@
 
   users.users."${config.var.username}" = {
     openssh.authorizedKeys.keys = [
-      config.sops.secrets.ssh-public.path
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQpgKiftVTzqkfu6zbRpvZFtWZH/HBQSj6DhuVvVRul vuk23urosevic@gmail.com"
     ];
   };
 }

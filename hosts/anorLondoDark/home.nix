@@ -34,6 +34,7 @@
       pnpm
       wireguard-tools
       duckdb
+      ntfs3g
 
       # Utils
       nh
