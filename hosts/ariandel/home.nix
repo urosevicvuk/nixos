@@ -72,6 +72,7 @@
         figma-linux
         gimp3-with-plugins
         pinta
+        qbittorrent
 
         # Dev
         opencode
@@ -93,19 +94,20 @@
         nh
         nix-init
         ntfs3g
-        qbittorrent
         p7zip
         ffmpeg
         optipng
         bluez
         curtail
+        moreutils
+        vulkan-tools
 
         # Laptop utilities
         acpi
         powertop
         figlet
-        moreutils
-        vulkan-tools
+
+        # Virtualization
         freerdp
 
         # Just cool
