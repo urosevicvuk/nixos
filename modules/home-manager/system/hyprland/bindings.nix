@@ -30,14 +30,14 @@ in
 
       "$mod, H, layoutmsg, focus l" # Move focus left
       "$mod, L, layoutmsg, focus r" # Move focus Right
-      "$mod, K, layoutmsg, focus u" # Move focus Up
-      "$mod, J, layoutmsg, focus d" # Move focus Down
+      "$mod, K, movefocus, u" # Move focus Up
+      "$mod, J, movefocus, d" # Move focus Down
 
       # Scrolling layout: move windows between/within columns
       "$shiftMod, H, layoutmsg, movewindowto l" # Move window to left column
       "$shiftMod, L, layoutmsg, movewindowto r" # Move window to right column
-      "$shiftMod, K, layoutmsg, movewindowto u" # Move window up within column
-      "$shiftMod, J, layoutmsg, movewindowto d" # Move window down within column
+      "$shiftMod, K, movewindow, u" # Move window up
+      "$shiftMod, J, movewindow, d" # Move window down
 
       # Move current workspace to different monitor
       "$shiftMod CTRL, h, movecurrentworkspacetomonitor, l" # Move workspace to left monitor

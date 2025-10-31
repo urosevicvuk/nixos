@@ -153,7 +153,7 @@ in
           applicationIconEmptyWorkspace = "";
           showApplicationIcons = true;
           showWsIcons = true;
-          ignored = "^(-(9.*)|-1337)$";
+          ignored = "^(-(9.*)|-1337|11)$";
         };
         clock = {
           format = "%A, %d %B - %I:%M %p ";
