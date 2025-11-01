@@ -12,6 +12,8 @@
     ./system.nix
     ./openvpn.nix
     ./tmux-sessionizer.nix
+    ./quick-toggles-status.nix
+    ./network.nix
     
     # Enhanced features
     ./vyke-menu.nix              # Main menu system

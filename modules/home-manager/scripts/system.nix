@@ -24,7 +24,9 @@ let
           "󰌾 Lock"
           "󰍃 Logout"
           " Suspend"
+          "󰒲 Hibernate"
           "󰑐 Reboot"
+          "󰚥 Reboot to UEFI"
           "󰿅 Shutdown"
         )
 
@@ -41,8 +43,14 @@ let
           "Suspend")
             systemctl suspend
             ;;
+          "Hibernate")
+            systemctl hibernate
+            ;;
           "Reboot")
             systemctl reboot
+            ;;
+          "Reboot to UEFI")
+            systemctl reboot --firmware-setup
             ;;
           "Shutdown")
             systemctl poweroff
@@ -60,14 +68,6 @@ let
           "󰈊 Color Picker"
           "󰄀 Screenshot"
           "⏺ Screen Record"
-          "📋 Clipboard"
-          "🔄 Restart Panel"
-          "💤 Toggle Idle"
-          "🌐 WiFi Manager"
-          "🔊 Audio Mixer"
-          "🔋 System Monitor"
-          "󰖂 Toggle VPN"
-          " Nixy"
         )
 
         selected=$(printf '%s\n' "''${options[@]}" | ${pkgs.walker}/bin/walker --dmenu)
@@ -84,34 +84,10 @@ let
             sleep 0.2 && ${pkgs.hyprpicker}/bin/hyprpicker -a
             ;;
           "Screenshot")
-            screenshot region swappy
+            smart-screenshot
             ;;
           "Screen Record")
             record-screen
-            ;;
-          "Clipboard")
-            clipboard
-            ;;
-          "Restart Panel")
-            hpr
-            ;;
-          "Toggle Idle")
-            systemctl --user is-active hypridle && systemctl --user stop hypridle || systemctl --user start hypridle
-            ;;
-          "WiFi Manager")
-            kitty --class floating -e impala
-            ;;
-          "Audio Mixer")
-            kitty --class floating -e wiremix
-            ;;
-          "System Monitor")
-            kitty -e btop
-            ;;
-          "Toggle VPN")
-            openvpn-toggle
-            ;;
-          "Nixy")
-            kitty zsh -c nixy
             ;;
         esac
       '';
