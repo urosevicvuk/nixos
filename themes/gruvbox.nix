@@ -13,7 +13,7 @@
       gaps-in = 6;
       gaps-out = 8;
       active-opacity = 1;
-      inactive-opacity = 0.85;
+      inactive-opacity = 1;
       blur = true;
       border-size = 2;
       animation-speed = "fast"; # "fast" | "medium" | "slow"

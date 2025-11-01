@@ -107,6 +107,11 @@
         powertop
         figlet
 
+        # TUI system managers
+        bluetuith # Bluetooth manager
+        wiremix # PipeWire audio mixer
+        # nmtui is built-in with NetworkManager (no need to install)
+
         # Virtualization
         freerdp
 

@@ -60,7 +60,7 @@ in
 
       # Framework function keys
       "ALT, P, exec, record-screen" # F9: Toggle screen recording
-      ",XF86AudioMedia, exec, quickmenu" # F12: Quick scripts menu
+      ",XF86AudioMedia, exec, vyke-menu" # F12: Quick scripts menu
 
       #"$shiftMod,E, exec, ${pkgs.wofi-emoji}/bin/wofi-emoji" # Emoji picker with wofi
 
@@ -107,6 +107,7 @@ in
 
     bindl = [
       ",XF86AudioMute, exec, sound-toggle" # Toggle Mute
+      "SHIFT,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle" # Toggle Mic Mute
       ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause" # Play/Pause Song
       ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next" # Next Song
       ",XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous" # Previous Song
@@ -116,6 +117,8 @@ in
     bindle = [
       ",XF86AudioRaiseVolume, exec, sound-up" # Sound Up
       ",XF86AudioLowerVolume, exec, sound-down" # Sound Down
+      "SHIFT,XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+" # Mic Volume Up
+      "SHIFT,XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-" # Mic Volume Down
       ",XF86MonBrightnessUp, exec, brightness-up" # Brightness Up
       ",XF86MonBrightnessDown, exec, brightness-down" # Brightness Down
     ];

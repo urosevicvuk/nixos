@@ -27,11 +27,9 @@ let
   inherit (config.theme.bar) position;
   inherit (config.theme.bar) transparentButtons;
 
-  inherit (config.var) location;
   inherit (config.var) device;
 
   isLaptop = device == "laptop";
-  notificationOpacity = 90;
 in
 {
   #imports = [ inputs.hyprpanel.homeManagerModules.hyprpanel ];
@@ -39,80 +37,20 @@ in
 
   # Custom modules configuration file
   home.file.".config/hyprpanel/modules.json".text = builtins.toJSON {
-    "custom/recording" = {
-      icon = {
-        idle = "";
-        recording = "⏺";
-      };
-      label = "";
+    "custom/quick-toggles" = {
+      label = "{text}";
       tooltip = "{tooltip}";
-      execute = ''if [ -f /tmp/recording-indicator ]; then echo '{"alt": "recording", "tooltip": "Recording - Click to stop"}'; else echo '{"alt": "idle", "tooltip": "Not recording"}'; fi'';
-      interval = 2000;
+      execute = "quick-toggles-status";
+      interval = 1000;
       hideOnEmpty = true;
       actions = {
-        onLeftClick = "record-screen";
+        onLeftClick = "menu";
       };
     };
-
-    "custom/caffeine" = {
-      icon = {
-        active = "󰅶";
-        inactive = "";
-      };
-      label = "";
-      tooltip = "{tooltip}";
-      execute = ''if ! pgrep -x hypridle >/dev/null 2>&1; then echo '{"alt": "active", "tooltip": "Caffeine active - Click to disable"}'; else echo '{"alt": "inactive", "tooltip": "Idle lock enabled"}'; fi'';
-      interval = 2000;
-      hideOnEmpty = true;
-      actions = {
-        onLeftClick = "caffeine";
-      };
-    };
-
-    "custom/nightshift" = {
-      icon = {
-        active = "󰖔";
-        inactive = "";
-      };
-      label = "";
-      tooltip = "{tooltip}";
-      execute = ''if pgrep -x hyprsunset >/dev/null 2>&1; then echo '{"alt": "active", "tooltip": "Night shift enabled - Click to disable"}'; else echo '{"alt": "inactive", "tooltip": "Night shift disabled"}'; fi'';
-      interval = 2000;
-      hideOnEmpty = true;
-      actions = {
-        onLeftClick = "night-shift";
-      };
-    };
-
-    # COMMENTED: VPN indicator (for future use)
-    # "custom/vpn" = {
-    #   icon = {
-    #     connected = "󰖂";
-    #     disconnected = "";
-    #   };
-    #   execute = ''if pgrep -f openvpn >/dev/null 2>&1; then echo '{"alt": "connected"}'; else echo '{"alt": "disconnected"}'; fi'';
-    #   interval = 5000;
-    #   hideOnEmpty = true;
-    #   actions = {
-    #     onLeftClick = "openvpn-toggle";
-    #   };
-    # };
-
-    # COMMENTED: Docker indicator (for future use)
-    # "custom/docker" = {
-    #   icon = "🐳";
-    #   label = "Docker";
-    #   execute = ''docker ps -q 2>/dev/null | wc -l'';
-    #   interval = 10000;
-    #   hideOnEmpty = true;
-    # };
   };
 
   programs.hyprpanel = {
     enable = true;
-    #hyprland.enable = true;
-    #overwrite.enable = true;
-    #overlay.enable = true;
 
     settings = lib.mkForce {
       scalingPriority = "hyprland";
@@ -123,9 +61,7 @@ in
             "left" = [
               "dashboard"
               "workspaces"
-              #"custom/recording"    # Recording indicator (hidden when not recording)
-              #"custom/caffeine"     # Caffeine indicator (hidden when idle enabled)
-              #"custom/nightshift"   # Night shift indicator (hidden when off)
+              "custom/quick-toggles" # Unified toggles (recording, caffeine, night-shift)
             ];
             "middle" = [ "clock" ];
             "right" = [
@@ -160,9 +96,31 @@ in
           icon.enable = false;
         };
         windowtitle.label = true;
-        volume.label = false;
-        network.truncation_size = 99;
-        bluetooth.label = false;
+
+        # Volume module with click actions
+        volume = {
+          label = false;
+          leftClick = "menu:audio";
+          middleClick = "${config.var.terminal} --class floating -e wiremix";
+          rightClick = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+        };
+
+        # Network module with click actions
+        network = {
+          truncation_size = 99;
+          leftClick = "menu:network";
+          middleClick = "${config.var.terminal} --class floating -e nmtui";
+          rightClick = "wifi-toggle";
+        };
+
+        # Bluetooth module with click actions
+        bluetooth = {
+          label = false;
+          leftClick = "menu:bluetooth";
+          middleClick = "${config.var.terminal} --class floating -e bluetuith";
+          rightClick = "rfkill toggle bluetooth";
+        };
+
         notifications.show_total = false;
         media.show_active_only = true;
       };
