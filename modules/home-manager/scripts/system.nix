@@ -84,10 +84,10 @@ let
             sleep 0.2 && ${pkgs.hyprpicker}/bin/hyprpicker -a
             ;;
           "Screenshot")
-            smart-screenshot
+            screenshot-region-annotate
             ;;
           "Screen Record")
-            record-screen
+            record-monitor
             ;;
         esac
       '';

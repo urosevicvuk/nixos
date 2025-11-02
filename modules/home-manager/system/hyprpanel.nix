@@ -305,7 +305,7 @@ in
               };
               shortcut3 = {
                 icon = "󰄀";
-                command = "screenshot region swappy";
+                command = "screenshot-region-annotate";
                 tooltip = "Screenshot";
               };
             };

@@ -36,12 +36,9 @@ in
     qt6.qtwayland
     libsForQt5.qt5ct
     qt6ct
-    hyprshot
     hyprpicker
     hyprpanel
-    swappy
     imv
-    wf-recorder
     wlr-randr
     wl-clipboard
     brightnessctl

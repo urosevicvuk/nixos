@@ -45,22 +45,28 @@ in
       "$shiftMod CTRL, k, movecurrentworkspacetomonitor, u" # Move workspace to upper monitor
       "$shiftMod CTRL, j, movecurrentworkspacetomonitor, d" # Move workspace to lower monitor
 
-      "$shiftMod, s, exec, hyprshot -m region -o ~/Pictures/screenshots/ -z" # Screenshot region
-      "$mod, PRINT, exec, hyprshot -m region -o ~/Pictures/screenshots/ -z" # Screenshot region
-      ",PRINT, exec, hyprshot -m output -m $(hyprctl monitors -j | jq -r '.[] | select(.focused == true) | .name') -o ~/Pictures/screenshots/" # Screenshot current monitor instantly
+      # Screenshots
+      ",PRINT, exec, screenshot-monitor" # Screenshot current monitor (save + clipboard)
+      "ALT, PRINT, exec, screenshot-monitor-annotate" # Screenshot current monitor + annotate
+      "$mod, PRINT, exec, screenshot-region" # Screenshot region (save + clipboard)
+      "$mod ALT, PRINT, exec, screenshot-region-annotate" # Screenshot region + annotate
+
+      # Screen Recording
+      "SHIFT, PRINT, exec, record-monitor" # Record current monitor (start/stop)
+      "ALT SHIFT, PRINT, exec, record-monitor-edit" # Record current monitor + open in LosslessCut
+      "$mod SHIFT, PRINT, exec, record-region" # Record region (start/stop)
+      "$mod ALT SHIFT, PRINT, exec, record-region-edit" # Record region + open in LosslessCut
 
       "$shiftMod, T, exec, hyprpanel-toggle" # Toggle hyprpanel
       #"$shiftMod, V, exec, clipboard" # Clipboard picker with wofi
-
-      "$mod, F4, exec, night-shift" # Toggle night shift
 
       # Screen rotation
       "$mod, Prior, exec, hyprctl keyword monitor eDP-1,2880x1920@120,auto,1.5,transform,2" # Rotate 180° (PageUp)
       "$mod, Next, exec, hyprctl keyword monitor eDP-1,2880x1920@120,auto,1.5,transform,0" # Rotate back to normal (PageDown)
 
       # Framework function keys
-      "ALT, P, exec, record-screen" # F9: Toggle screen recording
-      ",XF86AudioMedia, exec, vyke-menu" # F12: Quick scripts menu
+      "ALT, P, exec, caffeine" # F9: Toggle caffeine
+      ",XF86AudioMedia, exec, powermenu" # F12: Power menu
 
       #"$shiftMod,E, exec, ${pkgs.wofi-emoji}/bin/wofi-emoji" # Emoji picker with wofi
 
@@ -110,7 +116,7 @@ in
 
     bindl = [
       ",XF86AudioMute, exec, sound-toggle" # Toggle Mute
-      "SHIFT,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle" # Toggle Mic Mute
+      "SHIFT,XF86AudioMute, exec, mic-toggle" # Toggle Mic Mute
       ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause" # Play/Pause Song
       ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next" # Next Song
       ",XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous" # Previous Song
@@ -120,10 +126,12 @@ in
     bindle = [
       ",XF86AudioRaiseVolume, exec, sound-up" # Sound Up
       ",XF86AudioLowerVolume, exec, sound-down" # Sound Down
-      "SHIFT,XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+" # Mic Volume Up
-      "SHIFT,XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-" # Mic Volume Down
+      "SHIFT,XF86AudioRaiseVolume, exec, mic-up" # Mic Volume Up
+      "SHIFT,XF86AudioLowerVolume, exec, mic-down" # Mic Volume Down
       ",XF86MonBrightnessUp, exec, brightness-up" # Brightness Up
       ",XF86MonBrightnessDown, exec, brightness-down" # Brightness Down
+      "SHIFT,XF86MonBrightnessUp, exec, night-shift-on" # Night Shift On
+      "SHIFT,XF86MonBrightnessDown, exec, night-shift-off" # Night Shift Off
     ];
   };
 }

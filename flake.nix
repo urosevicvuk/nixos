@@ -87,9 +87,8 @@
       inputs.elephant.follows = "elephant";
     };
 
-    winboat = {
-      url = "github:TibixDev/winboat";
-      inputs.nixpkgs.follows = "nixpkgs";
+    affinity-nix = {
+      url = "github:mrshmllow/affinity-nix";
     };
   };
 
