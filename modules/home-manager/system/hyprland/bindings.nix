@@ -86,6 +86,9 @@ in
       "$mod, 0, workspace, 10"
       "$mod SHIFT, 0, layoutmsg, movecoltoworkspace 10"
 
+      "$mod, backspace, workspace, 11"
+      "$mod SHIFT, backspace, layoutmsg, movecoltoworkspace 11"
+
       "$mod, TAB, togglespecialworkspace"
       "$shiftMod, TAB, layoutmsg, movecoltoworkspace special"
 

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: {
   boot = {
     initrd.kernelModules = [ "amdgpu" ];
     supportedFilesystems = [ "ntfs" ];
@@ -14,7 +14,7 @@
         enable = true;
         devices = [ "nodev" ];
         efiSupport = true;
-        useOSProber = true;
+        useOSProber = config.var.device == "desktop";
       };
     };
     tmp.cleanOnBoot = true;

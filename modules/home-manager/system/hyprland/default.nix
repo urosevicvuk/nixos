@@ -274,6 +274,7 @@ in
             "8, persistent:true"
             "9, persistent:true"
             "10, persistent:true"
+            "11, monitor:DP-4, persistent:true"
             "name:special, persistent:true"
           ]
         else
