@@ -16,8 +16,14 @@ in
 
       # Fingerprint authentication for various services (laptop only)
       sudo.fprintAuth = lib.mkIf isLaptop true;
-      login.fprintAuth = lib.mkIf isLaptop true;
-      greetd.fprintAuth = lib.mkIf isLaptop true;
+      login = {
+        fprintAuth = lib.mkIf isLaptop true; # Enables fingerprint for lock screen (hyprlock)
+        enableGnomeKeyring = true; # Auto-unlock keyring on login
+      };
+      greetd = {
+        # No fprintAuth - forces password at login to unlock keyring
+        enableGnomeKeyring = true; # Auto-unlock keyring via display manager with password
+      };
       polkit-1.fprintAuth = lib.mkIf isLaptop true;
     };
 
@@ -26,8 +32,8 @@ in
 
     # Sudo configuration
     sudo = {
-      # Don't ask for password for wheel group
-      wheelNeedsPassword = false;
+      # Require authentication (fingerprint or password) for wheel group
+      wheelNeedsPassword = true;
 
       # Sudo rules for specific commands
       extraRules = [
