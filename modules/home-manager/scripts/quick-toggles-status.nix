@@ -13,11 +13,14 @@ let
     tooltip_parts=""
     has_active=false
 
-    # Check recording status (file-based indicator)
-    if [ -f "/tmp/recording-indicator" ]; then
-      icons="🎥 "
-      tooltip_parts="Recording"
-      has_active=true
+    # Check recording status (gpu-screen-recorder PID file)
+    if [ -f "/tmp/gpu-screen-recorder.pid" ]; then
+      PID=$(cat "/tmp/gpu-screen-recorder.pid" 2>/dev/null)
+      if [ -n "$PID" ] && kill -0 "$PID" 2>/dev/null; then
+        icons="🎥 "
+        tooltip_parts="Recording"
+        has_active=true
+      fi
     fi
 
     # Check caffeine status (active when hypridle is NOT running)

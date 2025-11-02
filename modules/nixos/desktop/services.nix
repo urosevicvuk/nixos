@@ -37,6 +37,9 @@
 
   programs = {
     dconf.enable = true;
+
+    # GPU Screen Recorder - enables promptless recording (no polkit prompt)
+    gpu-screen-recorder.enable = true;
   };
 
   # Enable graphics support

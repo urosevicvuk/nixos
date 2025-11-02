@@ -53,9 +53,7 @@ in
 
       # Screen Recording
       "SHIFT, PRINT, exec, record-monitor" # Record current monitor (start/stop)
-      "ALT SHIFT, PRINT, exec, record-monitor-edit" # Record current monitor + open in LosslessCut
       "$mod SHIFT, PRINT, exec, record-region" # Record region (start/stop)
-      "$mod ALT SHIFT, PRINT, exec, record-region-edit" # Record region + open in LosslessCut
 
       "$shiftMod, T, exec, hyprpanel-toggle" # Toggle hyprpanel
       #"$shiftMod, V, exec, clipboard" # Clipboard picker with wofi
