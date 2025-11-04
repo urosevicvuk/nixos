@@ -82,9 +82,13 @@
     };
 
     polarity = "dark";
-    image = pkgs.fetchurl {
-      url = "https://gruvbox-wallpapers.pages.dev/wallpapers/mix/wall.jpg";
-      sha256 = "sha256-AyRt1FpaQR1hp9ERP+MRk4M58I0mzVsE7x9TtnBCSiw=";
-    };
+    image = pkgs.runCommand "optimized-gruvbox-wallpaper.jpg" {
+      buildInputs = [ pkgs.imagemagick ];
+    } ''
+      ${pkgs.imagemagick}/bin/convert ${pkgs.fetchurl {
+        url = "https://gruvbox-wallpapers.pages.dev/wallpapers/mix/wall.jpg";
+        sha256 = "sha256-AyRt1FpaQR1hp9ERP+MRk4M58I0mzVsE7x9TtnBCSiw=";
+      }} -resize 2880x1920^ -gravity center -extent 2880x1920 -quality 92 $out
+    '';
   };
 }

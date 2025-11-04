@@ -14,6 +14,9 @@ in
         lock_cmd = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
         before_sleep_cmd = "loginctl lock-session";
         after_sleep_cmd = "hyprctl dispatch dpms on";
+        # Wait for hyprlock to fully lock before suspending (option 3)
+        # This prevents the screen flash issue
+        wait_cmd = 3;
       };
 
       listener = if isLaptop then [

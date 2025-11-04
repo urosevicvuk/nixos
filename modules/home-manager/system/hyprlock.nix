@@ -11,7 +11,10 @@ in
       general = {
         grace = 5;
         no_fade_in = false;
+        no_fade_out = false;
         disable_loading_bar = false;
+        hide_cursor = true;
+        immediate_render = true;
       };
 
       auth.fingerprint.enabled = true;
@@ -30,7 +33,7 @@ in
         {
           # Day-Month-Date
           monitor = "";
-          text = ''cmd[update:1000] echo -e "$(date +"%A, %B %d")"'';
+          text = ''cmd[update:100] echo -e "$(date +"%A, %B %d")"'';
           color = foreground;
           font_size = 28;
           font_family = font + " Bold";
@@ -41,7 +44,7 @@ in
         # Time
         {
           monitor = "";
-          text = ''cmd[update:1000] echo "<span>$(date +"%I:%M")</span>"'';
+          text = ''cmd[update:100] echo "<span>$(date +"%I:%M")</span>"'';
           color = foreground;
           font_size = 160;
           font_family = "steelfish outline regular";
