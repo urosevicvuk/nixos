@@ -28,6 +28,8 @@
       open_url_with = "default";
       allow_remote_control = "yes";
       listen_on = "unix:/tmp/mykitty";
+
+      touch_scroll_multiplier = 10.0;
     };
   };
 }

@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  inputs,
   ...
 }:
 {
@@ -73,6 +74,9 @@
         gimp3-with-plugins
         pinta
         qbittorrent
+
+        # Affinity
+        inputs.affinity-nix.packages.x86_64-linux.v3
 
         # Dev
         opencode

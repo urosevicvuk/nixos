@@ -64,6 +64,7 @@
     fastfetch # system info (fast)
     pfetch # system info (minimal)
     nitch # system info (tiny)
+    nvtopPackages.amd # GPU process monitor (AMD)
 
     # Document conversion
     pandoc # universal document converter
