@@ -13,7 +13,7 @@
     prismlauncher
     (wineWowPackages.stable.override { waylandSupport = true; })
     winetricks
-    protonup
+    protonup-ng
     protontricks
     shadps4
   ];
