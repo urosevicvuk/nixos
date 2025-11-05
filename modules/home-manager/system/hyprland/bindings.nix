@@ -19,7 +19,7 @@ in
       # GUI Apps
       "$mod, B, exec, zen" # Zen Browser
       "$mod, E, exec, ${pkgs.xfce.thunar}/bin/thunar" # Thunar
-      "$mod, P, exec, ${pkgs.bitwarden}/bin/bitwarden" # Bitwarden
+      "$mod, P, exec, ${pkgs.bitwarden-desktop}/bin/bitwarden" # Bitwarden
 
       # CLI Apps
       "$mod, RETURN, exec, ${terminal}" # Terminal
