@@ -37,10 +37,10 @@ in
 
   # Custom modules configuration file
   home.file.".config/hyprpanel/modules.json".text = builtins.toJSON {
-    "custom/quick-toggles" = {
+    "custom/status-icons" = {
       label = "{text}";
       tooltip = "{tooltip}";
-      execute = "quick-toggles-status";
+      execute = "status-icons";
       interval = 1000;
       hideOnEmpty = true;
       actions = {
@@ -61,7 +61,7 @@ in
             "left" = [
               "dashboard"
               "workspaces"
-              "custom/quick-toggles" # Unified toggles (recording, caffeine, night-shift)
+              "custom/status-icons" # Status indicators (recording, caffeine, night-shift, VPN)
             ];
             "middle" = [ "clock" ];
             "right" = [

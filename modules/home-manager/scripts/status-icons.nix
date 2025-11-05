@@ -1,13 +1,13 @@
-# - ## Quick Toggles Status
+# - ## Status Icons
 #-
-#- Unified status checker for quick toggle features (recording, caffeine, night-shift).
-#- This provides a single module for hyprpanel instead of separate modules.
+#- Unified status checker for system status features (recording, caffeine, night-shift, VPN).
+#- This provides a single module for hyprpanel to display active statuses.
 #-
-#- - `quick-toggles-status` - Check status of all toggles and output JSON for hyprpanel.
+#- - `status-icons` - Check status of all features and output JSON for hyprpanel.
 
 { pkgs, ... }:
 let
-  quick-toggles-status = pkgs.writeShellScriptBin "quick-toggles-status" ''
+  status-icons = pkgs.writeShellScriptBin "status-icons" ''
     # Initialize variables for building the status
     icons=""
     tooltip_parts=""
@@ -17,7 +17,7 @@ let
     if [ -f "/tmp/gpu-screen-recorder.pid" ]; then
       PID=$(cat "/tmp/gpu-screen-recorder.pid" 2>/dev/null)
       if [ -n "$PID" ] && kill -0 "$PID" 2>/dev/null; then
-        icons="🎥 "
+        icons="🎥  "
         tooltip_parts="Recording"
         has_active=true
       fi
@@ -27,9 +27,9 @@ let
     if ! pidof "hypridle" >/dev/null 2>&1; then
       # Add icon with space separator if we already have icons
       if [ -n "$icons" ]; then
-        icons="$icons ☕ "
+        icons="$icons☕  "
       else
-        icons="☕ "
+        icons="☕  "
       fi
 
       # Add to tooltip with separator if needed
@@ -45,9 +45,9 @@ let
     if pidof "hyprsunset" >/dev/null 2>&1; then
       # Add icon with space separator if we already have icons
       if [ -n "$icons" ]; then
-        icons="$icons 💤 "
+        icons="$icons💤  "
       else
-        icons="💤 "
+        icons="💤  "
       fi
 
       # Add to tooltip with separator if needed
@@ -59,18 +59,16 @@ let
       has_active=true
     fi
 
-
-
     # Format the final JSON output
     if [ "$has_active" = true ]; then
       # Trim leading space/separator from tooltip
       tooltip_parts=$(echo "$tooltip_parts" | sed 's/^ • //')
-      echo "{\"text\": \"$icons \", \"tooltip\": \"$tooltip_parts\", \"alt\": \"active\"}"
+      echo "{\"text\": \"$icons\", \"tooltip\": \"$tooltip_parts\", \"alt\": \"active\"}"
     fi
     # Output nothing when no toggles are active (for hideOnEmpty to work)
   '';
 
 in
 {
-  home.packages = [ quick-toggles-status ];
+  home.packages = [ status-icons ];
 }

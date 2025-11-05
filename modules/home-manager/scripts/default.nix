@@ -11,9 +11,8 @@
     ./nerdfont-fzf.nix
     ./notification.nix
     ./system.nix
-    ./openvpn.nix
     ./tmux-sessionizer.nix
-    ./quick-toggles-status.nix
+    ./status-icons.nix
     ./network.nix
 
     # Keep old screenshot for compatibility
