@@ -79,7 +79,7 @@
     };
 
     elephant = {
-      url = "github:abenz1267/elephant/v2.2.5";
+      url = "github:abenz1267/elephant";
     };
 
     walker = {
