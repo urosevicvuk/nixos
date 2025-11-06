@@ -125,6 +125,7 @@ in
         "[workspace 9 silent] discord"
         "[workspace 10 silent] obsidian"
         "kdeconnect-indicator"
+        "localsend_app"
       ];
 
       monitor =
