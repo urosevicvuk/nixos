@@ -193,7 +193,7 @@
         desc = "Visual selection or word";
       }
       {
-        key = "<leader>sr";
+        key = "<leader><BS>";
         mode = "n";
         silent = true;
         action = "<cmd>nohlsearch<cr>";
