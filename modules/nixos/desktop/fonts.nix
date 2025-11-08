@@ -17,7 +17,9 @@
       noto-fonts-cjk-sans
       noto-fonts-color-emoji
       nerd-fonts.fira-code
+      nerd-fonts.caskaydia-cove
       nerd-fonts.meslo-lg
+      nerd-fonts.symbols-only
       openmoji-color
       twemoji-color-font
     ];

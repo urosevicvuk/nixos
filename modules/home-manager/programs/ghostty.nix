@@ -16,7 +16,7 @@
 
       window-padding-x = 6;
       window-padding-y = 6;
-      window-padding-color = "extend";
+      #window-padding-color = "extend";
 
       confirm-close-surface = false;
     };
