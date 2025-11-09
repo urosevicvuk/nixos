@@ -3,15 +3,6 @@
   programs.nvf.settings.vim = {
     startPlugins = with pkgs.vimPlugins; [ opencode-nvim ];
 
-    globals.opencode_opts = {
-      window = {
-        mappings = {
-          close = "q";
-          nav_files = "<C-p>";
-        };
-      };
-    };
-
     options = {
       autoread = true;
     };
@@ -19,21 +10,30 @@
     keymaps = [
       {
         key = "<leader>oa";
-        mode = [ "n" "x" ];
+        mode = [
+          "n"
+          "x"
+        ];
         silent = true;
         action = "<cmd>lua require('opencode').ask('@this: ', { submit = true })<cr>";
         desc = "Ask about this";
       }
       {
         key = "<leader>os";
-        mode = [ "n" "x" ];
+        mode = [
+          "n"
+          "x"
+        ];
         silent = true;
         action = "<cmd>lua require('opencode').select()<cr>";
         desc = "Select prompt";
       }
       {
         key = "<leader>o+";
-        mode = [ "n" "x" ];
+        mode = [
+          "n"
+          "x"
+        ];
         silent = true;
         action = "<cmd>lua require('opencode').prompt('@this')<cr>";
         desc = "Add this";

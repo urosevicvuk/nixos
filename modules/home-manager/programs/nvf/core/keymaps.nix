@@ -1,12 +1,26 @@
+# General keymaps only - plugin-specific keymaps go in their respective files
+{ ... }:
 {
   programs.nvf.settings.vim = {
-    globals.mapleader = " ";
     binds = {
       whichKey = {
         enable = true;
-        register = { };
+        register = {
+          "<leader>a" = "+ai/assistant";
+          "<leader>d" = "+debug";
+          "<leader>f" = "+find/file";
+          "<leader>g" = "+git";
+          "<leader>q" = "+quit";
+          "<leader>r" = "+refactor";
+          "<leader>s" = "+session";
+          "<leader>t" = "+test";
+          "<leader>u" = "+ui/toggle";
+          "<leader>w" = "+window";
+          "<leader>x" = "+trouble/diagnostics";
+        };
       };
     };
+
     keymaps = [
       # General Mappings
       {
@@ -101,30 +115,6 @@
         desc = "Move selected lines up";
       }
       {
-        key = "s";
-        mode = "n";
-        silent = true;
-        action = "<cmd>lua require('flash').jump()<cr>";
-        desc = "Flash";
-      }
-      {
-        key = "K";
-        mode = "n";
-        silent = true;
-        action = "<cmd>lua vim.lsp.buf.hover()<cr>";
-        desc = "LSP Hover";
-      }
-      {
-        key = "<M-CR>";
-        mode = [
-          "n"
-          "v"
-        ];
-        silent = true;
-        action = "<cmd>Lspsaga code_action<cr>";
-        desc = "Code Actions";
-      }
-      {
         key = "L";
         mode = "v";
         silent = true;
@@ -167,68 +157,6 @@
         desc = "Previous Buffer";
       }
 
-      # Kitty navigator
-      {
-        key = "<C-h>";
-        mode = "n";
-        silent = true;
-        #action = "<cmd>KittyNavigateLeft<cr>";
-        action = ''
-          <cmd>lua
-          if vim.env.TMUX and vim.env.TMUX ~= "" then
-              vim.cmd("wincmd h")
-          else
-              vim.cmd("KittyNavigateLeft")
-                  end
-                  <CR>
-        '';
-      }
-      {
-        key = "<C-j>";
-        mode = "n";
-        silent = true;
-        #action = "<cmd>KittyNavigateDown<cr>";
-        action = ''
-          <cmd>lua
-          if vim.env.TMUX and vim.env.TMUX ~= "" then
-              vim.cmd("wincmd j")
-          else
-              vim.cmd("KittyNavigateDown")
-                  end
-                  <CR>
-        '';
-      }
-      {
-        key = "<C-k>";
-        mode = "n";
-        silent = true;
-        #action = "<cmd>KittyNavigateUp<cr>";
-        action = ''
-          <cmd>lua
-          if vim.env.TMUX and vim.env.TMUX ~= "" then
-              vim.cmd("wincmd k")
-          else
-              vim.cmd("KittyNavigateUp")
-                  end
-                  <CR>
-        '';
-      }
-      {
-        key = "<C-l>";
-        mode = "n";
-        silent = true;
-        #action = "<cmd>KittyNavigateRight<cr>";
-        action = ''
-          <cmd>lua
-          if vim.env.TMUX and vim.env.TMUX ~= "" then
-              vim.cmd("wincmd l")
-          else
-              vim.cmd("KittyNavigateRight")
-                  end
-                  <CR>
-        '';
-      }
-
       # Disable Arrow Keys in Normal Mode
       {
         key = "<Up>";
@@ -259,7 +187,7 @@
         desc = "Disable Right Arrow";
       }
 
-      # UI
+      # UI Toggles
       {
         key = "<leader>uw";
         mode = "n";
@@ -279,7 +207,7 @@
         mode = "n";
         silent = true;
         action = "<cmd>set spell!<cr>";
-        desc = "Toggle spellLazyGitcheck";
+        desc = "Toggle spellcheck";
       }
       {
         key = "<leader>uc";
