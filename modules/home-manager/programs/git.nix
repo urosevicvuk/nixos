@@ -1,5 +1,5 @@
 # Git configuration
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 let
   inherit (config.var.git) username;
   inherit (config.var.git) email;
@@ -9,7 +9,13 @@ in
 {
   home.file.".ssh/allowed_signers".text =
     "* ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQpgKiftVTzqkfu6zbRpvZFtWZH/HBQSj6DhuVvVRul vuk23urosevic@gmail.com";
-  
+
+  # Add git tools
+  home.packages = with pkgs; [
+    git-absorb
+    pre-commit
+  ];
+
   programs.delta = {
     enable = true;
     enableGitIntegration = true;
@@ -18,6 +24,8 @@ in
       side-by-side = true;
       line-numbers = true;
       syntax-theme = "base16";
+      hyperlinks = true;
+      hyperlinks-file-link-format = "vscode://file/{path}:{line}";
     };
   };
 
@@ -53,6 +61,14 @@ in
       };
       merge.conflictstyle = "diff3";
       diff.colorMoved = "default";
+
+      # Git maintenance for repository health
+      maintenance = {
+        auto = true;
+        strategy = "incremental";
+      };
+      gc.autoDetach = true;
+
       alias = {
         essa = "push --force";
         co = "checkout";

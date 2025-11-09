@@ -1,5 +1,5 @@
 # Tmux is a terminal multiplexer that allows you to run multiple terminal sessions in a single window.
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 #let
 #  Config = pkgs.writeShellScriptBin "Config" ''
 #    SESSION="Nixy Config"
@@ -31,19 +31,26 @@
     mouse = true;
     shell = "${pkgs.zsh}/bin/zsh";
     prefix = "C-Space";
-    terminal = "kitty";
+    terminal = "${config.var.terminal}";
     keyMode = "vi";
 
     extraConfig = ''
-      bind-key h select-pane -L
-      bind-key j select-pane -D
-      bind-key k select-pane -U
-      bind-key l select-pane -R
+      # vim-tmux-navigator plugin handles C-h/j/k/l automatically
+      # No need to bind or unbind - let the plugin do its magic
 
-      unbind -n C-h
-      unbind -n C-j
-      unbind -n C-k
-      unbind -n C-l
+      # Better split pane bindings (intuitive and opens in current directory)
+      bind-key | split-window -h -c "#{pane_current_path}"
+      bind-key _ split-window -v -c "#{pane_current_path}"
+
+      # Pane swapping with H/J/K/L
+      bind-key H swap-pane -U
+      bind-key J swap-pane -D
+      bind-key K swap-pane -U
+      bind-key L swap-pane -D
+
+      # Horizontal resize with < and > (5 cells at a time)
+      bind-key -r < resize-pane -L 5
+      bind-key -r > resize-pane -R 5
 
       set-option -g status-position top
 
@@ -56,6 +63,9 @@
       bind-key ` run-shell "tmux neww tmux-sessionizer"
 
       set-option -g @continuum-restore 'on'
+
+      # Enable automatic window renaming (shows running program name)
+      set -g automatic-rename on
     '';
 
     plugins = with pkgs.tmuxPlugins; [
@@ -63,11 +73,19 @@
       sensible
       gruvbox
       tmux-which-key
+      yank
       {
         plugin = gruvbox;
         extraConfig = ''
           set -g @statusbar-alpha 'true'
           set -g @right-status-x '%d.%m.%Y' # e.g.: 30.01.2024
+        '';
+      }
+      {
+        plugin = yank;
+        extraConfig = ''
+          set -g @yank_selection_mouse 'clipboard'
+          set -g @yank_action 'copy-pipe'
         '';
       }
       {

@@ -117,7 +117,6 @@ in
           export ANTHROPIC_API_KEY="$(cat ${config.sops.secrets.anthropicKey.path})"
         ''}
 
-
         bindkey -e
         ${
           if fetch == "neofetch" then
