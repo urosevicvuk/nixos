@@ -47,6 +47,16 @@ in
         onLeftClick = "menu";
       };
     };
+    "custom/docker-status" = {
+      label = "{text}";
+      tooltip = "{tooltip}";
+      execute = "docker-status";
+      interval = 2000;
+      hideOnEmpty = true;
+      actions = {
+        onLeftClick = "${config.var.terminal} --class floating -e lazydocker";
+      };
+    };
   };
 
   programs.hyprpanel = {
@@ -62,6 +72,7 @@ in
               "dashboard"
               "workspaces"
               "custom/status-icons" # Status indicators (recording, caffeine, night-shift, VPN)
+              "custom/docker-status" # Docker container count
             ];
             "middle" = [ "clock" ];
             "right" = [

@@ -12,7 +12,11 @@ in
         max-size = "10m";
         max-file = "5";
       };
-      dns = [ "172.17.0.1" "8.8.8.8" "1.1.1.1" ];
+      dns = [
+        "172.17.0.1"
+        "8.8.8.8"
+        "1.1.1.1"
+      ];
       bip = "172.17.0.1/16";
     };
 
@@ -40,5 +44,7 @@ in
   environment.systemPackages = with pkgs; [
     lazydocker
     docker-compose
+
+    k9s
   ];
 }

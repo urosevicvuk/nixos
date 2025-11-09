@@ -70,6 +70,7 @@
         # Apps
         obsidian
         vlc
+        libreoffice-fresh
         figma-linux
         gimp3-with-plugins
         pinta
@@ -79,10 +80,11 @@
         inputs.affinity-nix.packages.x86_64-linux.v3
 
         # Dev
-        opencode
-        claude-code
-        gh
+        pnpm
         nodejs
+        claude-code
+        opencode
+        gh
         gnumake
         postman
         bruno

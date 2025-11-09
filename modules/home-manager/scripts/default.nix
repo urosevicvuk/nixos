@@ -13,6 +13,7 @@
     ./system.nix
     ./tmux-sessionizer.nix
     ./status-icons.nix
+    ./docker-status.nix
     ./network.nix
 
     # Keep old screenshot for compatibility
