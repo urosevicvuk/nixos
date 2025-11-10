@@ -51,13 +51,31 @@ in
       label = "{text}";
       tooltip = "{tooltip}";
       execute = "docker-status";
-      interval = 2000;
+      interval = 1000;
       hideOnEmpty = true;
       actions = {
         onLeftClick = "${config.var.terminal} --class floating -e lazydocker";
       };
     };
   };
+
+  # Custom CSS to style the docker status module
+  home.file.".config/hyprpanel/modules.scss".text = ''
+    /* ##################################
+     * #  Custom Volume Module Styling  #
+     * ################################## */
+    @include styleModule( // class name
+        'cmodule-docker-status',
+        // styling properties
+        ('text-color': #cba6f7,
+            'icon-color': #242438,
+            'icon-background': #cba6f7,
+            'label-background': #242438,
+            'inner-spacing': 0.5em,
+            'border-enabled': false,
+            'border-color': #cba6f7,
+            'icon-size': 1.2em));
+  '';
 
   programs.hyprpanel = {
     enable = true;
@@ -103,7 +121,7 @@ in
           ignored = "^(-(9.*)|-1337|11)$";
         };
         clock = {
-          format = "%A, %d %B - %I:%M %p ";
+          format = "%A, %B %d - %I:%M %p ";
           icon.enable = false;
         };
         windowtitle.label = true;

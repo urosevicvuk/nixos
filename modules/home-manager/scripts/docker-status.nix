@@ -27,8 +27,8 @@ let
       container_names=$(docker ps --format '{{.Names}}' 2>/dev/null | tr '\n' ', ' | sed 's/, $//')
 
       # Build the output
-      icon="  "
-      text="$icon$container_count"
+      icon="🐋"
+      text="$icon - $container_count "
 
       # Create tooltip with container details
       if [ "$container_count" -eq 1 ]; then
@@ -38,7 +38,7 @@ let
       fi
 
       # Output JSON for hyprpanel
-      echo "{\"text\": \"$text\", \"tooltip\": \"$tooltip\", \"alt\": \"active\"}"
+      echo "{\"text\": \"$text \", \"tooltip\": \"$tooltip\", \"alt\": \"active\"}"
     fi
     # Output nothing when no containers are running (for hideOnEmpty to work)
   '';
