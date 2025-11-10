@@ -92,8 +92,8 @@
         rstudioWrapper
         jetbrains.goland
         jetbrains.idea-ultimate
-        jetbrains.rust-rover
-        jetbrains.clion
+        jetbrains.datagrip
+        jetbrains.webstorm
         android-studio
 
         # Utils
