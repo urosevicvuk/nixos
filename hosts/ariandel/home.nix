@@ -112,6 +112,7 @@
         acpi
         powertop
         figlet
+        radeontop
 
         # TUI system managers
         bluetuith # Bluetooth manager

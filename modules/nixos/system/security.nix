@@ -22,6 +22,7 @@ in
       };
       greetd = {
         # No fprintAuth - forces password at login to unlock keyring
+        fprintAuth = false;
         enableGnomeKeyring = true; # Auto-unlock keyring via display manager with password
       };
       polkit-1.fprintAuth = lib.mkIf isLaptop true;
@@ -40,10 +41,12 @@ in
         # Allow nixos-rebuild without password
         {
           users = [ username ];
-          commands = [{
-            command = "/run/current-system/sw/bin/nixos-rebuild";
-            options = [ "NOPASSWD" ];
-          }];
+          commands = [
+            {
+              command = "/run/current-system/sw/bin/nixos-rebuild";
+              options = [ "NOPASSWD" ];
+            }
+          ];
         }
         # Allow tailscale without password
         {

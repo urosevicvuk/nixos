@@ -12,9 +12,12 @@
             # Caps Lock acts as Escape when tapped, Control when held
             capslock = "overload(control, esc)";
 
-            # Swap left Alt and left Super (Windows key)
-            leftalt = "leftmeta";
-            leftmeta = "leftalt";
+            # Left Alt (physical): Super when held, Enter when tapped
+            leftalt = "overload(meta, enter)";
+            rightalt = "overload(alt, backspace)";
+
+            # Left Super (physical): Alt when held, Backspace when tapped
+            leftmeta = "overload(alt, backspace)";
           };
 
           # Tapping both shift keys together activates capslock

@@ -7,7 +7,7 @@
   config.var = {
     hostname = "ariandel";
     username = "vyke";
-    configDirectory = "/home/" + config.var.username + "/nixos"; # The path of the nixos configuration directory
+    configDirectory = "/home/" + config.var.username + "/code/ynix"; # The path of the nixos configuration directory
 
     device = "laptop"; # laptop || desktop || server
     terminal = "kitty"; # default terminal emulator - kitty || ghostty
