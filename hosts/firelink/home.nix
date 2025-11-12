@@ -5,9 +5,6 @@
 }:
 {
   imports = [
-    # Mostly user-specific configuration
-    ./variables.nix
-
     # Programs
     ../../modules/home-manager/programs/nvf
     ../../modules/home-manager/programs/shell
@@ -18,6 +15,9 @@
 
     # Scripts
     ../../modules/home-manager/scripts # All scripts
+
+    ./variables.nix
+    ./secrets
   ];
 
   home = {

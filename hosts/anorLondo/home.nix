@@ -1,45 +1,45 @@
 {
   pkgs,
   config,
+  inputs,
   ...
 }:
 {
   imports = [
-    ./variables.nix
-
     # Programs
-    ../../modules/home-manager/programs/btop.nix
-    ../../modules/home-manager/programs/direnv.nix
-    ../../modules/home-manager/programs/discord.nix
-    ../../modules/home-manager/programs/editorconfig.nix
-    ../../modules/home-manager/programs/ghostty.nix
-    ../../modules/home-manager/programs/fetch
-    ../../modules/home-manager/programs/git.nix
-    ../../modules/home-manager/programs/kitty.nix
-    ../../modules/home-manager/programs/nextcloud.nix
-    ../../modules/home-manager/programs/nvf
-    ../../modules/home-manager/programs/obs-studio.nix
-    ../../modules/home-manager/programs/shell
-    ../../modules/home-manager/programs/spicetify.nix
-    ../../modules/home-manager/programs/thunar.nix
-    ../../modules/home-manager/programs/walker.nix
-    ../../modules/home-manager/programs/wofi.nix
-    ../../modules/home-manager/programs/zathura.nix
-    ../../modules/home-manager/programs/zen.nix
+    ../../modules-home/programs/fetch
+    ../../modules-home/programs/nvf
+    ../../modules-home/programs/shell
+    ../../modules-home/programs/btop.nix
+    ../../modules-home/programs/direnv.nix
+    ../../modules-home/programs/discord.nix
+    ../../modules-home/programs/editorconfig.nix
+    ../../modules-home/programs/ghostty.nix
+    ../../modules-home/programs/git.nix
+    ../../modules-home/programs/kitty.nix
+    ../../modules-home/programs/nextcloud.nix
+    ../../modules-home/programs/obs-studio.nix
+    ../../modules-home/programs/spicetify.nix
+    ../../modules-home/programs/thunar.nix
+    ../../modules-home/programs/walker.nix
+    ../../modules-home/programs/wofi.nix
+    ../../modules-home/programs/zathura.nix
+    ../../modules-home/programs/zen.nix
 
     # Scripts
-    ../../modules/home-manager/scripts # All scripts
+    ../../modules-home/scripts # All scripts
 
     # System
-    ../../modules/home-manager/system/clipman.nix
-    ../../modules/home-manager/system/hypridle.nix
-    ../../modules/home-manager/system/hyprland
-    ../../modules/home-manager/system/hyprlock.nix
-    ../../modules/home-manager/system/hyprpanel.nix
-    ../../modules/home-manager/system/hyprpaper.nix
-    ../../modules/home-manager/system/mime.nix
-    ../../modules/home-manager/system/udiskie.nix
+    ../../modules-home/system/hyprland
+    ../../modules-home/system/clipman.nix
+    ../../modules-home/system/hypridle.nix
+    ../../modules-home/system/hyprlock.nix
+    ../../modules-home/system/hyprpanel.nix
+    ../../modules-home/system/hyprpaper.nix
+    ../../modules-home/system/mime.nix
+    ../../modules-home/system/udiskie.nix
 
+    ./variables.nix
     ./secrets
   ];
 
@@ -63,43 +63,51 @@
     packages =
       (with pkgs; [
         # Apps
-        vlc
         obsidian
-        libreoffice-qt
-
-        #Drawing
-        pinta
+        vlc
+        libreoffice-fresh
         figma-linux
-        gimp3-with-plugins
+        pinta
+        qbittorrent
+
+        # Affinity
+        inputs.affinity-nix.packages.x86_64-linux.v3
 
         # Dev
-        claude-code
-        gh
+        pnpm
         nodejs
+        claude-code
+        opencode
+        gh
         gnumake
+        postman
         bruno
         vscode
         rstudioWrapper
         jetbrains.goland
         jetbrains.idea-ultimate
-        jetbrains.rust-rover
-        jetbrains.clion
+        jetbrains.datagrip
+        jetbrains.webstorm
         android-studio
-        codeblocksFull
 
         # Utils
         nh
         nix-init
         ntfs3g
-        qbittorrent
         p7zip
         ffmpeg
         optipng
         bluez
         curtail
-        figlet
         moreutils
         vulkan-tools
+
+        # TUI system managers
+        bluetuith # Bluetooth manager
+        wiremix # PipeWire audio mixer
+        # nmtui is built-in with NetworkManager (no need to install)
+
+        # Virtualization
         freerdp
 
         # Just cool
@@ -108,7 +116,6 @@
         pipes
         cmatrix
         neo-cowsay
-
       ])
       ++ (with pkgs.stable; [
         # Stable packages (25.05)

@@ -5,19 +5,19 @@
 }:
 {
   imports = [
-    # Mostly user-specific configuration
-    ./variables.nix
-
     # Programs
-    ../../modules/home-manager/programs/nvf
-    ../../modules/home-manager/programs/shell
-    ../../modules/home-manager/programs/fetch
-    ../../modules/home-manager/programs/git.nix
-    ../../modules/home-manager/programs/ghostty.nix
-    ../../modules/home-manager/programs/kitty.nix
+    ../../modules-home/programs/nvf
+    ../../modules-home/programs/shell
+    ../../modules-home/programs/fetch
+    ../../modules-home/programs/git.nix
+    ../../modules-home/programs/ghostty.nix
+    ../../modules-home/programs/kitty.nix
 
     # Scripts
-    ../../modules/home-manager/scripts # All scripts
+    ../../modules-home/scripts # All scripts
+
+    ./variables.nix
+    ./secrets
   ];
 
   home = {

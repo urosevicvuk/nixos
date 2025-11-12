@@ -6,45 +6,40 @@
 }:
 {
   imports = [
-    ./variables.nix
-
     # Programs
-    ../../modules/home-manager/programs/btop.nix
-    ../../modules/home-manager/programs/direnv.nix
-    ../../modules/home-manager/programs/discord.nix
-    ../../modules/home-manager/programs/editorconfig.nix
-    ../../modules/home-manager/programs/ghostty.nix
-    ../../modules/home-manager/programs/fetch
-    ../../modules/home-manager/programs/git.nix
-    ../../modules/home-manager/programs/kitty.nix
-    ../../modules/home-manager/programs/nextcloud.nix
-    ../../modules/home-manager/programs/nvf
-    ../../modules/home-manager/programs/obs-studio.nix
-    ../../modules/home-manager/programs/shell
-    ../../modules/home-manager/programs/spicetify.nix
-    ../../modules/home-manager/programs/thunar.nix
-    ../../modules/home-manager/programs/walker.nix
-    ../../modules/home-manager/programs/wofi.nix
-    ../../modules/home-manager/programs/zathura.nix
-    ../../modules/home-manager/programs/zen.nix
+    ../../modules-home/programs/btop.nix
+    ../../modules-home/programs/direnv.nix
+    ../../modules-home/programs/discord.nix
+    ../../modules-home/programs/editorconfig.nix
+    ../../modules-home/programs/ghostty.nix
+    ../../modules-home/programs/fetch
+    ../../modules-home/programs/git.nix
+    ../../modules-home/programs/kitty.nix
+    ../../modules-home/programs/nextcloud.nix
+    ../../modules-home/programs/nvf
+    ../../modules-home/programs/obs-studio.nix
+    ../../modules-home/programs/shell
+    ../../modules-home/programs/spicetify.nix
+    ../../modules-home/programs/thunar.nix
+    ../../modules-home/programs/walker.nix
+    ../../modules-home/programs/wofi.nix
+    ../../modules-home/programs/zathura.nix
+    ../../modules-home/programs/zen.nix
 
     # Scripts
-    ../../modules/home-manager/scripts # All scripts
+    ../../modules-home/scripts # All scripts
 
     # System
-    ../../modules/home-manager/system/clipman.nix
-    ../../modules/home-manager/system/hypridle.nix
-    ../../modules/home-manager/system/hyprland
-    ../../modules/home-manager/system/hyprlock.nix
-    ../../modules/home-manager/system/hyprpanel.nix
-    ../../modules/home-manager/system/hyprpaper.nix
-    ../../modules/home-manager/system/mime.nix
-    ../../modules/home-manager/system/udiskie.nix
+    ../../modules-home/system/clipman.nix
+    ../../modules-home/system/hypridle.nix
+    ../../modules-home/system/hyprland
+    ../../modules-home/system/hyprlock.nix
+    ../../modules-home/system/hyprpanel.nix
+    ../../modules-home/system/hyprpaper.nix
+    ../../modules-home/system/mime.nix
+    ../../modules-home/system/udiskie.nix
 
-    #../../modules/home-manager/system/waybar.nix
-    #../../modules/home-manager/system/mako.nix
-    #../../modules/home-manager/system/swayosd.nix
-
+    ./variables.nix
     ./secrets
   ];
 

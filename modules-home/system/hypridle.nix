@@ -1,5 +1,10 @@
 # Hypridle is a daemon that listens for user activity and runs commands when the user is idle.
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
   inherit (config.var) device;
   isLaptop = device == "laptop";
@@ -19,7 +24,7 @@ in
         wait_cmd = 3;
       };
 
-      listener = if isLaptop then [
+      listener = [
         # Laptop: aggressive power saving
         # Dim screen after 4 minutes
         {
@@ -46,9 +51,6 @@ in
           timeout = 660;
           on-timeout = "systemctl suspend";
         }
-      ] else [
-        # Desktop: never idle, never sleep
-        # Only lock on manual trigger or before sleep
       ];
     };
   };

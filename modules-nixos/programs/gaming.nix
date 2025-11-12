@@ -9,7 +9,7 @@
 
   # Home-manager gaming packages
   home-manager.users.${config.var.username}.home.packages = with pkgs; [
-    lutris
+    #lutris
     prismlauncher
     (wineWowPackages.stable.override { waylandSupport = true; })
     winetricks

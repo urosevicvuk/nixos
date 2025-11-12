@@ -18,18 +18,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # macOS support (uncomment when needed)
-    # darwin = {
-    #   url = "github:LnL7/nix-darwin";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # WSL support (uncomment when needed)
-    # nixos-wsl = {
-    #   url = "github:nix-community/NixOS-WSL";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
     };
@@ -132,19 +120,6 @@
                     config.allowUnfree = true;
                   };
                 })
-                (final: prev: {
-                  elephant-providers = prev.elephant-providers.overrideAttrs (old: {
-                    buildPhase = ''
-                      runHook preBuild
-                      ${old.buildPhase or ""}
-                      runHook postBuild
-                    ''
-                    + ''
-                      # Ignore windows provider build failure
-                      true
-                    '';
-                  });
-                })
               ];
             }
             inputs.nixos-hardware.nixosModules.framework-amd-ai-300-series
@@ -189,63 +164,6 @@
             ./hosts/anorLondoDark/configuration.nix
           ];
         };
-
-        # WSL configuration (uncomment when needed)
-        # wsl-dev = nixpkgs.lib.nixosSystem {
-        #   system = "x86_64-linux";
-        #   modules = [
-        #     { _module.args = { inherit inputs; }; }
-        #     inputs.nixos-wsl.nixosModules.wsl
-        #     inputs.home-manager.nixosModules.home-manager
-        #     ./hosts/wsl-dev/configuration.nix
-        #   ];
-        # };
-      };
-
-      # macOS configurations (uncomment when needed)
-      # darwinConfigurations = {
-      #   macbook = inputs.darwin.lib.darwinSystem {
-      #     system = "aarch64-darwin";  # Apple Silicon (use x86_64-darwin for Intel)
-      #     modules = [
-      #       { _module.args = { inherit inputs; }; }
-      #       inputs.home-manager.darwinModules.home-manager
-      #       ./hosts/macbook/configuration.nix
-      #     ];
-      #   };
-      # };
-
-      # Development environment templates
-      templates = {
-        python = {
-          path = ./devFlakes/python;
-          description = "Python development environment with data science tools";
-        };
-
-        rust = {
-          path = ./devFlakes/rust;
-          description = "Rust development environment with rust-analyzer";
-        };
-
-        go = {
-          path = ./devFlakes/go;
-          description = "Go development environment with gopls";
-        };
-
-        java = {
-          path = ./devFlakes/java;
-          description = "Java development environment with Maven and Gradle";
-        };
-
-        kotlin = {
-          path = ./devFlakes/kotlin;
-          description = "Kotlin development environment";
-        };
-
-        c = {
-          path = ./devFlakes/c;
-          description = "C/C++ development environment with GCC and Clang";
-        };
-
       };
     };
 }
