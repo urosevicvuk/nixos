@@ -2,13 +2,8 @@
 {
   pkgs,
   lib,
-  config,
   ...
 }:
-let
-  inherit (config.var) device;
-  isLaptop = device == "laptop";
-in
 {
   services.hypridle = {
     enable = true;
@@ -25,7 +20,6 @@ in
       };
 
       listener = [
-        # Laptop: aggressive power saving
         # Dim screen after 4 minutes
         {
           timeout = 240;

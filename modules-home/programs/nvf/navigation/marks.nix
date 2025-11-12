@@ -4,12 +4,12 @@
   programs.nvf.settings.vim.navigation.harpoon = {
     enable = true;
     mappings = {
-      markFile = "<M-`>";
-      listMarks = "<M-~>";
-      file1 = "<M-1>";
-      file2 = "<M-2>";
-      file3 = "<M-3>";
-      file4 = "<M-4>";
+      markFile = "<leader>m";
+      listMarks = "<leader>\`";
+      file1 = "<leader>1";
+      file2 = "<leader>2";
+      file3 = "<leader>3";
+      file4 = "<leader>4";
     };
   };
 }
