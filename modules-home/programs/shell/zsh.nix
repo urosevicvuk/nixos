@@ -49,7 +49,7 @@ in
 
     shellAliases = {
       ts = "tmux-sessionizer";
-      nhs = "nh os switch ${config.var.hostname}";
+      nhs = "nh os switch";
       nvimf = "nvim $(fzf)";
       hpr = "hyprpanel -q | hyprpanel & disown";
       vim = "nvim";

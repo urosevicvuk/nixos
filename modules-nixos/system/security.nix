@@ -11,19 +11,22 @@ in
   security = {
     # PAM services configuration
     pam.services = {
-      # Allow wayland lockers to unlock the screen
-      hyprlock.text = "auth include login";
+
+      hyprlock = {
+        text = "auth include login";
+        fprintAuth = lib.mkIf isLaptop true;
+      };
 
       # Fingerprint authentication for various services (laptop only)
       sudo.fprintAuth = lib.mkIf isLaptop true;
       login = {
-        fprintAuth = lib.mkIf isLaptop true; # Enables fingerprint for lock screen (hyprlock)
-        enableGnomeKeyring = true; # Auto-unlock keyring on login
+        fprintAuth = lib.mkIf isLaptop true;
+        enableGnomeKeyring = true;
       };
       greetd = {
-        # No fprintAuth - forces password at login to unlock keyring
+        # Session logins are disabled by default
         fprintAuth = false;
-        enableGnomeKeyring = true; # Auto-unlock keyring via display manager with password
+        enableGnomeKeyring = true;
       };
       polkit-1.fprintAuth = lib.mkIf isLaptop true;
     };
