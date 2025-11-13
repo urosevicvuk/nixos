@@ -66,12 +66,9 @@
         obsidian
         vlc
         libreoffice-fresh
-        figma-linux
-        gimp3-with-plugins
-        pinta
         qbittorrent
 
-        # Affinity
+        # Creative
         inputs.affinity-nix.packages.x86_64-linux.v3
 
         # Dev
