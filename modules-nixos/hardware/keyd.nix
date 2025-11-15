@@ -13,11 +13,11 @@
             capslock = "overload(control, esc)";
 
             # Left Alt (physical): Super when held, Enter when tapped
-            leftalt = "overload(meta, enter)";
-            rightalt = "overload(alt, backspace)";
+            #leftalt = "overload(meta, enter)";
+            #rightalt = "overload(alt, backspace)";
 
-            # Left Super (physical): Alt when held, Backspace when tapped
-            leftmeta = "overload(alt, backspace)";
+            ## Left Super (physical): Alt when held, Backspace when tapped
+            #leftmeta = "overload(alt, backspace)";
           };
 
           # Tapping both shift keys together activates capslock

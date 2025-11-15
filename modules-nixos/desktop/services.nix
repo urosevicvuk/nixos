@@ -43,5 +43,10 @@
   };
 
   # Enable graphics support
-  hardware.graphics.enable = true;
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      rocmPackages.clr.icd # For DaVinci Resolve
+    ];
+  };
 }
