@@ -24,8 +24,6 @@ in
         enableGnomeKeyring = true;
       };
       greetd = {
-        # Session logins are disabled by default
-        fprintAuth = false;
         enableGnomeKeyring = true;
       };
       polkit-1.fprintAuth = lib.mkIf isLaptop true;

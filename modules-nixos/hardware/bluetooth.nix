@@ -4,7 +4,7 @@
     enable = true;
     powerOnBoot = true;
     package = pkgs.bluez;
-    input.General.ClassicBondedOnly = false;
+    settings.General.ClassicBondedOnly = false;
   };
 
   services.blueman.enable = true;

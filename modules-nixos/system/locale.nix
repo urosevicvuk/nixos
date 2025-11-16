@@ -32,7 +32,7 @@ in
     xkb = {
       layout = keyboardLayout;
       variant = keyboardVariant;
-      options = "grp:alt_shift_toggle";
+      options = "grp:alt_space_toggle";
     };
   };
 

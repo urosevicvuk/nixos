@@ -22,6 +22,6 @@
     winetricks
 
     # Emulators
-    shadps4
+    # shadps4
   ];
 }
