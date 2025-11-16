@@ -12,6 +12,10 @@ in
         HandleLidSwitch = "suspend";
         HandleLidSwitchExternalPower = "suspend";
         HandleLidSwitchDocked = "ignore";
+        # Ensure session locks before suspend (systemd sleep hook)
+        # This works with hypridle's before_sleep_cmd to lock before suspend
+        # Gives hypridle up to 5 seconds to complete before_sleep_cmd
+        InhibitDelayMaxSec = 5;
       };
     };
   };

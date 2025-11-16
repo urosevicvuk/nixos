@@ -6,6 +6,7 @@
 #- - `powermenu` - Open power dropdown menu.
 #- - `quickmenu` - Open a dropdown menu with shortcuts and scripts.
 #- - `lock` - Lock the screen. (hyprlock)
+#- - `reset-fprint` - Reset fingerprint reader after suspend (requires sudo).
 { pkgs, ... }:
 
 let
@@ -99,6 +100,36 @@ let
         ${pkgs.hyprlock}/bin/hyprlock
       '';
 
+  reset-fprint =
+    pkgs.writeShellScriptBin "reset-fprint"
+      # bash
+      ''
+        # Reset fingerprint reader by unbinding and rebinding USB controller
+        # Temporary workaround for fingerprint reader disconnecting after suspend
+
+        if [ "$EUID" -ne 0 ]; then
+          echo "This script requires sudo privileges"
+          echo "Usage: sudo reset-fprint"
+          exit 1
+        fi
+
+        echo "Unbinding USB controller..."
+        echo "0000:c1:00.4" > /sys/bus/pci/drivers/xhci_hcd/unbind
+
+        sleep 2
+
+        echo "Rebinding USB controller..."
+        echo "0000:c1:00.4" > /sys/bus/pci/drivers/xhci_hcd/bind
+
+        sleep 3
+
+        echo "Restarting fprintd service..."
+        systemctl restart fprintd.service
+
+        echo "Done! Fingerprint reader should now be available."
+        echo "Test with: fprintd-list ${pkgs.coreutils}/bin/whoami"
+      '';
+
 in
 {
   home.packages = [
@@ -106,5 +137,6 @@ in
     powermenu
     lock
     quickmenu
+    reset-fprint
   ];
 }

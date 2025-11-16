@@ -47,6 +47,26 @@
   # Hibernate support
   boot.resumeDevice = "/dev/disk/by-uuid/1fe041f7-c293-442b-ac57-faf8933c3913";
 
+  # Framework AMD suspend/resume fixes
+  # These parameters address critical suspend issues not covered by nixos-hardware
+  boot.kernelParams = [
+    # Disable USB autosuspend globally (may not be needed if pcie_aspm=off fixes the root cause)
+    # Uncomment if fingerprint reader still disconnects after suspend
+    # "usbcore.autosuspend=-1"
+
+    # Fix PCIe ASPM issues causing suspend failures on AMD Framework (kernel 6.12+)
+    # This should fix the xHCI USB controller resume issue (and thus the fingerprint reader)
+    # Reference: Framework Community reports of suspend hangs
+    "pcie_aspm=off"
+
+    # Prevent NVMe deep sleep issues during suspend
+    # Fixes intermittent cold boots and unsafe shutdowns from lid-closed suspend
+    # Reference: Framework AMD suspend best practices
+    "nvme_core.default_ps_max_latency_us=25000"
+  ];
+
+  hardware.framework.enableKmod = true;
+
   home-manager.users."${config.var.username}" = import ./home.nix;
 
   # Don't touch this
