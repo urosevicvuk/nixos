@@ -9,15 +9,12 @@ in
     enable = true;
     settings = {
       general = {
-        grace = 5;
-        no_fade_in = false;
-        no_fade_out = false;
-        disable_loading_bar = false;
         hide_cursor = true;
         immediate_render = true;
       };
 
       auth.fingerprint.enabled = true;
+      auth.pam.enabled = true;
 
       # BACKGROUND
       background = {
