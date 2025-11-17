@@ -8,6 +8,18 @@ in
   # Fingerprint authentication (laptop only)
   services.fprintd.enable = isLaptop;
 
+  # Automatically restart fprintd after suspend/resume
+  # Fixes Framework AMD fingerprint reader disconnecting during suspend
+  systemd.services.fprintd-resume = lib.mkIf isLaptop {
+    description = "Restart fprintd after resume to fix fingerprint reader";
+    after = [ "suspend.target" "hibernate.target" "hybrid-sleep.target" ];
+    wantedBy = [ "suspend.target" "hibernate.target" "hybrid-sleep.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.systemd}/bin/systemctl restart fprintd.service";
+    };
+  };
+
   security = {
     # PAM services configuration
     pam.services = {
@@ -24,6 +36,8 @@ in
         enableGnomeKeyring = true;
       };
       greetd = {
+        # Session logins are disabled by default
+        fprintAuth = lib.mkIf isLaptop true;
         enableGnomeKeyring = true;
       };
       polkit-1.fprintAuth = lib.mkIf isLaptop true;

@@ -19,9 +19,10 @@
         before_sleep_cmd = "${pkgs.bash}/bin/bash -c 'loginctl lock-session && sleep 2'";
 
         # Turn on display and wait for fingerprint reader to re-enumerate after resume
-        # The fingerprint sensor disconnects/reconnects during suspend, this gives it time
+        # The fingerprint sensor disconnects/reconnects during suspend
+        # fprintd-resume.service restarts fprintd, we wait 3 seconds for it to be ready
         # Workaround for: https://github.com/hyprwm/hyprlock/issues/577
-        after_sleep_cmd = "${pkgs.bash}/bin/bash -c 'hyprctl dispatch dpms on && sleep 1'";
+        after_sleep_cmd = "${pkgs.bash}/bin/bash -c 'hyprctl dispatch dpms on && sleep 3'";
       };
 
       listener = [
