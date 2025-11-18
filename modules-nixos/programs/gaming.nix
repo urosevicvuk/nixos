@@ -11,6 +11,9 @@
     gamemode.enable = true;
   };
 
+  # Enable Steam hardware support (controllers, VR, etc.)
+  hardware.steam-hardware.enable = true;
+
   # Home-manager gaming packages
   home-manager.users.${config.var.username}.home.packages = with pkgs; [
     lutris

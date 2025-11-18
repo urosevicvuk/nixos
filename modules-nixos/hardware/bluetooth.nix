@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [ blueman ];
   hardware.bluetooth = {
     enable = true;
@@ -8,5 +9,6 @@
   };
 
   services.blueman.enable = true;
-  hardware.xpadneo.enable = true;
+  # Disable xbox controller support because it's not working
+  hardware.xpadneo.enable = false;
 }

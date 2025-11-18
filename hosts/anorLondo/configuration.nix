@@ -44,6 +44,8 @@
     ./hardware-configuration.nix
   ];
 
+  hardware.enableAllFirmware = true;
+
   home-manager.users."${config.var.username}" = import ./home.nix;
 
   # Don't touch this

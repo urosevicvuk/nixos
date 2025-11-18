@@ -189,6 +189,13 @@
 
       # UI Toggles
       {
+        key = "<leader><BS>";
+        mode = "n";
+        silent = true;
+        action = "<cmd>nohlsearch<cr>";
+        desc = "Reset search";
+      }
+      {
         key = "<leader>uw";
         mode = "n";
         silent = true;
