@@ -145,25 +145,6 @@
             ./hosts/firelink/configuration.nix
           ];
         };
-
-        # anorLondoDark is the backup/dev/test/playground server
-        # Anor Londo was once a capital, a gaming rig in it's prime. Over time however it turned into a shadow of itself...
-        # Gwyndolin still holds the illusion from time to time, but the true version of Anor Londo now is just a dev server...
-        anorLondoDark = nixpkgs.lib.nixosSystem {
-          modules = [
-            {
-              _module.args = { inherit inputs; };
-              nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
-            }
-            inputs.home-manager.nixosModules.home-manager
-            inputs.stylix.nixosModules.stylix
-            inputs.sops-nix.nixosModules.sops
-            inputs.nix-minecraft.nixosModules.minecraft-servers
-            # inputs.nixarr.nixosModules.default  # Enable when nixarr input is added and configured
-            # inputs.search-nixos-api.nixosModules.search-nixos-api  # Enable when search-nixos-api input is added
-            ./hosts/anorLondoDark/configuration.nix
-          ];
-        };
       };
     };
 }
