@@ -166,5 +166,8 @@
           ];
         };
       };
+
+      # SOPS configuration generator
+      sopsConfig = import ./secrets/default.nix { inherit (nixpkgs) lib; };
     };
 }
