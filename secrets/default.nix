@@ -1,162 +1,83 @@
-# Generate .sops.yaml from secrets.nix configuration
+# Secrets configuration for sops-nix
+# This file defines all keys AND generates the .sops.yaml configuration
 #
 # Usage:
-#   nix eval --raw .#sopsConfig > .sops.yaml
-#   OR
-#   nix run .#generate-sops-config
+#   - Imported by flake.nix as `sopsConfig` output
+#   - Auto-regenerates .sops.yaml on every `nixos-rebuild switch`
 
-{
-  lib ? (import <nixpkgs> { }).lib,
-}:
+{ lib ? (import <nixpkgs> { }).lib }:
 
 let
-  secrets = import ./secrets.nix;
+  # ═══════════════════════════════════════════════════════════════════════
+  # CONFIGURATION
+  # ═══════════════════════════════════════════════════════════════════════
 
-  # Helper to create key references
-  mkKeyRef = name: "&${name}";
+  # Your SSH public key (used to encrypt all secrets)
+  userKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQpgKiftVTzqkfu6zbRpvZFtWZH/HBQSj6DhuVvVRul vuk23urosevic@gmail.com";
 
-  # Helper to create creation rules
-  mkCreationRule =
-    { path_regex, keys }:
-    {
-      inherit path_regex;
-      key_groups = [
-        {
-          ssh_ed25519 = keys;
-        }
-      ];
-    };
-
-  # Generate YAML (simple string generation)
-  toYAML =
-    value:
-    if builtins.isAttrs value then
-      lib.concatStringsSep "\n" (
-        lib.mapAttrsToList (
-          k: v:
-          if builtins.isList v then
-            "${k}:\n" + lib.concatMapStringsSep "\n" (item: "  - ${toYAML item}") v
-          else if builtins.isAttrs v then
-            "${k}:\n" + lib.concatMapStringsSep "\n" (line: "  ${line}") (lib.splitString "\n" (toYAML v))
-          else
-            "${k}: ${toYAML v}"
-        ) value
-      )
-    else if builtins.isList value then
-      lib.concatMapStringsSep "\n" (item: "- ${toYAML item}") value
-    else if builtins.isString value then
-      if lib.hasPrefix "&" value || lib.hasPrefix "*" value then
-        value # Don't quote YAML anchors/aliases
-      else
-        value # Simple string, no quotes needed for most cases
-    else
-      toString value;
-
-  # Build the .sops.yaml structure
-  sopsConfig = {
-    # Define all keys with anchors
-    keys =
-      # User keys
-      lib.mapAttrsToList (name: key: mkKeyRef "user_${name}" + " ${key}") secrets.keys.users
-      ++
-        # Host keys (filter out empty ones)
-        lib.mapAttrsToList (name: key: mkKeyRef "host_${name}" + " ${key}") (
-          lib.filterAttrs (n: v: v != "") secrets.keys.hosts
-        );
-
-    # Creation rules
-    creation_rules =
-      # Per-host secrets (only user key by default)
-      lib.mapAttrsToList (
-        host: paths:
-        let
-          # Use user keys + host key if it exists
-          keys = [
-            "*user_vyke"
-          ]
-          ++ (if secrets.keys.hosts.${host} or "" != "" then [ "*host_${host}" ] else [ ]);
-        in
-        mkCreationRule {
-          path_regex = "secrets/${host}/.*\\.yaml$";
-          inherit keys;
-        }
-      ) (removeAttrs secrets.secretPaths [ "shared" ])
-      ++
-        # Shared secrets (all keys)
-        (
-          if secrets.secretPaths.shared or [ ] != [ ] then
-            [
-              {
-                path_regex = "secrets/shared/.*\\.yaml$";
-                key_groups = [
-                  {
-                    ssh_ed25519 = [
-                      "*user_vyke"
-                    ]
-                    ++ (lib.mapAttrsToList (name: _: "*host_${name}") (
-                      lib.filterAttrs (n: v: v != "") secrets.keys.hosts
-                    ));
-                  }
-                ];
-              }
-            ]
-          else
-            [ ]
-        );
+  # Host SSH keys (optional - leave empty to use only your personal key)
+  # Get these from: ssh-keyscan hostname or cat /etc/ssh/ssh_host_ed25519_key.pub
+  hostKeys = {
+    ariandel = "";  # ssh-ed25519 AAAAC3...
+    anorLondo = ""; # ssh-ed25519 AAAAC3...
+    firelink = "";  # ssh-ed25519 AAAAC3...
   };
 
+  # ═══════════════════════════════════════════════════════════════════════
+  # YAML GENERATION (Simple string interpolation)
+  # ═══════════════════════════════════════════════════════════════════════
+
+  # Helper to conditionally include host keys in rules
+  hostKeyLine = name:
+    lib.optionalString (hostKeys.${name} != "") "          - *host_${name}";
+
 in
-# Generate the YAML config
+# Generate .sops.yaml as a string
 ''
   # ═══════════════════════════════════════════════════════════════════════
   # SOPS Configuration
-  # Auto-generated from secrets/secrets.nix
+  # Auto-generated from secrets/default.nix
   #
   # To regenerate: nix eval --raw .#sopsConfig > .sops.yaml
+  # (Happens automatically on nixos-rebuild switch)
   # ═══════════════════════════════════════════════════════════════════════
 
   keys:
     # User keys (for editing secrets)
-    - &user_vyke ${secrets.keys.users.vyke}
+    - &user_vyke ${userKey}
 
-  ${lib.optionalString (
-    secrets.keys.hosts.ariandel != ""
-  ) "  - &host_ariandel ${secrets.keys.hosts.ariandel}"}
-  ${lib.optionalString (
-    secrets.keys.hosts.anorLondo != ""
-  ) "  - &host_anorLondo ${secrets.keys.hosts.anorLondo}"}
-  ${lib.optionalString (
-    secrets.keys.hosts.firelink != ""
-  ) "  - &host_firelink ${secrets.keys.hosts.firelink}"}
+  ${lib.optionalString (hostKeys.ariandel != "") "  - &host_ariandel ${hostKeys.ariandel}"}
+  ${lib.optionalString (hostKeys.anorLondo != "") "  - &host_anorLondo ${hostKeys.anorLondo}"}
+  ${lib.optionalString (hostKeys.firelink != "") "  - &host_firelink ${hostKeys.firelink}"}
 
   creation_rules:
-    # Secrets for ariandel
+    # Secrets for ariandel (laptop)
     - path_regex: secrets/ariandel/.*\.yaml$
       key_groups:
         - ssh_ed25519:
             - *user_vyke
-  ${lib.optionalString (secrets.keys.hosts.ariandel != "") "          - *host_ariandel"}
+  ${hostKeyLine "ariandel"}
 
-    # Secrets for anorLondo
+    # Secrets for anorLondo (desktop)
     - path_regex: secrets/anorLondo/.*\.yaml$
       key_groups:
         - ssh_ed25519:
             - *user_vyke
-  ${lib.optionalString (secrets.keys.hosts.anorLondo != "") "          - *host_anorLondo"}
+  ${hostKeyLine "anorLondo"}
 
-    # Secrets for firelink
+    # Secrets for firelink (server)
     - path_regex: secrets/firelink/.*\.yaml$
       key_groups:
         - ssh_ed25519:
             - *user_vyke
-  ${lib.optionalString (secrets.keys.hosts.firelink != "") "          - *host_firelink"}
+  ${hostKeyLine "firelink"}
 
     # Shared secrets (all hosts)
     - path_regex: secrets/shared/.*\.yaml$
       key_groups:
         - ssh_ed25519:
             - *user_vyke
-  ${lib.optionalString (secrets.keys.hosts.ariandel != "") "          - *host_ariandel"}
-  ${lib.optionalString (secrets.keys.hosts.anorLondo != "") "          - *host_anorLondo"}
-  ${lib.optionalString (secrets.keys.hosts.firelink != "") "          - *host_firelink"}
+  ${hostKeyLine "ariandel"}
+  ${hostKeyLine "anorLondo"}
+  ${hostKeyLine "firelink"}
 ''

@@ -1,5 +1,5 @@
 # Auto-generate .sops.yaml from secrets configuration
-# This ensures .sops.yaml is always in sync with secrets/secrets.nix
+# This ensures .sops.yaml is always in sync with secrets.nix
 {
   config,
   lib,
