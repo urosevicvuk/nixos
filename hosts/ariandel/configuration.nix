@@ -3,7 +3,8 @@
   imports = [
     # System modules
     ../../modules-nixos/system/nix.nix
-    ../../modules-nixos/system/systemd-boot.nix
+    ../../modules-nixos/system/systemd.nix
+    ../../modules-nixos/system/secure-boot.nix
     ../../modules-nixos/system/users.nix
     ../../modules-nixos/system/utils.nix
     ../../modules-nixos/system/home-manager.nix

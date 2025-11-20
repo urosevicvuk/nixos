@@ -78,6 +78,23 @@
     affinity-nix = {
       url = "github:mrshmllow/affinity-nix";
     };
+
+    # Secure Boot
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Impermanence - not imported yet, for review
+    impermanence = {
+      url = "github:nix-community/impermanence";
+    };
+
+    # Disko - declarative disk partitioning - not imported yet, for review
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -103,6 +120,7 @@
             }
             inputs.home-manager.nixosModules.home-manager
             inputs.stylix.nixosModules.stylix
+            inputs.lanzaboote.nixosModules.lanzaboote
             ./hosts/anorLondo/configuration.nix
           ];
         };
@@ -125,6 +143,7 @@
             inputs.nixos-hardware.nixosModules.framework-amd-ai-300-series
             inputs.home-manager.nixosModules.home-manager
             inputs.stylix.nixosModules.stylix
+            inputs.lanzaboote.nixosModules.lanzaboote
             ./hosts/ariandel/configuration.nix
           ];
         };
@@ -138,6 +157,7 @@
             }
             inputs.home-manager.nixosModules.home-manager
             inputs.stylix.nixosModules.stylix
+            inputs.lanzaboote.nixosModules.lanzaboote
             inputs.sops-nix.nixosModules.sops
             inputs.nix-minecraft.nixosModules.minecraft-servers
             # inputs.nixarr.nixosModules.default  # Enable when nixarr input is added and configured

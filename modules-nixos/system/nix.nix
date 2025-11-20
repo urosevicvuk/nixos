@@ -1,6 +1,8 @@
 { config, inputs, ... }:
-let autoGarbageCollector = config.var.autoGarbageCollector;
-in {
+let
+  autoGarbageCollector = config.var.autoGarbageCollector;
+in
+{
   nixpkgs.config = {
     allowUnfree = true;
     allowBroken = true;
@@ -13,7 +15,10 @@ in {
     '';
     settings = {
       auto-optimise-store = true;
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       substituters = [
         # high priority since it's almost always used
         "https://cache.nixos.org?priority=10"
@@ -34,5 +39,10 @@ in {
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
+  };
+
+  programs.nh = {
+    enable = true;
+    flake = config.var.configDirectory;
   };
 }

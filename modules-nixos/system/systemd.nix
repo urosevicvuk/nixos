@@ -6,15 +6,18 @@
     loader = {
       efi.canTouchEfiVariables = true;
       systemd-boot = {
-        enable = false;
-        #consoleMode = "auto";
-        #configurationLimit = 8;
+        enable = true;
+        consoleMode = "auto";
+        configurationLimit = 10;
+        # Windows dual-boot works automatically via EFI boot entries
+        # No need for OS Prober - systemd-boot will list all EFI boot entries
       };
       grub = {
-        enable = true;
-        devices = [ "nodev" ];
-        efiSupport = true;
-        useOSProber = config.var.device == "desktop";
+        enable = false;
+        # GRUB disabled in favor of systemd-boot
+        # devices = [ "nodev" ];
+        # efiSupport = true;
+        # useOSProber = config.var.device == "desktop";
       };
     };
     tmp.cleanOnBoot = true;
