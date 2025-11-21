@@ -158,7 +158,6 @@
             inputs.home-manager.nixosModules.home-manager
             inputs.stylix.nixosModules.stylix
             inputs.lanzaboote.nixosModules.lanzaboote
-            inputs.sops-nix.nixosModules.sops
             inputs.nix-minecraft.nixosModules.minecraft-servers
             # inputs.nixarr.nixosModules.default  # Enable when nixarr input is added and configured
             # inputs.search-nixos-api.nixosModules.search-nixos-api  # Enable when search-nixos-api input is added
@@ -166,8 +165,5 @@
           ];
         };
       };
-
-      # SOPS configuration generator
-      sopsConfig = import ./secrets/default.nix { inherit (nixpkgs) lib; };
     };
 }

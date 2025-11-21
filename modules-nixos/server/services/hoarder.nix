@@ -8,7 +8,7 @@ in {
 
   virtualisation.oci-containers.containers = {
     hoarder-web = {
-      environmentFiles = [ config.sops.secrets.hoarder.path ];
+      environmentFiles = [ config.sops.secrets.hoarder-env.path ];
       image = "ghcr.io/hoarder-app/hoarder:release";
       volumes = [ "/var/lib/hoarder/web:/data" ];
       ports = [ "127.0.0.1:3131:3000" ];
@@ -23,7 +23,7 @@ in {
     };
 
     hoarder-meili = {
-      environmentFiles = [ config.sops.secrets.hoarder.path ];
+      environmentFiles = [ config.sops.secrets.hoarder-env.path ];
       image = "getmeili/meilisearch:v1.11.1";
       environment = { MEILI_NO_ANALYTICS = "true"; };
       volumes = [ "/var/lib/hoarder/meili:/meili_data" ];

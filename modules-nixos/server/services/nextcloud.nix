@@ -39,7 +39,7 @@ in {
       config = {
         dbtype = "pgsql";
         adminuser = "vyke";
-        adminpassFile = config.sops.secrets.nextcloud-pwd.path;
+        adminpassFile = config.sops.secrets.nextcloud-admin-password.path;
       };
       # Suggested by Nextcloud's health check.
       phpOptions."opcache.interned_strings_buffer" = "16";

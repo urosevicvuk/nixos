@@ -27,6 +27,8 @@ in
     curl
     vim
     nixfmt-rfc-style
+    sops
+    age
   ];
 
   # Enable zsh autocompletion for system packages (systemd, etc)

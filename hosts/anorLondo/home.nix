@@ -39,8 +39,10 @@
     ../../modules-home/system/mime.nix
     ../../modules-home/system/udiskie.nix
 
+    # Secrets
+    ../../secrets/shared
+
     ./variables.nix
-    ./secrets
   ];
 
   #All the programs that are not importes as modules

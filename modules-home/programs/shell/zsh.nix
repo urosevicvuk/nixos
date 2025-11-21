@@ -113,8 +113,8 @@ in
       # bash
       ''
 
-        ${lib.optionalString (config.sops or null != null && config.sops.secrets ? anthropicKey) ''
-          export ANTHROPIC_API_KEY="$(cat ${config.sops.secrets.anthropicKey.path})"
+        ${lib.optionalString (config.sops or null != null && config.sops.secrets ? anthropic-api-key) ''
+          export ANTHROPIC_API_KEY="$(cat ${config.sops.secrets.anthropic-api-key.path})"
         ''}
 
         bindkey -e

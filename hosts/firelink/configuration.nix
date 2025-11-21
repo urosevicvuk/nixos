@@ -5,7 +5,6 @@
     ../../modules-nixos/system/nix.nix
     ../../modules-nixos/system/systemd.nix
     ../../modules-nixos/system/secure-boot.nix
-    ../../modules-nixos/system/sops-config.nix
     ../../modules-nixos/system/users.nix
     ../../modules-nixos/system/utils.nix
     ../../modules-nixos/system/home-manager.nix
@@ -38,6 +37,10 @@
     # ../../modules-nixos/server/services/search-nixos-api.nix
     # ../../modules-nixos/server/media/arr.nix
     ../../modules-nixos/server/web/nginx.nix
+
+    # Secrets
+    ../../secrets/shared
+    ../../secrets/firelink
 
     # Host-specific configuration
     ./variables.nix

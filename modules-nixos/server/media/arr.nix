@@ -32,7 +32,7 @@ in {
     };
     recyclarr = {
       enable = true;
-      configFile = config.sops.secrets.recyclarr.path;
+      configFile = config.sops.secrets.recyclarr-config.path;
     };
   };
 
