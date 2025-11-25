@@ -69,8 +69,7 @@ in
     ];
 
     extraConfig = ''
-      plugin = ${inputs.hyprland-plugins.packages.${pkgs.system}.hyprscrolling}/lib/libhyprscrolling.so
-
+      # Plugin configuration (plugin is auto-loaded via plugins attribute above)
       plugin:hyprscrolling {
           fullscreen_on_one_column = true
       }
@@ -84,6 +83,96 @@ in
         else
           ""
       }
+
+      # Window rules - commented out until we find correct syntax for Hyprland 0.52
+      # windowrule {
+      #     match:tag = modal
+      #     float = true
+      #     pin = true
+      #     center = true
+      # }
+
+      # windowrule {
+      #     match:title = ^(Media viewer)$
+      #     float = true
+      # }
+
+      # windowrule {
+      #     match:title = ^(.*Bitwarden Password Manager.*)$
+      #     float = true
+      # }
+
+      # windowrule {
+      #     match:class = ^(org.gnome.Calculator)$
+      #     float = true
+      #     size = 360 490
+      # }
+
+      # windowrule {
+      #     match:title = ^(Picture-in-Picture)$
+      #     float = true
+      #     pin = true
+      # }
+
+      # windowrule {
+      #     match:class = ^(mpv|.+exe|celluloid)$
+      #     idleinhibit = focus
+      # }
+
+      # windowrule {
+      #     match:class = ^(zen)$
+      #     match:title = ^(.*YouTube.*)$
+      #     idleinhibit = focus
+      # }
+
+      # windowrule {
+      #     match:class = ^(zen)$
+      #     idleinhibit = fullscreen
+      # }
+
+      # windowrule {
+      #     match:class = ^(gcr-prompter)$
+      #     dimaround = true
+      # }
+
+      # windowrule {
+      #     match:class = ^(xdg-desktop-portal-gtk)$
+      #     dimaround = true
+      # }
+
+      # windowrule {
+      #     match:class = ^(polkit-gnome-authentication-agent-1)$
+      #     dimaround = true
+      # }
+
+      # windowrule {
+      #     match:class = ^(zen)$
+      #     match:title = ^(File Upload)$
+      #     dimaround = true
+      # }
+
+      # windowrule {
+      #     match:class = ^(.*jetbrains.*)$
+      #     match:title = ^(Confirm Exit|Open Project|win424|win201|splash)$
+      #     center = true
+      # }
+
+      # windowrule {
+      #     match:class = ^(.*jetbrains.*)$
+      #     match:title = ^(splash)$
+      #     size = 640 400
+      # }
+
+      # Layer rules
+      # layerrule {
+      #     match:namespace = launcher
+      #     noanim = true
+      # }
+
+      # layerrule {
+      #     match:namespace = ^ags-.*
+      #     noanim = true
+      # }
     '';
 
     settings = {
@@ -220,44 +309,7 @@ in
         force_zero_scaling = true;
       };
 
-      windowrulev2 = [
-        "float, tag:modal"
-        "pin, tag:modal"
-        "center, tag:modal"
-        # telegram media viewer
-        "float, title:^(Media viewer)$"
-
-        # Bitwarden extension
-        "float, title:^(.*Bitwarden Password Manager.*)$"
-
-        # gnome calculator
-        "float, class:^(org.gnome.Calculator)$"
-        "size 360 490, class:^(org.gnome.Calculator)$"
-
-        # make Firefox/Zen PiP window floating and sticky
-        "float, title:^(Picture-in-Picture)$"
-        "pin, title:^(Picture-in-Picture)$"
-
-        # idle inhibit while watching videos
-        "idleinhibit focus, class:^(mpv|.+exe|celluloid)$"
-        "idleinhibit focus, class:^(zen)$, title:^(.*YouTube.*)$"
-        "idleinhibit fullscreen, class:^(zen)$"
-
-        "dimaround, class:^(gcr-prompter)$"
-        "dimaround, class:^(xdg-desktop-portal-gtk)$"
-        "dimaround, class:^(polkit-gnome-authentication-agent-1)$"
-        "dimaround, class:^(zen)$, title:^(File Upload)$"
-
-        # fix xwayland apps
-        #"rounding 0, xwayland:1"
-        "center, class:^(.*jetbrains.*)$, title:^(Confirm Exit|Open Project|win424|win201|splash)$"
-        "size 640 400, class:^(.*jetbrains.*)$, title:^(splash)$"
-      ];
-
-      layerrule = [
-        "noanim, launcher"
-        "noanim, ^ags-.*"
-      ];
+      # windowrule and layerrule are now in extraConfig using block syntax
 
       workspace =
         if isLaptop then
@@ -291,13 +343,6 @@ in
             "name:alternative1, monitor:DP-3, default:true, persistent:true, layoutopt:orientation:top"
             "name:alternative2, monitor:DP-3, persistent:true, layoutopt:orientation:top"
           ];
-
-      windowrule = [
-        "workspace 1, title:zen"
-        "workspace 8, title:Steam"
-        "workspace 9, title:Discord"
-        "workspace 10, title:obsidian"
-      ];
 
       input = {
         kb_layout = keyboardLayout;

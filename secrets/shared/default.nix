@@ -50,22 +50,24 @@
         mode = "0400";
       };
 
-      # SSH keys
-      "ssh-private" = {
-        sopsFile = ./ssh-keys.yaml;
-        key = "private";
-        path = "/home/${config.var.username}/.ssh/id_ed25519";
-        #owner = config.var.username;
-        mode = "0600";
-      };
+      # SSH keys - DISABLED: Manage SSH keys manually instead of via sops
+      # This prevents the chicken-and-egg problem where sops needs SSH keys to decrypt,
+      # but SSH keys are managed by sops
+      # "ssh-private" = {
+      #   sopsFile = ./ssh-keys.yaml;
+      #   key = "private";
+      #   path = "/home/${config.var.username}/.ssh/id_ed25519";
+      #   #owner = config.var.username;
+      #   mode = "0600";
+      # };
 
-      "ssh-public" = {
-        sopsFile = ./ssh-keys.yaml;
-        key = "public";
-        path = "/home/${config.var.username}/.ssh/id_ed25519.pub";
-        #owner = config.var.username;
-        mode = "0644";
-      };
+      # "ssh-public" = {
+      #   sopsFile = ./ssh-keys.yaml;
+      #   key = "public";
+      #   path = "/home/${config.var.username}/.ssh/id_ed25519.pub";
+      #   #owner = config.var.username;
+      #   mode = "0644";
+      # };
     };
   };
 }
