@@ -83,6 +83,7 @@
         gnumake
         postman
         bruno
+        code-cursor
         vscode
         rstudioWrapper
         jetbrains.goland
