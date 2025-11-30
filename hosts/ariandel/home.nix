@@ -84,6 +84,7 @@
         postman
         bruno
         code-cursor
+        zed-editor
         vscode
         rstudioWrapper
         jetbrains.goland
