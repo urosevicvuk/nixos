@@ -302,7 +302,7 @@ in
         disable_splash_rendering = true;
         disable_autoreload = true;
         focus_on_activate = true;
-        new_window_takes_over_fullscreen = 2;
+        #new_window_takes_over_fullscreen = 2;
       };
 
       xwayland = {
