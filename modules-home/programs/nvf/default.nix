@@ -51,10 +51,10 @@
     ./git/integration.nix
     ./git/lazygit.nix
 
-    # AI
-    ./ai/completion.nix
-    #./ai/avante.nix
-    #./ai/opencode.nix
+  # AI
+  ./ai/completion.nix
+  #./ai/avante.nix
+  ./ai/opencode.nix
 
     # Session
     ./session/projects.nix

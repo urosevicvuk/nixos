@@ -22,6 +22,9 @@
       input = {
         enabled = true;
       };
+      terminal = {
+        enabled = true;
+      };
       # picker and gitsigns are configured in their respective feature files
     };
   };

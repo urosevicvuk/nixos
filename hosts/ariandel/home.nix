@@ -104,6 +104,7 @@
         curtail
         moreutils
         vulkan-tools
+        lsof # Required for opencode.nvim to detect OpenCode instances
 
         # Laptop utilities
         acpi
