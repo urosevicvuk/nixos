@@ -1,0 +1,7 @@
+keys:
+  - &primary age1pr5lhvnfj2awkg7nurw6ppy9z239jdd49ywp2nkaqw6cjr8gjuxq4jshvx
+reaction_rules:
+  - path_regex: hosts/anorLondoDark/secrets/secrets.yaml$
+    key_groups:
+      - age:
+        - &primary

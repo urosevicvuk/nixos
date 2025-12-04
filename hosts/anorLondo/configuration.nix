@@ -40,10 +40,6 @@
     ../../modules-nixos/network/tailscale.nix
     ../../modules-nixos/network/firewall.nix
 
-    # Secrets
-    ../../secrets/shared
-    ../../secrets/anorLondo
-
     # Host-specific configuration
     ./variables.nix
     ./hardware-configuration.nix
