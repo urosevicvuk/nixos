@@ -18,6 +18,7 @@
     ../../modules-nixos/hardware/bluetooth.nix
     ../../modules-nixos/hardware/keyd.nix
     ../../modules-nixos/hardware/printing.nix
+    ../../modules-nixos/hardware/fingerprint.nix
     # ../../modules-nixos/hardware/peripherals.nix
 
     # Desktop environment
