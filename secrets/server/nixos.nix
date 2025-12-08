@@ -1,4 +1,6 @@
-# Secrets specific to firelink (server)
+# NixOS-level secrets for firelink (server)
+# These are system-level secrets used by system services (acme, nextcloud, cloudflared, etc.)
+# They must be defined at the NixOS level to support the 'owner' option for system users
 { config, ... }:
 
 {
