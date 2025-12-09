@@ -104,7 +104,6 @@
         curtail
         moreutils
         vulkan-tools
-        lsof # Required for opencode.nvim to detect OpenCode instances
 
         # Laptop utilities
         acpi
@@ -115,7 +114,6 @@
         # TUI system managers
         bluetuith # Bluetooth manager
         wiremix # PipeWire audio mixer
-        # nmtui is built-in with NetworkManager (no need to install)
 
         # Virtualization
         freerdp
