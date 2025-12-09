@@ -61,8 +61,10 @@
 
     fonts = {
       monospace = {
-        package = pkgs.nerd-fonts.blex-mono;
-        name = "Blex Mono Nerd Font";
+        #package = pkgs.nerd-fonts.blex-mono;
+        #name = "Blex Mono Nerd Font";
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "Jetbrains Mono Nerd Font";
       };
       sansSerif = {
         package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;

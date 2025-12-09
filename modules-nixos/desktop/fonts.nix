@@ -17,6 +17,7 @@
       noto-fonts-cjk-sans
       noto-fonts-color-emoji
       nerd-fonts.lilex
+      nerd-fonts.blex-mono
       nerd-fonts.jetbrains-mono
       nerd-fonts.fira-code
       nerd-fonts.caskaydia-cove
