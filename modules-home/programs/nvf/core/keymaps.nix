@@ -6,10 +6,13 @@
       whichKey = {
         enable = true;
         register = {
-          "<leader>a" = "+ai/assistant";
+          "<leader>b" = "+buffer";
+          "<leader>c" = "+code";
           "<leader>d" = "+debug";
           "<leader>f" = "+find/file";
           "<leader>g" = "+git";
+          "<leader>m" = "+marks";
+          "<leader>o" = "+opencode";
           "<leader>q" = "+quit";
           "<leader>r" = "+refactor";
           "<leader>s" = "+session";
@@ -36,13 +39,6 @@
         silent = true;
         action = ":q<CR>";
         desc = "quiting";
-      }
-      {
-        key = "<leader><C-e>";
-        mode = "n";
-        silent = true;
-        action = "oif err != nil {<CR>}<Esc>Oreturn err<Esc>";
-        desc = "error handling in go";
       }
       {
         key = "<leader>r";

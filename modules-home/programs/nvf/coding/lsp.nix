@@ -8,7 +8,6 @@
       lspconfig.enable = true;
       formatOnSave = true;
       inlayHints.enable = true;
-      null-ls.enable = true;
 
       otter-nvim = {
         enable = true;
@@ -60,6 +59,62 @@
         action = "<cmd>Lspsaga code_action<cr>";
         desc = "Code Actions";
       }
+      {
+        key = "<C-s>";
+        mode = "i";
+        silent = true;
+        action = "<cmd>lua vim.lsp.buf.signature_help()<cr>";
+        desc = "Signature Help";
+      }
+
+      # LSP Operations
+      {
+        key = "<leader>rn";
+        mode = "n";
+        silent = true;
+        action = "<cmd>lua vim.lsp.buf.rename()<cr>";
+        desc = "LSP Rename";
+      }
+      {
+        key = "<leader>cf";
+        mode = [
+          "n"
+          "v"
+        ];
+        silent = true;
+        action = "<cmd>lua vim.lsp.buf.format({ async = true })<cr>";
+        desc = "Format Buffer/Selection";
+      }
+
+      # Diagnostic Navigation (mini.bracketed provides ]d/[d, we add error-only shortcuts)
+      {
+        key = "]e";
+        mode = "n";
+        silent = true;
+        action = "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<cr>";
+        desc = "Next Error";
+      }
+      {
+        key = "[e";
+        mode = "n";
+        silent = true;
+        action = "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<cr>";
+        desc = "Previous Error";
+      }
+      {
+        key = "]w";
+        mode = "n";
+        silent = true;
+        action = "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.WARN})<cr>";
+        desc = "Next Warning";
+      }
+      {
+        key = "[w";
+        mode = "n";
+        silent = true;
+        action = "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.WARN})<cr>";
+        desc = "Previous Warning";
+      }
 
       # LSP Navigation (from old picker.nix)
       {
@@ -96,13 +151,6 @@
         silent = true;
         action = "<cmd>lua Snacks.picker.lsp_type_definitions()<cr>";
         desc = "Go to type definition";
-      }
-      {
-        key = "<leader>fs";
-        mode = "n";
-        silent = true;
-        action = "<cmd>lua Snacks.picker.lsp_symbols()<cr>";
-        desc = "LSP symbols";
       }
     ];
   };

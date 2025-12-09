@@ -33,6 +33,7 @@
     ./navigation/marks.nix
     ./navigation/outline.nix
     ./navigation/terminal-nav.nix
+    ./navigation/buffers.nix
 
     # Coding
     ./coding/treesitter.nix

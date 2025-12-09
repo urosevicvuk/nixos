@@ -5,12 +5,28 @@
     startPlugins = with pkgs.vimPlugins; [
       neotest
       neotest-plenary
+      neotest-go
+      neotest-rust
+      neotest-python
+      neotest-jest
     ];
 
     luaConfigRC.neotest = ''
       require("neotest").setup({
         adapters = {
           require("neotest-plenary"),
+          require("neotest-go"),
+          require("neotest-rust"),
+          require("neotest-python")({
+            dap = { justMyCode = false },
+          }),
+          require("neotest-jest")({
+            jestCommand = "npm test --",
+            env = { CI = true },
+            cwd = function(path)
+              return vim.fn.getcwd()
+            end,
+          }),
         },
         floating = {
           border = "rounded",

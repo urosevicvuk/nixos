@@ -87,14 +87,21 @@
         mode = "n";
         silent = true;
         action = "<cmd>lua Snacks.explorer()<cr>";
-        desc = "File explorer";
+        desc = "Snacks explorer";
       }
       {
-        key = "<leader>fm";
+        key = "<leader>fO";
         mode = "n";
         silent = true;
-        action = "<cmd>lua require('oil').toggle_float()<cr>";
-        desc = "Oil file manager";
+        action = "<cmd>lua require('oil').open_float()<cr>";
+        desc = "Oil (buffer-based)";
+      }
+      {
+        key = "-";
+        mode = "n";
+        silent = true;
+        action = "<cmd>lua require('oil').open()<cr>";
+        desc = "Open Oil in current window";
       }
 
       # Search
