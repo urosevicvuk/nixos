@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  inputs,
   ...
 }:
 {
@@ -10,13 +11,8 @@
     ../../modules-home/programs/shell
     ../../modules-home/programs/fetch
     ../../modules-home/programs/git.nix
-    ../../modules-home/programs/ghostty.nix
-    ../../modules-home/programs/kitty.nix
 
-    # Scripts
-    ../../modules-home/scripts # All scripts
-
-    # Secrets
+    # Secrets (home-manager level only)
     ../../secrets/shared
 
     ./variables.nix

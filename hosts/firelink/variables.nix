@@ -7,8 +7,7 @@
   config.var = {
     hostname = "firelink";
     username = "vyke";
-    configDirectory = "/home/" + config.var.username + "/nixos"; # The path of the nixos configuration directory
-
+    configDirectory = "/home/" + config.var.username + "/code/ynix"; # The path of the nixos configuration directory
     device = "server"; # laptop || desktop || server
     terminal = "kitty"; # default terminal emulator - kitty || ghostty
 
@@ -27,6 +26,10 @@
 
     autoUpgrade = false;
     autoGarbageCollector = true;
+
+    # Display and input settings
+    monitorScale = "1";
+    inputSensitivity = "-0.5";
 
     # Choose your theme variables here
     theme = import ../../themes/var/gruvbox.nix;

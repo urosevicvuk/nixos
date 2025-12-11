@@ -4,7 +4,7 @@
     # System modules
     ../../modules-nixos/system/nix.nix
     ../../modules-nixos/system/systemd.nix
-    ../../modules-nixos/system/secure-boot.nix
+    # ../../modules-nixos/system/secure-boot.nix  # Disabled for server
     ../../modules-nixos/system/users.nix
     ../../modules-nixos/system/utils.nix
     ../../modules-nixos/system/home-manager.nix
@@ -24,9 +24,6 @@
     ../../modules-nixos/server/ssh.nix
     ../../modules-nixos/server/services/cloudflared.nix
     ../../modules-nixos/server/services/nextcloud.nix
-    ../../modules-nixos/server/services/minecraft.nix
-    ../../modules-nixos/server/services/minecraft-rlcraft.nix
-    ../../modules-nixos/server/services/playit.nix
     # ../../modules-nixos/server/services/adguardhome.nix
     # ../../modules-nixos/server/services/bitwarden.nix
     # ../../modules-nixos/server/services/glance.nix
@@ -38,9 +35,8 @@
     # ../../modules-nixos/server/media/arr.nix
     ../../modules-nixos/server/web/nginx.nix
 
-    # Secrets
-    ../../secrets/shared
-    ../../secrets/firelink
+    # Secrets (NixOS-level)
+    ../../secrets/server/nixos.nix
 
     # Host-specific configuration
     ./variables.nix
