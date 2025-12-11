@@ -22,9 +22,9 @@ in
   # - Red Hat Bug #1196943: USB autosuspend breaks xHCI on AMD APU chipsets
   # - Arch Wiki: Framework Laptop 13 AMD suspend problems
 
-  services.udev.extraRules = lib.mkIf isLaptop ''
-    # Disable autosuspend for Framework AMD USB controller (fingerprint reader)
-    # Targets PCI device 0000:c1:00.4 (AMD xHCI USB controller)
-    ACTION=="add", SUBSYSTEM=="pci", KERNEL=="0000:c1:00.4", ATTR{power/control}="on"
-  '';
+  #services.udev.extraRules = lib.mkIf isLaptop ''
+  #  # Disable autosuspend for Framework AMD USB controller (fingerprint reader)
+  #  # Targets PCI device 0000:c1:00.4 (AMD xHCI USB controller)
+  #  ACTION=="add", SUBSYSTEM=="pci", KERNEL=="0000:c1:00.4", ATTR{power/control}="on"
+  #'';
 }
