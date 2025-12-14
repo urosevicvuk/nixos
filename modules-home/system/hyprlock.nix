@@ -13,7 +13,7 @@ in
         immediate_render = true;
       };
 
-      auth.fingerprint.enabled = true;
+      #auth.fingerprint.enabled = true;
       #auth.pam.enabled = true;
 
       # BACKGROUND
