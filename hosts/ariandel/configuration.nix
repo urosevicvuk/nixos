@@ -10,23 +10,21 @@
     ../../modules-nixos/system/locale.nix
     ../../modules-nixos/system/environment.nix
     ../../modules-nixos/system/security.nix
-    ../../modules-nixos/system/logind.nix
 
     # Hardware
     ../../modules-nixos/hardware/audio.nix
     ../../modules-nixos/hardware/bluetooth.nix
     ../../modules-nixos/hardware/keyd.nix
     ../../modules-nixos/hardware/printing.nix
-    ../../modules-nixos/hardware/fingerprint.nix
     # ../../modules-nixos/hardware/peripherals.nix
 
     # Desktop environment
     ../../modules-nixos/desktop/fonts.nix
     ../../modules-nixos/desktop/hyprland.nix
-    ../../modules-nixos/desktop/services.nix
-    ../../modules-nixos/desktop/xdg.nix
     ../../modules-nixos/desktop/sddm.nix
+    ../../modules-nixos/desktop/services.nix
     #../../modules-nixos/desktop/tuigreet.nix
+    ../../modules-nixos/desktop/xdg.nix
 
     # Programs
     ../../modules-nixos/programs/gaming.nix
