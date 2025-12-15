@@ -1,10 +1,12 @@
 # Hyprlock is a lockscreen for Hyprland
-{ config, lib, ... }:
-let
+{
+  config,
+  lib,
+  ...
+}: let
   foreground = "rgba(${config.theme.textColorOnWallpaper}ee)";
   font = config.stylix.fonts.serif.name;
-in
-{
+in {
   programs.hyprlock = {
     enable = true;
     settings = {
@@ -13,7 +15,7 @@ in
         immediate_render = true;
       };
 
-      #auth.fingerprint.enabled = true;
+      auth.fingerprint.enabled = true;
       #auth.pam.enabled = true;
 
       # BACKGROUND

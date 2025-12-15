@@ -5,9 +5,7 @@
   lib,
   pkgs,
   ...
-}:
-let
-
+}: let
   accent = "#${config.lib.stylix.colors.base0D}";
   accent-alt = "#${config.lib.stylix.colors.base03}";
   background = "#${config.lib.stylix.colors.base00}";
@@ -30,8 +28,7 @@ let
   inherit (config.var) device;
 
   isLaptop = device == "laptop";
-in
-{
+in {
   #imports = [ inputs.hyprpanel.homeManagerModules.hyprpanel ];
   # exec-once moved to main hyprland config to avoid conflicts
 
@@ -89,23 +86,25 @@ in
             "left" = [
               "dashboard"
               "workspaces"
+              "windowtitle"
               "custom/status-icons" # Status indicators (recording, caffeine, night-shift, VPN)
               "custom/docker-status" # Docker container count
             ];
-            "middle" = [ "clock" ];
-            "right" = [
-              "systray"
-              "volume"
-              "bluetooth"
-              "network"
-              "kbinput"
-            ]
-            ++ lib.optionals isLaptop [
-              "battery"
-            ]
-            ++ [
-              "notifications"
-            ];
+            "middle" = ["clock"];
+            "right" =
+              [
+                "systray"
+                "volume"
+                "bluetooth"
+                "network"
+                "kbinput"
+              ]
+              ++ lib.optionals isLaptop [
+                "battery"
+              ]
+              ++ [
+                "notifications"
+              ];
           };
         };
 
@@ -161,7 +160,6 @@ in
         };
 
         bar = {
-
           outer_spacing = "0px";
 
           buttons = {
@@ -179,7 +177,13 @@ in
               occupied = accent-alt;
             };
             text = foreground;
-            background = background + (if transparentButtons then "00" else "");
+            background =
+              background
+              + (
+                if transparentButtons
+                then "00"
+                else ""
+              );
             icon = accent;
             hover = background;
             notifications = {
@@ -191,17 +195,34 @@ in
           };
 
           floating = floating;
-          margin_top = (if position == "top" then toString (gaps-in * 2) else "0") + "px";
-          margin_bottom = (if position == "top" then "0" else toString (gaps-in * 2)) + "px";
+          margin_top =
+            (
+              if position == "top"
+              then toString (gaps-in * 2)
+              else "0"
+            )
+            + "px";
+          margin_bottom =
+            (
+              if position == "top"
+              then "0"
+              else toString (gaps-in * 2)
+            )
+            + "px";
           margin_sides = toString gaps-out + "px";
           border_radius = toString rounding + "px";
           transparent = transparent;
           location = position;
           dropdownGap = "4.5em";
-          background = background + (if transparentButtons && transparent then "00" else "");
+          background =
+            background
+            + (
+              if transparentButtons && transparent
+              then "00"
+              else ""
+            );
 
           menus = {
-
             shadow = "0 0 0 0";
             monochrome = true;
             card_radius = toString rounding + "px";
@@ -284,7 +305,6 @@ in
           label = accent;
           bar_container = background-alt;
         };
-
       };
 
       notifications = {
@@ -293,7 +313,6 @@ in
       };
 
       menus = {
-
         clock.weather = {
           enabled = false;
         };
@@ -348,6 +367,5 @@ in
 
       #Set for update fix, when it becomes a package, this should be back to override
     };
-
   };
 }

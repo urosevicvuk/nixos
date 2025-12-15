@@ -28,14 +28,14 @@ in
       "$mod, I, exec, ${terminal} -e btop"
       "$mod, Y, exec, ${terminal} -e yazi"
 
-      "$mod, H, layoutmsg, focus l" # Move focus left
-      "$mod, L, layoutmsg, focus r" # Move focus Right
+      "$mod, H, movefocus, l" # Move focus left
+      "$mod, L, movefocus, r" # Move focus Right
       "$mod, K, movefocus, u" # Move focus Up
       "$mod, J, movefocus, d" # Move focus Down
 
-      # Scrolling layout: move windows between/within columns
-      "$shiftMod, H, layoutmsg, movewindowto l" # Move window to left column
-      "$shiftMod, L, layoutmsg, movewindowto r" # Move window to right column
+      # Dwindle layout: move windows
+      "$shiftMod, H, movewindow, l" # Move window left
+      "$shiftMod, L, movewindow, r" # Move window right
       "$shiftMod, K, movewindow, u" # Move window up
       "$shiftMod, J, movewindow, d" # Move window down
 
@@ -67,31 +67,31 @@ in
 
       #Workspaces
       "$mod, 1, workspace, 1"
-      "$mod SHIFT, 1, layoutmsg, movecoltoworkspace 1"
+      "$mod SHIFT, 1, movetoworkspace, 1"
       "$mod, 2, workspace, 2"
-      "$mod SHIFT, 2, layoutmsg, movecoltoworkspace 2"
+      "$mod SHIFT, 2, movetoworkspace, 2"
       "$mod, 3, workspace, 3"
-      "$mod SHIFT, 3, layoutmsg, movecoltoworkspace 3"
+      "$mod SHIFT, 3, movetoworkspace, 3"
       "$mod, 4, workspace, 4"
-      "$mod SHIFT, 4, layoutmsg, movecoltoworkspace 4"
+      "$mod SHIFT, 4, movetoworkspace, 4"
       "$mod, 5, workspace, 5"
-      "$mod SHIFT, 5, layoutmsg, movecoltoworkspace 5"
+      "$mod SHIFT, 5, movetoworkspace, 5"
       "$mod, 6, workspace, 6"
-      "$mod SHIFT, 6, layoutmsg, movecoltoworkspace 6"
+      "$mod SHIFT, 6, movetoworkspace, 6"
       "$mod, 7, workspace, 7"
-      "$mod SHIFT, 7, layoutmsg, movecoltoworkspace 7"
+      "$mod SHIFT, 7, movetoworkspace, 7"
       "$mod, 8, workspace, 8"
-      "$mod SHIFT, 8, layoutmsg, movecoltoworkspace 8"
+      "$mod SHIFT, 8, movetoworkspace, 8"
       "$mod, 9, workspace, 9"
-      "$mod SHIFT, 9, layoutmsg, movecoltoworkspace 9"
+      "$mod SHIFT, 9, movetoworkspace, 9"
       "$mod, 0, workspace, 10"
-      "$mod SHIFT, 0, layoutmsg, movecoltoworkspace 10"
+      "$mod SHIFT, 0, movetoworkspace, 10"
 
       "$mod, backspace, workspace, 11"
-      "$mod SHIFT, backspace, layoutmsg, movecoltoworkspace 11"
+      "$mod SHIFT, backspace, movetoworkspace, 11"
 
       "$mod, TAB, togglespecialworkspace"
-      "$shiftMod, TAB, layoutmsg, movecoltoworkspace special"
+      "$shiftMod, TAB, movetoworkspace, special"
 
       #"$mod, minus, workspace, name:alternative1"
       #"$mod SHIFT, minus, movetoworkspace, name:alternative1"
@@ -100,8 +100,8 @@ in
     ];
 
     binde = [
-      "$shiftMod, comma, layoutmsg, colresize -0.1" # Resize column smaller
-      "$shiftMod, period, layoutmsg, colresize +0.1" # Resize column larger
+      "$shiftMod, comma, resizeactive, -40 0" # Resize window smaller horizontally
+      "$shiftMod, period, resizeactive, 40 0" # Resize window larger horizontally
     ];
 
     bindm = [

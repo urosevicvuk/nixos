@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{config, ...}: {
   imports = [
     # System modules
     ../../modules-nixos/system/nix.nix
@@ -26,8 +25,8 @@
     ../../modules-nixos/desktop/hyprland.nix
     ../../modules-nixos/desktop/services.nix
     ../../modules-nixos/desktop/xdg.nix
-    # ../../modules-nixos/desktop/sddm.nix
-    ../../modules-nixos/desktop/tuigreet.nix
+    ../../modules-nixos/desktop/sddm.nix
+    #../../modules-nixos/desktop/tuigreet.nix
 
     # Programs
     ../../modules-nixos/programs/gaming.nix
@@ -59,7 +58,7 @@
     ## Fix PCIe ASPM issues causing suspend failures on AMD Framework (kernel 6.12+)
     ## This should fix the xHCI USB controller resume issue (and thus the fingerprint reader)
     ## Reference: Framework Community reports of suspend hangs
-    #"pcie_aspm=off"
+    "pcie_aspm=off"
 
     ## Prevent NVMe deep sleep issues during suspend
     ## Fixes intermittent cold boots and unsafe shutdowns from lid-closed suspend

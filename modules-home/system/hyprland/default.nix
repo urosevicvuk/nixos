@@ -65,14 +65,14 @@ in
     portalPackage = null;
 
     plugins = [
-      inputs.hyprland-plugins.packages.${pkgs.system}.hyprscrolling
+      # inputs.hyprland-plugins.packages.${pkgs.system}.hyprscrolling # Removed: has bugs with gaps_out
     ];
 
     extraConfig = ''
-      # Plugin configuration (plugin is auto-loaded via plugins attribute above)
-      plugin:hyprscrolling {
-          fullscreen_on_one_column = true
-      }
+      # Plugin configuration disabled (hyprscrolling removed due to gaps_out bug)
+      # plugin:hyprscrolling {
+      #     fullscreen_on_one_column = true
+      # }
 
       # Laptop-specific gestures
       ${
@@ -267,14 +267,20 @@ in
         gaps_in = gaps-in;
         gaps_out = gaps-out;
         border_size = border-size;
-        layout = "scrolling";
+        layout = "dwindle";
       };
 
-      "plugin:hyprscrolling" = {
-        fullscreen_on_one_column = true;
-        focus_fit_method = 0; # 0 = center, 1 = fit
-        column_width = 0.499;
-        follow_focus = true;
+      # Hyprscrolling plugin config removed (plugin has gaps_out bug)
+      # "plugin:hyprscrolling" = {
+      #   fullscreen_on_one_column = true;
+      #   focus_fit_method = 0; # 0 = center, 1 = fit
+      #   column_width = 0.499;
+      #   follow_focus = true;
+      # };
+
+      dwindle = {
+        pseudotile = true;
+        preserve_split = true;
       };
 
       decoration = {
