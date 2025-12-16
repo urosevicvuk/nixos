@@ -10,23 +10,27 @@
 in {
   services.fprintd.enable = isLaptop;
 
+  # Fix fingerprint reader after suspend/resume
+  # Stop fprintd before suspend to prevent stale D-Bus connections
+  # It will auto-start on demand (socket-activated service)
+  powerManagement.powerDownCommands = lib.mkIf isLaptop ''
+    ${pkgs.systemd}/bin/systemctl stop fprintd.service 2>/dev/null || true
+  '';
+
   security = {
     pam.services = {
+      sudo.fprintAuth = lib.mkIf isLaptop true;
       hyprlock = {
         #text = "auth include login";
         fprintAuth = lib.mkIf isLaptop true;
       };
-
-      # Fingerprint authentication for various services (laptop only)
-      sudo.fprintAuth = lib.mkIf isLaptop true;
       login = {
         fprintAuth = lib.mkIf isLaptop true;
         enableGnomeKeyring = true;
       };
       greetd = {
-        # Session logins are disabled by default
         fprintAuth = lib.mkIf isLaptop true;
-        #enableGnomeKeyring = true;
+        enableGnomeKeyring = true;
       };
       polkit-1.fprintAuth = lib.mkIf isLaptop true;
     };
