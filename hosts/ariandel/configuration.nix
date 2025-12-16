@@ -56,7 +56,13 @@
     ## Fix PCIe ASPM issues causing suspend failures on AMD Framework (kernel 6.12+)
     ## This should fix the xHCI USB controller resume issue (and thus the fingerprint reader)
     ## Reference: Framework Community reports of suspend hangs
-    "pcie_aspm=off"
+    #"pcie_aspm=off"
+
+    ## Fix xHCI controller dying on resume (Framework AMD 7040 bug)
+    ## XHCI_RESET_ON_RESUME quirk forces controller reset after every resume
+    ## This fixes the fingerprint reader disconnecting after suspend
+    ## Reference: https://tomlankhorst.nl/unresponsive-usb-unbind-bind-linux
+    "xhci_hcd.quirks=2"
 
     ## Prevent NVMe deep sleep issues during suspend
     ## Fixes intermittent cold boots and unsafe shutdowns from lid-closed suspend

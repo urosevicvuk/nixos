@@ -11,10 +11,28 @@ in {
   services.fprintd.enable = isLaptop;
 
   # Fix fingerprint reader after suspend/resume
-  # Stop fprintd before suspend to prevent stale D-Bus connections
-  # It will auto-start on demand (socket-activated service)
+  # The AMD xHCI USB controller (c1:00.4) crashes on resume and never recovers
+  # This is a hardware/firmware bug that kernel parameters can't fix
+  # Solution: Stop fprintd before suspend, then reset the USB controller after resume
+
   powerManagement.powerDownCommands = lib.mkIf isLaptop ''
     ${pkgs.systemd}/bin/systemctl stop fprintd.service 2>/dev/null || true
+  '';
+
+  # Reset xHCI controller after resume to recover fingerprint reader
+  powerManagement.resumeCommands = lib.mkIf isLaptop ''
+    # Wait for system to stabilize
+    sleep 2
+
+    # Unbind the dead xHCI controller
+    echo '0000:c1:00.4' > /sys/bus/pci/drivers/xhci_hcd/unbind 2>/dev/null || true
+    sleep 1
+
+    # Rebind to reset it
+    echo '0000:c1:00.4' > /sys/bus/pci/drivers/xhci_hcd/bind 2>/dev/null || true
+    sleep 2
+
+    # fprintd will auto-start when needed
   '';
 
   security = {
