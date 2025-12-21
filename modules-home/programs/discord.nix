@@ -1,20 +1,11 @@
 # Discord is a popular chat application.
-{ inputs, ... }:
+# Using Vesktop (Discord + Vencord) from nixpkgs for stability
+{ pkgs, ... }:
 {
-  imports = [ inputs.nixcord.homeModules.nixcord ];
+  home.packages = [ pkgs.vesktop ];
 
-  stylix.targets.nixcord.enable = false;
-
-  programs.nixcord = {
-    enable = true;
-    vesktop.enable = true;
-
-    config = {
-      frameless = true;
-
-      themeLinks = [
-        "https://raw.githubusercontent.com/shvedes/discord-gruvbox/refs/heads/main/gruvbox-dark.theme.css"
-      ];
-    };
-  };
+  # Vesktop config is stored in ~/.config/vesktop/
+  # Themes can be added manually via the Vencord interface
+  # For declarative theming in the future, consider:
+  # https://github.com/fufexan/dotfiles/tree/main/home/programs/discord
 }

@@ -22,21 +22,14 @@
       url = "github:NixOS/nixos-hardware/master";
     };
 
-    hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    };
-
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-
     sops-nix = {
-      url = "github:Mic92/sops-nix"; # SOPS integration for NixOS
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     stylix = {
       url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     apple-fonts = {
@@ -45,6 +38,7 @@
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nvf = {
@@ -56,14 +50,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixcord.url = "github:kaylorben/nixcord";
-
     nix-minecraft = {
       url = "github:Infinidoge/nix-minecraft";
-    };
-
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
     };
 
     elephant = {
@@ -84,87 +72,78 @@
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Impermanence - not imported yet, for review
-    impermanence = {
-      url = "github:nix-community/impermanence";
-    };
-
-    # Disko - declarative disk partitioning - not imported yet, for review
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs =
-    inputs@{ nixpkgs, nixpkgs-stable, ... }:
-    {
-      # NixOS configurations
-      nixosConfigurations = {
-        # anorLondo is the main desktop system
-        anorLondo = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            {
-              _module.args = { inherit inputs; };
+  outputs = inputs @ {
+    nixpkgs,
+    nixpkgs-stable,
+    ...
+  }: {
+    # NixOS configurations
+    nixosConfigurations = {
+      # anorLondo is the main desktop system
+      anorLondo = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          {
+            _module.args = {inherit inputs;};
 
-              nixpkgs.overlays = [
-                (final: prev: {
-                  stable = import nixpkgs-stable {
-                    system = final.system;
-                    config.allowUnfree = true;
-                  };
-                })
-              ];
-            }
-            inputs.home-manager.nixosModules.home-manager
-            inputs.stylix.nixosModules.stylix
-            inputs.lanzaboote.nixosModules.lanzaboote
-            ./hosts/anorLondo/configuration.nix
-          ];
-        };
+            nixpkgs.overlays = [
+              (final: prev: {
+                stable = import nixpkgs-stable {
+                  system = final.system;
+                  config.allowUnfree = true;
+                };
+              })
+            ];
+          }
+          inputs.home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          inputs.lanzaboote.nixosModules.lanzaboote
+          ./hosts/anorLondo/configuration.nix
+        ];
+      };
 
-        # ariandel is the laptop
-        ariandel = nixpkgs.lib.nixosSystem {
-          modules = [
-            {
-              _module.args = { inherit inputs; };
+      # ariandel is the laptop
+      ariandel = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            _module.args = {inherit inputs;};
 
-              nixpkgs.overlays = [
-                (final: prev: {
-                  stable = import nixpkgs-stable {
-                    system = final.system;
-                    config.allowUnfree = true;
-                  };
-                })
-              ];
-            }
-            inputs.nixos-hardware.nixosModules.framework-amd-ai-300-series
-            inputs.home-manager.nixosModules.home-manager
-            inputs.stylix.nixosModules.stylix
-            inputs.lanzaboote.nixosModules.lanzaboote
-            ./hosts/ariandel/configuration.nix
-          ];
-        };
+            nixpkgs.overlays = [
+              (final: prev: {
+                stable = import nixpkgs-stable {
+                  system = final.system;
+                  config.allowUnfree = true;
+                };
+              })
+            ];
+          }
+          inputs.nixos-hardware.nixosModules.framework-amd-ai-300-series
+          inputs.home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          inputs.lanzaboote.nixosModules.lanzaboote
+          ./hosts/ariandel/configuration.nix
+        ];
+      };
 
-        # firelink is the server
-        firelink = nixpkgs.lib.nixosSystem {
-          modules = [
-            {
-              _module.args = { inherit inputs; };
-              nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
-            }
-            inputs.home-manager.nixosModules.home-manager
-            inputs.stylix.nixosModules.stylix
-            # inputs.lanzaboote.nixosModules.lanzaboote  # Disabled for server
-            inputs.nix-minecraft.nixosModules.minecraft-servers
-            inputs.sops-nix.nixosModules.sops
-            # inputs.nixarr.nixosModules.default  # Enable when nixarr input is added and configured
-            # inputs.search-nixos-api.nixosModules.search-nixos-api  # Enable when search-nixos-api input is added
-            ./hosts/firelink/configuration.nix
-          ];
-        };
+      # firelink is the server
+      firelink = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            _module.args = {inherit inputs;};
+            nixpkgs.overlays = [inputs.nix-minecraft.overlay];
+          }
+          inputs.home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          # inputs.lanzaboote.nixosModules.lanzaboote  # Disabled for server
+          inputs.nix-minecraft.nixosModules.minecraft-servers
+          inputs.sops-nix.nixosModules.sops
+          # inputs.nixarr.nixosModules.default  # Enable when nixarr input is added and configured
+          # inputs.search-nixos-api.nixosModules.search-nixos-api  # Enable when search-nixos-api input is added
+          ./hosts/firelink/configuration.nix
+        ];
       };
     };
+  };
 }

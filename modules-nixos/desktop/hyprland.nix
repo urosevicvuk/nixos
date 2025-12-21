@@ -1,10 +1,10 @@
-{ inputs, pkgs, ... }: {
+{ pkgs, ... }: {
   programs.hyprland = {
     enable = true;
     withUWSM = true;
-    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-    portalPackage =
-      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    # Using nixpkgs hyprland for stability
+    package = pkgs.hyprland;
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
   };
 
   environment.systemPackages = with pkgs; [

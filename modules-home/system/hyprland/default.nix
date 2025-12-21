@@ -61,11 +61,13 @@ in
         "--all"
       ]; # https://wiki.hyprland.org/Nix/Hyprland-on-Home-Manager/#programs-dont-work-in-systemd-services-but-do-on-the-terminal
     };
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    # Using nixpkgs hyprland for stability instead of git version
+    package = pkgs.hyprland;
     portalPackage = null;
 
     plugins = [
-      # inputs.hyprland-plugins.packages.${pkgs.system}.hyprscrolling # Removed: has bugs with gaps_out
+      # Plugins can be enabled from pkgs.hyprlandPlugins.*
+      # Example: pkgs.hyprlandPlugins.hy3
     ];
 
     extraConfig = ''
