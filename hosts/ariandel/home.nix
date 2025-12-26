@@ -67,6 +67,7 @@
         vlc
         libreoffice-fresh
         qbittorrent
+        wireshark
 
         # Dev
         pnpm

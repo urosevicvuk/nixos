@@ -68,8 +68,17 @@
           { action = "start:keep"; label = "open+next"; bind = "shift Return"; after = "KeepOpen"; }
           { action = "pin"; bind = "ctrl shift p"; after = "AsyncReload"; }
           { action = "unpin"; bind = "ctrl shift p"; after = "AsyncReload"; }
-          { action = "pinup"; bind = "ctrl n"; after = "AsyncReload"; }
+          { action = "pinup"; bind = "ctrl shift n"; after = "AsyncReload"; }
           { action = "pindown"; bind = "ctrl m"; after = "AsyncReload"; }
+        ];
+
+        actions.clipboard = [
+          { action = "copy"; default = true; bind = "Return"; }
+          { action = "remove"; bind = "ctrl d"; after = "ClearReload"; }
+          { action = "remove_all"; global = true; bind = "ctrl shift d"; after = "ClearReload"; }
+          { action = "pause"; bind = "ctrl shift p"; }
+          { action = "unpause"; bind = "ctrl shift p"; }
+          { action = "edit"; bind = "ctrl o"; }
         ];
       };
     };
