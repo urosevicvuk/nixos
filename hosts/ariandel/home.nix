@@ -68,6 +68,7 @@
         libreoffice-fresh
         qbittorrent
         wireshark
+        mullvad-vpn
 
         # Dev
         pnpm
