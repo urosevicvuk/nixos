@@ -1,14 +1,16 @@
 # Git configuration
-{ config, lib, pkgs, ... }:
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   inherit (config.var.git) username;
   inherit (config.var.git) email;
   accent = "#${config.lib.stylix.colors.base0D}";
   muted = "#${config.lib.stylix.colors.base03}";
-in
-{
-  home.file.".ssh/allowed_signers".text =
-    "* ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQpgKiftVTzqkfu6zbRpvZFtWZH/HBQSj6DhuVvVRul vuk23urosevic@gmail.com";
+in {
+  home.file.".ssh/allowed_signers".text = "* ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINQpgKiftVTzqkfu6zbRpvZFtWZH/HBQSj6DhuVvVRul vuk23urosevic@gmail.com";
 
   # Add git tools
   home.packages = with pkgs; [
@@ -105,7 +107,7 @@ in
       promptToReturnFromSubprocess = false;
       update.method = "never";
       git = {
-        commit.signOff = false;
+        commit.signOff = true;
         parseEmoji = true;
       };
       gui = {
@@ -114,7 +116,7 @@ in
             accent
             "bold"
           ];
-          inactiveBorderColor = [ muted ];
+          inactiveBorderColor = [muted];
         };
         showListFooter = false;
         showRandomTip = false;
