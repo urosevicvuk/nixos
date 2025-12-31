@@ -144,6 +144,91 @@
           ./hosts/firelink/configuration.nix
         ];
       };
+
+      # bonfire - All-in-one cluster node (K3s control plane + worker + Longhorn storage)
+      # Template for bonfire01, bonfire02, bonfire03
+      bonfire = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            _module.args = {inherit inputs;};
+            nixpkgs.overlays = [
+              (final: prev: {
+                stable = import nixpkgs-stable {
+                  system = final.system;
+                  config.allowUnfree = true;
+                };
+              })
+            ];
+          }
+          inputs.home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          inputs.sops-nix.nixosModules.sops
+          ./hosts/bonfire/configuration.nix
+        ];
+      };
+
+      # bonfire-keeper - Dedicated control plane node (future separated architecture)
+      bonfire-keeper = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            _module.args = {inherit inputs;};
+            nixpkgs.overlays = [
+              (final: prev: {
+                stable = import nixpkgs-stable {
+                  system = final.system;
+                  config.allowUnfree = true;
+                };
+              })
+            ];
+          }
+          inputs.home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          inputs.sops-nix.nixosModules.sops
+          ./hosts/bonfire-keeper/configuration.nix
+        ];
+      };
+
+      # bonfire-ash - Dedicated worker node (future separated architecture)
+      bonfire-ash = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            _module.args = {inherit inputs;};
+            nixpkgs.overlays = [
+              (final: prev: {
+                stable = import nixpkgs-stable {
+                  system = final.system;
+                  config.allowUnfree = true;
+                };
+              })
+            ];
+          }
+          inputs.home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          inputs.sops-nix.nixosModules.sops
+          ./hosts/bonfire-ash/configuration.nix
+        ];
+      };
+
+      # bonfire-ember - Dedicated storage node (future Ceph deployment)
+      bonfire-ember = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            _module.args = {inherit inputs;};
+            nixpkgs.overlays = [
+              (final: prev: {
+                stable = import nixpkgs-stable {
+                  system = final.system;
+                  config.allowUnfree = true;
+                };
+              })
+            ];
+          }
+          inputs.home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          inputs.sops-nix.nixosModules.sops
+          ./hosts/bonfire-ember/configuration.nix
+        ];
+      };
     };
   };
 }
