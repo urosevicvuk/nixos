@@ -43,9 +43,6 @@
     ./hardware-configuration.nix
   ];
 
-  # Hibernate support
-  boot.resumeDevice = "/dev/disk/by-uuid/1fe041f7-c293-442b-ac57-faf8933c3913";
-
   # Framework AMD suspend/resume fixes
   # These parameters address critical suspend issues not covered by nixos-hardware
   boot.kernelParams = [
@@ -62,7 +59,7 @@
     ## XHCI_RESET_ON_RESUME quirk forces controller reset after every resume
     ## This fixes the fingerprint reader disconnecting after suspend
     ## Reference: https://tomlankhorst.nl/unresponsive-usb-unbind-bind-linux
-    "xhci_hcd.quirks=2"
+    #"xhci_hcd.quirks=2"
 
     ## Prevent NVMe deep sleep issues during suspend
     ## Fixes intermittent cold boots and unsafe shutdowns from lid-closed suspend
