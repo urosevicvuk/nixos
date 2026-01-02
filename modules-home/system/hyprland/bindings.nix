@@ -1,8 +1,10 @@
-{ pkgs, config, ... }:
-let
-  terminal = config.var.terminal;
-in
 {
+  pkgs,
+  config,
+  ...
+}: let
+  terminal = config.var.terminal;
+in {
   wayland.windowManager.hyprland.settings = {
     bind = [
       #Basic things
@@ -28,14 +30,17 @@ in
       "$mod, I, exec, ${terminal} -e btop"
       "$mod, Y, exec, ${terminal} -e yazi"
 
-      "$mod, H, movefocus, l" # Move focus left
-      "$mod, L, movefocus, r" # Move focus Right
+      "$mod, C, layoutmsg, togglefit" # Toggle Hyprscrolling fit method
+
+      # Hyprscrolling layout: move focus - custom layoutmsg for moving focus to edge columns
+      "$mod, H, layoutmsg, focus l" # Move focus left
+      "$mod, L, layoutmsg, focus r" # Move focus Right
       "$mod, K, movefocus, u" # Move focus Up
       "$mod, J, movefocus, d" # Move focus Down
 
-      # Dwindle layout: move windows
-      "$shiftMod, H, movewindow, l" # Move window left
-      "$shiftMod, L, movewindow, r" # Move window right
+      # Hyprscrolling layout: move windows - custom layoutmsg for moving windows to edge columns
+      "$shiftMod, H, layoutmsg, movewindowto l" # Move window left
+      "$shiftMod, L, layoutmsg, movewindowto r" # Move window right
       "$shiftMod, K, movewindow, u" # Move window up
       "$shiftMod, J, movewindow, d" # Move window down
 
@@ -100,8 +105,8 @@ in
     ];
 
     binde = [
-      "$shiftMod, comma, resizeactive, -40 0" # Resize window smaller horizontally
-      "$shiftMod, period, resizeactive, 40 0" # Resize window larger horizontally
+      "$shiftMod, period, layoutmsg, colresize +0.1" # Resize window smaller horizontally
+      "$shiftMod, comma, layoutmsg, colresize -0.1" # Resize window larger horizontally
     ];
 
     bindm = [

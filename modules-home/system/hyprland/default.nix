@@ -5,8 +5,7 @@
   inputs,
   lib,
   ...
-}:
-let
+}: let
   inherit (config.theme) border-size;
   inherit (config.theme) gaps-in;
   inherit (config.theme) gaps-out;
@@ -22,8 +21,7 @@ let
   inherit (config.var) terminal;
 
   isLaptop = device == "laptop";
-in
-{
+in {
   imports = [
     ./animations.nix
     ./bindings.nix
@@ -66,24 +64,17 @@ in
     portalPackage = null;
 
     plugins = [
-      # Plugins can be enabled from pkgs.hyprlandPlugins.*
-      # Example: pkgs.hyprlandPlugins.hy3
+      pkgs.hyprlandPlugins.hyprscrolling
     ];
 
     extraConfig = ''
-      # Plugin configuration disabled (hyprscrolling removed due to gaps_out bug)
-      # plugin:hyprscrolling {
-      #     fullscreen_on_one_column = true
-      # }
-
       # Laptop-specific gestures
       ${
-        if isLaptop then
-          ''
-            gesture = 3, horizontal, workspace
-          ''
-        else
-          ""
+        if isLaptop
+        then ''
+          gesture = 3, horizontal, workspace
+        ''
+        else ""
       }
 
       # Window rules - commented out until we find correct syntax for Hyprland 0.52
@@ -220,19 +211,18 @@ in
       ];
 
       monitor =
-        if isLaptop then
-          [
-            "eDP-1,2880x1920@120,0x0,${monitorScale}"
-            "DP-3,1920x1080@144,0x-1080,1"
-            ",preferred,auto,1"
-          ]
-        else
-          [
-            "DP-2, 1920x1080@144, 0x0, 1"
-            "DP-3, prefered, auto, 1, transform, 1"
-            "HDMI-A-1, prefered, auto, 1, mirror, DP-2"
-            ",prefered,auto,1"
-          ];
+        if isLaptop
+        then [
+          "eDP-1,2880x1920@120,0x0,${monitorScale}"
+          "DP-3,1920x1080@144,0x-1080,1"
+          ",preferred,auto,1"
+        ]
+        else [
+          "DP-2, 1920x1080@144, 0x0, 1"
+          "DP-3, prefered, auto, 1, transform, 1"
+          "HDMI-A-1, prefered, auto, 1, mirror, DP-2"
+          ",prefered,auto,1"
+        ];
 
       env = [
         "XDG_CURRENT_DESKTOP,Hyprland"
@@ -269,16 +259,14 @@ in
         gaps_in = gaps-in;
         gaps_out = gaps-out;
         border_size = border-size;
-        layout = "dwindle";
+        layout = "scrolling";
       };
 
-      # Hyprscrolling plugin config removed (plugin has gaps_out bug)
-      # "plugin:hyprscrolling" = {
-      #   fullscreen_on_one_column = true;
-      #   focus_fit_method = 0; # 0 = center, 1 = fit
-      #   column_width = 0.499;
-      #   follow_focus = true;
-      # };
+      "plugin:hyprscrolling" = {
+        fullscreen_on_one_column = true;
+        column_width = 0.499;
+        focus_fit_method = 0;
+      };
 
       dwindle = {
         pseudotile = true;
@@ -295,7 +283,10 @@ in
           render_power = 3;
         };
         blur = {
-          enabled = if blur then "true" else "false";
+          enabled =
+            if blur
+            then "true"
+            else "false";
           size = 18;
         };
       };
@@ -320,37 +311,36 @@ in
       # windowrule and layerrule are now in extraConfig using block syntax
 
       workspace =
-        if isLaptop then
-          [
-            "1, default:true, persistent:true"
-            "2, persistent:true"
-            "3, persistent:true"
-            "4, persistent:true"
-            "5, persistent:true"
-            "6, persistent:true"
-            "7, persistent:true"
-            "8, persistent:true"
-            "9, persistent:true"
-            "10, persistent:true"
-            "11, monitor:DP-3, persistent:true"
-            "name:special, persistent:true"
-          ]
-        else
-          [
-            "special:special, monitor:DP-2"
-            "1, monitor:DP-2, default:true"
-            "2, monitor:DP-2, persistent:true"
-            "3, monitor:DP-2, persistent:true"
-            "4, monitor:DP-2, persistent:true"
-            "5, monitor:DP-2, persistent:true"
-            "6, monitor:DP-2, persistent:true"
-            "7, monitor:DP-2, persistent:true"
-            "8, monitor:DP-2, persistent:true"
-            "9, monitor:DP-2, persistent:true"
-            "10, monitor:DP-2, persistent:true"
-            "name:alternative1, monitor:DP-3, default:true, persistent:true, layoutopt:orientation:top"
-            "name:alternative2, monitor:DP-3, persistent:true, layoutopt:orientation:top"
-          ];
+        if isLaptop
+        then [
+          "1, default:true, persistent:true"
+          "2, persistent:true"
+          "3, persistent:true"
+          "4, persistent:true"
+          "5, persistent:true"
+          "6, persistent:true"
+          "7, persistent:true"
+          "8, persistent:true"
+          "9, persistent:true"
+          "10, persistent:true"
+          "11, monitor:DP-3, persistent:true"
+          "name:special, persistent:true"
+        ]
+        else [
+          "special:special, monitor:DP-2"
+          "1, monitor:DP-2, default:true"
+          "2, monitor:DP-2, persistent:true"
+          "3, monitor:DP-2, persistent:true"
+          "4, monitor:DP-2, persistent:true"
+          "5, monitor:DP-2, persistent:true"
+          "6, monitor:DP-2, persistent:true"
+          "7, monitor:DP-2, persistent:true"
+          "8, monitor:DP-2, persistent:true"
+          "9, monitor:DP-2, persistent:true"
+          "10, monitor:DP-2, persistent:true"
+          "name:alternative1, monitor:DP-3, default:true, persistent:true, layoutopt:orientation:top"
+          "name:alternative2, monitor:DP-3, persistent:true, layoutopt:orientation:top"
+        ];
 
       input = {
         kb_layout = keyboardLayout;
