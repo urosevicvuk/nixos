@@ -84,7 +84,7 @@
         vscode
         rstudioWrapper
         jetbrains.goland
-        jetbrains.idea-ultimate
+        jetbrains.idea
         jetbrains.datagrip
         jetbrains.webstorm
         android-studio

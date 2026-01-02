@@ -1,6 +1,5 @@
 # Language-specific configurations
-{ ... }:
-{
+{...}: {
   programs.nvf.settings.vim.languages = {
     enableFormat = true;
     enableTreesitter = true;
@@ -13,7 +12,9 @@
     kotlin.enable = true;
     rust = {
       enable = true;
-      crates.enable = true;
+      extensions = {
+        crates-nvim.enable = true;
+      };
     };
     astro.enable = true;
     ts = {
